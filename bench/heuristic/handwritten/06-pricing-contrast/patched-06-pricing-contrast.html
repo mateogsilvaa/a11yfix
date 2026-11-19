@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Pricing - Lumen Notes</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; color: #222; background: #ffffff; }
+    .hero { background: #f7f7f7; padding: 2rem; }
+    .subtitle { color: #a0a0a0; }
+    .plans { display: flex; gap: 1rem; padding: 2rem; }
+    .plan { border: 1px solid #e5e5e5; padding: 1rem; flex: 1; }
+    .price { font-size: 2rem; }
+    .note { color: #b5b5b5; font-size: 0.85rem; }
+    .cta { background: #ffd34d; color: #ffffff; padding: 0.6rem 1rem; border: 0; font-weight: 600; }
+    .badge { background: #2e7d32; color: #3b8f3f; padding: 0.1rem 0.4rem; }
+    footer { background: #333333; color: #5a5a5a; padding: 1rem 2rem; }
+  </style>
+</head>
+<body>
+  <div class="hero">
+    <h1>Simple pricing</h1>
+    <p class="subtitle" style="color: #000000">Start free. Upgrade when your notes outgrow it.</p>
+  </div>
+  <main class="plans">
+    <section class="plan">
+      <h2>Free</h2>
+      <p class="price">0 EUR</p>
+      <p class="note" style="color: #000000">Up to 3 notebooks.</p>
+      <button class="cta" type="button" style="color: #000000">Start free</button>
+    </section>
+    <section class="plan">
+      <h2>Pro <span class="badge" style="color: #ffffff">Popular</span></h2>
+      <p class="price">6 EUR</p>
+      <p style="color: #c4c4c4">Billed yearly. Cancel any time.</p>
+      <button class="cta" type="button" style="color: #000000">Go Pro</button>
+    </section>
+  </main>
+  <footer>
+    <p style="color: #ffffff">Prices include VAT where applicable.</p>
+  </footer>
+</body>
+</html>

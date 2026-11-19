@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0049",
+  "rationale": "inline text color #000000 against background #d7d7cd",
+  "before": "<a href=\"https://www.w3.org/People/shadi/\">",
+  "after": "<a href=\"https://www.w3.org/People/shadi/\" style=\"color: #000000\">",
+  "confidence": "low"
+}

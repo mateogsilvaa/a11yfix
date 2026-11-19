@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0034",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Headline ticket offers\" only restates the file name \"headline_ticket_offers.gif\"",
+  "status": "rejected_suspicious"
+}

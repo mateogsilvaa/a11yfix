@@ -1,0 +1,374 @@
+{
+  "file": "corpus\\external\\axe-core\\aria-allowed-attr.html",
+  "findings": 23,
+  "statuses": {
+    "verified": 18,
+    "rejected_invalid": 2,
+    "rejected_regression": 3
+  },
+  "remainingSubsetViolations": 9,
+  "wcagViolationsBefore": 33,
+  "wcagViolationsAfter": 19,
+  "combinedSkipped": [
+    "f_0023",
+    "f_0013",
+    "f_0011",
+    "f_0009",
+    "f_0006",
+    "f_0004"
+  ],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2500,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "aria-allowed-attr",
+      "line": 14,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "aria-allowed-attr",
+      "line": 15,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "aria-allowed-attr",
+      "line": 16,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "aria-valid-attr-value",
+      "line": 16,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "aria-allowed-attr",
+      "line": 17,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "aria-valid-attr-value",
+      "line": 17,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "aria-allowed-attr",
+      "line": 19,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "aria-allowed-attr",
+      "line": 26,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "aria-required-attr",
+      "line": 26,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0010",
+      "ruleId": "aria-allowed-attr",
+      "line": 27,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0011",
+      "ruleId": "aria-required-attr",
+      "line": 27,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0012",
+      "ruleId": "aria-allowed-attr",
+      "line": 28,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0013",
+      "ruleId": "aria-required-attr",
+      "line": 28,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0014",
+      "ruleId": "aria-allowed-attr",
+      "line": 30,
+      "status": "rejected_invalid",
+      "reason": "generation failed: heuristic: offending attribute not found in axe data",
+      "confidence": null,
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0015",
+      "ruleId": "aria-allowed-attr",
+      "line": 31,
+      "status": "rejected_invalid",
+      "reason": "generation failed: heuristic: offending attribute not found in axe data",
+      "confidence": null,
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0016",
+      "ruleId": "aria-allowed-attr",
+      "line": 36,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0017",
+      "ruleId": "aria-allowed-attr",
+      "line": 38,
+      "status": "rejected_regression",
+      "reason": "introduced 1 new violation(s): aria-required-attr at line 38",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0018",
+      "ruleId": "aria-allowed-attr",
+      "line": 39,
+      "status": "rejected_regression",
+      "reason": "introduced 1 new violation(s): aria-required-attr at line 39",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0019",
+      "ruleId": "aria-allowed-attr",
+      "line": 40,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0020",
+      "ruleId": "aria-allowed-attr",
+      "line": 41,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0021",
+      "ruleId": "aria-allowed-attr",
+      "line": 42,
+      "status": "rejected_regression",
+      "reason": "introduced 1 new violation(s): aria-required-attr at line 42",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0022",
+      "ruleId": "aria-allowed-attr",
+      "line": 45,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0023",
+      "ruleId": "aria-required-attr",
+      "line": 45,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

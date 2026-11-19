@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0009",
+  "rationale": "aria-label derived from \"canttell11\"",
+  "before": "<textarea id=\"canttell11\" style=\"background: #000; color: #000\">",
+  "after": "<textarea id=\"canttell11\" style=\"background: #000; color: #000\" aria-label=\"Canttell11\">",
+  "confidence": "low"
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "aria-label derived from \"topics\"",
+  "before": "<textarea name=\"topics\" rows=\"3\">",
+  "after": "<textarea name=\"topics\" rows=\"3\" aria-label=\"Topics\">",
+  "confidence": "low"
+}

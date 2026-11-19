@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0018",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+  "status": "rejected_suspicious"
+}

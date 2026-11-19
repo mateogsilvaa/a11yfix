@@ -1,0 +1,8 @@
+* text=auto eol=lf
+
+# Benchmark inputs and fixtures are byte-exact: patches are applied to these
+# bytes, and one corpus page deliberately uses CRLF line endings.
+corpus/** -text
+test/fixtures/** -text
+demo/** -text
+bench/** -text

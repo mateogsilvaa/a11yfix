@@ -1,0 +1,12 @@
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -21,7 +21,7 @@
+     </div>
+     <div class="card">
+       <h3>Fixed desk</h3>
+-      <img src="img/desk.jpg" width="280">
++      <img src="img/desk.jpg" width="280" alt="Desk">
+       <p class="muted">From 180 EUR per month</p>
+       <input type="number" name="days" min="1" value="1">
+     </div>

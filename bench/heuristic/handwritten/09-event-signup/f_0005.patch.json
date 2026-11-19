@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "aria-label derived from \"org\"",
+  "before": "<input type=\"text\" name=\"org\">",
+  "after": "<input type=\"text\" name=\"org\" aria-label=\"Org\">",
+  "confidence": "low"
+}

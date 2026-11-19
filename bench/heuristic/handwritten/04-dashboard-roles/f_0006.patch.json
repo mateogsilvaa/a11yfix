@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0006",
+  "rationale": "added aria-expanded with default values",
+  "before": "<div role=\"combobox\" tabindex=\"0\" aria-label=\"Region\">",
+  "after": "<div role=\"combobox\" tabindex=\"0\" aria-label=\"Region\" aria-expanded=\"false\">",
+  "confidence": "low"
+}

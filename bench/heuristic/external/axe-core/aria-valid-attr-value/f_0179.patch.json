@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0179",
+  "rationale": "removed aria-placeholder",
+  "before": "<div aria-placeholder=\"\" id=\"pass184\">",
+  "after": "<div id=\"pass184\">",
+  "confidence": "low"
+}

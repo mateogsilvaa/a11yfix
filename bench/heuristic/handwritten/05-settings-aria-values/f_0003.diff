@@ -1,0 +1,12 @@
+===================================================================
+--- a/05-settings-aria-values.html
++++ b/05-settings-aria-values.html
+@@ -20,7 +20,7 @@
+     <div role="switch" tabindex="0" aria-checked="1" aria-labelledby="notif-label">Email me about new comments</div>
+     <span id="notifications-label" hidden>Comment emails</span>
+     <h2>Danger zone</h2>
+-    <button type="button" aria-describedby="delete-warning" aria-pressed="0">Delete account</button>
++    <button type="button" aria-describedby="delete-warning">Delete account</button>
+     <p id="delete-warning">This cannot be undone.</p>
+     <div aria-live="loud">Saved.</div>
+     <nav>

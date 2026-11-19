@@ -1,0 +1,1086 @@
+{
+  "file": "corpus\\external\\w3c-bad\\home.html",
+  "findings": 71,
+  "statuses": {
+    "verified": 38,
+    "rejected_suspicious": 33
+  },
+  "remainingSubsetViolations": 33,
+  "wcagViolationsBefore": 84,
+  "wcagViolationsAfter": 46,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 11038,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 153,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 159,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 162,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 162,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "color-contrast",
+      "line": 163,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "color-contrast",
+      "line": 163,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "color-contrast",
+      "line": 163,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "color-contrast",
+      "line": 163,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "color-contrast",
+      "line": 164,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0010",
+      "ruleId": "color-contrast",
+      "line": 166,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0011",
+      "ruleId": "color-contrast",
+      "line": 167,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0012",
+      "ruleId": "color-contrast",
+      "line": 168,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0013",
+      "ruleId": "color-contrast",
+      "line": 169,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0014",
+      "ruleId": "image-alt",
+      "line": 178,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border left top\" only restates the file name \"border_left_top.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0015",
+      "ruleId": "image-alt",
+      "line": 179,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border top\" only restates the file name \"border_top.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0016",
+      "ruleId": "image-alt",
+      "line": 180,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border right top\" only restates the file name \"border_right_top.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0017",
+      "ruleId": "image-alt",
+      "line": 183,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border left\" only restates the file name \"border_left.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0018",
+      "ruleId": "image-alt",
+      "line": 188,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Top logo next end\" only restates the file name \"top_logo_next_end.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0019",
+      "ruleId": "image-alt",
+      "line": 189,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Top weather\" only restates the file name \"top_weather.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0020",
+      "ruleId": "image-alt",
+      "line": 190,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Top logo next start\" only restates the file name \"top_logo_next_start.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0021",
+      "ruleId": "image-alt",
+      "line": 213,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Mark\" only restates the file name \"mark.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0022",
+      "ruleId": "image-alt",
+      "line": 238,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0023",
+      "ruleId": "image-alt",
+      "line": 249,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0024",
+      "ruleId": "image-alt",
+      "line": 250,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 t\" only restates the file name \"marker2_t.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0025",
+      "ruleId": "image-alt",
+      "line": 253,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Nav home\" only restates the file name \"nav_home.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0026",
+      "ruleId": "image-alt",
+      "line": 256,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0027",
+      "ruleId": "image-alt",
+      "line": 259,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Nav news\" only restates the file name \"nav_news.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0028",
+      "ruleId": "image-alt",
+      "line": 262,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0029",
+      "ruleId": "image-alt",
+      "line": 265,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Nav facts\" only restates the file name \"nav_facts.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0030",
+      "ruleId": "image-alt",
+      "line": 268,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0031",
+      "ruleId": "image-alt",
+      "line": 271,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Nav survey\" only restates the file name \"nav_survey.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0032",
+      "ruleId": "image-alt",
+      "line": 274,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0033",
+      "ruleId": "image-alt",
+      "line": 278,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Blank 5x5\" only restates the file name \"blank_5x5.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0034",
+      "ruleId": "image-alt",
+      "line": 285,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Headline middle\" only restates the file name \"headline_middle.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0035",
+      "ruleId": "image-alt",
+      "line": 286,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Headline middle\" only restates the file name \"headline_middle.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0036",
+      "ruleId": "image-alt",
+      "line": 287,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Headline middle\" only restates the file name \"headline_middle.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0037",
+      "ruleId": "image-alt",
+      "line": 306,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Blank 5x5\" only restates the file name \"blank_5x5.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0038",
+      "ruleId": "image-alt",
+      "line": 310,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 t\" only restates the file name \"marker2_t.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0039",
+      "ruleId": "image-alt",
+      "line": 311,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0040",
+      "ruleId": "color-contrast",
+      "line": 314,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0041",
+      "ruleId": "image-alt",
+      "line": 317,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Teaser right1\" only restates the file name \"teaser_right1.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0042",
+      "ruleId": "image-alt",
+      "line": 332,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Marker2 w\" only restates the file name \"marker2_w.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0043",
+      "ruleId": "color-contrast",
+      "line": 335,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0044",
+      "ruleId": "image-alt",
+      "line": 338,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Teaser right2\" only restates the file name \"teaser_right2.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0045",
+      "ruleId": "image-alt",
+      "line": 359,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border right\" only restates the file name \"border_right.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0046",
+      "ruleId": "image-alt",
+      "line": 362,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border bottom left\" only restates the file name \"border_bottom_left.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0047",
+      "ruleId": "image-alt",
+      "line": 363,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border bottom\" only restates the file name \"border_bottom.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0048",
+      "ruleId": "image-alt",
+      "line": 364,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Border bottom right\" only restates the file name \"border_bottom_right.gif\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0049",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0050",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0051",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0052",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0053",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0054",
+      "ruleId": "color-contrast",
+      "line": 371,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0055",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0056",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0057",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0058",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0059",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0060",
+      "ruleId": "color-contrast",
+      "line": 372,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0061",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0062",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0063",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0064",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0065",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0066",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0067",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0068",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0069",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0070",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0071",
+      "ruleId": "color-contrast",
+      "line": 373,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

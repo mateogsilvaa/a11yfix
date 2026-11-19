@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0064",
+  "rationale": "inline text color #000000 against background #d7d7cd",
+  "before": "<a href=\"http://www.keio.ac.jp/\">",
+  "after": "<a href=\"http://www.keio.ac.jp/\" style=\"color: #000000\">",
+  "confidence": "low"
+}

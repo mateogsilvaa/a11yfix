@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0004",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Wheat divider\" only restates the file name \"wheat-divider.png\"",
+  "status": "rejected_suspicious"
+}

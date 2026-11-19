@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0022",
+  "rationale": "removed aria-level",
+  "before": "<div aria-level=\"stuff\" id=\"violation19\">",
+  "after": "<div id=\"violation19\">",
+  "confidence": "low"
+}

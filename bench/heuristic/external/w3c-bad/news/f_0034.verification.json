@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0034",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Marker2 t\" only restates the file name \"marker2_t.gif\"",
+  "status": "rejected_suspicious"
+}

@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0052",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Border bottom right\" only restates the file name \"border_bottom_right.gif\"",
+  "status": "rejected_suspicious"
+}

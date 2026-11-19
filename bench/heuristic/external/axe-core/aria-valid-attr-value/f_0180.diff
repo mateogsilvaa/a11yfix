@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -360,8 +360,7 @@
+       type="text"
+       id="pass187"
+       aria-invalid="true"
+-      aria-errormessage="pass68"
+-    />
++      aria-errormessage="pass68" aria-label="Pass187" />
+   </div>
+ 
+   <div aria-live="assertive" aria-hidden="false" id="pass188">hi</div>

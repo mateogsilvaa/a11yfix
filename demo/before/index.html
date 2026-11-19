@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Riverside Community Garden</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; color: #1f1f1f; background: #ffffff; }
+    header { display: flex; align-items: center; justify-content: space-between; padding: 1rem 2rem; background: #f3f7f2; }
+    main { max-width: 46rem; margin: 0 auto; padding: 1rem 2rem; }
+    .lede { color: #9aa59a; font-size: 1.1rem; }
+    .plot { display: flex; gap: 1rem; align-items: center; }
+    .btn { display: inline-block; padding: 0.5rem 1rem; background: #2f6f3e; color: #ffffff; cursor: pointer; }
+    footer { padding: 1rem 2rem; color: #b8b8b8; }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="/"><img src="logo.svg" width="140"></a>
+    <nav role="navigaton">
+      <a href="/plots">Plots</a>
+      <a href="/events">Events</a>
+    </nav>
+  </header>
+  <main>
+    <h1>Grow your own food by the river</h1>
+    <p class="lede">32 plots, shared tools, and a weekly compost day.</p>
+
+    <h3>Rent a plot</h3>
+    <div class="plot">
+      <img src="plot-map.png" width="260">
+      <p>Plots are 3 x 4 metres and cost 40 EUR per season. The map shows which ones are free.</p>
+    </div>
+
+    <form action="/waitlist" method="post">
+      <input type="email" name="email" placeholder="Email address">
+      <div class="btn" role="buton" tabindex="0">Join the waitlist</div>
+    </form>
+
+    <h3>Volunteer</h3>
+    <div role="checkbox" tabindex="0">I can help on compost day</div>
+    <button type="button" aria-expanded="yes" aria-controls="volunteer-details">More about volunteering</button>
+    <div id="volunteer-details">
+      <p>Compost day is every Saturday from 10:00 to 12:00.</p>
+    </div>
+  </main>
+  <footer>
+    <p>Riverside Community Garden is run by volunteers.</p>
+  </footer>
+</body>
+</html>

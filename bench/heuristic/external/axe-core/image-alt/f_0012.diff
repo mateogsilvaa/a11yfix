@@ -1,0 +1,12 @@
+===================================================================
+--- a/image-alt.html
++++ b/image-alt.html
+@@ -34,7 +34,7 @@
+ <img src="img.jpg" id="violation10" role="none" tabindex="0" />
+ 
+ <img src="img.jpg" id="violation11" role="button" />
+-<img src="img.jpg" id="violation12" role="separator" tabindex="0" />
++<img src="img.jpg" id="violation12" role="separator" tabindex="0" aria-valuenow="0" />
+ <img src="img.jpg" id="inapplicable1" role="separator" />
+ 
+ <img src="img.jpg" id="pass9" role="button" aria-label="foo" />

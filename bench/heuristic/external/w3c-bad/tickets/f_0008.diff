@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -59,7 +59,7 @@
+           <li class="current"><span class="hidden">Current location: </span>Tickets
+             <div class="subnav"><ul>
+               <li class="inaccessible"><strong>Inaccessible:</strong><a class="page current"><span class="hidden">Inaccessible </span>Tickets Page</a><a href="./reports/tickets.html" class="report"><span class="hidden">Inaccessible Tickets Page </span> Report</a></li>
+-              <li class="accessible"><strong>Accessible:</strong><a href="../after/tickets.html" class="page"><span class="hidden">Accessible </span>Tickets Page</a><a href="../after/reports/tickets.html" class="report"><span class="hidden">Accessible Tickets Page </span> Report</a></li>
++              <li class="accessible"><strong>Accessible:</strong><a href="../after/tickets.html" class="page"><span class="hidden" style="color: #000000">Accessible </span>Tickets Page</a><a href="../after/reports/tickets.html" class="report"><span class="hidden">Accessible Tickets Page </span> Report</a></li>
+             </ul><a href="./annotated/tickets.html" class="annotoggle">Show <br>Annotations</a></div>
+           </li>
+           <li><a href="survey.html">Survey</a></li>

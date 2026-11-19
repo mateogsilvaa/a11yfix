@@ -1,0 +1,126 @@
+{
+  "file": "corpus\\handwritten\\01-bakery-images.html",
+  "findings": 7,
+  "statuses": {
+    "rejected_regression": 1,
+    "rejected_suspicious": 6
+  },
+  "remainingSubsetViolations": 7,
+  "wcagViolationsBefore": 10,
+  "wcagViolationsAfter": 10,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 854,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 15,
+      "status": "rejected_regression",
+      "reason": "introduced 2 new violation(s): target-size at line 15, target-size at line 18",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 26,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Sourdough\" only restates the file name \"sourdough.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "image-alt",
+      "line": 30,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Croissant\" only restates the file name \"croissant.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "image-alt",
+      "line": 34,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Wheat divider\" only restates the file name \"wheat-divider.png\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "image-alt",
+      "line": 36,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Hours table\" only restates the file name \"hours-table.png\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "image-alt",
+      "line": 39,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Map pin\" only restates the file name \"map-pin.png\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "image-alt",
+      "line": 43,
+      "status": "rejected_suspicious",
+      "reason": "text alternative \"Social icon\" only restates the file name \"social-icon.png\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

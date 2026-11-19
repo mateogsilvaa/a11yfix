@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0009",
+  "rationale": "removed aria-valuenow",
+  "before": "<div role=\"separator\" id=\"pass13\" tabindex=\"0\" aria-valuenow=\"foo\">",
+  "after": "<div role=\"separator\" id=\"pass13\" tabindex=\"0\">",
+  "confidence": "low"
+}

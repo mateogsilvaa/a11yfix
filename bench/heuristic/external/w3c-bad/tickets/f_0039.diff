@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -210,7 +210,7 @@
+           <table width="600px" cellspacing="0" class="prices">
+             <tr bgcolor="#A9B8BF">
+               <td><b><font color="41545D">ADULT</font></b></td>
+-              <td><b><font color="41545D">FS</font></b></td>
++              <td><b><font color="41545D" style="color: #000000">FS</font></b></td>
+               <td><b><font color="41545D">RS</font></b></td>
+               <td><b><font color="41545D">DC</font></b></td>
+               <td><b><font color="41545D">ST</font></b></td>

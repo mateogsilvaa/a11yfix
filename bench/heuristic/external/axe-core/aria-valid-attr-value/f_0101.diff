@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -234,7 +234,7 @@
+ 
+   <div aria-posinset="1" id="pass80">hi</div>
+   <div aria-posinset="22" id="pass81">hi</div>
+-  <div aria-posinset="+1" id="pass82">hi</div>
++  <div id="pass82">hi</div>
+   <div aria-posinset="+22" id="pass83">hi</div>
+ 
+   <div aria-pressed="true" id="pass87">hi</div>

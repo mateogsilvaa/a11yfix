@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0018",
+  "rationale": "removed aria-haspopup",
+  "before": "<div aria-haspopup=\"stuff\" id=\"violation15\">",
+  "after": "<div id=\"violation15\">",
+  "confidence": "low"
+}

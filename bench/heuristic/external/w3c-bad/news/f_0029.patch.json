@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0029",
+  "rationale": "alt derived from file name \"./img/nav_facts.gif\"",
+  "before": "<IMG name=\"nav_facts\" SRC=./img/nav_facts.gif WIDTH=105 HEIGHT=23 hspace=\"9\" BORDER=0px>",
+  "after": "<IMG name=\"nav_facts\" SRC=./img/nav_facts.gif WIDTH=105 HEIGHT=23 hspace=\"9\" BORDER=0px alt=\"Nav facts\">",
+  "confidence": "low"
+}

@@ -1,0 +1,306 @@
+{
+  "file": "corpus\\external\\axe-core\\image-alt.html",
+  "findings": 19,
+  "statuses": {
+    "rejected_suspicious": 15,
+    "verified": 4
+  },
+  "remainingSubsetViolations": 15,
+  "wcagViolationsBefore": 22,
+  "wcagViolationsAfter": 18,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1787,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 16,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 17,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "image-alt",
+      "line": 18,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "image-alt",
+      "line": 19,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "image-alt",
+      "line": 24,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "image-alt",
+      "line": 29,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "image-alt",
+      "line": 31,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "image-alt",
+      "line": 32,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "image-alt",
+      "line": 33,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0010",
+      "ruleId": "image-alt",
+      "line": 34,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0011",
+      "ruleId": "image-alt",
+      "line": 36,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0012",
+      "ruleId": "aria-required-attr",
+      "line": 37,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0013",
+      "ruleId": "image-alt",
+      "line": 37,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0014",
+      "ruleId": "aria-required-attr",
+      "line": 41,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0015",
+      "ruleId": "aria-required-attr",
+      "line": 42,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0016",
+      "ruleId": "image-alt",
+      "line": 46,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0017",
+      "ruleId": "image-alt",
+      "line": 47,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0018",
+      "ruleId": "image-alt",
+      "line": 48,
+      "status": "rejected_suspicious",
+      "reason": "generic alt: \"Img\"; text alternative \"Img\" only restates the file name \"img.jpg\"",
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0019",
+      "ruleId": "image-alt",
+      "line": 50,
+      "status": "verified",
+      "reason": null,
+      "confidence": "low",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

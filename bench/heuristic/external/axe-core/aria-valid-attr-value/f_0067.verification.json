@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0067",
+  "status": "rejected_invalid",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "generation failed: heuristic: offending attribute not found in axe data"
+}

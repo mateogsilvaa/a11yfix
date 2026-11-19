@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0006",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Final v3 FINAL\" only restates the file name \"final-v3-FINAL.png\"",
+  "status": "rejected_suspicious"
+}

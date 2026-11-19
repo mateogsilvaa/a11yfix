@@ -1,0 +1,27 @@
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium-headless-shell
+      - run: npm run typecheck
+      - run: npm test
+      - run: npm run build
+      # Offline end-to-end run over the whole corpus (no API key needed).
+      - run: npx tsx src/cli.ts bench --corpus corpus --generator heuristic --report bench/run/report.md --out bench/run
+      - uses: actions/upload-artifact@v4
+        with:
+          name: heuristic-bench
+          path: bench/run/report.md

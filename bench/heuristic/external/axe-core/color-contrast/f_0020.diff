@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast.html
++++ b/color-contrast.html
+@@ -564,7 +564,7 @@
+ </div>
+ 
+ <!-- empty text inputs: filled-state contrast cannot be known yet -->
+-<input id="canttell24" type="text" style="background: #fff; color: #eee" />
++<input id="canttell24" type="text" style="background: #fff; color: #eee" aria-label="Canttell24" />
+ <style>
+   .placeholder-000::placeholder {
+     color: #000;

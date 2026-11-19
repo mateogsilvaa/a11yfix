@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -238,7 +238,7 @@
+                   <TABLE cellSpacing=0 cellPadding=0 border=0 style="position: relative; left: 15px;top:-15px;padding-top:0;margin-top:0">
+                     <TBODY>
+                       <TR>
+-                        <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
++                        <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1 alt="Marker2 t"></TD>
+                         <TD background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78></TD>
+                         <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
+                       </TR>

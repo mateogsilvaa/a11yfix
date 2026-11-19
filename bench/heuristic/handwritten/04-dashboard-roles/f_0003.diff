@@ -1,0 +1,12 @@
+===================================================================
+--- a/04-dashboard-roles.html
++++ b/04-dashboard-roles.html
+@@ -21,7 +21,7 @@
+     <div class="card">
+       <h2>Deploys</h2>
+       <div class="btn" role="buton" tabindex="0">Deploy now</div>
+-      <div class="btn" role="checkbox" tabindex="0">Auto-deploy on merge</div>
++      <div class="btn" role="checkbox" tabindex="0" aria-checked="false">Auto-deploy on merge</div>
+     </div>
+     <div class="card">
+       <h2>Capacity</h2>

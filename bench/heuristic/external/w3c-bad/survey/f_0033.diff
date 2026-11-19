@@ -1,0 +1,12 @@
+===================================================================
+--- a/survey.html
++++ b/survey.html
+@@ -178,7 +178,7 @@
+             </TR>
+           </TABLE>
+         </TD>
+-        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px></TD>
++        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px alt="Blank 5x5"></TD>
+         <TD WIDTH=625px HEIGHT="600px" VALIGN=TOP id="main"><DIV>
+           <p class="headline">Citylights Survey</p>
+           <p class="headline"><font size="4">This Week's Survey: More city parks - a pain or a gain?</font></p>

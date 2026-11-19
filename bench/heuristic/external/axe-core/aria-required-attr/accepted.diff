@@ -1,0 +1,147 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -34,9 +34,9 @@
+ <div
+   role="spinbutton"
+   id="pass3"
+-  aria-valuenow="value"
+-  aria-valuemax="value"
+-  aria-valuemin="value"
++ 
++ 
++ 
+ >
+   ok
+ </div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -53,7 +53,7 @@
+   role="combobox"
+   id="comboboxWithOwns"
+   aria-expanded="true"
+-  aria-owns="ownsElement"
++ 
+ >
+   ok
+ </div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -60,7 +60,7 @@
+ <span role="radio" id="pass6" aria-checked="false">I am RED!</span>
+ <span role="radio" id="pass7" aria-checked="true">I am GREEN!</span>
+ <span role="radio" id="pass8" aria-checked="true">I am GREEN!</span>
+-<input type="number" role="spinbutton" id="pass9" value="10" />
++<input type="number" role="spinbutton" id="pass9" value="10" aria-label="Pass9" />
+ <input type="number" role="spinbutton" id="pass10" />
+ <div role="spinbutton" id="pass11">fail</div>
+ <div role="separator" id="pass12"></div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -61,7 +61,7 @@
+ <span role="radio" id="pass7" aria-checked="true">I am GREEN!</span>
+ <span role="radio" id="pass8" aria-checked="true">I am GREEN!</span>
+ <input type="number" role="spinbutton" id="pass9" value="10" />
+-<input type="number" role="spinbutton" id="pass10" />
++<input type="number" role="spinbutton" id="pass10" aria-label="Pass10" />
+ <div role="spinbutton" id="pass11">fail</div>
+ <div role="separator" id="pass12"></div>
+ <div role="separator" id="pass13" tabindex="0" aria-valuenow="foo"></div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -73,8 +73,7 @@
+   ok
+ </div>
+ 
+-<testutils-element no-role role="switch" with-aria-checked="false" id="pass15"
+-  >pass internals</testutils-element
++<testutils-element no-role role="switch" with-aria-checked="false" id="pass15" aria-checked="false">pass internals</testutils-element
+ >
+ 
+ <div role="scrollbar" id="violation1">fail</div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -77,7 +77,7 @@
+   >pass internals</testutils-element
+ >
+ 
+-<div role="scrollbar" id="violation1">fail</div>
++<div role="scrollbar" id="violation1" aria-valuenow="0">fail</div>
+ <div role="slider" id="violation2">fail</div>
+ <div role="heading" id="violation3">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -78,7 +78,7 @@
+ >
+ 
+ <div role="scrollbar" id="violation1">fail</div>
+-<div role="slider" id="violation2">fail</div>
++<div role="slider" id="violation2" aria-valuenow="0">fail</div>
+ <div role="heading" id="violation3">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+ <span role="radio" id="violation5">I am BLUE!</span>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -79,7 +79,7 @@
+ 
+ <div role="scrollbar" id="violation1">fail</div>
+ <div role="slider" id="violation2">fail</div>
+-<div role="heading" id="violation3">fail</div>
++<div role="heading" id="violation3" aria-level="2">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+ <span role="radio" id="violation5">I am BLUE!</span>
+ <div role="separator" id="violation6" tabindex="0"></div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -80,7 +80,7 @@
+ <div role="scrollbar" id="violation1">fail</div>
+ <div role="slider" id="violation2">fail</div>
+ <div role="heading" id="violation3">fail</div>
+-<div role="combobox" id="violation4">fail</div>
++<div role="combobox" id="violation4" aria-expanded="false">fail</div>
+ <span role="radio" id="violation5">I am BLUE!</span>
+ <div role="separator" id="violation6" tabindex="0"></div>
+ </div>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -81,7 +81,7 @@
+ <div role="slider" id="violation2">fail</div>
+ <div role="heading" id="violation3">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+-<span role="radio" id="violation5">I am BLUE!</span>
++<span role="radio" id="violation5" aria-checked="false">I am BLUE!</span>
+ <div role="separator" id="violation6" tabindex="0"></div>
+ </div>
+ </body>
+
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -82,7 +82,7 @@
+ <div role="heading" id="violation3">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+ <span role="radio" id="violation5">I am BLUE!</span>
+-<div role="separator" id="violation6" tabindex="0"></div>
++<div role="separator" id="violation6" tabindex="0" aria-valuenow="0"></div>
+ </div>
+ </body>
+ </html>

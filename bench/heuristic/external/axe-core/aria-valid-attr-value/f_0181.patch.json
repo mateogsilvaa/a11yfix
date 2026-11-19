@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0181",
+  "rationale": "aria-label derived from \"pass189\"",
+  "before": "<input\n      type=\"text\"\n      id=\"pass189\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"pass188\"\n    />",
+  "after": "<input\n      type=\"text\"\n      id=\"pass189\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"pass188\" aria-label=\"Pass189\" />",
+  "confidence": "low"
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0078",
+  "rationale": "removed aria-autocomplete",
+  "before": "<div aria-autocomplete=\"inline\" id=\"pass4\">",
+  "after": "<div id=\"pass4\">",
+  "confidence": "low"
+}

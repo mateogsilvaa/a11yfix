@@ -1,0 +1,77 @@
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -14,7 +14,7 @@
+   <main>
+     <h1>Harbor Coworking</h1>
+     <div class="card">
+-      <h3>Hot desk</h3>
++      <h2>Hot desk</h2>
+       <img src="img/desk.jpg" width="280">
+       <p class="muted">From 12 EUR per day</p>
+       <input type="number" name="days" min="1" value="1">
+
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -16,7 +16,7 @@
+     <div class="card">
+       <h3>Hot desk</h3>
+       <img src="img/desk.jpg" width="280">
+-      <p class="muted">From 12 EUR per day</p>
++      <p class="muted" style="color: #000000">From 12 EUR per day</p>
+       <input type="number" name="days" min="1" value="1">
+     </div>
+     <div class="card">
+
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -17,7 +17,7 @@
+       <h3>Hot desk</h3>
+       <img src="img/desk.jpg" width="280">
+       <p class="muted">From 12 EUR per day</p>
+-      <input type="number" name="days" min="1" value="1">
++      <input type="number" name="days" min="1" value="1" aria-label="Days">
+     </div>
+     <div class="card">
+       <h3>Fixed desk</h3>
+
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -22,7 +22,7 @@
+     <div class="card">
+       <h3>Fixed desk</h3>
+       <img src="img/desk.jpg" width="280">
+-      <p class="muted">From 180 EUR per month</p>
++      <p class="muted" style="color: #000000">From 180 EUR per month</p>
+       <input type="number" name="days" min="1" value="1">
+     </div>
+     <div class="card">
+
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -23,7 +23,7 @@
+       <h3>Fixed desk</h3>
+       <img src="img/desk.jpg" width="280">
+       <p class="muted">From 180 EUR per month</p>
+-      <input type="number" name="days" min="1" value="1">
++      <input type="number" name="days" min="1" value="1" aria-label="Days">
+     </div>
+     <div class="card">
+       <h3>Meeting room</h3>
+
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -28,7 +28,7 @@
+     <div class="card">
+       <h3>Meeting room</h3>
+       <img src="img/meeting-room.jpg" width="280">
+-      <p class="muted">From 25 EUR per hour</p>
++      <p class="muted" style="color: #000000">From 25 EUR per hour</p>
+     </div>
+   </main>
+ </body>

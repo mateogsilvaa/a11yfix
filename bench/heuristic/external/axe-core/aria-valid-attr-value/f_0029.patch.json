@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0029",
+  "rationale": "removed aria-posinset",
+  "before": "<div aria-posinset=\"stuff\" id=\"violation24\">",
+  "after": "<div id=\"violation24\">",
+  "confidence": "low"
+}

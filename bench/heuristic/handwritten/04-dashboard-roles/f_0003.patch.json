@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "added aria-checked with default values",
+  "before": "<div class=\"btn\" role=\"checkbox\" tabindex=\"0\">",
+  "after": "<div class=\"btn\" role=\"checkbox\" tabindex=\"0\" aria-checked=\"false\">",
+  "confidence": "low"
+}

@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -111,8 +111,7 @@
+       id="violation47"
+       aria-invalid="true"
+       aria-errormessage="violation47-ref1 violation47-ref2"
+-      aria-describedby="violation47-ref1 violation47-ref2"
+-    />
++      aria-describedby="violation47-ref1 violation47-ref2" aria-label="Violation47" />
+     <div id="violation47-ref1">Error message 1</div>
+     <div id="violation47-ref2">Error message 2</div>
+   </div>

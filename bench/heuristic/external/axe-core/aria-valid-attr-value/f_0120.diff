@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -265,7 +265,7 @@
+   <div aria-setsize="+22" id="pass107">hi</div>
+ 
+   <div aria-sort="ascending" id="pass109">hi</div>
+-  <div aria-sort="descending" id="pass110">hi</div>
++  <div id="pass110">hi</div>
+   <div aria-sort="other" id="pass111">hi</div>
+   <div aria-sort="none" id="pass112">hi</div>
+ 

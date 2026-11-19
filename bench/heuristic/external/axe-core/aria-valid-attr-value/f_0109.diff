@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -250,7 +250,7 @@
+   <div aria-relevant="text" id="pass95">hi</div>
+   <div aria-relevant="all" id="pass96">hi</div>
+ 
+-  <div aria-required="true" id="pass97">hi</div>
++  <div id="pass97">hi</div>
+   <div aria-required="false" id="pass98">hi</div>
+ 
+   <div aria-selected="true" id="pass99">hi</div>

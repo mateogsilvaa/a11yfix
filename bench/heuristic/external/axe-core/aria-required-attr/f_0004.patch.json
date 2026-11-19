@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "removed aria-controls",
+  "before": "<div\n  role=\"combobox\"\n  id=\"pass5\"\n  aria-expanded=\"true\"\n  aria-controls=\"controlsElement\"\n>",
+  "after": "<div\n  role=\"combobox\"\n  id=\"pass5\"\n  aria-expanded=\"true\"\n \n>",
+  "confidence": "low"
+}

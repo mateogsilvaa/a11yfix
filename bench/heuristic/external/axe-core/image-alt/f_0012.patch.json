@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0012",
+  "rationale": "added aria-valuenow with default values",
+  "before": "<img src=\"img.jpg\" id=\"violation12\" role=\"separator\" tabindex=\"0\" />",
+  "after": "<img src=\"img.jpg\" id=\"violation12\" role=\"separator\" tabindex=\"0\" aria-valuenow=\"0\" />",
+  "confidence": "low"
+}

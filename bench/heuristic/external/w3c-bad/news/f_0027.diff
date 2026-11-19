@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -158,7 +158,7 @@
+               <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
+             </TR>
+             <TR HEIGHT=34px>
+-              <TD WIDTH=154px bgcolor="#EDEDED" id="news" onMouseOver="switchImage('nav_news', './img/nav_news2.gif'); ChangeColor('news','#FFF')" onMouseOut="switchImage('nav_news', './img/nav_news.gif'); ChangeColor('news','#EDEDED')"><A HREF="javascript:location.href='news.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_news.gif name="nav_news" WIDTH=90 HEIGHT=21 hspace="12" BORDER=0px></A></TD>
++              <TD WIDTH=154px bgcolor="#EDEDED" id="news" onMouseOver="switchImage('nav_news', './img/nav_news2.gif'); ChangeColor('news','#FFF')" onMouseOut="switchImage('nav_news', './img/nav_news.gif'); ChangeColor('news','#EDEDED')"><A HREF="javascript:location.href='news.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_news.gif name="nav_news" WIDTH=90 HEIGHT=21 hspace="12" BORDER=0px alt="Nav news"></A></TD>
+             </TR>
+             <TR HEIGHT=1px>
+               <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>

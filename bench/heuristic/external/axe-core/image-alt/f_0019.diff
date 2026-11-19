@@ -1,0 +1,12 @@
+===================================================================
+--- a/image-alt.html
++++ b/image-alt.html
+@@ -47,7 +47,7 @@
+ <img src="img.jpg" id="violation14" role="progressbar" title="" />
+ <img src="img.jpg" id="violation15" role="treeitem" aria-labelledby="" />
+ 
+-<img role="button" id="violation16" />
++<img role="button" id="violation16" alt="" />
+ </div>
+ </body>
+ </html>

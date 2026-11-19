@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0152",
+  "rationale": "removed aria-valuemin",
+  "before": "<div aria-valuemin=\"+412\" id=\"pass142\">",
+  "after": "<div id=\"pass142\">",
+  "confidence": "low"
+}

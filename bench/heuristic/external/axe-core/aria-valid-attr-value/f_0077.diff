@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -128,7 +128,7 @@
+ </div>
+ <h2>Possible False Positives</h2>
+ <div>
+-  <div aria-activedescendant="ref" id="pass1">hi</div>
++  <div id="pass1">hi</div>
+ 
+   <div aria-atomic="true" id="pass2">hi</div>
+   <div aria-atomic="false" id="pass3">hi</div>

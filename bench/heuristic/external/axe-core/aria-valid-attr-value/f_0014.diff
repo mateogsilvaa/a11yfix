@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -26,7 +26,7 @@
+   <div aria-controls="stuff" id="violation7">hi</div>
+   <div aria-disabled="stuff" id="violation10">hi</div>
+   <div aria-dropeffect="stuff" id="violation11">hi</div>
+-  <div aria-expanded="stuff" id="violation12">hi</div>
++  <div id="violation12">hi</div>
+   <div aria-flowto="stuff" id="violation13">hi</div>
+   <div aria-grabbed="stuff" id="violation14">hi</div>
+   <div aria-haspopup="stuff" id="violation15">hi</div>

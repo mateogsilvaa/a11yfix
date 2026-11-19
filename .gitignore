@@ -1,0 +1,9 @@
+node_modules/
+dist/
+*.log
+.DS_Store
+
+# local outputs of `audit` / `fix` / ad-hoc benches
+/findings.json
+/patches/
+/bench/run/

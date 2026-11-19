@@ -1,0 +1,12 @@
+===================================================================
+--- a/home.html
++++ b/home.html
+@@ -311,7 +311,7 @@
+               <TD WIDTH=151px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
+             </TR>
+             <TR HEIGHT=25px>
+-              <TD WIDTH=150px BGCOLOR=#A9B8BF><FONT COLOR=#41545D FACE=Verdana SIZE=2>&nbsp;<B>Free Penguins</B></FONT></TD>
++              <TD WIDTH=150px BGCOLOR=#A9B8BF><FONT COLOR=#41545D FACE=Verdana SIZE=2>&nbsp;<B style="color: #000000">Free Penguins</B></FONT></TD>
+             </TR>
+             <TR HEIGHT=106px>
+               <TD WIDTH=150px><DIV><IMG SRC=./img/teaser_right1.jpg WIDTH=150px HEIGHT=106px></DIV></TD>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "aria-label derived from \"fail3\"",
+  "before": "<input type=\"text\" id=\"fail3\" />",
+  "after": "<input type=\"text\" id=\"fail3\" aria-label=\"Fail3\" />",
+  "confidence": "low"
+}

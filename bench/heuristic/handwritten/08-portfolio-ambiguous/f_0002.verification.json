@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Ic share 24\" only restates the file name \"ic_share_24.svg\"",
+  "status": "rejected_suspicious"
+}

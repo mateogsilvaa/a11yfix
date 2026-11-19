@@ -1,0 +1,12 @@
+===================================================================
+--- a/07-recipe-mixed.html
++++ b/07-recipe-mixed.html
+@@ -14,7 +14,7 @@
+   <main>
+     <h1>Red lentil soup</h1>
+     <p class="meta">Serves 4 &middot; 35 minutes &middot; Vegan</p>
+-    <img src="photos/lentil-soup-bowl.jpg" width="640">
++    <img src="photos/lentil-soup-bowl.jpg" width="640" alt="Lentil soup bowl">
+     <h4>Ingredients</h4>
+     <ul>
+       <li>250 g red lentils</li>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/01-bakery-images.html
++++ b/01-bakery-images.html
+@@ -27,7 +27,7 @@
+         <figcaption>Country sourdough, 800 g, 6.50 EUR</figcaption>
+       </figure>
+       <figure>
+-        <img src="img/croissant.jpg" width="200">
++        <img src="img/croissant.jpg" width="200" alt="Croissant">
+         <figcaption>Butter croissant, 1.90 EUR</figcaption>
+       </figure>
+     </section>

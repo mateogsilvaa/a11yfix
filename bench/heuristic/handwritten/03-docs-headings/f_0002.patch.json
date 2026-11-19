@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "heading level set to previous level + 1 (h4)",
+  "before": "<h5>Linux</h5>",
+  "after": "<h4>Linux</h4>",
+  "confidence": "low"
+}

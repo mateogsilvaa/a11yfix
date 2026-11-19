@@ -1,0 +1,12 @@
+===================================================================
+--- a/02-newsletter-labels.html
++++ b/02-newsletter-labels.html
+@@ -39,7 +39,7 @@
+       <button type="submit">Subscribe</button>
+     </form>
+     <form action="/search" role="search">
+-      <input type="search" name="q">
++      <input type="search" name="q" aria-label="Q">
+       <button type="submit">Search the archive</button>
+     </form>
+   </main>

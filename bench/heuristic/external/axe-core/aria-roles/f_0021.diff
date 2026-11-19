@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-roles.html
++++ b/aria-roles.html
+@@ -143,7 +143,7 @@
+   <div role="select" id="fail9">fail</div>
+   <div role="structure" id="fail10">fail</div>
+   <div role="widget" id="fail11">fail</div>
+-  <div role="window" id="fail12">fail</div>
++  <div id="fail12">fail</div>
+   <!-- invalid roles -->
+   <div role="lol" id="fail13">fail</div>
+   <!-- unsupported roles -->

@@ -1,0 +1,12 @@
+===================================================================
+--- a/04-dashboard-roles.html
++++ b/04-dashboard-roles.html
+@@ -30,7 +30,7 @@
+     </div>
+     <div class="card">
+       <h2>Region</h2>
+-      <div role="combobox" tabindex="0" aria-label="Region">eu-west-1</div>
++      <div role="combobox" tabindex="0" aria-label="Region" aria-expanded="false">eu-west-1</div>
+       <ul role="listbox" aria-label="Recent regions">
+         <li role="option">eu-west-1</li>
+         <li role="option">us-east-2</li>

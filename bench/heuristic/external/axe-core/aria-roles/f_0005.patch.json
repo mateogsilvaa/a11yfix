@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "added aria-checked with default values",
+  "before": "<div role=\"menuitemradio\" id=\"pass35\">",
+  "after": "<div role=\"menuitemradio\" id=\"pass35\" aria-checked=\"false\">",
+  "confidence": "low"
+}

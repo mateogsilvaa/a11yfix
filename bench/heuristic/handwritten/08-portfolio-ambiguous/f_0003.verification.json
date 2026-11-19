@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0003",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Ic heart 24\" only restates the file name \"ic_heart_24.svg\"",
+  "status": "rejected_suspicious"
+}

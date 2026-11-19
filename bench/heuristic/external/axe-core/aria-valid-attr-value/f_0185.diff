@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -408,7 +408,7 @@
+   <div aria-describedby="stuff" id="incomplete1">hi</div>
+   <div aria-current="stage" id="incomplete2">hi</div>
+   <div aria-labelledby="stuff" id="incomplete3">hi</div>
+-  <div aria-level="22" id="incomplete4">hi</div>
++  <div id="incomplete4">hi</div>
+   <div aria-level="+22" id="incomplete5">hi</div>
+   <div role="checkbox" id="incomplete6" aria-checked>I'm not checked</div>
+   <div role="textbox" id="incomplete7" aria-invalid="">I'm actually valid</div>

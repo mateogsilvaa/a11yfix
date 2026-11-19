@@ -1,0 +1,16 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -25,9 +25,9 @@
+ <div
+   role="slider"
+   id="pass2"
+-  aria-valuenow="value"
+-  aria-valuemax="value"
+-  aria-valuemin="value"
++ 
++ 
++ 
+ >
+   ok
+ </div>

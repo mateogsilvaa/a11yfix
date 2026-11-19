@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0019",
+  "rationale": "removed aria-hidden",
+  "before": "<div aria-hidden=\"stuff\" id=\"violation16\">",
+  "after": "<div id=\"violation16\">",
+  "confidence": "low"
+}

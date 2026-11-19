@@ -1,0 +1,12 @@
+===================================================================
+--- a/image-alt.html
++++ b/image-alt.html
+@@ -15,7 +15,7 @@
+ <div id="ninjamonkeys" style="display: none">Banana bombs</div>
+ <img src="img.jpg" id="violation1" />
+ <img src="img.jpg" id="violation2" aria-label="" />
+-<img src="img.jpg" id="violation3" aria-labelledby="nomatchy" />
++<img src="img.jpg" id="violation3" aria-labelledby="nomatchy" alt="Img" />
+ <img src="img.jpg" id="violation4" aria-labelledby="" />
+ <img src="img.jpg" id="pass1" alt="monkeys" />
+ <img src="img.jpg" id="pass2" aria-label="monkeys" />

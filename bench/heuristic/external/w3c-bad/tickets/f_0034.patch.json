@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0034",
+  "rationale": "alt derived from file name \"./img/headline_ticket_offers.gif\"",
+  "before": "<img src=\"./img/headline_ticket_offers.gif\" border=\"0\">",
+  "after": "<img src=\"./img/headline_ticket_offers.gif\" border=\"0\" alt=\"Headline ticket offers\">",
+  "confidence": "low"
+}

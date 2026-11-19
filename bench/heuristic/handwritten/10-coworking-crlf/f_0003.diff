@@ -1,0 +1,12 @@
+===================================================================
+--- a/10-coworking-crlf.html
++++ b/10-coworking-crlf.html
+@@ -16,7 +16,7 @@
+     <div class="card">
+       <h3>Hot desk</h3>
+       <img src="img/desk.jpg" width="280">
+-      <p class="muted">From 12 EUR per day</p>
++      <p class="muted" style="color: #000000">From 12 EUR per day</p>
+       <input type="number" name="days" min="1" value="1">
+     </div>
+     <div class="card">

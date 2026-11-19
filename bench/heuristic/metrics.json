@@ -1,0 +1,169 @@
+{
+  "generator": "heuristic",
+  "date": "2026-11-19",
+  "pages": 22,
+  "overall": {
+    "detected": 662,
+    "proposed": 652,
+    "applied": 652,
+    "verified": 468,
+    "suspicious": 162,
+    "regression": 10,
+    "persists": 12,
+    "invalid": 0,
+    "applyFailed": 0,
+    "generationFailed": 10,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0
+    }
+  },
+  "byRule": {
+    "image-alt": {
+      "detected": 159,
+      "proposed": 159,
+      "applied": 159,
+      "verified": 1,
+      "suspicious": 157,
+      "regression": 1,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "label": {
+      "detected": 55,
+      "proposed": 55,
+      "applied": 55,
+      "verified": 51,
+      "suspicious": 4,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "heading-order": {
+      "detected": 7,
+      "proposed": 7,
+      "applied": 7,
+      "verified": 6,
+      "suspicious": 0,
+      "regression": 1,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-allowed-attr": {
+      "detected": 151,
+      "proposed": 149,
+      "applied": 149,
+      "verified": 146,
+      "suspicious": 0,
+      "regression": 3,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 2,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-required-attr": {
+      "detected": 34,
+      "proposed": 33,
+      "applied": 33,
+      "verified": 33,
+      "suspicious": 0,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-valid-attr-value": {
+      "detected": 58,
+      "proposed": 51,
+      "applied": 51,
+      "verified": 46,
+      "suspicious": 0,
+      "regression": 5,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 7,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-roles": {
+      "detected": 17,
+      "proposed": 17,
+      "applied": 17,
+      "verified": 16,
+      "suspicious": 1,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "color-contrast": {
+      "detected": 181,
+      "proposed": 181,
+      "applied": 181,
+      "verified": 169,
+      "suspicious": 0,
+      "regression": 0,
+      "persists": 12,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  }
+}

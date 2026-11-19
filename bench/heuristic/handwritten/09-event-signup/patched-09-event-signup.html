@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Register - Open Data Day Valencia</title>
+  <style>
+    body { font-family: system-ui, sans-serif; max-width: 48rem; margin: 2rem auto; color: #1d1d1d; }
+    table { border-collapse: collapse; }
+    td { padding: 0.4rem; }
+    .required { color: #ff8a80; }
+    .fine-print { color: #8f8f8f; font-size: 0.8rem; }
+  </style>
+</head>
+<body>
+  <main>
+    <h1>Open Data Day Valencia</h1>
+    <p>Saturday 7 March, Las Naves. Free entry, registration required.</p>
+    <h2>Your details</h2>
+    <form action="/register" method="post">
+      <table>
+        <tr>
+          <td>Name <span class="required">*</span></td>
+          <td><input type="text" name="first" size="12" aria-label="First"> <input type="text" name="last" size="16" aria-label="Last"></td>
+        </tr>
+        <tr>
+          <td>Email <span class="required">*</span></td>
+          <td><input type="email" name="email" aria-label="Email"></td>
+        </tr>
+        <tr>
+          <td>Organisation</td>
+          <td><input type="text" name="org" aria-label="Org"></td>
+        </tr>
+        <tr>
+          <td>Workshop</td>
+          <td>
+            <select name="workshop">
+              <option>Intro to open data portals</option>
+              <option>Mapping with OpenStreetMap</option>
+            </select>
+          </td>
+        </tr>
+      </table>
+      <h4>Dietary needs</h4>
+      <input type="text" name="diet" placeholder="e.g. vegetarian">
+      <p class="fine-print" style="color: #000000">We only use your email to send the event reminder.</p>
+      <button type="submit">Register</button>
+    </form>
+  </main>
+</body>
+</html>

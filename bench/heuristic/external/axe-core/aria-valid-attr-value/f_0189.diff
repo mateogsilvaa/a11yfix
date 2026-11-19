@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -421,7 +421,7 @@
+ <testutils-element
+   no-role
+   role="combobox"
+-  aria-controls="nonexistent-id"
++ 
+   with-aria-expanded="false"
+   id="internals-pass"
+ ></testutils-element>

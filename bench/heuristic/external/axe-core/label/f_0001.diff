@@ -1,0 +1,12 @@
+===================================================================
+--- a/label.html
++++ b/label.html
+@@ -17,7 +17,7 @@
+   <input type="button" id="na3" />
+   <input type="submit" id="na4" />
+   <input type="reset" id="na5" />
+-  <input type="text" id="fail1" />
++  <input type="text" id="fail1" aria-label="Fail1" />
+   <textarea id="fail2"></textarea>
+   <input type="text" aria-label="label" id="pass1" />
+   <textarea aria-label="label" id="pass2"></textarea>

@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0040",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic aria-label: \"T\"",
+  "status": "rejected_suspicious"
+}

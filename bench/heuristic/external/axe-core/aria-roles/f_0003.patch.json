@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "added aria-level with default values",
+  "before": "<div role=\"heading\" id=\"pass21\">",
+  "after": "<div role=\"heading\" id=\"pass21\" aria-level=\"2\">",
+  "confidence": "low"
+}

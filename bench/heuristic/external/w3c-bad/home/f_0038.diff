@@ -1,0 +1,12 @@
+===================================================================
+--- a/home.html
++++ b/home.html
+@@ -307,7 +307,7 @@
+         <TD WIDTH=151px VALIGN=TOP>
+           <TABLE WIDTH=151px BORDER=0px CELLSPACING=0px CELLPADDING=0px>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=1px BACKGROUND=./img/marker2_t.gif ROWSPAN=11 VALIGN=TOP><IMG SRC=./img/marker2_t.gif WIDTH=1px HEIGHT=30px></TD>
++              <TD WIDTH=1px BACKGROUND=./img/marker2_t.gif ROWSPAN=11 VALIGN=TOP><IMG SRC=./img/marker2_t.gif WIDTH=1px HEIGHT=30px alt="Marker2 t"></TD>
+               <TD WIDTH=151px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
+             </TR>
+             <TR HEIGHT=25px>

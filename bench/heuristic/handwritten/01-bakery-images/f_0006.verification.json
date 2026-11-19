@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0006",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Map pin\" only restates the file name \"map-pin.png\"",
+  "status": "rejected_suspicious"
+}

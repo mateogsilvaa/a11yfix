@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0041",
+  "rationale": "inline text color #000000 against background #a9b8bf",
+  "before": "<font color=\"41545D\">",
+  "after": "<font color=\"41545D\" style=\"color: #000000\">",
+  "confidence": "low"
+}

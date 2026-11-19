@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -213,7 +213,7 @@
+               <td><b><font color="41545D">FS</font></b></td>
+               <td><b><font color="41545D">RS</font></b></td>
+               <td><b><font color="41545D">DC</font></b></td>
+-              <td><b><font color="41545D">ST</font></b></td>
++              <td><b><font color="41545D" style="color: #000000">ST</font></b></td>
+             </tr>
+             <tr>
+               <td><b><font color="41545D">Obelisks - Monkey, Monkey</font></b></td>

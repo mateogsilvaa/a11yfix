@@ -1,0 +1,12 @@
+===================================================================
+--- a/label.html
++++ b/label.html
+@@ -90,7 +90,7 @@
+   <div id="fail13-label">
+     <span role="progressbar" aria-valuenow="23">23%</span>
+   </div>
+-  <input type="text" id="fail13" aria-labelledby="fail13-label" />
++  <input type="text" id="fail13" aria-label="Fail13"ledby="fail13-label" />
+ 
+   <div id="fail14-label">
+     <select>

@@ -1,0 +1,77 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -16,7 +16,7 @@
+ <body>
+   <header>
+     <a href="/"><img src="logo.svg" width="140"></a>
+-    <nav role="navigaton">
++    <nav>
+       <a href="/plots">Plots</a>
+       <a href="/events">Events</a>
+     </nav>
+
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -23,7 +23,7 @@
+   </header>
+   <main>
+     <h1>Grow your own food by the river</h1>
+-    <p class="lede">32 plots, shared tools, and a weekly compost day.</p>
++    <p class="lede" style="color: #000000">32 plots, shared tools, and a weekly compost day.</p>
+ 
+     <h3>Rent a plot</h3>
+     <div class="plot">
+
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -25,7 +25,7 @@
+     <h1>Grow your own food by the river</h1>
+     <p class="lede">32 plots, shared tools, and a weekly compost day.</p>
+ 
+-    <h3>Rent a plot</h3>
++    <h2>Rent a plot</h2>
+     <div class="plot">
+       <img src="plot-map.png" width="260">
+       <p>Plots are 3 x 4 metres and cost 40 EUR per season. The map shows which ones are free.</p>
+
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -37,7 +37,7 @@
+     </form>
+ 
+     <h3>Volunteer</h3>
+-    <div role="checkbox" tabindex="0">I can help on compost day</div>
++    <div role="checkbox" tabindex="0" aria-checked="false">I can help on compost day</div>
+     <button type="button" aria-expanded="yes" aria-controls="volunteer-details">More about volunteering</button>
+     <div id="volunteer-details">
+       <p>Compost day is every Saturday from 10:00 to 12:00.</p>
+
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -38,7 +38,7 @@
+ 
+     <h3>Volunteer</h3>
+     <div role="checkbox" tabindex="0">I can help on compost day</div>
+-    <button type="button" aria-expanded="yes" aria-controls="volunteer-details">More about volunteering</button>
++    <button type="button" aria-controls="volunteer-details">More about volunteering</button>
+     <div id="volunteer-details">
+       <p>Compost day is every Saturday from 10:00 to 12:00.</p>
+     </div>
+
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -44,7 +44,7 @@
+     </div>
+   </main>
+   <footer>
+-    <p>Riverside Community Garden is run by volunteers.</p>
++    <p style="color: #000000">Riverside Community Garden is run by volunteers.</p>
+   </footer>
+ </body>
+ </html>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "inline text color #000000 against background #d7d7cd",
+  "before": "<a href=\"./reports/home.html\" class=\"report\">",
+  "after": "<a href=\"./reports/home.html\" class=\"report\" style=\"color: #000000\">",
+  "confidence": "low"
+}

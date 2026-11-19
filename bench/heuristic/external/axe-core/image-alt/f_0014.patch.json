@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0014",
+  "rationale": "added aria-checked with default values",
+  "before": "<img src=\"img.jpg\" id=\"pass10\" role=\"checkbox\" title=\"bar\" />",
+  "after": "<img src=\"img.jpg\" id=\"pass10\" role=\"checkbox\" title=\"bar\" aria-checked=\"false\" />",
+  "confidence": "low"
+}

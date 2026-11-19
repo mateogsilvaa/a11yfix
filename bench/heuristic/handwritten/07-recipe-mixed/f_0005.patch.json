@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "added aria-checked with default values",
+  "before": "<span role=\"radio\" tabindex=\"0\">",
+  "after": "<span role=\"radio\" tabindex=\"0\" aria-checked=\"false\">",
+  "confidence": "low"
+}

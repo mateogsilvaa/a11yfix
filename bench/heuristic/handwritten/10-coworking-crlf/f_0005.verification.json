@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Desk\" only restates the file name \"desk.jpg\"",
+  "status": "rejected_suspicious"
+}

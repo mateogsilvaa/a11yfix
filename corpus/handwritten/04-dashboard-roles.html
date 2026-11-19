@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Ops dashboard</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; background: #fafafa; color: #111; }
+    .bar { display: flex; gap: 1rem; padding: 0.5rem 1rem; background: #fff; border-bottom: 1px solid #ddd; }
+    .card { background: #fff; border: 1px solid #ddd; padding: 1rem; margin: 1rem; }
+    .btn { display: inline-block; padding: 0.4rem 0.8rem; border: 1px solid #333; cursor: pointer; }
+    .meter { width: 200px; height: 10px; background: #eee; }
+  </style>
+</head>
+<body>
+  <div class="bar" role="navigaton">
+    <a href="/">Overview</a>
+    <a href="/alerts">Alerts</a>
+  </div>
+  <main>
+    <h1>Overview</h1>
+    <div class="card">
+      <h2>Deploys</h2>
+      <div class="btn" role="buton" tabindex="0">Deploy now</div>
+      <div class="btn" role="checkbox" tabindex="0">Auto-deploy on merge</div>
+    </div>
+    <div class="card">
+      <h2>Capacity</h2>
+      <div class="meter" role="slider" tabindex="0" aria-label="Worker pool size"></div>
+      <div role="range">CPU 72%</div>
+    </div>
+    <div class="card">
+      <h2>Region</h2>
+      <div role="combobox" tabindex="0" aria-label="Region">eu-west-1</div>
+      <ul role="listbox" aria-label="Recent regions">
+        <li role="option">eu-west-1</li>
+        <li role="option">us-east-2</li>
+      </ul>
+    </div>
+    <div class="card" role="widget">
+      <h2>Status</h2>
+      <p>All systems operational.</p>
+    </div>
+  </main>
+</body>
+</html>

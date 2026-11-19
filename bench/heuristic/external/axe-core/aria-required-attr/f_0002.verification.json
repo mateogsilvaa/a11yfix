@@ -1,0 +1,17 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [
+    {
+      "ruleId": "aria-required-attr",
+      "selector": "#pass2",
+      "sourceLines": {
+        "start": 25,
+        "end": 33
+      }
+    }
+  ],
+  "suspicious": false,
+  "reason": "introduced 1 new violation(s): aria-required-attr at line 25",
+  "status": "rejected_regression"
+}

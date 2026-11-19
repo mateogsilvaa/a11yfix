@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast.html
++++ b/color-contrast.html
+@@ -73,7 +73,7 @@
+ </div>
+ 
+ <div style="background-color: white">
+-  <div id="fail6" style="opacity: 0.1; background-color: white; color: black">
++  <div id="fail6" style="color: #000000; opacity: 0.1; background-color: white; color: black">
+     This is a fail.
+   </div>
+ </div>

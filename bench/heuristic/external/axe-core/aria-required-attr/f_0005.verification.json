@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0005",
+  "status": "rejected_invalid",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "generation failed: heuristic: no default for aria-controls"
+}

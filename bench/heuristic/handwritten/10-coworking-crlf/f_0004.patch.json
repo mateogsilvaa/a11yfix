@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "aria-label derived from \"days\"",
+  "before": "<input type=\"number\" name=\"days\" min=\"1\" value=\"1\">",
+  "after": "<input type=\"number\" name=\"days\" min=\"1\" value=\"1\" aria-label=\"Days\">",
+  "confidence": "low"
+}

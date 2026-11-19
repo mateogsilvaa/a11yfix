@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Harbor Coworking - Windows line endings and repeated markup</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 0; color: #222; }
+    .card { border: 1px solid #ddd; padding: 1rem; margin: 1rem; }
+    .muted { color: #aaaaaa; }
+  </style>
+</head>
+<body>
+  <!-- This file uses CRLF line endings and repeats identical markup on purpose. -->
+  <main>
+    <h1>Harbor Coworking</h1>
+    <div class="card">
+      <h2>Hot desk</h2>
+      <img src="img/desk.jpg" width="280">
+      <p class="muted" style="color: #000000">From 12 EUR per day</p>
+      <input type="number" name="days" min="1" value="1" aria-label="Days">
+    </div>
+    <div class="card">
+      <h3>Fixed desk</h3>
+      <img src="img/desk.jpg" width="280">
+      <p class="muted" style="color: #000000">From 180 EUR per month</p>
+      <input type="number" name="days" min="1" value="1" aria-label="Days">
+    </div>
+    <div class="card">
+      <h3>Meeting room</h3>
+      <img src="img/meeting-room.jpg" width="280">
+      <p class="muted" style="color: #000000">From 25 EUR per hour</p>
+    </div>
+  </main>
+</body>
+</html>

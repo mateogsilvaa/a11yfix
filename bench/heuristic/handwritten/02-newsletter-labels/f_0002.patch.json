@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "aria-label derived from \"weekly\"",
+  "before": "<input type=\"checkbox\" name=\"weekly\" value=\"yes\">",
+  "after": "<input type=\"checkbox\" name=\"weekly\" value=\"yes\" aria-label=\"Weekly\">",
+  "confidence": "low"
+}

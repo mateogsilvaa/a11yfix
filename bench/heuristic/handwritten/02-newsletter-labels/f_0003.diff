@@ -1,0 +1,12 @@
+===================================================================
+--- a/02-newsletter-labels.html
++++ b/02-newsletter-labels.html
+@@ -34,7 +34,7 @@
+       </div>
+       <div class="row">
+         <p class="hint">Anything you would like us to write about?</p>
+-        <textarea name="topics" rows="3"></textarea>
++        <textarea name="topics" rows="3" aria-label="Topics"></textarea>
+       </div>
+       <button type="submit">Subscribe</button>
+     </form>

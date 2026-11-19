@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -137,7 +137,7 @@
+         </TD>
+       </TR>
+       <TR HEIGHT=1px>
+-        <TD WIDTH=780px BACKGROUND=./img/marker2_w.gif COLSPAN=5><IMG SRC=.img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++        <TD WIDTH=780px BACKGROUND=./img/marker2_w.gif COLSPAN=5><IMG SRC=.img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="Marker2 w"></TD>
+       </TR>
+       <TR HEIGHT=25px>
+         <TD COLSPAN=5>&nbsp;</TD>

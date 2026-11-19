@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -387,7 +387,7 @@
+     id="pass191"
+     aria-braillelabel=""
+     aria-brailleroledescription=""
+-    aria-valuetext=""
++   
+   ></div>
+ 
+   <div>

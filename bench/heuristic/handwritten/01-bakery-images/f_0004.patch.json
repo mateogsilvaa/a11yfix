@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "alt derived from file name \"img/wheat-divider.png\"",
+  "before": "<img class=\"divider\" src=\"img/wheat-divider.png\" width=\"300\">",
+  "after": "<img class=\"divider\" src=\"img/wheat-divider.png\" width=\"300\" alt=\"Wheat divider\">",
+  "confidence": "low"
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0020",
+  "rationale": "removed invalid role",
+  "before": "<div role=\"widget\" id=\"fail11\">",
+  "after": "<div id=\"fail11\">",
+  "confidence": "low"
+}

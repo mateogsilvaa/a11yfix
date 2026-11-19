@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0010",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic alt: \"Spacer\"; text alternative \"Spacer\" only restates the file name \"spacer.gif\"",
+  "status": "rejected_suspicious"
+}

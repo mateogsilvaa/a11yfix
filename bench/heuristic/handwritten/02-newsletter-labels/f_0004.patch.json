@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "aria-label derived from \"q\"",
+  "before": "<input type=\"search\" name=\"q\">",
+  "after": "<input type=\"search\" name=\"q\" aria-label=\"Q\">",
+  "confidence": "low"
+}

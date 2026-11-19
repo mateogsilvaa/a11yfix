@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0062",
+  "rationale": "inline text color #000000 against background #d7d7cd",
+  "before": "<acronym title=\"Massachusetts Institute of Technology\">",
+  "after": "<acronym title=\"Massachusetts Institute of Technology\" style=\"color: #000000\">",
+  "confidence": "low"
+}

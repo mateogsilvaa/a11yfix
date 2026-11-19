@@ -1,0 +1,12 @@
+===================================================================
+--- a/09-event-signup.html
++++ b/09-event-signup.html
+@@ -24,7 +24,7 @@
+         </tr>
+         <tr>
+           <td>Email <span class="required">*</span></td>
+-          <td><input type="email" name="email"></td>
++          <td><input type="email" name="email" aria-label="Email"></td>
+         </tr>
+         <tr>
+           <td>Organisation</td>

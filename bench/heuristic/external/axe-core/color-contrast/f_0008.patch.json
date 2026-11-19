@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0008",
+  "rationale": "aria-label derived from \"canttell6\"",
+  "before": "<input\n  id=\"canttell6\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"text\"\n/>",
+  "after": "<input\n  id=\"canttell6\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"text\" aria-label=\"Canttell6\" />",
+  "confidence": "low"
+}

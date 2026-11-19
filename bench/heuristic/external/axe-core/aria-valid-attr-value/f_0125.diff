@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -271,7 +271,7 @@
+ 
+   <div aria-valuemax="0.1" id="pass113">hi</div>
+   <div aria-valuemax="1.1" id="pass114">hi</div>
+-  <div aria-valuemax="12.22" id="pass115">hi</div>
++  <div id="pass115">hi</div>
+   <div aria-valuemax="1." id="pass116">hi</div>
+   <div aria-valuemax=".1" id="pass117">hi</div>
+   <div aria-valuemax="412" id="pass118">hi</div>

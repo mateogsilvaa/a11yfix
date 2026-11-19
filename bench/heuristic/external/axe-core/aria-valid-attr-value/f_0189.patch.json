@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0189",
+  "rationale": "removed aria-controls",
+  "before": "<testutils-element\n  no-role\n  role=\"combobox\"\n  aria-controls=\"nonexistent-id\"\n  with-aria-expanded=\"false\"\n  id=\"internals-pass\"\n>",
+  "after": "<testutils-element\n  no-role\n  role=\"combobox\"\n \n  with-aria-expanded=\"false\"\n  id=\"internals-pass\"\n>",
+  "confidence": "low"
+}

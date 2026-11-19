@@ -1,0 +1,87 @@
+<!doctype html>
+<!--
+  Fixture from axe-core: test/integration/rules/aria-required-attr/required-attr.html
+  https://github.com/dequelabs/axe-core (Mozilla Public License 2.0, see ../LICENSE-axe-core).
+  a11yfix wrapped it in a page skeleton; the fixture markup inside #fixture is unchanged.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>axe-core fixture: aria-required-attr</title>
+</head>
+<body>
+<div id="fixture">
+<div
+  role="scrollbar"
+  id="pass1"
+  aria-controls="value"
+  aria-orientation="value"
+  aria-valuenow="value"
+  aria-valuemax="value"
+  aria-valuemin="value"
+>
+  ok
+</div>
+<div
+  role="slider"
+  id="pass2"
+  aria-valuenow="value"
+  aria-valuemax="value"
+  aria-valuemin="value"
+>
+  ok
+</div>
+<div
+  role="spinbutton"
+  id="pass3"
+ 
+ 
+ 
+>
+  ok
+</div>
+<div role="heading" id="pass4" aria-level="1">ok</div>
+<div
+  role="combobox"
+  id="pass5"
+  aria-expanded="true"
+  aria-controls="controlsElement"
+>
+  ok
+</div>
+<div
+  role="combobox"
+  id="comboboxWithOwns"
+  aria-expanded="true"
+ 
+>
+  ok
+</div>
+<span role="radio" id="pass6" aria-checked="false">I am RED!</span>
+<span role="radio" id="pass7" aria-checked="true">I am GREEN!</span>
+<span role="radio" id="pass8" aria-checked="true">I am GREEN!</span>
+<input type="number" role="spinbutton" id="pass9" value="10" aria-label="Pass9" />
+<input type="number" role="spinbutton" id="pass10" aria-label="Pass10" />
+<div role="spinbutton" id="pass11">fail</div>
+<div role="separator" id="pass12"></div>
+<div role="separator" id="pass13" tabindex="0" aria-valuenow="foo"></div>
+<div
+  role="slider"
+  id="pass14-aria-valuetext-slider"
+  aria-valuetext="3 minutes 20 second"
+>
+  ok
+</div>
+
+<testutils-element no-role role="switch" with-aria-checked="false" id="pass15" aria-checked="false">pass internals</testutils-element
+>
+
+<div role="scrollbar" id="violation1" aria-valuenow="0">fail</div>
+<div role="slider" id="violation2" aria-valuenow="0">fail</div>
+<div role="heading" id="violation3" aria-level="2">fail</div>
+<div role="combobox" id="violation4" aria-expanded="false">fail</div>
+<span role="radio" id="violation5" aria-checked="false">I am BLUE!</span>
+<div role="separator" id="violation6" tabindex="0" aria-valuenow="0"></div>
+</div>
+</body>
+</html>

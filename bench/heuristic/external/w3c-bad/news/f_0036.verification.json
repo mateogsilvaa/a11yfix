@@ -1,0 +1,8 @@
+{
+  "findingId": "f_0036",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"Headline middle\" only restates the file name \"headline_middle.gif\"",
+  "status": "rejected_suspicious"
+}

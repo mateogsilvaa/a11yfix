@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -141,7 +141,7 @@
+   <div aria-busy="true" id="pass8">hi</div>
+   <div aria-busy="false" id="pass9">hi</div>
+ 
+-  <div aria-checked="true" id="pass10">hi</div>
++  <div id="pass10">hi</div>
+   <div aria-checked="false" id="pass11">hi</div>
+   <div aria-checked="mixed" id="pass12">hi</div>
+   <div aria-checked="undefined" id="pass13">hi</div>

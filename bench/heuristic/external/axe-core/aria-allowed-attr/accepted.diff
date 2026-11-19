@@ -1,0 +1,236 @@
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -11,7 +11,7 @@
+ </head>
+ <body>
+ <div id="fixture">
+-<div role="alert" aria-selected="true" id="fail1"></div>
++<div role="alert" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+ <div role="row" aria-colcount="value" id="fail3"></div>
+ <div role="row" aria-rowcount="value" id="fail4"></div>
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -12,7 +12,7 @@
+ <body>
+ <div id="fixture">
+ <div role="alert" aria-selected="true" id="fail1"></div>
+-<div role="link" aria-selected="true" id="fail2"></div>
++<div role="link" id="fail2"></div>
+ <div role="row" aria-colcount="value" id="fail3"></div>
+ <div role="row" aria-rowcount="value" id="fail4"></div>
+ 
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -13,7 +13,7 @@
+ <div id="fixture">
+ <div role="alert" aria-selected="true" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+-<div role="row" aria-colcount="value" id="fail3"></div>
++<div role="row" id="fail3"></div>
+ <div role="row" aria-rowcount="value" id="fail4"></div>
+ 
+ <audio
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -13,7 +13,7 @@
+ <div id="fixture">
+ <div role="alert" aria-selected="true" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+-<div role="row" aria-colcount="value" id="fail3"></div>
++<div role="row" id="fail3"></div>
+ <div role="row" aria-rowcount="value" id="fail4"></div>
+ 
+ <audio
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -14,7 +14,7 @@
+ <div role="alert" aria-selected="true" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+ <div role="row" aria-colcount="value" id="fail3"></div>
+-<div role="row" aria-rowcount="value" id="fail4"></div>
++<div role="row" id="fail4"></div>
+ 
+ <audio
+   src="/test/assets/moon-speech.mp3"
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -14,7 +14,7 @@
+ <div role="alert" aria-selected="true" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+ <div role="row" aria-colcount="value" id="fail3"></div>
+-<div role="row" aria-rowcount="value" id="fail4"></div>
++<div role="row" id="fail4"></div>
+ 
+ <audio
+   src="/test/assets/moon-speech.mp3"
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -19,7 +19,7 @@
+ <audio
+   src="/test/assets/moon-speech.mp3"
+   controls
+-  aria-orientation="horizontal"
++ 
+   id="fail5"
+ ></audio>
+ 
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -23,7 +23,7 @@
+   id="fail5"
+ ></audio>
+ 
+-<div id="fail6" role="combobox" aria-multiline="false"></div>
++<div id="fail6" role="combobox"></div>
+ <div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
+ <div id="fail8" role="combobox" aria-multiline="true"></div>
+ 
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -23,7 +23,7 @@
+   id="fail5"
+ ></audio>
+ 
+-<div id="fail6" role="combobox" aria-multiline="false"></div>
++<div id="fail6" role="combobox" aria-multiline="false" aria-expanded="false"></div>
+ <div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
+ <div id="fail8" role="combobox" aria-multiline="true"></div>
+ 
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -24,7 +24,7 @@
+ ></audio>
+ 
+ <div id="fail6" role="combobox" aria-multiline="false"></div>
+-<div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
++<div id="fail7" role="combobox" contenteditable></div>
+ <div id="fail8" role="combobox" aria-multiline="true"></div>
+ 
+ <br aria-busy="true" id="fail9" />
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -24,7 +24,7 @@
+ ></audio>
+ 
+ <div id="fail6" role="combobox" aria-multiline="false"></div>
+-<div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
++<div id="fail7" role="combobox" aria-multiline="true" contenteditable aria-expanded="false"></div>
+ <div id="fail8" role="combobox" aria-multiline="true"></div>
+ 
+ <br aria-busy="true" id="fail9" />
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -25,7 +25,7 @@
+ 
+ <div id="fail6" role="combobox" aria-multiline="false"></div>
+ <div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
+-<div id="fail8" role="combobox" aria-multiline="true"></div>
++<div id="fail8" role="combobox"></div>
+ 
+ <br aria-busy="true" id="fail9" />
+ <wbr aria-busy="true" id="fail10" />
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -25,7 +25,7 @@
+ 
+ <div id="fail6" role="combobox" aria-multiline="false"></div>
+ <div id="fail7" role="combobox" aria-multiline="true" contenteditable></div>
+-<div id="fail8" role="combobox" aria-multiline="true"></div>
++<div id="fail8" role="combobox" aria-multiline="true" aria-expanded="false"></div>
+ 
+ <br aria-busy="true" id="fail9" />
+ <wbr aria-busy="true" id="fail10" />
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -33,7 +33,7 @@
+ <testutils-element id="fail11" aria-valuetext="value"></testutils-element>
+ 
+ <!-- deprecated attr combined with an unallowed attr fails rather than incompletes -->
+-<div role="button" id="fail12" aria-grabbed="true" aria-level="2"></div>
++<div role="button" id="fail12" aria-grabbed="true"></div>
+ 
+ <div role="checkbox" id="fail13" aria-checked="TRUE">Checkbox</div>
+ <div role="checkbox" id="fail14" aria-checked="FALSE">Checkbox</div>
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -37,7 +37,7 @@
+ 
+ <div role="checkbox" id="fail13" aria-checked="TRUE">Checkbox</div>
+ <div role="checkbox" id="fail14" aria-checked="FALSE">Checkbox</div>
+-<button id="fail15" aria-pressed="FALSE">Toggle</button>
++<button id="fail15">Toggle</button>
+ <a href="#" id="fail16" aria-current="FALSE">Current page</a>
+ <div role="checkbox" id="fail17" aria-checked="TRUE" aria-busy="FALSE">
+   Checkbox
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -38,7 +38,7 @@
+ <div role="checkbox" id="fail13" aria-checked="TRUE">Checkbox</div>
+ <div role="checkbox" id="fail14" aria-checked="FALSE">Checkbox</div>
+ <button id="fail15" aria-pressed="FALSE">Toggle</button>
+-<a href="#" id="fail16" aria-current="FALSE">Current page</a>
++<a href="#" id="fail16">Current page</a>
+ <div role="checkbox" id="fail17" aria-checked="TRUE" aria-busy="FALSE">
+   Checkbox
+ </div>
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -45,8 +45,8 @@
+ <div
+   role="checkbox"
+   id="fail18"
+-  aria-required="FALSE"
+-  aria-readonly="FALSE"
++ 
++ 
+ ></div>
+ </div>
+ </body>
+
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -46,8 +46,7 @@
+   role="checkbox"
+   id="fail18"
+   aria-required="FALSE"
+-  aria-readonly="FALSE"
+-></div>
++  aria-readonly="FALSE" aria-checked="false"></div>
+ </div>
+ </body>
+ </html>

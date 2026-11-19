@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -371,8 +371,7 @@
+       type="text"
+       id="pass189"
+       aria-invalid="true"
+-      aria-errormessage="pass188"
+-    />
++      aria-errormessage="pass188" aria-label="Pass189" />
+   </div>
+ 
+   <div>
