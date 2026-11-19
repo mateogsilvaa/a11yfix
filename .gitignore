@@ -8,4 +8,3 @@ dist/
 /patches/
 /bench/run/
 *.tsbuildinfo
-/bench/auto/
