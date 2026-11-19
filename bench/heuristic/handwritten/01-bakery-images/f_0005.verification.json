@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0005",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Hours table\" only restates the file name \"hours-table.png\"",
-  "status": "rejected_suspicious"
-}

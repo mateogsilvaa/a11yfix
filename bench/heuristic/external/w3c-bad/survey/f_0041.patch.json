@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0041",
-  "rationale": "aria-label derived from \"t\"",
-  "before": "<input type=\"radio\" name=\"t\" value=\"mrs\">",
-  "after": "<input type=\"radio\" name=\"t\" value=\"mrs\" aria-label=\"T\">",
-  "confidence": "low"
-}

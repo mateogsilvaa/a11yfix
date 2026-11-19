@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0096",
-  "rationale": "removed aria-multiselectable",
-  "before": "<div aria-multiselectable=\"false\" id=\"pass74\">",
-  "after": "<div id=\"pass74\">",
-  "confidence": "low"
-}

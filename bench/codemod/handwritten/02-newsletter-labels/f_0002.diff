@@ -1,0 +1,12 @@
+===================================================================
+--- a/02-newsletter-labels.html
++++ b/02-newsletter-labels.html
+@@ -30,7 +30,7 @@
+         </select>
+       </div>
+       <div class="row">
+-        <input type="checkbox" name="weekly" value="yes"> Send me the weekly digest too
++        <label><input type="checkbox" name="weekly" value="yes"> Send me the weekly digest too</label>
+       </div>
+       <div class="row">
+         <p class="hint">Anything you would like us to write about?</p>

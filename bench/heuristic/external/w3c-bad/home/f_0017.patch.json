@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0017",
-  "rationale": "alt derived from file name \"./img/border_left.gif\"",
-  "before": "<IMG SRC=./img/border_left.gif WIDTH=10px>",
-  "after": "<IMG SRC=./img/border_left.gif WIDTH=10px alt=\"Border left\">",
-  "confidence": "low"
-}

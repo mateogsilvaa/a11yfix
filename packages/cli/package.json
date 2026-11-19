@@ -1,0 +1,19 @@
+{
+  "name": "a11yfix-cli",
+  "version": "0.2.0",
+  "description": "Command-line interface for a11yfix.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "a11yfix": "dist/cli.js"
+  },
+  "files": ["dist"],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "a11yfix-core": "0.2.0",
+    "a11yfix-rules-core": "0.2.0",
+    "commander": "15.1.0"
+  }
+}

@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0001",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"A\" only restates the file name \"a.png\"",
-  "status": "rejected_suspicious"
-}

@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0017",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Border left\" only restates the file name \"border_left.gif\"",
-  "status": "rejected_suspicious"
-}

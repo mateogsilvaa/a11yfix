@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0001",
-  "rationale": "removed aria-expanded",
-  "before": "<button type=\"button\" aria-expanded=\"yes\" aria-controls=\"privacy-panel\">",
-  "after": "<button type=\"button\" aria-controls=\"privacy-panel\">",
-  "confidence": "low"
-}

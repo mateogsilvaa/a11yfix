@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0094",
-  "rationale": "removed aria-multiline",
-  "before": "<div aria-multiline=\"false\" id=\"pass72\">",
-  "after": "<div id=\"pass72\">",
-  "confidence": "low"
-}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "aria-labelledby points to the visible text \"Anything you would like us to write about?\"",
+  "before": "<p class=\"hint\">Anything you would like us to write about?</p>\n        <textarea name=\"topics\" rows=\"3\">",
+  "after": "<p class=\"hint\" id=\"topics-label\">Anything you would like us to write about?</p>\n        <textarea name=\"topics\" rows=\"3\" aria-labelledby=\"topics-label\">",
+  "confidence": "high"
+}

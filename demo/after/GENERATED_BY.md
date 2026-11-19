@@ -1,10 +1,11 @@
 # How demo/after was produced
 
-- Generator: `heuristic`
+- Mode: tier 0 codemods only (no model), strict
 - Date: 2026-11-19
 - Findings in demo/before: 9
-- Outcomes: rejected_suspicious 3, verified 6
-- Subset violations left in demo/after: 3
+- Outcomes: skipped 5, verified 4
+- Violations of the patched rules left in demo/after: 5
 
-`index.html` is demo/before with every verified patch applied. `accepted.diff` lists those patches;
-`results.json` has every patch, including the rejected ones and why. Regenerate with `npm run demo`.
+`index.html` is demo/before with every verified patch applied, and `a11yfix.patch` is the same change as a
+patch (`git apply`). `results.json` has every finding, including the skipped and rejected ones and why.
+Regenerate with `npm run demo`.

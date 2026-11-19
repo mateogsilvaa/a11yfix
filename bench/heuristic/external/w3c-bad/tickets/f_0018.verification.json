@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0018",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Top logo next end\" only restates the file name \"top_logo_next_end.gif\"",
-  "status": "rejected_suspicious"
-}

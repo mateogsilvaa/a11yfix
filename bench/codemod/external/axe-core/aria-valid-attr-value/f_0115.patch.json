@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0115",
+  "rationale": "removed aria-setsize: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-setsize=\"22\" id=\"pass104\">",
+  "after": "<div id=\"pass104\">",
+  "confidence": "high"
+}

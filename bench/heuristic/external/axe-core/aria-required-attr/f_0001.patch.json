@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0001",
-  "rationale": "removed aria-controls, aria-orientation, aria-valuenow, aria-valuemax, aria-valuemin",
-  "before": "<div\n  role=\"scrollbar\"\n  id=\"pass1\"\n  aria-controls=\"value\"\n  aria-orientation=\"value\"\n  aria-valuenow=\"value\"\n  aria-valuemax=\"value\"\n  aria-valuemin=\"value\"\n>",
-  "after": "<div\n  role=\"scrollbar\"\n  id=\"pass1\"\n \n \n \n \n \n>",
-  "confidence": "low"
-}

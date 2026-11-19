@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0070",
-  "rationale": "inline text color #000000 against background #d7d7cd",
-  "before": "<a href=\"https://www.w3.org/Consortium/Legal/privacy-statement#Public\">",
-  "after": "<a href=\"https://www.w3.org/Consortium/Legal/privacy-statement#Public\" style=\"color: #000000\">",
-  "confidence": "low"
-}

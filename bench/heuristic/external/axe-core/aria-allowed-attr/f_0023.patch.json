@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0023",
-  "rationale": "added aria-checked with default values",
-  "before": "<div\n  role=\"checkbox\"\n  id=\"fail18\"\n  aria-required=\"FALSE\"\n  aria-readonly=\"FALSE\"\n>",
-  "after": "<div\n  role=\"checkbox\"\n  id=\"fail18\"\n  aria-required=\"FALSE\"\n  aria-readonly=\"FALSE\" aria-checked=\"false\">",
-  "confidence": "low"
-}

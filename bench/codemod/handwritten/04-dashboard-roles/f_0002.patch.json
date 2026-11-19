@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "\"buton\" is not a WAI-ARIA role; \"button\" is the only valid role within edit distance 1",
+  "before": "<div class=\"btn\" role=\"buton\" tabindex=\"0\">",
+  "after": "<div class=\"btn\" role=\"button\" tabindex=\"0\">",
+  "confidence": "high"
+}

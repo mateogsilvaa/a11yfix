@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0042",
-  "rationale": "aria-label derived from \"em\"",
-  "before": "<input type=\"text\" name=\"em\" id=\"em\" size=\"20\" />",
-  "after": "<input type=\"text\" name=\"em\" id=\"em\" size=\"20\" aria-label=\"Em\" />",
-  "confidence": "low"
-}

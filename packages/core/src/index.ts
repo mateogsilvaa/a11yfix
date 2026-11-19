@@ -1,0 +1,40 @@
+// a11yfix-core public entry point.
+
+export * from "./types.js";
+export * from "./rule.js";
+export * from "./wcag.js";
+export * from "./source.js";
+export * from "./html.js";
+export { auditFile, auditSource, type AuditOptions, type AuditResult, type PageViolation } from "./audit.js";
+export { closeBrowser, getBrowser, withPage } from "./browser.js";
+export { describeContext, extractNodeContext } from "./context.js";
+export { applyAt, locate, type AppliedPatch, type LocateResult } from "./apply.js";
+export { MAX_HUNKS, MAX_LINES, PATCH_JSON_SCHEMA, PatchSchema, parsePatch, validatePatch, type ValidationResult } from "./validate.js";
+export { compare, isGenericText, restatesFileName, suspicionReasons, verifyPatch, type VerifyInput, type VerifyOutput } from "./verify.js";
+export {
+  DEFAULT_MODEL,
+  LlmGenerator,
+  SYSTEM_PROMPT,
+  buildFindingPrompt,
+  estimateUsd,
+  type Effort,
+  type Generator,
+  type LlmOptions,
+} from "./llm.js";
+export {
+  combine,
+  countBy,
+  limiter,
+  pagePatch,
+  processPage,
+  runCodemod,
+  writeJson,
+  writePageArtifacts,
+  type Mode,
+  type PageOutcome,
+  type PatchOutcome,
+  type ProcessOptions,
+} from "./pipeline.js";
+export { gitPatch, toPatchPath, type FileChange } from "./patchfile.js";
+export { metricsFile, metricsOf, renderReport, type Metrics, type MetricsFile, type ReportInput } from "./report.js";
+export { engineVersions } from "./versions.js";

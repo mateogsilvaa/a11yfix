@@ -1,0 +1,19 @@
+===================================================================
+--- a/07-recipe-mixed.html
++++ b/07-recipe-mixed.html
+@@ -15,13 +15,13 @@
+     <h1>Red lentil soup</h1>
+     <p class="meta">Serves 4 &middot; 35 minutes &middot; Vegan</p>
+     <img src="photos/lentil-soup-bowl.jpg" width="640">
+-    <h4>Ingredients</h4>
++    <h2>Ingredients</h2>
+     <ul>
+       <li>250 g red lentils</li>
+       <li>1 onion, 2 carrots, 2 garlic cloves</li>
+       <li>1 tsp cumin, 1 lemon</li>
+     </ul>
+-    <h4>Method</h4>
++    <h2>Method</h2>
+     <ol>
+       <li>Soften the onion and carrots in olive oil.</li>
+       <li>Add garlic, cumin and lentils, then 1.2 l of stock.</li>

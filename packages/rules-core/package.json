@@ -1,0 +1,25 @@
+{
+  "name": "a11yfix-rules-core",
+  "version": "0.2.0",
+  "description": "The core a11yfix rule set: image-alt, label, heading-order, ARIA attribute and role rules, color-contrast. Tier-0 rules ship deterministic codemods.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "a11yfix-core": "0.2.0"
+  }
+}

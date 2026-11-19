@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0003",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Croissant\" only restates the file name \"croissant.jpg\"",
-  "status": "rejected_suspicious"
-}

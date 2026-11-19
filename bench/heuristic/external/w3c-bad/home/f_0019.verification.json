@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0019",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Top weather\" only restates the file name \"top_weather.gif\"",
-  "status": "rejected_suspicious"
-}

@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0037",
-  "rationale": "alt derived from file name \"./img/blank_5x5.gif\"",
-  "before": "<IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px>",
-  "after": "<IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px alt=\"Blank 5x5\">",
-  "confidence": "low"
-}

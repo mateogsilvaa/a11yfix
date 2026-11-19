@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "aria-expanded=\"yes\" -> \"true\"",
+  "before": "<button type=\"button\" aria-expanded=\"yes\" aria-controls=\"privacy-panel\">",
+  "after": "<button type=\"button\" aria-expanded=\"true\" aria-controls=\"privacy-panel\">",
+  "confidence": "high"
+}

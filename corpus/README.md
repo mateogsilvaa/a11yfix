@@ -4,7 +4,7 @@
 
 | Folder | Pages | Source | License |
 |---|---|---|---|
-| `handwritten/` | 10 | Written for a11yfix. Each covers one or two rules, with easy and ambiguous cases. | MIT (this repository) |
+| `handwritten/` | 10 | Written for a11yfix. Each covers one or two rules, with easy and ambiguous cases. | Apache-2.0 (this repository) |
 | `external/w3c-bad/` | 4 | Inaccessible "before" pages of the W3C WAI [Before and After Demonstration](https://www.w3.org/WAI/demos/bad/) (home, news, tickets, survey). | W3C Software and Document License, see [`external/LICENSE-w3c.md`](external/LICENSE-w3c.md) |
 | `external/axe-core/` | 8 | axe-core integration fixtures for each patched rule (`test/integration/rules/<rule>/`), wrapped in a page skeleton. Fixture markup unchanged. | Mozilla Public License 2.0, see [`external/LICENSE-axe-core`](external/LICENSE-axe-core) |
 

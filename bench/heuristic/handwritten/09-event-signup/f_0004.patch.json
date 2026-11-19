@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0004",
-  "rationale": "aria-label derived from \"email\"",
-  "before": "<input type=\"email\" name=\"email\">",
-  "after": "<input type=\"email\" name=\"email\" aria-label=\"Email\">",
-  "confidence": "low"
-}

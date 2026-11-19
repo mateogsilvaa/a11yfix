@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0006",
-  "rationale": "aria-label derived from \"ignore1\"",
-  "before": "<input\n  id=\"ignore1\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"radio\"\n/>",
-  "after": "<input\n  id=\"ignore1\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"radio\" aria-label=\"Ignore1\" />",
-  "confidence": "low"
-}

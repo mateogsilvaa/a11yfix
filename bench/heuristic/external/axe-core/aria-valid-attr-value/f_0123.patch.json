@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0123",
-  "rationale": "removed aria-valuemax",
-  "before": "<div aria-valuemax=\"0.1\" id=\"pass113\">",
-  "after": "<div id=\"pass113\">",
-  "confidence": "low"
-}

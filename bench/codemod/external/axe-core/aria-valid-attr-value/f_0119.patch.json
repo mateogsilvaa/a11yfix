@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0119",
+  "rationale": "removed aria-sort: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-sort=\"ascending\" id=\"pass109\">",
+  "after": "<div id=\"pass109\">",
+  "confidence": "high"
+}

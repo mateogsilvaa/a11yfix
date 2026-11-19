@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0001",
-  "rationale": "aria-label derived from \"fullname\"",
-  "before": "<input type=\"text\" name=\"fullname\">",
-  "after": "<input type=\"text\" name=\"fullname\" aria-label=\"Fullname\">",
-  "confidence": "low"
-}

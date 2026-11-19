@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0002",
-  "rationale": "aria-label derived from \"first\"",
-  "before": "<input type=\"text\" name=\"first\" size=\"12\">",
-  "after": "<input type=\"text\" name=\"first\" size=\"12\" aria-label=\"First\">",
-  "confidence": "low"
-}

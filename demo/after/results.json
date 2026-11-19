@@ -3,126 +3,105 @@
     "findingId": "f_0001",
     "ruleId": "image-alt",
     "line": 18,
-    "status": "rejected_suspicious",
-    "reason": "generic alt: \"Logo\"; text alternative \"Logo\" only restates the file name \"logo.svg\"",
-    "patch": {
-      "findingId": "f_0001",
-      "rationale": "alt derived from file name \"logo.svg\"",
-      "before": "<img src=\"logo.svg\" width=\"140\">",
-      "after": "<img src=\"logo.svg\" width=\"140\" alt=\"Logo\">",
-      "confidence": "low"
-    }
+    "tier": null,
+    "status": "skipped",
+    "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+    "patch": null
   },
   {
     "findingId": "f_0002",
     "ruleId": "aria-roles",
     "line": 19,
+    "tier": 0,
     "status": "verified",
     "reason": null,
     "patch": {
       "findingId": "f_0002",
-      "rationale": "removed invalid role",
+      "rationale": "\"navigaton\" is not a WAI-ARIA role; \"navigation\" is the only valid role within edit distance 1",
       "before": "<nav role=\"navigaton\">",
-      "after": "<nav>",
-      "confidence": "low"
+      "after": "<nav role=\"navigation\">",
+      "confidence": "high"
     }
   },
   {
     "findingId": "f_0003",
     "ruleId": "color-contrast",
     "line": 26,
-    "status": "verified",
-    "reason": null,
-    "patch": {
-      "findingId": "f_0003",
-      "rationale": "inline text color #000000 against background #ffffff",
-      "before": "<p class=\"lede\">",
-      "after": "<p class=\"lede\" style=\"color: #000000\">",
-      "confidence": "low"
-    }
+    "tier": null,
+    "status": "skipped",
+    "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+    "patch": null
   },
   {
     "findingId": "f_0004",
     "ruleId": "heading-order",
     "line": 28,
+    "tier": 0,
     "status": "verified",
     "reason": null,
     "patch": {
       "findingId": "f_0004",
-      "rationale": "heading level set to previous level + 1 (h2)",
-      "before": "<h3>Rent a plot</h3>",
-      "after": "<h2>Rent a plot</h2>",
-      "confidence": "low"
+      "rationale": "h3 follows h1: re-levelled to h2 together with 1 sibling or dependent heading(s), so the outline keeps its structure",
+      "before": "<h3>Rent a plot</h3>\n    <div class=\"plot\">\n      <img src=\"plot-map.png\" width=\"260\">\n      <p>Plots are 3 x 4 metres and cost 40 EUR per season. The map shows which ones are free.</p>\n    </div>\n\n    <form action=\"/waitlist\" method=\"post\">\n      <input type=\"email\" name=\"email\" placeholder=\"Email address\">\n      <div class=\"btn\" role=\"buton\" tabindex=\"0\">Join the waitlist</div>\n    </form>\n\n    <h3>Volunteer</h3>",
+      "after": "<h2>Rent a plot</h2>\n    <div class=\"plot\">\n      <img src=\"plot-map.png\" width=\"260\">\n      <p>Plots are 3 x 4 metres and cost 40 EUR per season. The map shows which ones are free.</p>\n    </div>\n\n    <form action=\"/waitlist\" method=\"post\">\n      <input type=\"email\" name=\"email\" placeholder=\"Email address\">\n      <div class=\"btn\" role=\"buton\" tabindex=\"0\">Join the waitlist</div>\n    </form>\n\n    <h2>Volunteer</h2>",
+      "confidence": "high"
     }
   },
   {
     "findingId": "f_0005",
     "ruleId": "image-alt",
     "line": 30,
-    "status": "rejected_suspicious",
-    "reason": "text alternative \"Plot map\" only restates the file name \"plot-map.png\"",
-    "patch": {
-      "findingId": "f_0005",
-      "rationale": "alt derived from file name \"plot-map.png\"",
-      "before": "<img src=\"plot-map.png\" width=\"260\">",
-      "after": "<img src=\"plot-map.png\" width=\"260\" alt=\"Plot map\">",
-      "confidence": "low"
-    }
+    "tier": null,
+    "status": "skipped",
+    "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+    "patch": null
   },
   {
     "findingId": "f_0006",
     "ruleId": "aria-roles",
     "line": 36,
-    "status": "rejected_suspicious",
-    "reason": "left a focusable element without a role (role removed instead of corrected)",
+    "tier": 0,
+    "status": "verified",
+    "reason": null,
     "patch": {
       "findingId": "f_0006",
-      "rationale": "removed invalid role",
+      "rationale": "\"buton\" is not a WAI-ARIA role; \"button\" is the only valid role within edit distance 1",
       "before": "<div class=\"btn\" role=\"buton\" tabindex=\"0\">",
-      "after": "<div class=\"btn\" tabindex=\"0\">",
-      "confidence": "low"
+      "after": "<div class=\"btn\" role=\"button\" tabindex=\"0\">",
+      "confidence": "high"
     }
   },
   {
     "findingId": "f_0007",
     "ruleId": "aria-required-attr",
     "line": 40,
-    "status": "verified",
-    "reason": null,
-    "patch": {
-      "findingId": "f_0007",
-      "rationale": "added aria-checked with default values",
-      "before": "<div role=\"checkbox\" tabindex=\"0\">",
-      "after": "<div role=\"checkbox\" tabindex=\"0\" aria-checked=\"false\">",
-      "confidence": "low"
-    }
+    "tier": null,
+    "status": "skipped",
+    "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+    "patch": null
   },
   {
     "findingId": "f_0008",
     "ruleId": "aria-valid-attr-value",
     "line": 41,
+    "tier": 0,
     "status": "verified",
     "reason": null,
     "patch": {
       "findingId": "f_0008",
-      "rationale": "removed aria-expanded",
+      "rationale": "aria-expanded=\"yes\" -> \"true\"",
       "before": "<button type=\"button\" aria-expanded=\"yes\" aria-controls=\"volunteer-details\">",
-      "after": "<button type=\"button\" aria-controls=\"volunteer-details\">",
-      "confidence": "low"
+      "after": "<button type=\"button\" aria-expanded=\"true\" aria-controls=\"volunteer-details\">",
+      "confidence": "high"
     }
   },
   {
     "findingId": "f_0009",
     "ruleId": "color-contrast",
     "line": 47,
-    "status": "verified",
-    "reason": null,
-    "patch": {
-      "findingId": "f_0009",
-      "rationale": "inline text color #000000 against background #ffffff",
-      "before": "<p>",
-      "after": "<p style=\"color: #000000\">",
-      "confidence": "low"
-    }
+    "tier": null,
+    "status": "skipped",
+    "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+    "patch": null
   }
 ]

@@ -1,0 +1,9 @@
+{
+  "findingId": "f_0043",
+  "status": "skipped",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "codemod declined; no model configured",
+  "tier": null
+}

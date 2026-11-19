@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0011",
-  "rationale": "removed invalid role",
-  "before": "<div role=\"composite\" id=\"fail2\">",
-  "after": "<div id=\"fail2\">",
-  "confidence": "low"
-}

@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0006",
-  "rationale": "removed aria-selected",
-  "before": "<a href=\"/help\" aria-selected=\"true\">",
-  "after": "<a href=\"/help\">",
-  "confidence": "low"
-}

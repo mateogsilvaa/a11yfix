@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0037",
-  "rationale": "aria-label derived from \"res\"",
-  "before": "<input class=\"align\" type=\"radio\" name=\"res\" value=\"4\">",
-  "after": "<input class=\"align\" type=\"radio\" name=\"res\" value=\"4\" aria-label=\"Res\">",
-  "confidence": "low"
-}

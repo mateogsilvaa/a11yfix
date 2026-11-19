@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0020",
-  "rationale": "removed aria-current",
-  "before": "<a href=\"#\" id=\"fail16\" aria-current=\"FALSE\">",
-  "after": "<a href=\"#\" id=\"fail16\">",
-  "confidence": "low"
-}

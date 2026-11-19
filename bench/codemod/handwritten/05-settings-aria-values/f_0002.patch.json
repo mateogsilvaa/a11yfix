@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "aria-checked=\"1\" -> \"true\"",
+  "before": "<div role=\"switch\" tabindex=\"0\" aria-checked=\"1\" aria-labelledby=\"notif-label\">",
+  "after": "<div role=\"switch\" tabindex=\"0\" aria-checked=\"true\" aria-labelledby=\"notif-label\">",
+  "confidence": "high"
+}

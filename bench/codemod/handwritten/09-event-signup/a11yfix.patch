@@ -1,0 +1,38 @@
+diff --git a/corpus/handwritten/09-event-signup.html b/corpus/handwritten/09-event-signup.html
+--- a/corpus/handwritten/09-event-signup.html
++++ b/corpus/handwritten/09-event-signup.html
+@@ -15,7 +15,7 @@
+   <main>
+     <h1>Open Data Day Valencia</h1>
+     <p>Saturday 7 March, Las Naves. Free entry, registration required.</p>
+-    <h3>Your details</h3>
++    <h2>Your details</h2>
+     <form action="/register" method="post">
+       <table>
+         <tr>
+@@ -23,12 +23,12 @@
+           <td><input type="text" name="first" size="12"> <input type="text" name="last" size="16"></td>
+         </tr>
+         <tr>
+-          <td>Email <span class="required">*</span></td>
+-          <td><input type="email" name="email"></td>
++          <td id="email-label">Email <span class="required">*</span></td>
++          <td><input type="email" name="email" aria-labelledby="email-label"></td>
+         </tr>
+         <tr>
+-          <td>Organisation</td>
+-          <td><input type="text" name="org"></td>
++          <td id="org-label">Organisation</td>
++          <td><input type="text" name="org" aria-labelledby="org-label"></td>
+         </tr>
+         <tr>
+           <td>Workshop</td>
+@@ -40,7 +40,7 @@
+           </td>
+         </tr>
+       </table>
+-      <h5>Dietary needs</h5>
++      <h4>Dietary needs</h4>
+       <input type="text" name="diet" placeholder="e.g. vegetarian">
+       <p class="fine-print">We only use your email to send the event reminder.</p>
+       <button type="submit">Register</button>

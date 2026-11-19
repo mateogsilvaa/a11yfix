@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0031",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Nav survey\" only restates the file name \"nav_survey.gif\"",
-  "status": "rejected_suspicious"
-}

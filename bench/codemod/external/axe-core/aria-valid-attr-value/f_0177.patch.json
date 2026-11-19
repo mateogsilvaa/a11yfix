@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0177",
+  "rationale": "removed aria-valuetext: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-valuetext=\"stuff\" id=\"pass167\">",
+  "after": "<div id=\"pass167\">",
+  "confidence": "high"
+}

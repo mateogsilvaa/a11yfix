@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0005",
-  "rationale": "removed aria-rowcount",
-  "before": "<div role=\"row\" aria-rowcount=\"value\" id=\"fail4\">",
-  "after": "<div role=\"row\" id=\"fail4\">",
-  "confidence": "low"
-}

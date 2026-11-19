@@ -1,0 +1,422 @@
+{
+  "file": "corpus\\external\\axe-core\\aria-allowed-attr.html",
+  "findings": 23,
+  "statuses": {
+    "skipped": 15,
+    "verified": 8
+  },
+  "included": [
+    "f_0003",
+    "f_0005",
+    "f_0007",
+    "f_0008",
+    "f_0010",
+    "f_0012",
+    "f_0016",
+    "f_0022"
+  ],
+  "remainingSubsetViolations": 13,
+  "wcagViolationsBefore": 33,
+  "wcagViolationsAfter": 23,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 842,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "aria-allowed-attr",
+      "line": 14,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "aria-allowed-attr",
+      "line": 15,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "aria-allowed-attr",
+      "line": 16,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "aria-valid-attr-value",
+      "line": 16,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "aria-allowed-attr",
+      "line": 17,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "aria-valid-attr-value",
+      "line": 17,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "aria-allowed-attr",
+      "line": 19,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "aria-allowed-attr",
+      "line": 26,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "aria-required-attr",
+      "line": 26,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0010",
+      "ruleId": "aria-allowed-attr",
+      "line": 27,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0011",
+      "ruleId": "aria-required-attr",
+      "line": 27,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0012",
+      "ruleId": "aria-allowed-attr",
+      "line": 28,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0013",
+      "ruleId": "aria-required-attr",
+      "line": 28,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0014",
+      "ruleId": "aria-allowed-attr",
+      "line": 30,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0015",
+      "ruleId": "aria-allowed-attr",
+      "line": 31,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0016",
+      "ruleId": "aria-allowed-attr",
+      "line": 36,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0017",
+      "ruleId": "aria-allowed-attr",
+      "line": 38,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0018",
+      "ruleId": "aria-allowed-attr",
+      "line": 39,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0019",
+      "ruleId": "aria-allowed-attr",
+      "line": 40,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0020",
+      "ruleId": "aria-allowed-attr",
+      "line": 41,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0021",
+      "ruleId": "aria-allowed-attr",
+      "line": 42,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0022",
+      "ruleId": "aria-allowed-attr",
+      "line": 45,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0023",
+      "ruleId": "aria-required-attr",
+      "line": 45,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

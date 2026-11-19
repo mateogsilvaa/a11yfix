@@ -1,0 +1,47 @@
+name: Rule proposal
+description: Propose a new rule or a new tier-0 sub-case for an existing rule
+labels: [rule-proposal]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Read docs/rule-author-guide.md first. A rule is accepted when it maps to a clear WCAG criterion, its fixes can be
+        checked by the verify loop, and (for tier 0) determinism is possible for a meaningful share of cases.
+  - type: input
+    id: rule
+    attributes:
+      label: Rule id and axe rule
+      placeholder: "my-rule (axe: my-axe-rule)"
+    validations:
+      required: true
+  - type: input
+    id: wcag
+    attributes:
+      label: WCAG success criterion
+      placeholder: "4.1.2 Name, Role, Value"
+    validations:
+      required: true
+  - type: dropdown
+    id: tier
+    attributes:
+      label: Tier
+      options:
+        - "0: deterministic codemod for some or all cases"
+        - "1: needs judgment (model)"
+    validations:
+      required: true
+  - type: textarea
+    id: cases
+    attributes:
+      label: Cases
+      description: Markup before and after for the cases the rule fixes, and the cases it must decline (and why).
+      render: html
+    validations:
+      required: true
+  - type: textarea
+    id: verify
+    attributes:
+      label: How the verify loop checks it
+      description: Does axe detect the violation? Is a new suspicion check needed to catch fake fixes?
+    validations:
+      required: true

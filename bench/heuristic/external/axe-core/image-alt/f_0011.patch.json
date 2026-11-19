@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0011",
-  "rationale": "alt derived from file name \"img.jpg\"",
-  "before": "<img src=\"img.jpg\" id=\"violation11\" role=\"button\" />",
-  "after": "<img src=\"img.jpg\" id=\"violation11\" role=\"button\" alt=\"Img\" />",
-  "confidence": "low"
-}

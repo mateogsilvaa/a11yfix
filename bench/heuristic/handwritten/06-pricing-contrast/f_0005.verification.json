@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0005",
-  "ruleGone": false,
-  "newViolations": [],
-  "suspicious": false,
-  "reason": "color-contrast is still reported on the target node",
-  "status": "rejected_persists"
-}

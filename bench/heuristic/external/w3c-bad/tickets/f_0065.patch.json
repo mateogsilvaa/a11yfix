@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0065",
-  "rationale": "inline text color #000000 against background #d7d7cd",
-  "before": "<a href=\"https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer\">",
-  "after": "<a href=\"https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer\" style=\"color: #000000\">",
-  "confidence": "low"
-}

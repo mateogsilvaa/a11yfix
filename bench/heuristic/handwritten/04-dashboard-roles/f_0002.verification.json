@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0002",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "left a focusable element without a role (role removed instead of corrected)",
-  "status": "rejected_suspicious"
-}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0033",
+  "rationale": "removed aria-readonly: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-readonly=\"stuff\" id=\"violation26\">",
+  "after": "<div id=\"violation26\">",
+  "confidence": "high"
+}

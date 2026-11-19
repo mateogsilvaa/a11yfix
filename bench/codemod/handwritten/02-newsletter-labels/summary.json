@@ -1,0 +1,94 @@
+{
+  "file": "corpus\\handwritten\\02-newsletter-labels.html",
+  "findings": 4,
+  "statuses": {
+    "verified": 3,
+    "skipped": 1
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0003"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 5,
+  "wcagViolationsAfter": 2,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 648,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "label",
+      "line": 22,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "label",
+      "line": 33,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "label",
+      "line": 37,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "label",
+      "line": 42,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined; no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

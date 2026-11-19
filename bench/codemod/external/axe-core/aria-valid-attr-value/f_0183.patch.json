@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0183",
+  "rationale": "removed aria-valuetext: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div\n    id=\"pass191\"\n    aria-braillelabel=\"\"\n    aria-brailleroledescription=\"\"\n    aria-valuetext=\"\"\n  >",
+  "after": "<div\n    id=\"pass191\"\n    aria-braillelabel=\"\"\n    aria-brailleroledescription=\"\"\n   \n  >",
+  "confidence": "high"
+}

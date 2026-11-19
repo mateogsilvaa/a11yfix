@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0185",
+  "rationale": "removed aria-level: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-level=\"22\" id=\"incomplete4\">",
+  "after": "<div id=\"incomplete4\">",
+  "confidence": "high"
+}

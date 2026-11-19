@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0164",
+  "rationale": "removed aria-valuenow: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-valuenow=\"412\" id=\"pass154\">",
+  "after": "<div id=\"pass154\">",
+  "confidence": "high"
+}

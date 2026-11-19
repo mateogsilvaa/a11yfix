@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0036",
-  "rationale": "alt derived from file name \"./img/headline_middle.gif\"",
-  "before": "<IMG height=24 src=\"./img/headline_middle.gif\" width=23 align=\"absmiddle\">",
-  "after": "<IMG height=24 src=\"./img/headline_middle.gif\" width=23 align=\"absmiddle\" alt=\"Headline middle\">",
-  "confidence": "low"
-}

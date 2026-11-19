@@ -1,0 +1,14 @@
+a11yfix
+Copyright 2026 mateogsilvaa and the a11yfix contributors
+
+This product is licensed under the Apache License, Version 2.0 (see LICENSE).
+
+The benchmark corpus includes third-party material under its own licenses:
+
+- corpus/external/axe-core/: fixtures from axe-core (https://github.com/dequelabs/axe-core),
+  Mozilla Public License 2.0. See corpus/external/LICENSE-axe-core.
+- corpus/external/w3c-bad/: pages from the W3C WAI Before and After Demonstration
+  (https://www.w3.org/WAI/demos/bad/), Copyright © World Wide Web Consortium,
+  W3C Software and Document License. See corpus/external/LICENSE-w3c.md.
+
+At runtime a11yfix injects axe-core (MPL-2.0, Deque Systems) into the audited page.

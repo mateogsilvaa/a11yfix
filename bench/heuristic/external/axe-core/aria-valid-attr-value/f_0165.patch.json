@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0165",
-  "rationale": "removed aria-valuenow",
-  "before": "<div aria-valuenow=\"+0.1\" id=\"pass155\">",
-  "after": "<div id=\"pass155\">",
-  "confidence": "low"
-}

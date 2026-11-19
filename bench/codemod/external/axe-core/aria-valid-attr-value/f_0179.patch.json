@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0179",
+  "rationale": "removed aria-placeholder: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-placeholder=\"\" id=\"pass184\">",
+  "after": "<div id=\"pass184\">",
+  "confidence": "high"
+}

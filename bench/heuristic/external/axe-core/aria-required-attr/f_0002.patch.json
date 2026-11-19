@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0002",
-  "rationale": "removed aria-valuenow, aria-valuemax, aria-valuemin",
-  "before": "<div\n  role=\"slider\"\n  id=\"pass2\"\n  aria-valuenow=\"value\"\n  aria-valuemax=\"value\"\n  aria-valuemin=\"value\"\n>",
-  "after": "<div\n  role=\"slider\"\n  id=\"pass2\"\n \n \n \n>",
-  "confidence": "low"
-}

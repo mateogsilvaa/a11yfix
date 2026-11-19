@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0002",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Sourdough\" only restates the file name \"sourdough.jpg\"",
-  "status": "rejected_suspicious"
-}

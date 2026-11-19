@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0003",
-  "rationale": "inline text color #000000 against background #ffd34d",
-  "before": "<button class=\"cta\" type=\"button\">",
-  "after": "<button class=\"cta\" type=\"button\" style=\"color: #000000\">",
-  "confidence": "low"
-}

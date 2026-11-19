@@ -1,0 +1,279 @@
+#!/usr/bin/env node
+// a11yfix command-line interface.
+
+import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
+import { createRequire } from "node:module";
+import path from "node:path";
+import { Command, InvalidArgumentError, Option } from "commander";
+import {
+  DEFAULT_MODEL,
+  LlmGenerator,
+  auditFile,
+  auditSource,
+  closeBrowser,
+  countBy,
+  engineVersions,
+  gitPatch,
+  limiter,
+  metricsFile,
+  processPage,
+  renderReport,
+  toPatchPath,
+  verifyPatch,
+  writeJson,
+  writePageArtifacts,
+  type Effort,
+  type Finding,
+  type Generator,
+  type MetricsFile,
+  type Mode,
+  type PageOutcome,
+  type RuleRegistry,
+} from "a11yfix-core";
+import { createCoreRegistry } from "a11yfix-rules-core";
+
+const require = createRequire(import.meta.url);
+const pkg = require("../package.json") as { version: string };
+
+const int = (v: string) => {
+  const n = Number(v);
+  if (!Number.isInteger(n) || n < 1) throw new InvalidArgumentError("must be a positive integer");
+  return n;
+};
+
+const hasCredentials = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_PROFILE);
+
+/** The tier-1 generator for a mode, or null. `auto` uses a model only when credentials are configured. */
+function makeLlm(mode: Mode, model: string, effort: Effort): Generator | null {
+  if (mode === "codemod") return null;
+  if (mode === "auto" && !hasCredentials()) {
+    console.error("a11yfix: no model configured (ANTHROPIC_API_KEY unset): findings that need judgment will be skipped.");
+    return null;
+  }
+  return new LlmGenerator({ model, effort });
+}
+
+async function readFindings(file: string): Promise<Finding[]> {
+  const data = JSON.parse(await readFile(file, "utf8")) as unknown;
+  if (!Array.isArray(data)) throw new Error(`${file}: expected an array of findings`);
+  return data as Finding[];
+}
+
+function groupByFile(findings: Finding[]): Map<string, Finding[]> {
+  const out = new Map<string, Finding[]>();
+  for (const f of findings) out.set(f.sourceFile, [...(out.get(f.sourceFile) ?? []), f]);
+  return out;
+}
+
+async function listHtml(dir: string): Promise<string[]> {
+  const out: string[] = [];
+  for (const entry of await readdir(dir, { withFileTypes: true })) {
+    const p = path.join(dir, entry.name);
+    if (entry.isDirectory()) out.push(...(await listHtml(p)));
+    else if (/\.html?$/i.test(entry.name)) out.push(p);
+  }
+  return out.sort();
+}
+
+const registry: RuleRegistry = createCoreRegistry();
+
+const program = new Command()
+  .name("a11yfix")
+  .description(
+    "Audit HTML for accessibility violations, patch them, and keep only the patches a re-audit proves correct.\n" +
+      "No telemetry. No network access other than the page under audit and, only for tier-1 fixes, the model API.",
+  )
+  .version(pkg.version);
+
+const fixOpts = (cmd: Command) =>
+  cmd
+    .addOption(
+      new Option("--mode <mode>", "auto: codemods, then the model for what needs judgment; codemod: no model; llm: model for everything")
+        .choices(["auto", "codemod", "llm"])
+        .default("auto"),
+    )
+    .option("--strict", "leave suspicious patches out of the output patch", false)
+    .option("--model <id>", "Claude model id for tier 1", DEFAULT_MODEL)
+    .addOption(new Option("--effort <level>", "model effort").choices(["low", "medium", "high", "xhigh", "max"]).default("medium"))
+    .option("--concurrency <n>", "parallel model calls", int, 4);
+
+program
+  .command("audit")
+  .description("audit an HTML file and write normalized findings")
+  .argument("<file>", "HTML file")
+  .option("--out <file>", "findings output", "findings.json")
+  .addOption(new Option("--level <n>", "1 = structural rules, 2 = also color-contrast").choices(["1", "2"]).default("2"))
+  .action(async (file: string, o: { out: string; level: "1" | "2" }) => {
+    const r = await auditFile(file, { rules: registry.axeIds(Number(o.level) as 1 | 2), filter: ruleFilter });
+    await writeJson(o.out, r.findings);
+    console.log(`${r.findings.length} finding(s) in ${file} (${(r.ms / 1000).toFixed(1)} s, axe ${r.axeVersion})`);
+    for (const [rule, n] of Object.entries(countBy(r.findings.map((f) => f.ruleId)))) {
+      console.log(`  ${rule}: ${n} (tier ${registry.forFinding({ ruleId: rule } as Finding)?.tier ?? "?"})`);
+    }
+    console.log(`wrote ${o.out}`);
+  });
+
+function ruleFilter(f: Finding): boolean {
+  const rule = registry.forFinding(f);
+  return rule?.detect ? rule.detect(f) : true;
+}
+
+fixOpts(
+  program
+    .command("fix")
+    .description("generate a patch per finding; with --verify, keep only re-audited ones and write a git-apply patch")
+    .argument("<findings>", "findings.json from `audit`")
+    .option("--out <dir>", "output directory", "patches")
+    .option("--verify", "re-audit every patch (off by default only to iterate quickly while developing)", false)
+    .option("--limit <n>", "only the first N findings per file", int),
+).action(
+  async (
+    findingsFile: string,
+    o: { out: string; verify: boolean; strict: boolean; limit?: number; mode: Mode; model: string; effort: Effort; concurrency: number },
+  ) => {
+    const llm = makeLlm(o.mode, o.model, o.effort);
+    const groups = groupByFile(await readFindings(findingsFile));
+    const genLimit = limiter(o.concurrency);
+    const auditLimit = limiter(Math.max(2, Math.min(o.concurrency, 6)));
+    const pages: PageOutcome[] = [];
+    for (const [file, findings] of groups) {
+      console.log(`${file}: ${findings.length} finding(s), mode ${o.mode}${llm ? ` (${llm.name})` : ""}${o.verify ? ", verifying" : ""}`);
+      const page = await processPage(file, findings, {
+        registry,
+        mode: o.mode,
+        llm,
+        verify: o.verify,
+        strict: o.strict,
+        limit: o.limit,
+        genLimit,
+        auditLimit,
+        log: console.log,
+      });
+      pages.push(page);
+      const dir = groups.size > 1 ? path.join(o.out, path.basename(file, path.extname(file))) : o.out;
+      await writePageArtifacts(dir, page);
+      const st = countBy(page.outcomes.map((x) => x.verification.status));
+      console.log(`  ${JSON.stringify(st)}${page.remaining ? `; ${page.remaining.length} subset violation(s) left after the patch` : ""}`);
+    }
+    if (o.verify) {
+      const patch = gitPatch(
+        pages.filter((p) => p.combined !== null).map((p) => ({ path: toPatchPath(p.file), before: p.src, after: p.combined! })),
+      );
+      await mkdir(o.out, { recursive: true });
+      await writeFile(path.join(o.out, "a11yfix.patch"), patch, "utf8");
+      const included = pages.flatMap((p) => p.outcomes.filter((x) => x.included));
+      const sus = included.filter((x) => x.verification.status === "rejected_suspicious").length;
+      console.log(
+        `wrote ${path.join(o.out, "a11yfix.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: git apply ${path.join(o.out, "a11yfix.patch")}`,
+      );
+    }
+  },
+);
+
+program
+  .command("verify")
+  .description("verify one patch against a file")
+  .argument("<file>", "HTML file the patch applies to")
+  .argument("<patch>", "patch.json")
+  .option("--findings <file>", "findings.json the patch refers to (default: re-audit the file)")
+  .option("--out <file>", "write verification.json here")
+  .action(async (file: string, patchFile: string, o: { findings?: string; out?: string }) => {
+    const src = await readFile(file, "utf8");
+    const patch = JSON.parse(await readFile(patchFile, "utf8")) as { findingId?: string };
+    const baseline = await auditSource(file, src, { rules: registry.axeIds(), filter: ruleFilter });
+    const findings = o.findings ? await readFindings(o.findings) : baseline.findings;
+    const finding = findings.find((f) => f.id === patch.findingId);
+    if (!finding) throw new Error(`finding ${patch.findingId} not found ${o.findings ? `in ${o.findings}` : `in a fresh audit of ${file}`}`);
+    const { verification } = await verifyPatch({ file, src, finding, patch, baseline, rule: registry.forFinding(finding) });
+    const { diff, ...rest } = verification;
+    console.log(JSON.stringify(rest, null, 2));
+    if (diff) console.log(`\n${diff}`);
+    if (o.out) await writeJson(o.out, rest);
+    process.exitCode = verification.status === "verified" ? 0 : 1;
+  });
+
+fixOpts(
+  program
+    .command("bench")
+    .description("run audit + fix + verify over a corpus and write a report")
+    .option("--corpus <dir>", "directory of HTML pages (searched recursively)", "corpus")
+    .option("--report <file>", "markdown report", "report.md")
+    .option("--out <dir>", "per-page artifacts", "bench/run")
+    .option("--limit <n>", "only the first N findings per page", int)
+    .option("--pages <n>", "only the first N pages", int)
+    .option("--notes <file>", "markdown appended to the report (analysis)")
+    .option("--compare <file>", "metrics.json of another run to compare against"),
+).action(
+  async (o: {
+    corpus: string;
+    report: string;
+    out: string;
+    limit?: number;
+    pages?: number;
+    notes?: string;
+    compare?: string;
+    strict: boolean;
+    mode: Mode;
+    model: string;
+    effort: Effort;
+    concurrency: number;
+  }) => {
+    const llm = makeLlm(o.mode, o.model, o.effort);
+    const compare = o.compare ? (JSON.parse(await readFile(o.compare, "utf8")) as MetricsFile) : undefined;
+    if (!(await stat(o.corpus)).isDirectory()) throw new Error(`${o.corpus} is not a directory`);
+    let files = await listHtml(o.corpus);
+    if (o.pages) files = files.slice(0, o.pages);
+    const started = Date.now();
+    const genLimit = limiter(o.concurrency);
+    const auditLimit = limiter(4);
+    const pageLimit = limiter(2);
+
+    console.log(`bench: ${files.length} page(s), mode ${o.mode}${llm ? ` (${llm.name})` : ""}`);
+    const pages: PageOutcome[] = await Promise.all(
+      files.map((file) =>
+        pageLimit(async () => {
+          const baseline = await auditLimit(() => auditFile(file, { rules: registry.axeIds(), filter: ruleFilter }));
+          const page = await processPage(
+            file,
+            baseline.findings,
+            { registry, mode: o.mode, llm, verify: true, strict: o.strict, limit: o.limit, genLimit, auditLimit },
+            baseline,
+          );
+          const rel = path.relative(o.corpus, file).replace(/\.html?$/i, "").split(path.sep).join("/");
+          await writePageArtifacts(path.join(o.out, rel), page);
+          const st = countBy(page.outcomes.map((x) => x.verification.status));
+          console.log(`  ${rel}: ${page.findings.length} finding(s) ${JSON.stringify(st)} in ${(page.ms / 1000).toFixed(1)} s`);
+          return page;
+        }),
+      ),
+    );
+
+    pages.sort((a, b) => a.file.localeCompare(b.file));
+    const input = {
+      generator: llm ? llm.name : "codemods only",
+      mode: o.mode,
+      strict: o.strict,
+      model: llm instanceof LlmGenerator ? llm.model : null,
+      corpus: o.corpus,
+      rules: registry.all(),
+      pages,
+      versions: engineVersions(),
+      wallMs: Date.now() - started,
+      date: new Date().toISOString().slice(0, 10),
+      notes: o.notes ? await readFile(o.notes, "utf8") : undefined,
+      compare,
+    };
+    await mkdir(path.dirname(path.resolve(o.report)), { recursive: true });
+    await writeFile(o.report, renderReport(input), "utf8");
+    await writeJson(path.join(o.out, "metrics.json"), metricsFile(input));
+    console.log(`wrote ${o.report} (${((Date.now() - started) / 1000).toFixed(1)} s)`);
+  },
+);
+
+program
+  .parseAsync()
+  .catch((err: Error) => {
+    console.error(`a11yfix: ${err.message}`);
+    process.exitCode = 1;
+  })
+  .finally(() => closeBrowser());

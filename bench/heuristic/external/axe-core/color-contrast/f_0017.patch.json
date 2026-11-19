@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0017",
-  "rationale": "aria-label derived from \"pass24\"",
-  "before": "<textarea id=\"pass24\" style=\"background-color: white; color: black\">",
-  "after": "<textarea id=\"pass24\" style=\"background-color: white; color: black\" aria-label=\"Pass24\">",
-  "confidence": "low"
-}

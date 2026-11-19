@@ -1,0 +1,30 @@
+{
+  "name": "a11yfix-core",
+  "version": "0.2.0",
+  "description": "a11yfix engine: axe-core audit, source mapping, patch validation, the verifier, the Rule plugin API and the optional LLM tier.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "1.11.0",
+    "axe-core": "4.14.1",
+    "diff": "9.0.0",
+    "parse5": "8.1.1",
+    "playwright": "1.65.1",
+    "zod": "4.6.7"
+  }
+}

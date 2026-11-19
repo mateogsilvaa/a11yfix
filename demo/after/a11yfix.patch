@@ -1,0 +1,37 @@
+diff --git a/demo/before/index.html b/demo/before/index.html
+--- a/demo/before/index.html
++++ b/demo/before/index.html
+@@ -16,7 +16,7 @@
+ <body>
+   <header>
+     <a href="/"><img src="logo.svg" width="140"></a>
+-    <nav role="navigaton">
++    <nav role="navigation">
+       <a href="/plots">Plots</a>
+       <a href="/events">Events</a>
+     </nav>
+@@ -25,7 +25,7 @@
+     <h1>Grow your own food by the river</h1>
+     <p class="lede">32 plots, shared tools, and a weekly compost day.</p>
+ 
+-    <h3>Rent a plot</h3>
++    <h2>Rent a plot</h2>
+     <div class="plot">
+       <img src="plot-map.png" width="260">
+       <p>Plots are 3 x 4 metres and cost 40 EUR per season. The map shows which ones are free.</p>
+@@ -33,12 +33,12 @@
+ 
+     <form action="/waitlist" method="post">
+       <input type="email" name="email" placeholder="Email address">
+-      <div class="btn" role="buton" tabindex="0">Join the waitlist</div>
++      <div class="btn" role="button" tabindex="0">Join the waitlist</div>
+     </form>
+ 
+-    <h3>Volunteer</h3>
++    <h2>Volunteer</h2>
+     <div role="checkbox" tabindex="0">I can help on compost day</div>
+-    <button type="button" aria-expanded="yes" aria-controls="volunteer-details">More about volunteering</button>
++    <button type="button" aria-expanded="true" aria-controls="volunteer-details">More about volunteering</button>
+     <div id="volunteer-details">
+       <p>Compost day is every Saturday from 10:00 to 12:00.</p>
+     </div>

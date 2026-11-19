@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0060",
-  "rationale": "inline text color #000000 against background #d7d7cd",
-  "before": "<a href=\"mailto:wai@w3.org\" shape=\"rect\">",
-  "after": "<a href=\"mailto:wai@w3.org\" shape=\"rect\" style=\"color: #000000\">",
-  "confidence": "low"
-}

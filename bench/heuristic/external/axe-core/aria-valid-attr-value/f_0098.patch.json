@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0098",
-  "rationale": "removed aria-orientation",
-  "before": "<div aria-orientation=\"vertical\" id=\"pass76\">",
-  "after": "<div id=\"pass76\">",
-  "confidence": "low"
-}

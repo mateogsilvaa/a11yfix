@@ -1,50 +1,32 @@
 {
-  "name": "a11yfix",
-  "version": "0.1.0",
+  "name": "a11yfix-monorepo",
+  "private": true,
+  "version": "0.2.0",
   "description": "Audit HTML for accessibility violations, generate a minimal patch per violation, and keep only the patches a re-audit proves correct.",
-  "license": "MIT",
+  "license": "Apache-2.0",
   "type": "module",
-  "bin": {
-    "a11yfix": "dist/cli.js"
-  },
-  "files": [
-    "dist",
-    "README.md",
-    "LICENSE"
+  "workspaces": [
+    "packages/core",
+    "packages/rules-core",
+    "packages/cli"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.json",
-    "typecheck": "tsc -p tsconfig.json --noEmit",
-    "a11yfix": "tsx src/cli.ts",
-    "test": "tsx --test test/*.test.ts",
-    "bench:heuristic": "tsx src/cli.ts bench --corpus ./corpus --generator heuristic --report bench/heuristic/report.md --out bench/heuristic --notes bench/heuristic/analysis.md",
-    "bench": "tsx src/cli.ts bench --corpus ./corpus --report report.md --out bench/llm --compare bench/heuristic/metrics.json",
-    "demo": "tsx scripts/demo.ts"
-  },
-  "keywords": [
-    "accessibility",
-    "a11y",
-    "wcag",
-    "axe-core",
-    "playwright",
-    "llm",
-    "cli"
-  ],
-  "dependencies": {
-    "@anthropic-ai/sdk": "^1.11.0",
-    "axe-core": "^4.14.1",
-    "commander": "^15.1.0",
-    "diff": "^9.0.0",
-    "parse5": "^8.1.1",
-    "playwright": "^1.65.1",
-    "zod": "^4.6.7"
+    "build": "tsc -b packages/core packages/rules-core packages/cli",
+    "clean": "tsc -b --clean packages/core packages/rules-core packages/cli",
+    "typecheck": "npm run build",
+    "test": "npm run build && node scripts/test.mjs",
+    "test:sabotage": "npm run build && node scripts/test.mjs sabotage",
+    "a11yfix": "node packages/cli/dist/cli.js",
+    "bench:codemod": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode codemod --report bench/codemod/report.md --out bench/codemod --notes bench/codemod/analysis.md",
+    "bench": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode auto --report report.md --out bench/auto --compare bench/codemod/metrics.json",
+    "demo": "npm run build && tsx scripts/demo.ts"
   },
   "devDependencies": {
-    "@types/node": "^26.6.6",
-    "tsx": "^4.23.15",
-    "typescript": "^7.0.2"
+    "@types/node": "26.6.6",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
   }
 }

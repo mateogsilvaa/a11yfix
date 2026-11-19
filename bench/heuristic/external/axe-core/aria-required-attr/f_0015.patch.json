@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0015",
-  "rationale": "added aria-checked with default values",
-  "before": "<span role=\"radio\" id=\"violation5\">",
-  "after": "<span role=\"radio\" id=\"violation5\" aria-checked=\"false\">",
-  "confidence": "low"
-}

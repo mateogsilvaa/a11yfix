@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0076",
-  "rationale": "aria-label derived from \"violation48\"",
-  "before": "<input\n      type=\"text\"\n      id=\"violation48\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"ref ref2\"\n    />",
-  "after": "<input\n      type=\"text\"\n      id=\"violation48\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"ref ref2\" aria-label=\"Violation48\" />",
-  "confidence": "low"
-}

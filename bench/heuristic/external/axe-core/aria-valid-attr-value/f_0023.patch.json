@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0023",
-  "rationale": "removed aria-live",
-  "before": "<div aria-live=\"stuff\" id=\"violation20\">",
-  "after": "<div id=\"violation20\">",
-  "confidence": "low"
-}

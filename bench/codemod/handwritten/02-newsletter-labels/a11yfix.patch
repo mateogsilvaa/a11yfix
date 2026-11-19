@@ -1,0 +1,29 @@
+diff --git a/corpus/handwritten/02-newsletter-labels.html b/corpus/handwritten/02-newsletter-labels.html
+--- a/corpus/handwritten/02-newsletter-labels.html
++++ b/corpus/handwritten/02-newsletter-labels.html
+@@ -18,8 +18,8 @@
+         <input type="email" name="email" placeholder="you@example.com">
+       </div>
+       <div class="row">
+-        Full name
+-        <input type="text" name="fullname">
++        <label>Full name
++        <input type="text" name="fullname"></label>
+       </div>
+       <div class="row">
+         <span>Country</span>
+@@ -30,11 +30,11 @@
+         </select>
+       </div>
+       <div class="row">
+-        <input type="checkbox" name="weekly" value="yes"> Send me the weekly digest too
++        <label><input type="checkbox" name="weekly" value="yes"> Send me the weekly digest too</label>
+       </div>
+       <div class="row">
+-        <p class="hint">Anything you would like us to write about?</p>
+-        <textarea name="topics" rows="3"></textarea>
++        <p class="hint" id="topics-label">Anything you would like us to write about?</p>
++        <textarea name="topics" rows="3" aria-labelledby="topics-label"></textarea>
+       </div>
+       <button type="submit">Subscribe</button>
+     </form>

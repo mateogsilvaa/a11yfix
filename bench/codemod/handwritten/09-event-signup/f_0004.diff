@@ -1,0 +1,14 @@
+===================================================================
+--- a/09-event-signup.html
++++ b/09-event-signup.html
+@@ -23,8 +23,8 @@
+           <td><input type="text" name="first" size="12"> <input type="text" name="last" size="16"></td>
+         </tr>
+         <tr>
+-          <td>Email <span class="required">*</span></td>
+-          <td><input type="email" name="email"></td>
++          <td id="email-label">Email <span class="required">*</span></td>
++          <td><input type="email" name="email" aria-labelledby="email-label"></td>
+         </tr>
+         <tr>
+           <td>Organisation</td>

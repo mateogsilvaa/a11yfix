@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0009",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Email address\" only restates the file name \"email-address.png\"",
-  "status": "rejected_suspicious"
-}

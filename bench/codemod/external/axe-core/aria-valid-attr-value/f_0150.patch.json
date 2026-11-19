@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0150",
+  "rationale": "removed aria-valuemin: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-valuemin=\"+1.\" id=\"pass140\">",
+  "after": "<div id=\"pass140\">",
+  "confidence": "high"
+}

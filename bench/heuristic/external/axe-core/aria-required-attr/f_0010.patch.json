@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0010",
-  "rationale": "added aria-checked with default values",
-  "before": "<testutils-element no-role role=\"switch\" with-aria-checked=\"false\" id=\"pass15\"\n  >",
-  "after": "<testutils-element no-role role=\"switch\" with-aria-checked=\"false\" id=\"pass15\" aria-checked=\"false\">",
-  "confidence": "low"
-}

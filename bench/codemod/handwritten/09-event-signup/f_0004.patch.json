@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "aria-labelledby points to the visible text \"Email *\"",
+  "before": "<td>Email <span class=\"required\">*</span></td>\n          <td><input type=\"email\" name=\"email\">",
+  "after": "<td id=\"email-label\">Email <span class=\"required\">*</span></td>\n          <td><input type=\"email\" name=\"email\" aria-labelledby=\"email-label\">",
+  "confidence": "high"
+}

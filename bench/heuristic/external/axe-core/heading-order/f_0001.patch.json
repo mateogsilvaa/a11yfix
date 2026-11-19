@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0001",
-  "rationale": "heading level set to previous level + 1 (h2)",
-  "before": "<h3 id=\"heading6\">Header</h3>",
-  "after": "<h2 id=\"heading6\">Header</h2>",
-  "confidence": "low"
-}

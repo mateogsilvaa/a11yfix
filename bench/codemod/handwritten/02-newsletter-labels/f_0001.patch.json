@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "wrapped the control and its adjacent text \"Full name\" in a <label>",
+  "before": "Full name\n        <input type=\"text\" name=\"fullname\">",
+  "after": "<label>Full name\n        <input type=\"text\" name=\"fullname\"></label>",
+  "confidence": "high"
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "\"navigaton\" is not a WAI-ARIA role; \"navigation\" is the only valid role within edit distance 1",
+  "before": "<div class=\"bar\" role=\"navigaton\">",
+  "after": "<div class=\"bar\" role=\"navigation\">",
+  "confidence": "high"
+}

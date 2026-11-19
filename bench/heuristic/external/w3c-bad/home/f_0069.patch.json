@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0069",
-  "rationale": "inline text color #000000 against background #d7d7cd",
-  "before": "<a rel=\"Copyright\" href=\"https://www.w3.org/Consortium/Legal/copyright-software\">",
-  "after": "<a rel=\"Copyright\" href=\"https://www.w3.org/Consortium/Legal/copyright-software\" style=\"color: #000000\">",
-  "confidence": "low"
-}

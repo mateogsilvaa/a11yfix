@@ -1,0 +1,14 @@
+===================================================================
+--- a/02-newsletter-labels.html
++++ b/02-newsletter-labels.html
+@@ -18,8 +18,8 @@
+         <input type="email" name="email" placeholder="you@example.com">
+       </div>
+       <div class="row">
+-        Full name
+-        <input type="text" name="fullname">
++        <label>Full name
++        <input type="text" name="fullname"></label>
+       </div>
+       <div class="row">
+         <span>Country</span>

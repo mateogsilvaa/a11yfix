@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0036",
+  "rationale": "removed aria-required: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-required=\"stuff\" id=\"violation28\">",
+  "after": "<div id=\"violation28\">",
+  "confidence": "high"
+}

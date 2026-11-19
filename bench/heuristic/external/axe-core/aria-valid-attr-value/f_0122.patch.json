@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0122",
-  "rationale": "removed aria-sort",
-  "before": "<div aria-sort=\"none\" id=\"pass112\">",
-  "after": "<div id=\"pass112\">",
-  "confidence": "low"
-}

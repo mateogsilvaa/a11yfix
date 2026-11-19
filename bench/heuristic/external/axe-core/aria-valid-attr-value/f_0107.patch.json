@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0107",
-  "rationale": "removed aria-readonly",
-  "before": "<div aria-readonly=\"true\" id=\"pass91\">",
-  "after": "<div id=\"pass91\">",
-  "confidence": "low"
-}

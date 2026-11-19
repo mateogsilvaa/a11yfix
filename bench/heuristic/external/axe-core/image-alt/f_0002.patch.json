@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0002",
-  "rationale": "alt derived from file name \"img.jpg\"",
-  "before": "<img src=\"img.jpg\" id=\"violation2\" aria-label=\"\" />",
-  "after": "<img src=\"img.jpg\" id=\"violation2\" aria-label=\"\" alt=\"Img\" />",
-  "confidence": "low"
-}

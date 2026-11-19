@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0006",
-  "rationale": "aria-label derived from \"fail6\"",
-  "before": "<textarea id=\"fail6\">",
-  "after": "<textarea id=\"fail6\" aria-label=\"Fail6\">",
-  "confidence": "low"
-}

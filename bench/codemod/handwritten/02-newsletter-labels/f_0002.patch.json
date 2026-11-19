@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "wrapped the control and its adjacent text \"Send me the weekly digest too\" in a <label>",
+  "before": "<input type=\"checkbox\" name=\"weekly\" value=\"yes\"> Send me the weekly digest too",
+  "after": "<label><input type=\"checkbox\" name=\"weekly\" value=\"yes\"> Send me the weekly digest too</label>",
+  "confidence": "high"
+}

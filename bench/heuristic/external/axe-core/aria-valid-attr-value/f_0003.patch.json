@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0003",
-  "rationale": "removed aria-activedescendant",
-  "before": "<div aria-activedescendant=\"ref noexist ref2\" id=\"violation2\">",
-  "after": "<div id=\"violation2\">",
-  "confidence": "low"
-}

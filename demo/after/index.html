@@ -16,14 +16,14 @@
 <body>
   <header>
     <a href="/"><img src="logo.svg" width="140"></a>
-    <nav>
+    <nav role="navigation">
       <a href="/plots">Plots</a>
       <a href="/events">Events</a>
     </nav>
   </header>
   <main>
     <h1>Grow your own food by the river</h1>
-    <p class="lede" style="color: #000000">32 plots, shared tools, and a weekly compost day.</p>
+    <p class="lede">32 plots, shared tools, and a weekly compost day.</p>
 
     <h2>Rent a plot</h2>
     <div class="plot">
@@ -33,18 +33,18 @@
 
     <form action="/waitlist" method="post">
       <input type="email" name="email" placeholder="Email address">
-      <div class="btn" role="buton" tabindex="0">Join the waitlist</div>
+      <div class="btn" role="button" tabindex="0">Join the waitlist</div>
     </form>
 
-    <h3>Volunteer</h3>
-    <div role="checkbox" tabindex="0" aria-checked="false">I can help on compost day</div>
-    <button type="button" aria-controls="volunteer-details">More about volunteering</button>
+    <h2>Volunteer</h2>
+    <div role="checkbox" tabindex="0">I can help on compost day</div>
+    <button type="button" aria-expanded="true" aria-controls="volunteer-details">More about volunteering</button>
     <div id="volunteer-details">
       <p>Compost day is every Saturday from 10:00 to 12:00.</p>
     </div>
   </main>
   <footer>
-    <p style="color: #000000">Riverside Community Garden is run by volunteers.</p>
+    <p>Riverside Community Garden is run by volunteers.</p>
   </footer>
 </body>
 </html>

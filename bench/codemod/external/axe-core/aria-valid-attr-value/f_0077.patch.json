@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0077",
+  "rationale": "removed aria-activedescendant: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-activedescendant=\"ref\" id=\"pass1\">",
+  "after": "<div id=\"pass1\">",
+  "confidence": "high"
+}

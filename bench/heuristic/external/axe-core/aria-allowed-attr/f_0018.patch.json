@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0018",
-  "rationale": "removed aria-checked",
-  "before": "<div role=\"checkbox\" id=\"fail14\" aria-checked=\"FALSE\">",
-  "after": "<div role=\"checkbox\" id=\"fail14\">",
-  "confidence": "low"
-}

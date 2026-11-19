@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0095",
+  "rationale": "removed aria-multiselectable: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-multiselectable=\"true\" id=\"pass73\">",
+  "after": "<div id=\"pass73\">",
+  "confidence": "high"
+}

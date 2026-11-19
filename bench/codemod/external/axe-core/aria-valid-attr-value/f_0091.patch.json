@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0091",
+  "rationale": "removed aria-modal: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-modal=\"true\" id=\"pass69\">",
+  "after": "<div id=\"pass69\">",
+  "confidence": "high"
+}

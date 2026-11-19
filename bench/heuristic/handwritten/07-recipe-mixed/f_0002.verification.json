@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0002",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Lentil soup bowl\" only restates the file name \"lentil-soup-bowl.jpg\"",
-  "status": "rejected_suspicious"
-}

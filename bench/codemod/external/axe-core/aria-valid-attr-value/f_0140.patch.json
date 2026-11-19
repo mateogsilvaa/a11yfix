@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0140",
+  "rationale": "removed aria-valuemax: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div aria-valuemax=\"-412\" id=\"pass130\">",
+  "after": "<div id=\"pass130\">",
+  "confidence": "high"
+}

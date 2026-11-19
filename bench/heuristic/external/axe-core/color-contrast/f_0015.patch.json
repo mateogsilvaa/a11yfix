@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0015",
-  "rationale": "inline text color #ffffff against background #222222",
-  "before": "<div id=\"fail11\" style=\"position: relative; top: 100px\">",
-  "after": "<div id=\"fail11\" style=\"color: #ffffff; position: relative; top: 100px\">",
-  "confidence": "low"
-}

@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0008",
-  "rationale": "aria-label derived from \"pass10\"",
-  "before": "<input type=\"number\" role=\"spinbutton\" id=\"pass10\" />",
-  "after": "<input type=\"number\" role=\"spinbutton\" id=\"pass10\" aria-label=\"Pass10\" />",
-  "confidence": "low"
-}

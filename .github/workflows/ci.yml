@@ -5,9 +5,34 @@ on:
     branches: [main]
   pull_request:
 
+permissions:
+  contents: read
+
 jobs:
   test:
+    name: test (${{ matrix.os }}, node ${{ matrix.node }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        node: [20, 22, 24]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: npm
+      # Reproducible install: lockfile only, exact engine versions.
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium-headless-shell
+      - run: npm test
+      - run: node packages/cli/dist/cli.js --version
+
+  bench:
+    name: offline benchmark (tier 0)
     runs-on: ubuntu-latest
+    needs: test
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -16,12 +41,27 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx playwright install --with-deps chromium-headless-shell
-      - run: npm run typecheck
-      - run: npm test
       - run: npm run build
-      # Offline end-to-end run over the whole corpus (no API key needed).
-      - run: npx tsx src/cli.ts bench --corpus corpus --generator heuristic --report bench/run/report.md --out bench/run
+      - run: node packages/cli/dist/cli.js bench --corpus corpus --mode codemod --report bench/run/report.md --out bench/run
+      # Breaking the corpus or the tier-0 promise fails CI.
+      - name: Tier 0 must stay at 100% precision
+        run: |
+          node -e '
+            const m = require("./bench/run/metrics.json").byTier["0"];
+            console.log(`tier 0: ${m.verified}/${m.proposed} verified`);
+            if (m.proposed === 0 || m.verified !== m.proposed) process.exit(1);
+          '
+      # Rendering differs slightly across platforms, so a mismatch is a warning, not a failure.
+      - name: Compare with the committed benchmark
+        run: |
+          node -e '
+            const a = require("./bench/run/metrics.json"), b = require("./bench/codemod/metrics.json");
+            const pick = (m) => JSON.stringify({ ...m.overall, usage: 0 });
+            if (pick(a) !== pick(b)) console.log("::warning::benchmark differs from bench/codemod/metrics.json; re-run npm run bench:codemod and commit if this is intended");
+            else console.log("matches the committed benchmark");
+          '
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
-          name: heuristic-bench
-          path: bench/run/report.md
+          name: bench-codemod
+          path: bench/run/

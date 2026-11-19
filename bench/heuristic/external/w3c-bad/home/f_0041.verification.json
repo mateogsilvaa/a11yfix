@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0041",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Teaser right1\" only restates the file name \"teaser_right1.jpg\"",
-  "status": "rejected_suspicious"
-}

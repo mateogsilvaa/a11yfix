@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0003",
-  "rationale": "removed aria-pressed",
-  "before": "<button type=\"button\" aria-describedby=\"delete-warning\" aria-pressed=\"0\">",
-  "after": "<button type=\"button\" aria-describedby=\"delete-warning\">",
-  "confidence": "low"
-}

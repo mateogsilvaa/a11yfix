@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "aria-labelledby points to the visible text \"Organisation\"",
+  "before": "<td>Organisation</td>\n          <td><input type=\"text\" name=\"org\">",
+  "after": "<td id=\"org-label\">Organisation</td>\n          <td><input type=\"text\" name=\"org\" aria-labelledby=\"org-label\">",
+  "confidence": "high"
+}

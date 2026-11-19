@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0006",
-  "rationale": "heading level set to previous level + 1 (h4)",
-  "before": "<h5>Dietary needs</h5>",
-  "after": "<h4>Dietary needs</h4>",
-  "confidence": "low"
-}

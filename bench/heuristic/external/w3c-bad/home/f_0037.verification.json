@@ -1,8 +1,0 @@
-{
-  "findingId": "f_0037",
-  "ruleGone": true,
-  "newViolations": [],
-  "suspicious": true,
-  "reason": "text alternative \"Blank 5x5\" only restates the file name \"blank_5x5.gif\"",
-  "status": "rejected_suspicious"
-}

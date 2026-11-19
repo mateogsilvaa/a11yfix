@@ -1,7 +1,0 @@
-{
-  "findingId": "f_0003",
-  "rationale": "alt derived from file name \"assets/ic_heart_24.svg\"",
-  "before": "<img src=\"assets/ic_heart_24.svg\">",
-  "after": "<img src=\"assets/ic_heart_24.svg\" alt=\"Ic heart 24\">",
-  "confidence": "low"
-}
