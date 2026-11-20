@@ -3,6 +3,23 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## 0.4.1 (2026-11-20)
+
+Ready for npm. No change to auditing, patching or verification.
+
+### Added
+- **npm packages**: `verifa11y` (the CLI, so `npx verifa11y` works), `verifa11y-mcp`, `verifa11y-core`,
+  `verifa11y-rules-core`, with READMEs, repository metadata, and `LICENSE`/`NOTICE` copied in at pack time.
+  Publishing steps in `docs/publishing.md`.
+- `verifa11y install-browser [--with-deps]` and `verifa11y-mcp --install-browser`: install the headless Chromium
+  that matches the bundled Playwright version.
+- A clear error when that browser is missing, with the exact command to install it, instead of Playwright's stack.
+
+### Changed
+- The CLI package is named `verifa11y` (was `verifa11y-cli` in 0.4.0, never published).
+- README, AGENTS.md and docs/agents.md install and configure from npm (`npx`); from source is still documented.
+- NOTICE lists the held-out corpus sources.
+
 ## 0.4.0 (2026-11-20)
 
 The project is now **verifa11y** (ADR 0018). This release measures the verifier instead of only trusting it: a naive

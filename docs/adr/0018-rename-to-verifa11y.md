@@ -13,7 +13,7 @@ a11y), in 0.4.0:
 | 0.3 | 0.4 |
 |---|---|
 | repository `mateogsilvaa/a11yfix` | `mateogsilvaa/verifa11y` (GitHub redirects the old URL) |
-| packages `a11yfix-core`, `a11yfix-rules-core`, `a11yfix-cli`, `a11yfix-mcp`, `a11yfix-action` | `verifa11y-core`, `verifa11y-rules-core`, `verifa11y-cli`, `verifa11y-mcp`, `verifa11y-action` |
+| packages `a11yfix-core`, `a11yfix-rules-core`, `a11yfix-cli`, `a11yfix-mcp`, `a11yfix-action` | `verifa11y-core`, `verifa11y-rules-core`, `verifa11y` (the CLI), `verifa11y-mcp`, `verifa11y-action` |
 | command `a11yfix`, MCP command `a11yfix-mcp` | `verifa11y`, `verifa11y-mcp` |
 | `A11YFIX_*` environment variables | `VERIFA11Y_*` |
 | `.a11yfix/` (MCP output), `a11yfix.patch`, `a11yfix.sqlite` | `.verifa11y/`, `verifa11y.patch`, `verifa11y.sqlite` |

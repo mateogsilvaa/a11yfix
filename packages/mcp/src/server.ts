@@ -2,20 +2,24 @@
 // verifa11y MCP server over stdio.
 //
 //   verifa11y-mcp [--root DIR]...    (default root: the current directory)
+//   verifa11y-mcp --install-browser  (install the headless Chromium it renders with, then exit)
 //
 // stdout belongs to the MCP protocol: everything else goes to stderr.
 
 import { serveStdio } from "@modelcontextprotocol/server/stdio";
-import { closeBrowser } from "verifa11y-core";
+import { closeBrowser, installBrowser } from "verifa11y-core";
 import { createServer, mcpEngine } from "./index.js";
 
 const args = process.argv.slice(2);
 if (args.includes("--help") || args.includes("-h")) {
   console.error(
-    "usage: verifa11y-mcp [--root DIR]...\n" +
+    "usage: verifa11y-mcp [--root DIR]...\n       verifa11y-mcp --install-browser\n" +
       "Serves the verifa11y tools (rules, audit, fix, verify) over stdio. Files are read and written only inside the roots.",
   );
   process.exit(0);
+}
+if (args.includes("--install-browser")) {
+  process.exit(await installBrowser());
 }
 const roots: string[] = [];
 for (let i = 0; i < args.length; i++) {

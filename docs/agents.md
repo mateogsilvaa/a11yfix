@@ -50,11 +50,11 @@ Every MCP result carries `conformance: "axe-clean on the checked rules, not WCAG
 hosts. It never calls a model unless `mode: "auto"` is passed explicitly and the server's environment configures one.
 
 ```sh
-claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
+claude mcp add verifa11y -- npx -y verifa11y-mcp --root .
 ```
 
 ```json
-{ "mcpServers": { "verifa11y": { "command": "node", "args": ["/path/to/verifa11y/packages/mcp/dist/server.js", "--root", "/path/to/project"] } } }
+{ "mcpServers": { "verifa11y": { "command": "npx", "args": ["-y", "verifa11y-mcp", "--root", "/path/to/project"] } } }
 ```
 
 | Tool | Input | Result (`structuredContent`) | Annotations |

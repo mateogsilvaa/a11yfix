@@ -10,9 +10,8 @@ fix really fixed it without hiding anything or breaking something else.
 
 ```sh
 # once
-git clone https://github.com/mateogsilvaa/verifa11y.git && cd verifa11y
-npm ci && npx playwright install chromium-headless-shell && npm run build
-alias verifa11y="node $PWD/packages/cli/dist/cli.js"
+npm install -g verifa11y && verifa11y install-browser
+# (or prefix every command below with npx)
 ```
 
 Loop for each HTML file you change:

@@ -1,8 +1,29 @@
 {
   "name": "verifa11y-core",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "verifa11y engine: axe-core audit, source mapping, patch validation, the verifier, the Rule plugin API and the optional LLM tier.",
   "license": "Apache-2.0",
+  "author": "mateogsilvaa",
+  "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateogsilvaa/verifa11y.git",
+    "directory": "packages/core"
+  },
+  "bugs": {
+    "url": "https://github.com/mateogsilvaa/verifa11y/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "fix",
+    "codemod",
+    "verifier",
+    "html",
+    "playwright"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,7 +35,10 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "LICENSE",
+    "NOTICE"
   ],
   "engines": {
     "node": ">=20"
@@ -26,5 +50,11 @@
     "parse5": "8.1.1",
     "playwright": "1.65.1",
     "zod": "4.6.7"
+  },
+  "scripts": {
+    "prepack": "node ../../scripts/prepack.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

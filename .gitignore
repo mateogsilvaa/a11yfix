@@ -10,3 +10,8 @@ dist/
 *.tsbuildinfo
 /.verifa11y/
 /site-audit/
+
+# copied into each package by scripts/prepack.mjs
+/packages/*/LICENSE
+/packages/*/NOTICE
+*.tgz

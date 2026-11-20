@@ -10,7 +10,9 @@
 // original would. Requests to any other origin are aborted, which keeps
 // audits offline and deterministic.
 
+import { spawn } from "node:child_process";
 import { readFile } from "node:fs/promises";
+import { createRequire } from "node:module";
 import path from "node:path";
 import { chromium, type Browser, type Page } from "playwright";
 
@@ -18,8 +20,48 @@ const ORIGIN = "http://verifa11y.local";
 
 let browserPromise: Promise<Browser> | null = null;
 
+/** The only browser verifa11y renders with: Playwright's headless Chromium. */
+export const BROWSER = "chromium-headless-shell";
+
+const require = createRequire(import.meta.url);
+
+/** The exact command that installs the browser this Playwright version expects. */
+export function browserInstallCommand(): string {
+  const { version } = require("playwright/package.json") as { version: string };
+  return `npx playwright@${version} install ${BROWSER}`;
+}
+
+/**
+ * Install the browser with the Playwright CLI that verifa11y depends on, so the
+ * revision always matches. Resolves with the installer's exit code.
+ */
+export function installBrowser(opts: { withDeps?: boolean } = {}): Promise<number> {
+  const cli = path.join(path.dirname(require.resolve("playwright/package.json")), "cli.js");
+  const args = [cli, "install", ...(opts.withDeps ? ["--with-deps"] : []), BROWSER];
+  return new Promise((resolve, reject) => {
+    const child = spawn(process.execPath, args, { stdio: ["ignore", "inherit", "inherit"] });
+    child.on("error", reject);
+    child.on("close", (code) => resolve(code ?? 1));
+  });
+}
+
 export function getBrowser(): Promise<Browser> {
-  if (!browserPromise) browserPromise = chromium.launch({ headless: true });
+  if (!browserPromise) {
+    browserPromise = chromium.launch({ headless: true }).catch((err: unknown) => {
+      browserPromise = null;
+      const message = err instanceof Error ? err.message : String(err);
+      if (/Executable doesn't exist/i.test(message)) {
+        throw new Error(
+          `verifa11y renders pages in Playwright's headless Chromium, which is not installed.
+` +
+            `Install it once with:  npx verifa11y install-browser
+` +
+            `(the same as: ${browserInstallCommand()})`,
+        );
+      }
+      throw err;
+    });
+  }
   return browserPromise;
 }
 

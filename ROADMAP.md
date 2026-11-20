@@ -20,7 +20,7 @@ than half-working codemods for templates.
       tiers reported separately; tier 0 at 100% precision on the corpus
 - [x] Typed Rule API (`detect`, `fix`, `verify`, `wcag`, `tier`, `confidence`), per-rule semver, written deprecation
       policy; experimental until phase 3
-- [x] Monorepo with workspaces: `verifa11y-core`, `verifa11y-cli`, `verifa11y-rules-core`
+- [x] Monorepo with workspaces: `verifa11y-core`, `verifa11y` (CLI), `verifa11y-rules-core`
 - [x] Real tests, including a sabotage test: the verifier must reject every deliberately fake fix
 - [x] Pinned axe-core and Playwright; engine versions in every report
 - [x] CONTRIBUTING, CODE_OF_CONDUCT, GOVERNANCE, rule author guide, issue and PR templates, ADRs

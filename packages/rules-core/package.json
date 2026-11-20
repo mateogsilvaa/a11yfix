@@ -1,8 +1,29 @@
 {
   "name": "verifa11y-rules-core",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "The core verifa11y rule set: image-alt, label, heading-order, ARIA attribute and role rules, color-contrast. Tier-0 rules ship deterministic codemods.",
   "license": "Apache-2.0",
+  "author": "mateogsilvaa",
+  "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateogsilvaa/verifa11y.git",
+    "directory": "packages/rules-core"
+  },
+  "bugs": {
+    "url": "https://github.com/mateogsilvaa/verifa11y/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "fix",
+    "codemod",
+    "verifier",
+    "html",
+    "rules"
+  ],
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -14,12 +35,21 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "LICENSE",
+    "NOTICE"
   ],
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.0"
+    "verifa11y-core": "0.4.1"
+  },
+  "scripts": {
+    "prepack": "node ../../scripts/prepack.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

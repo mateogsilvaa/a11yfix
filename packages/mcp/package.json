@@ -1,8 +1,31 @@
 {
   "name": "verifa11y-mcp",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "description": "MCP server for verifa11y: a verified accessibility fixer for static HTML (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
   "license": "Apache-2.0",
+  "author": "mateogsilvaa",
+  "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateogsilvaa/verifa11y.git",
+    "directory": "packages/mcp"
+  },
+  "bugs": {
+    "url": "https://github.com/mateogsilvaa/verifa11y/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "fix",
+    "codemod",
+    "verifier",
+    "html",
+    "mcp",
+    "model-context-protocol",
+    "agents"
+  ],
   "type": "module",
   "bin": {
     "verifa11y-mcp": "dist/server.js"
@@ -13,18 +36,27 @@
     "./package.json": "./package.json"
   },
   "files": [
-    "dist"
+    "dist",
+    "src",
+    "LICENSE",
+    "NOTICE"
   ],
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.0",
-    "verifa11y-rules-core": "0.4.0",
+    "verifa11y-core": "0.4.1",
+    "verifa11y-rules-core": "0.4.1",
     "zod": "4.6.7",
     "@modelcontextprotocol/server": "2.4.0"
   },
   "devDependencies": {
     "@modelcontextprotocol/client": "2.4.0"
+  },
+  "scripts": {
+    "prepack": "node ../../scripts/prepack.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

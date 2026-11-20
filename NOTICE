@@ -3,12 +3,16 @@ Copyright 2026 mateogsilvaa and the verifa11y contributors
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 
-The benchmark corpus includes third-party material under its own licenses:
+The benchmark corpus (in the repository, not in the npm packages) includes third-party material under
+its own licenses:
 
 - corpus/external/axe-core/: fixtures from axe-core (https://github.com/dequelabs/axe-core),
   Mozilla Public License 2.0. See corpus/external/LICENSE-axe-core.
 - corpus/external/w3c-bad/: pages from the W3C WAI Before and After Demonstration
   (https://www.w3.org/WAI/demos/bad/), Copyright © World Wide Web Consortium,
   W3C Software and Document License. See corpus/external/LICENSE-w3c.md.
+- corpus/eval/: the held-out set. Start Bootstrap templates (MIT, Start Bootstrap LLC), Bootstrap
+  examples (code MIT, The Bootstrap Authors; documentation CC BY 3.0), MDN learning-area pages (CC0 1.0)
+  and axe-core fixtures (MPL-2.0). Each source folder has its SOURCE.md and LICENSE.
 
 At runtime verifa11y injects axe-core (MPL-2.0, Deque Systems) into the audited page.

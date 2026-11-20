@@ -36,7 +36,7 @@ the change in numbers explained.
 |---|---|
 | `packages/core` (`verifa11y-core`) | audit, source mapping, validation, the verifier, the pipeline, the Rule API, the optional LLM tier |
 | `packages/rules-core` (`verifa11y-rules-core`) | the core rules; tier-0 codemods |
-| `packages/cli` (`verifa11y-cli`) | the `verifa11y` command |
+| `packages/cli` (`verifa11y`) | the `verifa11y` command |
 
 Architecture decisions are recorded in [`docs/adr/`](docs/adr). If your change contradicts one, write a new ADR that
 supersedes it.

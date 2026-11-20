@@ -5,7 +5,7 @@ against axe-core plus the browser's accessibility tree, focus order and rendered
 
 **This is not an accessibility audit and it does not certify WCAG conformance.** "Verified" means axe-core no longer
 reports the violation and the other checks found nothing worse. Every result says so in its payload, and agents must
-not tell users a page "is accessible". The contract is in [docs/agents.md](../../docs/agents.md).
+not tell users a page "is accessible". The contract is in [docs/agents.md](https://github.com/mateogsilvaa/verifa11y/blob/main/docs/agents.md).
 
 Version 0.x: the verifa11y Rule API is still experimental (ADR 0006).
 
@@ -17,7 +17,10 @@ Version 0.x: the verifa11y Rule API is still experimental (ADR 0006).
 - Files confined to `--root`, symlinks resolved, size limits.
 
 ```sh
-claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
+npx verifa11y-mcp --install-browser    # once: the headless Chromium it renders with
+claude mcp add verifa11y -- npx -y verifa11y-mcp --root .
 ```
+
+Any MCP host works the same way: command `npx`, arguments `-y verifa11y-mcp --root <project>`.
 
 Apache-2.0.

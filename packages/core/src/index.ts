@@ -7,7 +7,7 @@ export * from "./wcag.js";
 export * from "./source.js";
 export * from "./html.js";
 export { auditFile, auditSource, type AuditOptions, type AuditResult, type PageViolation } from "./audit.js";
-export { closeBrowser, getBrowser, withPage } from "./browser.js";
+export { BROWSER, browserInstallCommand, closeBrowser, getBrowser, installBrowser, withPage } from "./browser.js";
 export { describeContext, extractNodeContext } from "./context.js";
 export { applyAt, locate, type AppliedPatch, type LocateResult } from "./apply.js";
 export { MAX_HUNKS, MAX_LINES, PATCH_JSON_SCHEMA, PatchSchema, parsePatch, validatePatch, type ValidationResult } from "./validate.js";

@@ -6,6 +6,8 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { Command, InvalidArgumentError, Option } from "commander";
 import {
+  BROWSER,
+  installBrowser,
   CommandGenerator,
   DEFAULT_DEEP_CHECKS,
   DEFAULT_MODEL,
@@ -489,6 +491,15 @@ fixOpts(
     console.log(`wrote ${o.report} (${((Date.now() - started) / 1000).toFixed(1)} s)`);
   },
 );
+
+program
+  .command("install-browser")
+  .description(`install the headless Chromium verifa11y renders with (${BROWSER}), matching its Playwright version`)
+  .option("--with-deps", "also install the system libraries it needs (Linux; may ask for sudo)", false)
+  .action(async (o: { withDeps: boolean }) => {
+    const code = await installBrowser({ withDeps: o.withDeps });
+    if (code !== 0) throw new Error(`browser install failed (exit code ${code})`);
+  });
 
 program
   .parseAsync()

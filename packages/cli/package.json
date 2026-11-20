@@ -1,19 +1,51 @@
 {
-  "name": "verifa11y-cli",
-  "version": "0.4.0",
-  "description": "Command-line interface for verifa11y.",
+  "name": "verifa11y",
+  "version": "0.4.1",
+  "description": "Fix accessibility violations in static HTML and keep only the patches a verifier proves: axe-core, accessibility tree, focus order and pixels. Not a conformance audit.",
   "license": "Apache-2.0",
+  "author": "mateogsilvaa",
+  "homepage": "https://github.com/mateogsilvaa/verifa11y#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mateogsilvaa/verifa11y.git",
+    "directory": "packages/cli"
+  },
+  "bugs": {
+    "url": "https://github.com/mateogsilvaa/verifa11y/issues"
+  },
+  "keywords": [
+    "accessibility",
+    "a11y",
+    "wcag",
+    "axe-core",
+    "fix",
+    "codemod",
+    "verifier",
+    "html",
+    "cli"
+  ],
   "type": "module",
   "bin": {
     "verifa11y": "dist/cli.js"
   },
-  "files": ["dist"],
+  "files": [
+    "dist",
+    "src",
+    "LICENSE",
+    "NOTICE"
+  ],
   "engines": {
     "node": ">=20"
   },
   "dependencies": {
-    "verifa11y-core": "0.4.0",
-    "verifa11y-rules-core": "0.4.0",
+    "verifa11y-core": "0.4.1",
+    "verifa11y-rules-core": "0.4.1",
     "commander": "15.1.0"
+  },
+  "scripts": {
+    "prepack": "node ../../scripts/prepack.mjs"
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }

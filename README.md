@@ -173,21 +173,21 @@ read and written only inside `--root`. The contract for agents is [docs/agents.m
 
 ```sh
 # Claude Code
-claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
+claude mcp add verifa11y -- npx -y verifa11y-mcp --root .
 ```
 
 ```json
 {
   "mcpServers": {
     "verifa11y": {
-      "command": "node",
-      "args": ["/path/to/verifa11y/packages/mcp/dist/server.js", "--root", "/path/to/your/project"]
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "/path/to/your/project"]
     }
   }
 }
 ```
 
-(The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)
+Install the browser once with `npx verifa11y-mcp --install-browser`. (The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)
 
 ### GitHub Action: verified suggestions on pull requests
 
@@ -293,6 +293,16 @@ For untrusted sites, run verifa11y in the container: see [docs/sandbox.md](docs/
 Requires Node.js 20+ (Node 22.13+ for `--db`).
 
 ```sh
+npx verifa11y install-browser       # once: the headless Chromium verifa11y renders with
+npx verifa11y audit page.html --out findings.json
+```
+
+Or install it: `npm install -g verifa11y` (the CLI), `verifa11y-mcp` (the MCP server), `verifa11y-core` (the
+engine, to embed it). On Linux CI, `verifa11y install-browser --with-deps` also installs the system libraries.
+
+From source, to work on verifa11y itself:
+
+```sh
 git clone https://github.com/mateogsilvaa/verifa11y.git
 cd verifa11y
 npm ci
@@ -307,7 +317,7 @@ export ANTHROPIC_API_KEY=...                       # the built-in client
 export VERIFA11Y_GENERATOR_CMD="ollama run qwen3:8b"  # or any model or agent CLI (same as --generator-cmd)
 ```
 
-Run the CLI with `node packages/cli/dist/cli.js <command>` (or `npm run verifa11y -- <command>`), or in Docker:
+From source, run the CLI with `node packages/cli/dist/cli.js <command>` (or `npm run verifa11y -- <command>`), or in Docker:
 `docker build -t verifa11y .` (see [docs/sandbox.md](docs/sandbox.md)).
 
 ## Usage
@@ -346,7 +356,7 @@ built-in client uses a JSON schema as the response format and caches the file bl
 |---|---|
 | [`verifa11y-core`](packages/core) | audit, source mapping, validation, verifier, site crawler, storage, pipeline, report, Rule API, tier-1 generators |
 | [`verifa11y-rules-core`](packages/rules-core) | the core rules and their tier-0 codemods |
-| [`verifa11y-cli`](packages/cli) | the `verifa11y` command |
+| [`verifa11y`](packages/cli) | the `verifa11y` command |
 | [`verifa11y-mcp`](packages/mcp) | the MCP server (`verifa11y-mcp`): a thin wrapper over the core |
 | [`verifa11y-action`](packages/action) | the GitHub Action's logic (`action.yml` at the root); private, not published |
 
