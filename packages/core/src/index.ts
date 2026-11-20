@@ -1,6 +1,7 @@
 // a11yfix-core public entry point.
 
 export * from "./types.js";
+export { CAVEATS, CONFORMANCE, WARNING } from "./caveats.js";
 export * from "./rule.js";
 export * from "./wcag.js";
 export * from "./source.js";
@@ -23,6 +24,7 @@ export {
 } from "./llm.js";
 export {
   combine,
+  subEdits,
   countBy,
   limiter,
   pagePatch,

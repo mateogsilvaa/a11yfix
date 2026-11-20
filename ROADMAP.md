@@ -93,11 +93,12 @@ than half-working codemods for templates.
 
 ## Phase 6: distribution
 
-- SARIF output, so GitHub Code Scanning consumes it with no custom integration
-- Official GitHub Action with a PR comment and an optional check
-- pre-commit hook
-- LSP server to show findings in the editor
-- Optional hosted instance, never a requirement
+- [ ] SARIF output, so GitHub Code Scanning consumes it with no custom integration
+- [x] Official GitHub Action: one review of verified suggestions on the changed lines, job summary for forks,
+      optional failing check (ADR 0014); tagging and the Marketplace listing are still to do
+- [ ] pre-commit hook
+- [ ] LSP server to show findings in the editor
+- [ ] Optional hosted instance, never a requirement
 
 ## Benchmark v2
 

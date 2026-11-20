@@ -146,6 +146,26 @@ claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --ro
 
 (The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)
 
+### GitHub Action: verified suggestions on pull requests
+
+On `pull_request`, the action audits the HTML files the pull request changes, runs `fix --verify --strict` with the
+codemods (tier 1 only with a `generator-cmd` the workflow names), and posts one review whose inline comments are
+GitHub suggestions, one per verified fix, on the exact lines it changes. Suspicious, rejected and skipped findings are
+listed in the review body for a person, never suggested; every comment carries the same caveats as the MCP server.
+Fork pull requests (read-only token) get the report in the job summary instead. `fail-on: none|findings|unfixed`.
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    ref: ${{ github.event.pull_request.head.sha }}
+- uses: actions/setup-node@v4
+  with:
+    node-version: 22
+- uses: mateogsilvaa/a11yfix@COMMIT_SHA # no release tagged yet: pin a commit
+```
+
+Full example, inputs and outputs: [docs/github-action.md](docs/github-action.md).
+
 ### The verifier
 
 For each patch that passes shape validation:
@@ -285,6 +305,7 @@ built-in client uses a JSON schema as the response format and caches the file bl
 | [`a11yfix-rules-core`](packages/rules-core) | the core rules and their tier-0 codemods |
 | [`a11yfix-cli`](packages/cli) | the `a11yfix` command |
 | [`a11yfix-mcp`](packages/mcp) | the MCP server (`a11yfix-mcp`): a thin wrapper over the core |
+| [`a11yfix-action`](packages/action) | the GitHub Action's logic (`action.yml` at the root); private, not published |
 
 A rule is a typed object: `id`, `version` (semver), `axe`, `wcag`, `level`, `tier`, `confidence`, `detect`, `fix`
 (the codemod), `guidance` (for tier 1), `verify` (extra checks) and `deprecated`. See the

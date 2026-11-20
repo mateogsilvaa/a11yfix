@@ -41,7 +41,8 @@ what was rejected or skipped and why, and that a person must review it.
 
 ## Working on this repository
 
-- TypeScript ESM, npm workspaces: `packages/core`, `packages/rules-core`, `packages/cli`, `packages/mcp`. Node 20+.
+- TypeScript ESM, npm workspaces: `packages/core`, `packages/rules-core`, `packages/cli`, `packages/mcp`,
+  `packages/action` (the GitHub Action, `action.yml` at the root). Node 20+.
 - `npm test` builds and runs every test with a real browser, including both sabotage suites. It must pass.
 - `npm run bench:codemod` when you touch rules, the verifier or the pipeline. Tier 0 must stay at 100% precision.
 - Never weaken the verifier to improve a number. Never commit benchmark numbers you did not measure.

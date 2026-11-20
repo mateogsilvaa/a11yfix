@@ -66,6 +66,32 @@ jobs:
           name: bench-codemod
           path: bench/run/
 
+  action:
+    name: GitHub Action (smoke)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      pull-requests: read
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # Installs and runs action.yml from this checkout. The filter matches no file, so it never posts a review
+      # (the corpus is full of deliberate violations); posting is covered by packages/action/test.
+      - uses: ./
+        id: a11yfix
+        with:
+          paths: a11yfix-ci-smoke-matches-nothing/**/*.html
+          fail-on: unfixed
+      - name: The action ran and reported
+        run: test "${{ steps.a11yfix.outputs.findings }}" = "0" && test -f "${{ steps.a11yfix.outputs.results }}"
+
   docker:
     name: container sandbox
     runs-on: ubuntu-latest

@@ -1,0 +1,42 @@
+# Example workflow: copy to .github/workflows/a11yfix.yml in your repository.
+# Docs: https://github.com/mateogsilvaa/a11yfix/blob/main/docs/github-action.md
+name: accessibility
+
+on:
+  pull_request:
+    paths: ["**/*.html", "**/*.htm"]
+
+# Read the pull request, post one review. Nothing else.
+permissions:
+  contents: read
+  pull-requests: write
+
+jobs:
+  a11yfix:
+    runs-on: ubuntu-latest
+    steps:
+      # The pull request head, not the merge commit: suggestions point at the head's lines.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # No release is tagged yet: pin a full commit SHA of mateogsilvaa/a11yfix.
+      - uses: mateogsilvaa/a11yfix@COMMIT_SHA
+        id: a11yfix
+        with:
+          mode: codemod # deterministic fixes only, no model, no secrets
+          fail-on: none # or: findings, unfixed
+
+      # The combined `git apply` patch and every result, for whoever reviews the pull request.
+      - uses: actions/upload-artifact@v4
+        if: always() && steps.a11yfix.outputs.results != ''
+        with:
+          name: a11yfix
+          path: |
+            ${{ steps.a11yfix.outputs.patch }}
+            ${{ steps.a11yfix.outputs.results }}

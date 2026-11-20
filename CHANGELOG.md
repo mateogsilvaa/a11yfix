@@ -3,6 +3,20 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## Unreleased
+
+### Added
+- **GitHub Action** (`action.yml`, `packages/action`, ADR 0014). On `pull_request`, audits the changed HTML files, runs
+  `fix --verify` (codemods by default; tier 1 only with an explicit `generator-cmd`) and posts one review whose
+  inline comments are suggestions for verified patches only, on the exact lines they change. Suspicious, rejected
+  and skipped findings are listed in the body, never suggested. Job summary for fork pull requests. Inputs `paths`,
+  `mode`, `strict`, `fail-on`, `generator-cmd`, `max-files`, `working-directory`, `github-token`. Example workflow in
+  `docs/examples/`. Not tagged or published to the Marketplace yet.
+
+### Changed
+- The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `a11yfix-core`; `a11yfix-mcp`
+  re-exports them unchanged.
+
 ## 0.3.0
 
 Roadmap phases 1 (sites) and 3 (verification beyond axe), and tier 1 through any model or agent.

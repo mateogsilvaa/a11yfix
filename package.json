@@ -9,14 +9,15 @@
     "packages/core",
     "packages/rules-core",
     "packages/cli",
-    "packages/mcp"
+    "packages/mcp",
+    "packages/action"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -b packages/core packages/rules-core packages/cli packages/mcp",
-    "clean": "tsc -b --clean packages/core packages/rules-core packages/cli packages/mcp",
+    "build": "tsc -b packages/core packages/rules-core packages/cli packages/mcp packages/action",
+    "clean": "tsc -b --clean packages/core packages/rules-core packages/cli packages/mcp packages/action",
     "typecheck": "npm run build",
     "test": "npm run build && node scripts/test.mjs",
     "test:sabotage": "npm run build && node scripts/test.mjs sabotage",
