@@ -2,10 +2,10 @@
   "file": "corpus\\external\\axe-core\\aria-allowed-attr.html",
   "findings": 23,
   "statuses": {
-    "verified": 17,
+    "verified": 14,
+    "rejected_suspicious": 4,
     "rejected_invalid": 2,
-    "rejected_regression": 3,
-    "rejected_suspicious": 1
+    "rejected_regression": 3
   },
   "included": [
     "f_0001",
@@ -44,7 +44,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 6429,
+  "ms": 7840,
   "results": [
     {
       "findingId": "f_0001",
@@ -187,9 +187,9 @@
       "ruleId": "aria-required-attr",
       "line": 26,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -221,9 +221,9 @@
       "ruleId": "aria-required-attr",
       "line": 27,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -255,9 +255,9 @@
       "ruleId": "aria-required-attr",
       "line": 28,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

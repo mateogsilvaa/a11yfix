@@ -3,7 +3,7 @@
 - Mode: `codemod` (codemods only)
 - Corpus: `./corpus` (22 pages)
 - Engines: a11yfix-core 0.3.0, axe-core 4.14.1, playwright 1.65.1, node 26.13.1
-- Run 2026-11-20, total wall time 45.7 s
+- Run 2026-11-20, total wall time 76.8 s
 
 > a11yfix does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.
 
@@ -22,7 +22,7 @@
 | Regression rate (regressions / applied) | 0.0% |
 | Mean cost per verified fix | 0 tokens |
 | Total tokens | 0 |
-| Mean time per page | 2.3 s |
+| Mean time per page | 3.9 s |
 | Subset violations left after applying the output patch | 504 of 662 |
 | WCAG A/AA violations (all rules) before → after | 809 → 651 |
 
@@ -76,28 +76,28 @@ Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejec
 
 | Page | Detected | Verified | Left after patch | WCAG A/AA before → after | Time |
 |---|---|---|---|---|---|
-| external/axe-core/aria-allowed-attr.html | 23 | 8 | 13 | 33 → 23 | 1.5 s |
-| external/axe-core/aria-required-attr.html | 16 | 0 | 16 | 24 → 24 | 0.5 s |
-| external/axe-core/aria-roles.html | 22 | 0 | 22 | 60 → 60 | 0.7 s |
-| external/axe-core/aria-valid-attr-value.html | 189 | 113 | 55 | 198 → 64 | 31.9 s |
-| external/axe-core/color-contrast.html | 22 | 0 | 22 | 28 → 28 | 1.0 s |
-| external/axe-core/heading-order.html | 3 | 0 | 3 | 3 → 3 | 0.4 s |
-| external/axe-core/image-alt.html | 19 | 0 | 19 | 22 → 22 | 0.5 s |
-| external/axe-core/label.html | 14 | 0 | 14 | 28 → 28 | 0.6 s |
-| external/w3c-bad/home.html | 71 | 0 | 71 | 84 → 84 | 1.0 s |
-| external/w3c-bad/news.html | 75 | 0 | 75 | 86 → 86 | 1.0 s |
-| external/w3c-bad/survey.html | 71 | 0 | 71 | 83 → 83 | 1.3 s |
-| external/w3c-bad/tickets.html | 70 | 0 | 70 | 81 → 81 | 1.2 s |
-| handwritten/01-bakery-images.html | 7 | 0 | 7 | 10 → 10 | 0.5 s |
-| handwritten/02-newsletter-labels.html | 4 | 3 | 1 | 5 → 2 | 1.3 s |
-| handwritten/03-docs-headings.html | 2 | 1 | 1 | 4 → 3 | 0.9 s |
-| handwritten/04-dashboard-roles.html | 7 | 2 | 5 | 7 → 5 | 1.3 s |
-| handwritten/05-settings-aria-values.html | 7 | 4 | 3 | 9 → 5 | 1.4 s |
-| handwritten/06-pricing-contrast.html | 7 | 0 | 7 | 7 → 7 | 0.5 s |
-| handwritten/07-recipe-mixed.html | 7 | 1 | 6 | 8 → 7 | 0.9 s |
-| handwritten/08-portfolio-ambiguous.html | 10 | 0 | 10 | 12 → 12 | 0.5 s |
-| handwritten/09-event-signup.html | 7 | 4 | 4 | 8 → 5 | 1.4 s |
-| handwritten/10-coworking-crlf.html | 9 | 0 | 9 | 9 → 9 | 0.5 s |
+| external/axe-core/aria-allowed-attr.html | 23 | 8 | 13 | 33 → 23 | 2.0 s |
+| external/axe-core/aria-required-attr.html | 16 | 0 | 16 | 24 → 24 | 0.6 s |
+| external/axe-core/aria-roles.html | 22 | 0 | 22 | 60 → 60 | 1.0 s |
+| external/axe-core/aria-valid-attr-value.html | 189 | 113 | 55 | 198 → 64 | 57.2 s |
+| external/axe-core/color-contrast.html | 22 | 0 | 22 | 28 → 28 | 2.0 s |
+| external/axe-core/heading-order.html | 3 | 0 | 3 | 3 → 3 | 0.6 s |
+| external/axe-core/image-alt.html | 19 | 0 | 19 | 22 → 22 | 0.7 s |
+| external/axe-core/label.html | 14 | 0 | 14 | 28 → 28 | 0.9 s |
+| external/w3c-bad/home.html | 71 | 0 | 71 | 84 → 84 | 1.5 s |
+| external/w3c-bad/news.html | 75 | 0 | 75 | 86 → 86 | 1.5 s |
+| external/w3c-bad/survey.html | 71 | 0 | 71 | 83 → 83 | 1.7 s |
+| external/w3c-bad/tickets.html | 70 | 0 | 70 | 81 → 81 | 1.6 s |
+| handwritten/01-bakery-images.html | 7 | 0 | 7 | 10 → 10 | 0.7 s |
+| handwritten/02-newsletter-labels.html | 4 | 3 | 1 | 5 → 2 | 2.1 s |
+| handwritten/03-docs-headings.html | 2 | 1 | 1 | 4 → 3 | 1.5 s |
+| handwritten/04-dashboard-roles.html | 7 | 2 | 5 | 7 → 5 | 2.0 s |
+| handwritten/05-settings-aria-values.html | 7 | 4 | 3 | 9 → 5 | 2.1 s |
+| handwritten/06-pricing-contrast.html | 7 | 0 | 7 | 7 → 7 | 0.7 s |
+| handwritten/07-recipe-mixed.html | 7 | 1 | 6 | 8 → 7 | 1.3 s |
+| handwritten/08-portfolio-ambiguous.html | 10 | 0 | 10 | 12 → 12 | 0.8 s |
+| handwritten/09-event-signup.html | 7 | 4 | 4 | 8 → 5 | 2.2 s |
+| handwritten/10-coworking-crlf.html | 9 | 0 | 9 | 9 → 9 | 0.8 s |
 
 ## Skipped
 

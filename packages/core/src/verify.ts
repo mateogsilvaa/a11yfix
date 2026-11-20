@@ -16,6 +16,7 @@ import { allElements, attr, parseSource, type Element } from "./source.js";
 import type { Rule } from "./rule.js";
 import type { Finding, SuspicionLayer, Verification, ViolationRef } from "./types.js";
 import { validatePatch } from "./validate.js";
+import { textContent } from "./html.js";
 import { deepCheck, probeOptions, type DeepCheckOptions } from "./deepcheck.js";
 import type { Impact } from "./types.js";
 
@@ -285,6 +286,128 @@ export function restatesFileName(text: string, src: string): boolean {
   return textWords.length > 0 && fileWords.size > 0 && textWords.every((w) => fileWords.has(w));
 }
 
+/** Lowercase letters and digits only: "E-mail" and "email" compare equal. */
+function compact(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "");
+}
+
+const NEARBY_STOP = new Set(["form", "main", "body", "html"]);
+
+/**
+ * Visible text segments around a control: each text node under its parent
+ * and grandparent (without the control's own subtree, such as a <select>'s
+ * options, and without crossing a <form>, <main> or <body>), plus its
+ * placeholder and title. Covers "Full name <input>", "<span>Country</span>
+ * <select>", a <legend>, and a "<td>Email</td><td><input></td>" row.
+ */
+function nearbySegments(el: Element): string[] {
+  const out: string[] = [];
+  const walk = (n: Element) => {
+    if (n === el) return;
+    for (const c of n.childNodes) {
+      if (c.nodeName === "#text") out.push((c as unknown as { value: string }).value.replace(/\s+/g, " ").trim());
+      else if ((c as Element).tagName && (c as Element).tagName !== "script" && (c as Element).tagName !== "style") walk(c as Element);
+    }
+  };
+  // The higher of parent and grandparent that is not a stop; its text includes the parent's.
+  let top: Element | null = null;
+  let cur = el.parentNode as Element | null;
+  for (let level = 0; level < 2 && cur && cur.tagName && !NEARBY_STOP.has(cur.tagName); level++) {
+    top = cur;
+    cur = cur.parentNode as Element | null;
+  }
+  if (top) walk(top);
+  // The nearest non-blank sibling on each side, even directly under a <form>
+  // or <body>: "<p>Contact</p> <input>".
+  const parent = el.parentNode as Element | null;
+  if (parent?.childNodes) {
+    const sibs = parent.childNodes;
+    const i = sibs.indexOf(el as (typeof sibs)[number]);
+    const textOf = (c: (typeof sibs)[number]) =>
+      c.nodeName === "#text" ? (c as unknown as { value: string }).value : (c as Element).tagName ? textContent(c as Element) : "";
+    for (const step of [-1, 1]) {
+      for (let j = i + step; j >= 0 && j < sibs.length; j += step) {
+        const t = textOf(sibs[j]!).replace(/\s+/g, " ").trim();
+        if (t) {
+          out.push(t);
+          break;
+        }
+        if ((sibs[j] as Element).tagName) break; // an element with no text: stop at it
+      }
+    }
+  }
+  out.push((attr(el, "placeholder") ?? "").trim(), (attr(el, "title") ?? "").trim());
+  return out.filter((t) => compact(t));
+}
+
+/**
+ * True when some run of consecutive words in `text` spells `target`, ignoring
+ * case and separators ("E-mail" spells "email"; "first name" contains "Name").
+ */
+function spelledIn(target: string, text: string): boolean {
+  const want = compact(target);
+  if (!want) return false;
+  const ws = text.toLowerCase().split(/[^a-z0-9]+/).filter(Boolean);
+  for (let i = 0; i < ws.length; i++) {
+    let run = "";
+    for (let j = i; j < ws.length && run.length < want.length; j++) {
+      run += ws[j];
+      if (run === want) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * WCAG 2.5.3 (label in name): the aria-label contains, word for word, a whole
+ * visible text segment next to the element. "Email" next to the field and
+ * aria-label="email" agree; "Send me the weekly digest" and aria-label="weekly" do not.
+ */
+function containsVisibleLabel(label: string, el: Element): boolean {
+  return nearbySegments(el).some((seg) => spelledIn(seg, label));
+}
+
+/**
+ * True when every word of `label` already appears in the identifier `ident`
+ * (a `name` or `id` attribute: "first_name", "firstName", "email"). The same
+ * test as restatesFileName, applied to the developer's identifier.
+ */
+export function restatesIdentifier(label: string, ident: string): boolean {
+  const identWords = new Set(words(ident));
+  const labelWords = words(label);
+  return labelWords.length > 0 && identWords.size > 0 && labelWords.every((w) => identWords.has(w));
+}
+
+/** ARIA attributes whose value is one or more element ids. */
+export const IDREF_ATTRS = [
+  "aria-activedescendant",
+  "aria-controls",
+  "aria-describedby",
+  "aria-details",
+  "aria-errormessage",
+  "aria-flowto",
+  "aria-labelledby",
+  "aria-owns",
+] as const;
+
+/** Every "attr -> id" reference on the page that resolves to no element id, as "attr=id" strings. */
+function danglingRefs(els: Element[]): string[] {
+  const ids = new Set<string>();
+  for (const el of els) {
+    const id = attr(el, "id");
+    if (id) ids.add(id);
+  }
+  const out: string[] = [];
+  for (const el of els) {
+    for (const name of IDREF_ATTRS) {
+      const v = attr(el, name);
+      if (v === undefined) continue;
+      for (const token of v.trim().split(/\s+/).filter(Boolean)) if (!ids.has(token)) out.push(`${name}=${token}`);
+    }
+  }
+  return out;
+}
+
 export function suspicionReasons(src: string, ap: AppliedPatch, finding: Finding): string[] {
   const oldEls = allElements(parseSource(src));
   const newEls = allElements(parseSource(ap.patched));
@@ -382,6 +505,44 @@ export function suspicionReasons(src: string, ap: AppliedPatch, finding: Finding
     const added = multisetMinus(values(newEls, "aria-label", () => true), values(oldEls, "aria-label", () => true));
     const bad = added.filter((t) => /^(input|field|text|textbox|label|form field)$/i.test(t.trim()) || t.trim().length < 2);
     if (bad.length) reasons.push(`generic aria-label: ${bad.map((b) => JSON.stringify(b)).join(", ")}`);
+  }
+
+  // 9. An aria-label that only restates the element's `name` or `id`
+  //    (<input name="first"> -> aria-label="first"): the developer's
+  //    identifier, not what the field is for. Accepted when the label
+  //    contains a whole visible text segment next to the element (adjacent
+  //    text, placeholder, title): then it agrees with what sighted users
+  //    read (label in name, WCAG 2.5.3). See ADR 0015.
+  const addedLabels = multisetMinus(values(newEls, "aria-label", () => true), values(oldEls, "aria-label", () => true));
+  if (addedLabels.length) {
+    const pending = new Set(addedLabels);
+    for (const el of newEls) {
+      const label = attr(el, "aria-label");
+      if (!label || !pending.has(label)) continue;
+      const start = el.sourceCodeLocation?.startOffset ?? -1;
+      if (start < ap.editStart || start >= ap.editEndNew) continue;
+      for (const which of ["name", "id"] as const) {
+        const ident = attr(el, which);
+        if (!ident || !restatesIdentifier(label, ident) || containsVisibleLabel(label, el)) continue;
+        reasons.push(`aria-label ${JSON.stringify(label)} only restates the ${which} attribute "${ident}" and does not contain the visible text next to the <${el.tagName}>`);
+        break;
+      }
+    }
+  }
+
+  // 10. An id reference (aria-controls, aria-labelledby, ...) that the patch
+  //     added or changed and that points at no element on the page
+  //     (aria-controls="false"). It satisfies "the attribute is present"
+  //     and states a relationship that does not exist. Pre-existing dangling
+  //     references are not the patch's doing; new ones are, including a
+  //     reference broken by removing or renaming its target id.
+  const newDangling = multisetMinus(danglingRefs(newEls), danglingRefs(oldEls));
+  if (newDangling.length) {
+    const shown = [...new Set(newDangling)].map((d) => {
+      const [name, id] = [d.slice(0, d.indexOf("=")), d.slice(d.indexOf("=") + 1)];
+      return `${name} -> "${id}"`;
+    });
+    reasons.push(`id reference to no element on the page: ${shown.join(", ")}`);
   }
 
   return reasons;

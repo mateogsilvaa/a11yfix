@@ -3,7 +3,8 @@
   "findings": 16,
   "statuses": {
     "rejected_regression": 5,
-    "verified": 11
+    "verified": 7,
+    "rejected_suspicious": 4
   },
   "included": [
     "f_0003",
@@ -30,7 +31,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 5643,
+  "ms": 6630,
   "results": [
     {
       "findingId": "f_0001",
@@ -105,9 +106,9 @@
       "ruleId": "aria-required-attr",
       "line": 52,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -139,9 +140,9 @@
       "ruleId": "label",
       "line": 63,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"pass9\" only restates the id attribute \"pass9\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -156,9 +157,9 @@
       "ruleId": "label",
       "line": 64,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"pass10\" only restates the id attribute \"pass10\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -258,9 +259,9 @@
       "ruleId": "aria-required-attr",
       "line": 83,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

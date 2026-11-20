@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Identifier and id-reference cases</title>
+</head>
+<body>
+  <main>
+    <h1>Register</h1>
+    <form action="/register" method="post">
+      <table>
+        <tr>
+          <td>Email</td>
+          <td><input type="email" name="email"></td>
+        </tr>
+      </table>
+      <p>
+        <input type="text" name="first_name">
+      </p>
+      <p id="name-hint">As printed on your ticket.</p>
+      <div role="combobox" tabindex="0" aria-label="Region">eu-west-1</div>
+      <ul id="regions" role="listbox" aria-label="Regions">
+        <li role="option" aria-selected="true">eu-west-1</li>
+      </ul>
+    </form>
+  </main>
+</body>
+</html>

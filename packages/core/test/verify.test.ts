@@ -195,3 +195,62 @@ describe("shape validation", () => {
     assert.equal(v.status, "rejected_invalid");
   });
 });
+
+describe("identifiers as labels and id references (ADR 0015)", () => {
+  const IFILE = fixture("identifiers.html");
+  let isrc = "";
+  let ibase: AuditResult;
+  const at = (rule: string, line: number): Finding => {
+    const f = ibase.findings.find((x) => x.ruleId === rule && x.sourceLines?.start === line);
+    assert.ok(f, `no ${rule} finding on line ${line}: ${ibase.findings.map((x) => `${x.ruleId}@${x.sourceLines?.start}`).join(", ")}`);
+    return f;
+  };
+  const check = async (f: Finding, b: string, a: string) =>
+    (await verifyPatch({ file: IFILE, src: isrc, finding: f, baseline: ibase, patch: { findingId: f.id, rationale: "t", before: b, after: a, confidence: "high" } })).verification;
+  const EMAIL = '<input type="email" name="email">';
+  const FIRST = '<input type="text" name="first_name">';
+  const COMBO = '<div role="combobox" tabindex="0" aria-label="Region">';
+
+  before(async () => {
+    isrc = await readFile(IFILE, "utf8");
+    ibase = await auditSource(IFILE, isrc, { rules: RULES });
+  });
+
+  it('accepts aria-label="Email" on name="email" when "Email" is the visible text next to it', async () => {
+    const v = await check(at("label", 14), EMAIL, '<input type="email" name="email" aria-label="Email">');
+    assert.equal(v.status, "verified", v.reason ?? "");
+  });
+
+  it("rejects an aria-label that only restates the name attribute", async () => {
+    const v = await check(at("label", 18), FIRST, '<input type="text" name="first_name" aria-label="first name">');
+    assert.equal(v.status, "rejected_suspicious", v.reason ?? "");
+    assert.match(v.reason ?? "", /restates the name attribute/);
+  });
+
+  it("accepts an aria-label that says more than the name attribute", async () => {
+    const v = await check(at("label", 18), FIRST, '<input type="text" name="first_name" aria-label="First name as on your ticket">');
+    assert.equal(v.status, "verified", v.reason ?? "");
+  });
+
+  it("rejects an id reference to an element that does not exist", async () => {
+    const v = await check(at("label", 18), FIRST, '<input type="text" name="first_name" aria-label="Given name" aria-describedby="hint">');
+    assert.equal(v.status, "rejected_suspicious", v.reason ?? "");
+    assert.match(v.reason ?? "", /aria-describedby -> "hint"/);
+  });
+
+  it("accepts an id reference to an element that exists", async () => {
+    const v = await check(at("label", 18), FIRST, '<input type="text" name="first_name" aria-label="Given name" aria-describedby="name-hint">');
+    assert.equal(v.status, "verified", v.reason ?? "");
+  });
+
+  it('rejects a required aria-controls set to "false"', async () => {
+    const v = await check(at("aria-required-attr", 21), COMBO, '<div role="combobox" tabindex="0" aria-label="Region" aria-expanded="false" aria-controls="false">');
+    assert.equal(v.status, "rejected_suspicious", v.reason ?? "");
+    assert.match(v.reason ?? "", /aria-controls -> "false"/);
+  });
+
+  it("accepts a required aria-controls that points at the listbox", async () => {
+    const v = await check(at("aria-required-attr", 21), COMBO, '<div role="combobox" tabindex="0" aria-label="Region" aria-expanded="false" aria-controls="regions">');
+    assert.equal(v.status, "verified", v.reason ?? "");
+  });
+});

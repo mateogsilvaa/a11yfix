@@ -2,9 +2,12 @@
   "findingId": "f_0009",
   "ruleGone": true,
   "newViolations": [],
-  "suspicious": false,
-  "reason": null,
-  "status": "verified",
+  "suspicious": true,
+  "reason": "aria-label \"canttell11\" only restates the id attribute \"canttell11\" and does not contain the visible text next to the <textarea>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
   "checks": {
     "ax": [],
     "focus": {

@@ -2,9 +2,12 @@
   "findingId": "f_0003",
   "ruleGone": true,
   "newViolations": [],
-  "suspicious": false,
-  "reason": null,
-  "status": "verified",
+  "suspicious": true,
+  "reason": "aria-label \"topics\" only restates the name attribute \"topics\" and does not contain the visible text next to the <textarea>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
   "checks": {
     "ax": [],
     "focus": {

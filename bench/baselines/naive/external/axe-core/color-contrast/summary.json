@@ -3,7 +3,8 @@
   "findings": 22,
   "statuses": {
     "rejected_persists": 11,
-    "verified": 11
+    "rejected_suspicious": 8,
+    "verified": 3
   },
   "included": [
     "f_0006",
@@ -28,7 +29,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 6752,
+  "ms": 87521,
   "results": [
     {
       "findingId": "f_0001",
@@ -120,9 +121,9 @@
       "ruleId": "label",
       "line": 95,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"ignore1\" only restates the id attribute \"ignore1\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -137,9 +138,9 @@
       "ruleId": "label",
       "line": 101,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"ignore2\" only restates the id attribute \"ignore2\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -154,9 +155,9 @@
       "ruleId": "label",
       "line": 211,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"canttell6\" only restates the id attribute \"canttell6\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -171,9 +172,9 @@
       "ruleId": "label",
       "line": 238,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"canttell11\" only restates the id attribute \"canttell11\" and does not contain the visible text next to the <textarea>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -188,9 +189,9 @@
       "ruleId": "label",
       "line": 257,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"canttell15\" only restates the id attribute \"canttell15\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -307,9 +308,9 @@
       "ruleId": "label",
       "line": 521,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"pass24\" only restates the id attribute \"pass24\" and does not contain the visible text next to the <textarea>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -358,9 +359,9 @@
       "ruleId": "label",
       "line": 567,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"canttell24\" only restates the id attribute \"canttell24\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -392,9 +393,9 @@
       "ruleId": "label",
       "line": 590,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"fail15\" only restates the id attribute \"fail15\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

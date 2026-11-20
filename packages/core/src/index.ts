@@ -11,7 +11,17 @@ export { closeBrowser, getBrowser, withPage } from "./browser.js";
 export { describeContext, extractNodeContext } from "./context.js";
 export { applyAt, locate, type AppliedPatch, type LocateResult } from "./apply.js";
 export { MAX_HUNKS, MAX_LINES, PATCH_JSON_SCHEMA, PatchSchema, parsePatch, validatePatch, type ValidationResult } from "./validate.js";
-export { compare, isGenericText, restatesFileName, suspicionReasons, verifyPatch, type VerifyInput, type VerifyOutput } from "./verify.js";
+export {
+  IDREF_ATTRS,
+  compare,
+  isGenericText,
+  restatesFileName,
+  restatesIdentifier,
+  suspicionReasons,
+  verifyPatch,
+  type VerifyInput,
+  type VerifyOutput,
+} from "./verify.js";
 export {
   DEFAULT_MODEL,
   LlmGenerator,

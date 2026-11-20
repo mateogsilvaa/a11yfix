@@ -3,7 +3,7 @@
   "ruleGone": true,
   "newViolations": [],
   "suspicious": true,
-  "reason": "generic aria-label: \"n\"",
+  "reason": "generic aria-label: \"n\"; aria-label \"n\" only restates the name attribute \"n\" and does not contain the visible text next to the <input>",
   "status": "rejected_suspicious",
   "flaggedBy": [
     "static"
