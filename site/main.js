@@ -70,6 +70,7 @@
       });
     });
     select(0, false);
+    return { selectById: (id) => { const i = tabs.findIndex((t) => t.id === id); if (i >= 0) select(i, false); } };
   }
 
   /* The demo: type the command, then run the checks one by one ------------ */
@@ -123,11 +124,50 @@
     io.observe(document.querySelector(".va-window"));
   }
 
+  /* Install guide tabs, and the hero button that opens the right one -------- */
   const caTabs = document.querySelector(".ca-tabs");
+  let guide = null;
   if (caTabs) {
-    caTabs.closest(".code-app").classList.add("tabbed");
+    caTabs.closest(".guide, .code-app").classList.add("tabbed");
     for (const t of document.querySelectorAll(".ca-title")) t.classList.add("sr-only");
-    setupTabs(caTabs);
+    guide = setupTabs(caTabs);
+  }
+  const tryBtn = document.querySelector("[data-try]");
+  const rot = tryBtn?.querySelector(".try-rot");
+  let current = rot?.firstElementChild ?? null;
+  if (tryBtn && guide) tryBtn.addEventListener("click", () => current && guide.selectById(current.dataset.tab));
+  if (rot && motion) {
+    const items = [...rot.children];
+    let i = 0;
+    rot.classList.add("js");
+    items[0].classList.add("on");
+    setInterval(() => {
+      const prev = items[i];
+      i = (i + 1) % items.length;
+      prev.classList.remove("on");
+      items[i].classList.add("on");
+      current = items[i];
+    }, 2200);
+  }
+
+  /* How it works: the stage follows the step in the middle of the screen --- */
+  const sv = document.querySelector(".sv");
+  const storySteps = [...document.querySelectorAll(".story-steps li")];
+  if (sv && storySteps.length && motion) {
+    // Side by side (wide screens) the stage follows the steps; stacked (narrow) it shows the final state.
+    const wide = matchMedia("(min-width: 901px)");
+    let step = 1;
+    const paint = () => {
+      const n = wide.matches ? step : 6;
+      for (let k = 1; k <= 6; k++) sv.classList.toggle(`s${k}`, k <= n);
+      storySteps.forEach((li) => li.classList.toggle("current", wide.matches && Number(li.dataset.step) === step));
+    };
+    const spy = new IntersectionObserver((entries) => {
+      for (const e of entries) if (e.isIntersecting) { step = Number(e.target.dataset.step); paint(); }
+    }, { rootMargin: "-45% 0px -45% 0px" });
+    storySteps.forEach((li) => spy.observe(li));
+    wide.addEventListener("change", paint);
+    paint();
   }
 
   if (!motion) return;
