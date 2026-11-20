@@ -2,8 +2,8 @@
   "file": "corpus\\handwritten\\10-coworking-crlf.html",
   "findings": 9,
   "statuses": {
-    "verified": 6,
-    "rejected_suspicious": 3
+    "verified": 4,
+    "rejected_suspicious": 5
   },
   "included": [
     "f_0001",
@@ -26,7 +26,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 3059,
+  "ms": 4573,
   "results": [
     {
       "findingId": "f_0001",
@@ -84,9 +84,9 @@
       "ruleId": "label",
       "line": 20,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"days\" only restates the name attribute \"days\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -135,9 +135,9 @@
       "ruleId": "label",
       "line": 26,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"days\" only restates the name attribute \"days\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

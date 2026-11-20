@@ -2,7 +2,8 @@
   "file": "corpus\\handwritten\\09-event-signup.html",
   "findings": 7,
   "statuses": {
-    "verified": 7
+    "verified": 4,
+    "rejected_suspicious": 3
   },
   "included": [
     "f_0001",
@@ -23,7 +24,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 2960,
+  "ms": 5154,
   "results": [
     {
       "findingId": "f_0001",
@@ -47,9 +48,9 @@
       "ruleId": "label",
       "line": 23,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"first\" only restates the name attribute \"first\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -64,9 +65,9 @@
       "ruleId": "label",
       "line": 23,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"last\" only restates the name attribute \"last\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -98,9 +99,9 @@
       "ruleId": "label",
       "line": 31,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"org\" only restates the name attribute \"org\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

@@ -2,9 +2,12 @@
   "findingId": "f_0182",
   "ruleGone": true,
   "newViolations": [],
-  "suspicious": false,
-  "reason": null,
-  "status": "verified",
+  "suspicious": true,
+  "reason": "aria-label \"pass190\" only restates the id attribute \"pass190\" and does not contain the visible text next to the <input>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
   "checks": {
     "ax": [],
     "focus": {

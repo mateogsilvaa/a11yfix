@@ -8,7 +8,7 @@ API (ADR 0006).
 ### Added
 - **Naive baseline** (ADR 0014): `bench/baselines/naive-fixer.mjs`, unchecked quick fixes run through
   `--generator-cmd`, offline (`npm run bench:naive`). Results and a rule-by-rule analysis in
-  `bench/baselines/naive/`, including the 459 patches the verifier accepts that a reviewer would often reject.
+  `bench/baselines/naive/`, including the patches the verifier accepts that a reviewer would often reject (403 after ADR 0015).
 - **"What the verifier adds"** in every benchmark report: the same patches judged with no verifier, axe only, axe
   plus source checks, and the full verifier.
 - **95% Wilson intervals and n** for precision in the tier and rule tables.
@@ -27,7 +27,8 @@ API (ADR 0006).
 - **Verifier: dangling id references** (ADR 0015). An `aria-controls`, `aria-labelledby`, `aria-describedby`,
   `aria-owns`, `aria-activedescendant` (or another id-reference attribute) that the patch leaves pointing at no
   element on the page (`aria-controls="false"`) is suspicious.
-- Both in the sabotage suite and in `verify.test.ts` (fixture `identifiers.html`).
+- Both in the sabotage suite and in `verify.test.ts` (fixture `identifiers.html`). On the naive baseline they move
+  56 patches from verified to suspicious (`label` 51 → 2, `aria-required-attr` 29 → 22); no tier-0 patch is flagged.
 
 ### Changed
 - The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `a11yfix-core`; `a11yfix-mcp`

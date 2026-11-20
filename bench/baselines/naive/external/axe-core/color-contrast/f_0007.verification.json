@@ -2,9 +2,12 @@
   "findingId": "f_0007",
   "ruleGone": true,
   "newViolations": [],
-  "suspicious": false,
-  "reason": null,
-  "status": "verified",
+  "suspicious": true,
+  "reason": "aria-label \"ignore2\" only restates the id attribute \"ignore2\" and does not contain the visible text next to the <input>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
   "checks": {
     "ax": [],
     "focus": {

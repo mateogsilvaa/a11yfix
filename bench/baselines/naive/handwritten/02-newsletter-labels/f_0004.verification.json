@@ -3,7 +3,7 @@
   "ruleGone": true,
   "newViolations": [],
   "suspicious": true,
-  "reason": "generic aria-label: \"q\"",
+  "reason": "generic aria-label: \"q\"; aria-label \"q\" only restates the name attribute \"q\" and does not contain the visible text next to the <input>",
   "status": "rejected_suspicious",
   "flaggedBy": [
     "static"

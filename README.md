@@ -34,32 +34,36 @@ against a person**, with 95% Wilson intervals.
 | Who writes the patches | Proposed | Verified | Precision vs the verifier | Fix rate | Report |
 |---|---:|---:|---|---:|---|
 | Tier 0: codemods (offline, no model) | 136 | 136 | 100% [97.3–100] | 20.5% | [bench/codemod](bench/codemod/report.md) |
-| Naive baseline: unchecked quick fixes (a strawman, on purpose) | 653 | 459 | 70.3% [66.7–73.7] | 69.3% | [bench/baselines/naive](bench/baselines/naive/report.md) |
+| Naive baseline: unchecked quick fixes (a strawman, on purpose) | 653 | 403 | 61.7% [57.9–65.4] | 60.9% | [bench/baselines/naive](bench/baselines/naive/report.md) |
 | Tier 1: a real model | not measured yet | | | | [report.md](report.md) |
 
 Read the second row carefully. The [naive fixer](bench/baselines/naive-fixer.mjs) gets **more** patches verified than
 the codemods, and many of them are patches a reviewer would reject: `aria-checked="false"` invented for a checkbox
-whose state is unknown, `aria-label="first"` taken from the field's `name`, `style="color: #000000"` on 169
+whose state is unknown, `aria-live="loud"` removed instead of corrected, `style="color: #000000"` on 169
 elements. None of them makes the page worse for assistive technology, which is what the verifier can prove; several
 do not make it better. So:
 
 - **"Verified" is an upper bound, not a grade.** The verifier proves "nothing got worse", not "this is what the
   author meant". Tier 0 is at 100% because its codemods decline those cases, not because the verifier would catch
   them. Every patch still needs a human review before merge.
-- **The verifier still earns its place.** Of the naive fixer's 653 patches it rejected 194 (29.7%) that a pipeline
-  without it would have shipped as fixed; re-running axe alone would have let 167 of them through:
+- **The verifier still earns its place.** Of the naive fixer's 653 patches it rejected 250 (38.3%) that a pipeline
+  without it would have shipped as fixed; re-running axe alone would have let 223 of them through:
 
   | Verifier | Naive patches it would ship | Of those, rejected by the full verifier |
   |---|---:|---|
-  | none (shape validation only) | 653 | 194 (29.7% [26.3–33.3]) |
-  | axe only | 626 | 167 (26.7% [23.4–30.3]) |
-  | axe + source checks | 463 | 4 (0.9% [0.3–2.2]) |
-  | full (+ accessibility tree, focus order, pixels) | 459 | 0 |
+  | none (shape validation only) | 653 | 250 (38.3% [34.6–42.1]) |
+  | axe only | 626 | 223 (35.6% [32–39.5]) |
+  | axe + source checks | 407 | 4 (1.0% [0.4–2.5]) |
+  | full (+ accessibility tree, focus order, pixels) | 403 | 0 |
 
 - **Small samples are small.** Tier 0's 100% rests on n=122 for `aria-allowed-attr`; for `label` it is 5 of 5,
   an interval of 57–100%. Every report prints n and the interval per rule.
 
-The [analysis](bench/baselines/naive/report.md#analysis) goes rule by rule, including which gaps look closable.
+The [analysis](bench/baselines/naive/report.md#analysis) goes rule by rule. Two gaps it found were closable without
+judgment and are now suspicion checks ([ADR 0015](docs/adr/0015-identifier-labels-and-dangling-id-references.md)):
+an `aria-label` that only restates the field's `name` or `id` (`aria-label="first"`), and an id reference to no
+element (`aria-controls="false"`). They moved 56 naive patches from verified to suspicious and flagged no tier-0
+patch.
 
 ### A rejected patch
 
@@ -355,7 +359,7 @@ order, desktop pixels).
 | Run | Fix rate | Precision vs the verifier [95% CI] | False-fix | Regression | Report |
 |---|---|---|---|---|---|
 | Tier 0 only (no model, offline) | 20.5% | **100% [97.3–100]**, 136/136 | 0.0% | 0.0% | [bench/codemod/report.md](bench/codemod/report.md) |
-| Naive baseline (unchecked quick fixes) | 69.3% | 70.3% [66.7–73.7], 459/653 | 26.7% | 2.1% | [bench/baselines/naive/report.md](bench/baselines/naive/report.md) |
+| Naive baseline (unchecked quick fixes) | 60.9% | 61.7% [57.9–65.4], 403/653 | 35.6% | 2.1% | [bench/baselines/naive/report.md](bench/baselines/naive/report.md) |
 | Tier 0 + tier 1 (a real model) | not run yet | | | | [report.md](report.md) |
 
 The offline run fixes a fifth of what it detects, and the verifier accepts all of it: the rest is tier 1 by design

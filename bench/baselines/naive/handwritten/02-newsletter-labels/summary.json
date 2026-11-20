@@ -2,8 +2,8 @@
   "file": "corpus\\handwritten\\02-newsletter-labels.html",
   "findings": 4,
   "statuses": {
-    "verified": 3,
-    "rejected_suspicious": 1
+    "verified": 1,
+    "rejected_suspicious": 3
   },
   "included": [
     "f_0001",
@@ -21,7 +21,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 2716,
+  "ms": 2206,
   "results": [
     {
       "findingId": "f_0001",
@@ -45,9 +45,9 @@
       "ruleId": "label",
       "line": 33,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"weekly\" only restates the name attribute \"weekly\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -62,9 +62,9 @@
       "ruleId": "label",
       "line": 37,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"topics\" only restates the name attribute \"topics\" and does not contain the visible text next to the <textarea>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -81,7 +81,7 @@
       "tier": 1,
       "status": "rejected_suspicious",
       "included": true,
-      "reason": "generic aria-label: \"q\"",
+      "reason": "generic aria-label: \"q\"; aria-label \"q\" only restates the name attribute \"q\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

@@ -2,8 +2,8 @@
   "file": "corpus\\handwritten\\04-dashboard-roles.html",
   "findings": 7,
   "statuses": {
-    "verified": 6,
-    "rejected_suspicious": 1
+    "verified": 5,
+    "rejected_suspicious": 2
   },
   "included": [
     "f_0001",
@@ -24,7 +24,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 2519,
+  "ms": 3071,
   "results": [
     {
       "findingId": "f_0001",
@@ -116,9 +116,9 @@
       "ruleId": "aria-required-attr",
       "line": 33,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

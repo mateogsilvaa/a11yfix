@@ -3,7 +3,7 @@
 - Mode: `llm` (cmd:node bench/baselines/naive-fixer.mjs)
 - Corpus: `./corpus` (22 pages)
 - Engines: a11yfix-core 0.3.0, axe-core 4.14.1, playwright 1.65.1, node 26.13.1
-- Run 2026-11-20, total wall time 175.2 s
+- Run 2026-11-20, total wall time 243.8 s
 
 > a11yfix does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.
 
@@ -15,14 +15,14 @@
 | Violations detected | 662 |
 | Skipped (needs judgment, no model in this run) | 0 |
 | Patches proposed | 653 |
-| Patches verified | 459 |
-| **Fix rate** (verified / detected) | **69.3%** |
-| **Precision** (verified / proposed) | **70.3%** |
-| False-fix rate (suspicious / (verified + suspicious)) | 26.7% |
+| Patches verified | 403 |
+| **Fix rate** (verified / detected) | **60.9%** |
+| **Precision** (verified / proposed) | **61.7%** |
+| False-fix rate (suspicious / (verified + suspicious)) | 35.6% |
 | Regression rate (regressions / applied) | 2.1% |
 | Mean cost per verified fix | 0 tokens |
 | Total tokens | 0 |
-| Mean time per page | 13.9 s |
+| Mean time per page | 20.9 s |
 | Subset violations left after applying the output patch | 43 of 662 |
 | WCAG A/AA violations (all rules) before → after | 809 → 171 |
 
@@ -33,15 +33,15 @@ Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the mo
 | Tier | Proposed | Verified | Precision [95% CI] | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |
 |---|---|---|---|---|---|---|---|---|
 | 0 (codemod) | 0 | 0 | **n/a** | 0 | 0 | 0 | 0 | n/a |
-| 1 (model) | 653 | 459 | **70.3% [66.7–73.7], n=653** | 167 | 14 | 13 | 0 | 0 |
+| 1 (model) | 653 | 403 | **61.7% [57.9–65.4], n=653** | 223 | 14 | 13 | 0 | 0 |
 
 ## Compared with `codemods only` (2026-11-20)
 
 | Metric | This run | codemods only |
 |---|---|---|
-| Fix rate | 69.3% | 20.5% |
-| Precision | 70.3% | 100.0% |
-| False-fix rate | 26.7% | 0.0% |
+| Fix rate | 60.9% | 20.5% |
+| Precision | 61.7% | 100.0% |
+| False-fix rate | 35.6% | 0.0% |
 | Regression rate | 2.1% | 0.0% |
 
 ## What the verifier adds
@@ -50,17 +50,17 @@ Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejec
 
 | Tier | Verifier | Would ship | Shipped but rejected by the full verifier | Share of shipped |
 |---|---|---:|---:|---|
-| 1 (model) | none (shape validation only) | 653 | 194 | 29.7% [26.3–33.3], n=653 |
-| 1 (model) | axe only | 626 | 167 | 26.7% [23.4–30.3], n=626 |
-| 1 (model) | axe + source checks | 463 | 4 | 0.9% [0.3–2.2], n=463 |
-| 1 (model) | full (+ accessibility tree, focus order, pixels) | 459 | 0 | 0.0% [0–0.8], n=459 |
+| 1 (model) | none (shape validation only) | 653 | 250 | 38.3% [34.6–42.1], n=653 |
+| 1 (model) | axe only | 626 | 223 | 35.6% [32–39.5], n=626 |
+| 1 (model) | axe + source checks | 407 | 4 | 1.0% [0.4–2.5], n=407 |
+| 1 (model) | full (+ accessibility tree, focus order, pixels) | 403 | 0 | 0.0% [0–0.9], n=403 |
 
 ## Outcomes
 
 | Status | Count |
 |---|---|
-| verified | 459 |
-| rejected_suspicious (see below; in the output patch unless --strict) | 167 |
+| verified | 403 |
+| rejected_suspicious (see below; in the output patch unless --strict) | 223 |
 | rejected_persists | 13 |
 | rejected_regression | 14 |
 | rejected_invalid (bad patch shape) | 0 |
@@ -73,10 +73,10 @@ Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejec
 | Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision [95% CI] | False-fix | Regression |
 |---|---|---|---|---|---|---|---|---|---|---|
 | image-alt | 1.0.0 | 1 | 159 | 0 | 159 | 0 | 0.0% | 0.0% [0–2.4], n=159 | 100.0% | 0.6% |
-| label | 1.0.0 | 0 | 55 | 0 | 55 | 51 | 92.7% | 92.7% [82.7–97.1], n=55 | 7.3% | 0.0% |
+| label | 1.0.0 | 0 | 55 | 0 | 55 | 2 | 3.6% | 3.6% [1–12.3], n=55 | 96.4% | 0.0% |
 | heading-order | 1.0.0 | 0 | 7 | 0 | 7 | 6 | 85.7% | 85.7% [48.7–97.4], n=7 | 0.0% | 14.3% |
 | aria-allowed-attr | 1.0.0 | 0 | 151 | 0 | 149 | 145 | 96.0% | 97.3% [93.3–99], n=149 | 0.7% | 2.0% |
-| aria-required-attr | 1.0.0 | 1 | 34 | 0 | 34 | 29 | 85.3% | 85.3% [69.9–93.6], n=34 | 0.0% | 11.8% |
+| aria-required-attr | 1.0.0 | 1 | 34 | 0 | 34 | 22 | 64.7% | 64.7% [47.9–78.5], n=34 | 24.1% | 11.8% |
 | aria-valid-attr-value | 1.0.0 | 0 | 58 | 0 | 51 | 43 | 74.1% | 84.3% [72–91.8], n=51 | 6.5% | 9.8% |
 | aria-roles | 1.0.0 | 0 | 17 | 0 | 17 | 16 | 94.1% | 94.1% [73–99], n=17 | 5.9% | 0.0% |
 | color-contrast | 1.0.0 | 1 | 181 | 0 | 181 | 169 | 93.4% | 93.4% [88.8–96.2], n=181 | 0.0% | 0.0% |
@@ -85,28 +85,28 @@ Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejec
 
 | Page | Detected | Verified | Left after patch | WCAG A/AA before → after | Time |
 |---|---|---|---|---|---|
-| external/axe-core/aria-allowed-attr.html | 23 | 17 | 9 | 33 → 19 | 6.4 s |
-| external/axe-core/aria-required-attr.html | 16 | 11 | 6 | 24 → 14 | 5.6 s |
-| external/axe-core/aria-roles.html | 22 | 21 | 1 | 60 → 39 | 22.6 s |
-| external/axe-core/aria-valid-attr-value.html | 189 | 180 | 8 | 198 → 17 | 53.7 s |
-| external/axe-core/color-contrast.html | 22 | 11 | 11 | 28 → 17 | 6.8 s |
-| external/axe-core/heading-order.html | 3 | 1 | 2 | 3 → 2 | 5.5 s |
-| external/axe-core/image-alt.html | 19 | 3 | 1 | 22 → 4 | 5.7 s |
-| external/axe-core/label.html | 14 | 14 | 0 | 28 → 14 | 6.0 s |
-| external/w3c-bad/home.html | 71 | 38 | 0 | 84 → 9 | 40.4 s |
-| external/w3c-bad/news.html | 75 | 36 | 0 | 86 → 7 | 40.5 s |
-| external/w3c-bad/survey.html | 71 | 44 | 0 | 83 → 8 | 41.9 s |
-| external/w3c-bad/tickets.html | 70 | 44 | 0 | 81 → 7 | 42.3 s |
-| handwritten/01-bakery-images.html | 7 | 0 | 1 | 10 → 3 | 2.5 s |
-| handwritten/02-newsletter-labels.html | 4 | 3 | 0 | 5 → 1 | 2.7 s |
+| external/axe-core/aria-allowed-attr.html | 23 | 14 | 9 | 33 → 19 | 7.8 s |
+| external/axe-core/aria-required-attr.html | 16 | 7 | 6 | 24 → 14 | 6.6 s |
+| external/axe-core/aria-roles.html | 22 | 20 | 1 | 60 → 39 | 7.7 s |
+| external/axe-core/aria-valid-attr-value.html | 189 | 170 | 8 | 198 → 17 | 87.5 s |
+| external/axe-core/color-contrast.html | 22 | 3 | 11 | 28 → 17 | 87.5 s |
+| external/axe-core/heading-order.html | 3 | 1 | 2 | 3 → 2 | 3.8 s |
+| external/axe-core/image-alt.html | 19 | 3 | 1 | 22 → 4 | 5.8 s |
+| external/axe-core/label.html | 14 | 0 | 0 | 28 → 14 | 8.4 s |
+| external/w3c-bad/home.html | 71 | 38 | 0 | 84 → 9 | 32.0 s |
+| external/w3c-bad/news.html | 75 | 36 | 0 | 86 → 7 | 58.6 s |
+| external/w3c-bad/survey.html | 71 | 36 | 0 | 83 → 8 | 49.9 s |
+| external/w3c-bad/tickets.html | 70 | 44 | 0 | 81 → 7 | 49.0 s |
+| handwritten/01-bakery-images.html | 7 | 0 | 1 | 10 → 3 | 23.3 s |
+| handwritten/02-newsletter-labels.html | 4 | 1 | 0 | 5 → 1 | 2.2 s |
 | handwritten/03-docs-headings.html | 2 | 2 | 0 | 4 → 2 | 2.1 s |
-| handwritten/04-dashboard-roles.html | 7 | 6 | 0 | 7 → 0 | 2.5 s |
-| handwritten/05-settings-aria-values.html | 7 | 4 | 1 | 9 → 3 | 2.9 s |
-| handwritten/06-pricing-contrast.html | 7 | 6 | 1 | 7 → 1 | 2.9 s |
-| handwritten/07-recipe-mixed.html | 7 | 5 | 1 | 8 → 2 | 2.8 s |
-| handwritten/08-portfolio-ambiguous.html | 10 | 0 | 0 | 12 → 0 | 3.4 s |
-| handwritten/09-event-signup.html | 7 | 7 | 1 | 8 → 2 | 3.0 s |
-| handwritten/10-coworking-crlf.html | 9 | 6 | 0 | 9 → 0 | 3.1 s |
+| handwritten/04-dashboard-roles.html | 7 | 5 | 0 | 7 → 0 | 3.1 s |
+| handwritten/05-settings-aria-values.html | 7 | 4 | 1 | 9 → 3 | 3.0 s |
+| handwritten/06-pricing-contrast.html | 7 | 6 | 1 | 7 → 1 | 3.2 s |
+| handwritten/07-recipe-mixed.html | 7 | 5 | 1 | 8 → 2 | 2.9 s |
+| handwritten/08-portfolio-ambiguous.html | 10 | 0 | 0 | 12 → 0 | 4.7 s |
+| handwritten/09-event-signup.html | 7 | 4 | 1 | 8 → 2 | 5.2 s |
+| handwritten/10-coworking-crlf.html | 9 | 4 | 0 | 9 → 0 | 4.6 s |
 
 ## Suspicious patches
 
@@ -114,8 +114,34 @@ These passed axe but tripped a suspicion check: they may silence the rule instea
 
 | Page | Finding | Rule | Tier | Status | Why |
 |---|---|---|---|---|---|
+| aria-allowed-attr.html | f_0009 (line 26) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
+| aria-allowed-attr.html | f_0011 (line 27) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
+| aria-allowed-attr.html | f_0013 (line 28) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
 | aria-allowed-attr.html | f_0019 (line 40) | aria-allowed-attr | 1 | rejected_suspicious | accessibility tree: <button> (line 40) lost its pressed state |
+| aria-required-attr.html | f_0005 (line 52) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
+| aria-required-attr.html | f_0007 (line 63) | label | 1 | rejected_suspicious | aria-label "pass9" only restates the id attribute "pass9" and does not contain the visible text next to the <input> |
+| aria-required-attr.html | f_0008 (line 64) | label | 1 | rejected_suspicious | aria-label "pass10" only restates the id attribute "pass10" and does not contain the visible text next to the <input> |
+| aria-required-attr.html | f_0014 (line 83) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
+| aria-roles.html | f_0002 (line 23) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
 | aria-valid-attr-value.html | f_0012 (line 27) | aria-valid-attr-value | 1 | rejected_suspicious | accessibility tree: <div> (line 27) lost its disabled state |
+| aria-valid-attr-value.html | f_0066 (line 68) | label | 1 | rejected_suspicious | aria-label "violation43" only restates the id attribute "violation43" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0068 (line 78) | label | 1 | rejected_suspicious | aria-label "violation44" only restates the id attribute "violation44" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0070 (line 88) | label | 1 | rejected_suspicious | aria-label "violation45" only restates the id attribute "violation45" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0072 (line 98) | label | 1 | rejected_suspicious | aria-label "violation46" only restates the id attribute "violation46" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0074 (line 109) | label | 1 | rejected_suspicious | aria-label "violation47" only restates the id attribute "violation47" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0076 (line 121) | label | 1 | rejected_suspicious | aria-label "violation48" only restates the id attribute "violation48" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0180 (line 359) | label | 1 | rejected_suspicious | aria-label "pass187" only restates the id attribute "pass187" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0181 (line 370) | label | 1 | rejected_suspicious | aria-label "pass189" only restates the id attribute "pass189" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0182 (line 379) | label | 1 | rejected_suspicious | aria-label "pass190" only restates the id attribute "pass190" and does not contain the visible text next to the <input> |
+| aria-valid-attr-value.html | f_0184 (line 394) | label | 1 | rejected_suspicious | aria-label "pass192" only restates the id attribute "pass192" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0006 (line 95) | label | 1 | rejected_suspicious | aria-label "ignore1" only restates the id attribute "ignore1" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0007 (line 101) | label | 1 | rejected_suspicious | aria-label "ignore2" only restates the id attribute "ignore2" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0008 (line 211) | label | 1 | rejected_suspicious | aria-label "canttell6" only restates the id attribute "canttell6" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0009 (line 238) | label | 1 | rejected_suspicious | aria-label "canttell11" only restates the id attribute "canttell11" and does not contain the visible text next to the <textarea> |
+| color-contrast.html | f_0010 (line 257) | label | 1 | rejected_suspicious | aria-label "canttell15" only restates the id attribute "canttell15" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0017 (line 521) | label | 1 | rejected_suspicious | aria-label "pass24" only restates the id attribute "pass24" and does not contain the visible text next to the <textarea> |
+| color-contrast.html | f_0020 (line 567) | label | 1 | rejected_suspicious | aria-label "canttell24" only restates the id attribute "canttell24" and does not contain the visible text next to the <input> |
+| color-contrast.html | f_0022 (line 590) | label | 1 | rejected_suspicious | aria-label "fail15" only restates the id attribute "fail15" and does not contain the visible text next to the <input> |
 | image-alt.html | f_0001 (line 16) | image-alt | 1 | rejected_suspicious | generic alt: "img"; text alternative "img" only restates the file name "img.jpg"; accessibility tree: <img> (line 16) now has a generic name "img" |
 | image-alt.html | f_0002 (line 17) | image-alt | 1 | rejected_suspicious | generic alt: "img"; text alternative "img" only restates the file name "img.jpg"; accessibility tree: <img> (line 17) now has a generic name "img" |
 | image-alt.html | f_0003 (line 18) | image-alt | 1 | rejected_suspicious | generic alt: "img"; text alternative "img" only restates the file name "img.jpg"; accessibility tree: <img> (line 18) now has a generic name "img" |
@@ -132,6 +158,20 @@ These passed axe but tripped a suspicion check: they may silence the rule instea
 | image-alt.html | f_0017 (line 47) | image-alt | 1 | rejected_suspicious | generic alt: "img"; text alternative "img" only restates the file name "img.jpg"; accessibility tree: <img> (line 47) now has a generic name "img" |
 | image-alt.html | f_0018 (line 48) | image-alt | 1 | rejected_suspicious | generic alt: "img"; text alternative "img" only restates the file name "img.jpg"; accessibility tree: <img> (line 48) now has a generic name "img" |
 | image-alt.html | f_0019 (line 50) | image-alt | 1 | rejected_suspicious | generic alt: "image"; accessibility tree: <img> (line 50) now has a generic name "image" |
+| label.html | f_0001 (line 20) | label | 1 | rejected_suspicious | aria-label "fail1" only restates the id attribute "fail1" and does not contain the visible text next to the <input> |
+| label.html | f_0002 (line 21) | label | 1 | rejected_suspicious | aria-label "fail2" only restates the id attribute "fail2" and does not contain the visible text next to the <textarea> |
+| label.html | f_0003 (line 30) | label | 1 | rejected_suspicious | aria-label "fail3" only restates the id attribute "fail3" and does not contain the visible text next to the <input> |
+| label.html | f_0004 (line 31) | label | 1 | rejected_suspicious | aria-label "fail4" only restates the id attribute "fail4" and does not contain the visible text next to the <textarea> |
+| label.html | f_0005 (line 32) | label | 1 | rejected_suspicious | aria-label "fail5" only restates the id attribute "fail5" and does not contain the visible text next to the <input> |
+| label.html | f_0006 (line 33) | label | 1 | rejected_suspicious | aria-label "fail6" only restates the id attribute "fail6" and does not contain the visible text next to the <textarea> |
+| label.html | f_0007 (line 36) | label | 1 | rejected_suspicious | aria-label "fail7" only restates the id attribute "fail7" and does not contain the visible text next to the <input> |
+| label.html | f_0008 (line 44) | label | 1 | rejected_suspicious | aria-label "fail8" only restates the id attribute "fail8" and does not contain the visible text next to the <input> |
+| label.html | f_0009 (line 76) | label | 1 | rejected_suspicious | aria-label "fail9" only restates the id attribute "fail9" and does not contain the visible text next to the <input> |
+| label.html | f_0010 (line 77) | label | 1 | rejected_suspicious | aria-label "fail10" only restates the id attribute "fail10" and does not contain the visible text next to the <input> |
+| label.html | f_0011 (line 79) | label | 1 | rejected_suspicious | aria-label "fail11" only restates the id attribute "fail11" and does not contain the visible text next to the <input> |
+| label.html | f_0012 (line 81) | label | 1 | rejected_suspicious | aria-label "fail12" only restates the id attribute "fail12" and does not contain the visible text next to the <textarea> |
+| label.html | f_0013 (line 93) | label | 1 | rejected_suspicious | aria-label "fail13" only restates the id attribute "fail13" and does not contain the visible text next to the <input> |
+| label.html | f_0014 (line 101) | label | 1 | rejected_suspicious | aria-label "fail14" only restates the id attribute "fail14" and does not contain the visible text next to the <input> |
 | home.html | f_0014 (line 178) | image-alt | 1 | rejected_suspicious | text alternative "border left top" only restates the file name "border_left_top.gif"; accessibility tree: <img> (line 178) has a name that only restates its file name: "border left top" |
 | home.html | f_0015 (line 179) | image-alt | 1 | rejected_suspicious | text alternative "border top" only restates the file name "border_top.gif"; accessibility tree: <img> (line 179) has a name that only restates its file name: "border top" |
 | home.html | f_0016 (line 180) | image-alt | 1 | rejected_suspicious | text alternative "border right top" only restates the file name "border_right_top.gif"; accessibility tree: <img> (line 180) has a name that only restates its file name: "border right top" |
@@ -224,9 +264,17 @@ These passed axe but tripped a suspicion check: they may silence the rule instea
 | survey.html | f_0031 (line 174) | image-alt | 1 | rejected_suspicious | text alternative "nav survey" only restates the file name "nav_survey.gif"; accessibility tree: <img> (line 174) has a name that only restates its file name: "nav survey" |
 | survey.html | f_0032 (line 177) | image-alt | 1 | rejected_suspicious | text alternative "marker2 w" only restates the file name "marker2_w.gif"; accessibility tree: <img> (line 177) has a name that only restates its file name: "marker2 w" |
 | survey.html | f_0033 (line 181) | image-alt | 1 | rejected_suspicious | text alternative "blank 5x5" only restates the file name "blank_5x5.gif"; accessibility tree: <img> (line 181) has a name that only restates its file name: "blank 5x5" |
-| survey.html | f_0040 (line 518) | label | 1 | rejected_suspicious | generic aria-label: "t" |
-| survey.html | f_0041 (line 518) | label | 1 | rejected_suspicious | generic aria-label: "t" |
-| survey.html | f_0043 (line 520) | label | 1 | rejected_suspicious | generic aria-label: "n" |
+| survey.html | f_0034 (line 205) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0035 (line 209) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0036 (line 213) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0037 (line 237) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0038 (line 241) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0039 (line 245) | label | 1 | rejected_suspicious | aria-label "res" only restates the name attribute "res" and does not contain the visible text next to the <input> |
+| survey.html | f_0040 (line 518) | label | 1 | rejected_suspicious | generic aria-label: "t"; aria-label "t" only restates the name attribute "t" and does not contain the visible text next to the <input> |
+| survey.html | f_0041 (line 518) | label | 1 | rejected_suspicious | generic aria-label: "t"; aria-label "t" only restates the name attribute "t" and does not contain the visible text next to the <input> |
+| survey.html | f_0042 (line 518) | label | 1 | rejected_suspicious | aria-label "em" only restates the name attribute "em" and does not contain the visible text next to the <input> |
+| survey.html | f_0043 (line 520) | label | 1 | rejected_suspicious | generic aria-label: "n"; aria-label "n" only restates the name attribute "n" and does not contain the visible text next to the <input> |
+| survey.html | f_0044 (line 520) | label | 1 | rejected_suspicious | aria-label "ev" only restates the name attribute "ev" and does not contain the visible text next to the <input> |
 | survey.html | f_0045 (line 588) | image-alt | 1 | rejected_suspicious | text alternative "border right" only restates the file name "border_right.gif"; accessibility tree: <img> (line 588) has a name that only restates its file name: "border right" |
 | survey.html | f_0046 (line 591) | image-alt | 1 | rejected_suspicious | text alternative "border bottom left" only restates the file name "border_bottom_left.gif"; accessibility tree: <img> (line 591) has a name that only restates its file name: "border bottom left" |
 | survey.html | f_0047 (line 592) | image-alt | 1 | rejected_suspicious | text alternative "border bottom" only restates the file name "border_bottom.gif"; accessibility tree: <img> (line 592) has a name that only restates its file name: "border bottom" |
@@ -263,8 +311,11 @@ These passed axe but tripped a suspicion check: they may silence the rule instea
 | 01-bakery-images.html | f_0005 (line 36) | image-alt | 1 | rejected_suspicious | text alternative "hours table" only restates the file name "hours-table.png"; accessibility tree: <img> (line 36) has a name that only restates its file name: "hours table"; visual (desktop): 0.31% of the page changed ou |
 | 01-bakery-images.html | f_0006 (line 39) | image-alt | 1 | rejected_suspicious | text alternative "map pin" only restates the file name "map-pin.png"; accessibility tree: <img> (line 39) has a name that only restates its file name: "map pin"; visual (desktop): 0.19% of the page changed outside the pa |
 | 01-bakery-images.html | f_0007 (line 43) | image-alt | 1 | rejected_suspicious | text alternative "social icon" only restates the file name "social-icon.png"; accessibility tree: <img> (line 43) has a name that only restates its file name: "social icon" |
-| 02-newsletter-labels.html | f_0004 (line 42) | label | 1 | rejected_suspicious | generic aria-label: "q" |
+| 02-newsletter-labels.html | f_0002 (line 33) | label | 1 | rejected_suspicious | aria-label "weekly" only restates the name attribute "weekly" and does not contain the visible text next to the <input> |
+| 02-newsletter-labels.html | f_0003 (line 37) | label | 1 | rejected_suspicious | aria-label "topics" only restates the name attribute "topics" and does not contain the visible text next to the <textarea> |
+| 02-newsletter-labels.html | f_0004 (line 42) | label | 1 | rejected_suspicious | generic aria-label: "q"; aria-label "q" only restates the name attribute "q" and does not contain the visible text next to the <input> |
 | 04-dashboard-roles.html | f_0002 (line 23) | aria-roles | 1 | rejected_suspicious | left a focusable element without a role (role removed instead of corrected) |
+| 04-dashboard-roles.html | f_0006 (line 33) | aria-required-attr | 1 | rejected_suspicious | id reference to no element on the page: aria-controls -> "false" |
 | 05-settings-aria-values.html | f_0001 (line 15) | aria-valid-attr-value | 1 | rejected_suspicious | accessibility tree: <button> (line 15) lost its expanded state |
 | 05-settings-aria-values.html | f_0003 (line 23) | aria-valid-attr-value | 1 | rejected_suspicious | accessibility tree: <button> (line 23) lost its pressed state |
 | 07-recipe-mixed.html | f_0002 (line 17) | image-alt | 1 | rejected_suspicious | text alternative "lentil soup bowl" only restates the file name "lentil-soup-bowl.jpg"; accessibility tree: <img> (line 17) has a name that only restates its file name: "lentil soup bowl"; visual (desktop): 1.25% of the  |
@@ -278,8 +329,13 @@ These passed axe but tripped a suspicion check: they may silence the rule instea
 | 08-portfolio-ambiguous.html | f_0008 (line 31) | image-alt | 1 | rejected_suspicious | text alternative "logo2" only restates the file name "logo2.png"; accessibility tree: <img> (line 31) has a name that only restates its file name: "logo2" |
 | 08-portfolio-ambiguous.html | f_0009 (line 34) | image-alt | 1 | rejected_suspicious | text alternative "email address" only restates the file name "email-address.png"; accessibility tree: <img> (line 34) has a name that only restates its file name: "email address" |
 | 08-portfolio-ambiguous.html | f_0010 (line 35) | image-alt | 1 | rejected_suspicious | generic alt: "spacer"; text alternative "spacer" only restates the file name "spacer.gif"; accessibility tree: <img> (line 35) now has a generic name "spacer" |
+| 09-event-signup.html | f_0002 (line 23) | label | 1 | rejected_suspicious | aria-label "first" only restates the name attribute "first" and does not contain the visible text next to the <input> |
+| 09-event-signup.html | f_0003 (line 23) | label | 1 | rejected_suspicious | aria-label "last" only restates the name attribute "last" and does not contain the visible text next to the <input> |
+| 09-event-signup.html | f_0005 (line 31) | label | 1 | rejected_suspicious | aria-label "org" only restates the name attribute "org" and does not contain the visible text next to the <input> |
 | 10-coworking-crlf.html | f_0002 (line 18) | image-alt | 1 | rejected_suspicious | text alternative "desk" only restates the file name "desk.jpg"; accessibility tree: <img> (line 18) has a name that only restates its file name: "desk" |
+| 10-coworking-crlf.html | f_0004 (line 20) | label | 1 | rejected_suspicious | aria-label "days" only restates the name attribute "days" and does not contain the visible text next to the <input> |
 | 10-coworking-crlf.html | f_0005 (line 24) | image-alt | 1 | rejected_suspicious | text alternative "desk" only restates the file name "desk.jpg"; accessibility tree: <img> (line 24) has a name that only restates its file name: "desk" |
+| 10-coworking-crlf.html | f_0007 (line 26) | label | 1 | rejected_suspicious | aria-label "days" only restates the name attribute "days" and does not contain the visible text next to the <input> |
 | 10-coworking-crlf.html | f_0008 (line 30) | image-alt | 1 | rejected_suspicious | text alternative "meeting room" only restates the file name "meeting-room.jpg"; accessibility tree: <img> (line 30) has a name that only restates its file name: "meeting room" |
 
 ## Rejections
@@ -352,6 +408,7 @@ Largest pixel change outside the patched elements on a page without layout shift
 - **Regression rate**: of the applied patches, the share that introduced a new violation.
 - **[95% CI]**: Wilson score interval. With samples this small, intervals are wide; differences inside them are not evidence.
 - Token costs count input, output, and prompt-cache reads and writes. Dollar figures are estimates from list prices.
+
 ## Analysis
 
 This run replaces tier 0 and tier 1 with [`naive-fixer.mjs`](../naive-fixer.mjs): the quick fixes a tool would ship if
@@ -360,42 +417,48 @@ attribute or role axe complains about, add missing state with a default, inline 
 strawman by construction. It exists to measure the verifier, not to rate fixers, and every patch it wrote is in this
 directory.
 
-**What the verifier catches.** Of the 653 patches that applied, the full verifier rejected 194 (29.7%). A pipeline
-that shipped everything would have called all 194 fixed; one that only re-ran axe would still have shipped 167 of
-them. Almost all of those are the 159 `image-alt` patches whose alt text only restates the file name
-(`plot-map.png` → `alt="plot map"`), which axe accepts and the source checks reject. Generic labels (`aria-label="q"`),
-removed focusable roles, and 14 patches that broke something else on the page (new violations) make up the rest.
+**What the verifier catches.** Of the 653 patches that applied, the full verifier rejected 250 (38.3%). A pipeline
+that shipped everything would have called all 250 fixed; one that only re-ran axe would still have shipped 223 of
+them. Most of those are the 159 `image-alt` patches whose alt text only restates the file name
+(`plot-map.png` → `alt="plot map"`) and the 53 `label` patches whose `aria-label` only restates the field's `name` or
+`id` (`aria-label="fail1"`, `aria-label="org"`), which axe accepts and the source checks reject. Seven
+`aria-controls="false"` (an id reference to no element), removed focusable roles, and 14 patches that broke something
+else on the page (new violations) make up the rest.
 
 **What each layer adds, on this corpus.** Axe alone removes 27 patches (regressions and violations still present).
-The source checks remove 163 more. The browser checks (accessibility tree, focus order, pixels) remove only 4 that
+The source checks remove 219 more. The browser checks (accessibility tree, focus order, pixels) remove only 4 that
 the source checks had not already flagged: the accessibility-tree comparison fires on 162 patches, but 158 of them
 are the same file-name alt texts. On these pages, the browser layers are a second opinion more than a new signal.
 That may change with tier-1 patches from a real model, which fail in less predictable ways; it has not been measured
 yet.
 
-**What the verifier does not catch.** 459 naive patches verified, which is more than tier 0 (136) and a fix rate of
-69.3% against tier 0's 20.5%. That number is not a success. "Verified" means axe no longer reports the violation,
+**What the verifier does not catch.** 403 naive patches verified, which is more than tier 0 (136) and a fix rate of
+60.9% against tier 0's 20.5%. That number is not a success. "Verified" means axe no longer reports the violation,
 nothing else got worse, and no suspicion check fired. A reviewer would reject many of these:
 
 | Rule | Verified | What the naive patch does | Why a person would reject it |
 |---|---:|---|---|
 | color-contrast | 169 | `style="color: #000000"` on the element | Passes the contrast check and ignores the design system: one inline override per element instead of a token change |
 | aria-allowed-attr | 145 | removes the attribute | Same as tier 0 for most of them; for state attributes (`aria-checked` on a `<button>`) it throws the author's intent away, which is why tier 0 declines those |
-| label | 51 | `aria-label` from the `name` or `id` (`aria-label="first"`) | The name is invisible to sighted users and is whatever the developer called the field |
+| label | 2 | `aria-label` from the `name` (`aria-label="fullname"` next to the visible text "Full name") | The name agrees with what sighted users read, so the verifier accepts it; a reviewer would still associate the visible text with a `<label>`, as tier 0 does |
 | aria-valid-attr-value | 43 | removes the attribute | `aria-live="loud"` → no live region at all: the announcement is lost, not fixed |
-| aria-required-attr | 29 | adds the state with a default (`aria-checked="false"`, `aria-controls="false"`) | Invents widget state the markup does not give; tier 0 declines exactly this |
+| aria-required-attr | 22 | adds the state with a default (`aria-checked="false"` ×14, `aria-valuenow="0"` ×7, `aria-expanded="false"` ×1) | Invents widget state the markup does not give; tier 0 declines exactly this |
 | aria-roles | 16 | removes the role | `role="navigaton"` becomes no landmark instead of `role="navigation"` |
 | heading-order | 6 | re-levels the one flagged heading | Passes when the siblings happen not to break; tier 0 moves them together |
 
 None of these make the page worse for assistive technology than it was, which is what the verifier checks. Several
-do not make it better either, and some (default state, `aria-controls="false"`) state something false. These are
-known gaps, not bugs to hide: a verifier can prove "nothing got worse", it cannot prove "this is what the author
-meant". Two of them look closable without human judgment and are candidates for the verifier: an `aria-label` equal
-to the control's `name` or `id`, and an ID-reference attribute (`aria-controls`) whose value matches no element.
-The rest needs a person, which is why suspicious and verified patches both go through review before merge.
+do not make it better either, and some (a default state) state something that may be false. These are known gaps,
+not bugs to hide: a verifier can prove "nothing got worse", it cannot prove "this is what the author meant".
+
+The first version of this analysis named two gaps that looked closable without human judgment. Both are now
+suspicion checks ([ADR 0015](../../../docs/adr/0015-identifier-labels-and-dangling-id-references.md)), and this run
+measures them: an `aria-label` that only restates the element's `name` or `id` moved 49 `label` patches from
+verified to suspicious (51 → 2), and an id reference that points at no element moved the 7 `aria-controls="false"`
+patches (`aria-required-attr`, 29 → 22). The two `label` patches still verified sit next to visible text that says the
+same thing ("Full name", "Email"), which ADR 0015 accepts on purpose. Neither check flagged a tier-0 patch. The rest
+of the table needs a person, which is why suspicious and verified patches both go through review before merge.
 
 **What this means for the other numbers.** Precision against the verifier is an upper bound on precision against a
 human reviewer, for every generator. Tier 0's 100% holds because its codemods decline the cases above, not because
 the verifier would have caught them. A tier-1 model's precision needs a human-reviewed sample next to it before it
 means much.
-

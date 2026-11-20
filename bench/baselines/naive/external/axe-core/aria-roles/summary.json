@@ -2,7 +2,8 @@
   "file": "corpus\\external\\axe-core\\aria-roles.html",
   "findings": 22,
   "statuses": {
-    "verified": 21,
+    "verified": 20,
+    "rejected_suspicious": 1,
     "rejected_regression": 1
   },
   "included": [
@@ -38,7 +39,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 22620,
+  "ms": 7655,
   "results": [
     {
       "findingId": "f_0001",
@@ -62,9 +63,9 @@
       "ruleId": "aria-required-attr",
       "line": 23,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "id reference to no element on the page: aria-controls -> \"false\"",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

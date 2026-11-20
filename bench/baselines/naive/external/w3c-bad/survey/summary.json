@@ -2,8 +2,8 @@
   "file": "corpus\\external\\w3c-bad\\survey.html",
   "findings": 71,
   "statuses": {
-    "verified": 44,
-    "rejected_suspicious": 27
+    "verified": 36,
+    "rejected_suspicious": 35
   },
   "included": [
     "f_0001",
@@ -88,7 +88,7 @@
     "cacheReadTokens": 0,
     "cacheWriteTokens": 0
   },
-  "ms": 41914,
+  "ms": 49943,
   "results": [
     {
       "findingId": "f_0001",
@@ -656,9 +656,9 @@
       "ruleId": "label",
       "line": 205,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -673,9 +673,9 @@
       "ruleId": "label",
       "line": 209,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -690,9 +690,9 @@
       "ruleId": "label",
       "line": 213,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -707,9 +707,9 @@
       "ruleId": "label",
       "line": 237,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -724,9 +724,9 @@
       "ruleId": "label",
       "line": 241,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -741,9 +741,9 @@
       "ruleId": "label",
       "line": 245,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"res\" only restates the name attribute \"res\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -760,7 +760,7 @@
       "tier": 1,
       "status": "rejected_suspicious",
       "included": true,
-      "reason": "generic aria-label: \"t\"",
+      "reason": "generic aria-label: \"t\"; aria-label \"t\" only restates the name attribute \"t\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -777,7 +777,7 @@
       "tier": 1,
       "status": "rejected_suspicious",
       "included": true,
-      "reason": "generic aria-label: \"t\"",
+      "reason": "generic aria-label: \"t\"; aria-label \"t\" only restates the name attribute \"t\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -792,9 +792,9 @@
       "ruleId": "label",
       "line": 518,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"em\" only restates the name attribute \"em\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -811,7 +811,7 @@
       "tier": 1,
       "status": "rejected_suspicious",
       "included": true,
-      "reason": "generic aria-label: \"n\"",
+      "reason": "generic aria-label: \"n\"; aria-label \"n\" only restates the name attribute \"n\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {
@@ -826,9 +826,9 @@
       "ruleId": "label",
       "line": 520,
       "tier": 1,
-      "status": "verified",
+      "status": "rejected_suspicious",
       "included": true,
-      "reason": null,
+      "reason": "aria-label \"ev\" only restates the name attribute \"ev\" and does not contain the visible text next to the <input>",
       "confidence": "medium",
       "attempts": 1,
       "usage": {

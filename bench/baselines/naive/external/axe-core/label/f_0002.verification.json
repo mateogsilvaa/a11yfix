@@ -2,9 +2,12 @@
   "findingId": "f_0002",
   "ruleGone": true,
   "newViolations": [],
-  "suspicious": false,
-  "reason": null,
-  "status": "verified",
+  "suspicious": true,
+  "reason": "aria-label \"fail2\" only restates the id attribute \"fail2\" and does not contain the visible text next to the <textarea>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
   "checks": {
     "ax": [],
     "focus": {
