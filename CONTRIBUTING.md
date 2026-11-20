@@ -13,6 +13,10 @@ Every contribution is judged against that promise first.
 - **No telemetry, no accounts, no required network access.** a11yfix must work on a machine with no network beyond
   the page under audit. The model tier is optional.
 - **Bad benchmark numbers are published, not hidden.** If your change lowers a metric, the PR says so and explains why.
+- **The eval set stays held out.** Pages in `corpus/eval/` are never used to write or tune codemods, rules, prompts
+  or the verifier: don't read their markup or per-finding outcomes while working on a change, and don't iterate
+  until the eval numbers go up. Once a page is used for tuning, move it to dev (outside `corpus/eval/`) in the same
+  commit and log it in [`corpus/README.md`](corpus/README.md#held-out-rule). Quote eval numbers, not dev numbers.
 
 ## Setup
 
