@@ -9,7 +9,7 @@
 //
 // The page claims it is checked before every deploy; this is that check.
 
-import { cp, mkdir, readFile, rm } from "node:fs/promises";
+import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -33,7 +33,26 @@ async function build() {
     await cp(path.join(dir, "files", file), path.join(OUT, "fonts", file));
     await cp(path.join(dir, "LICENSE"), path.join(OUT, "fonts", `${file.split("-latin")[0]}-OFL.txt`));
   }
+  // Tool logos from Simple Icons (CC0), inlined as <symbol>s: no request to a CDN. The brands themselves stay
+  // their owners' trademarks; they are shown to say where verifa11y runs (MCP hosts, CLIs, CI).
+  const index = path.join(OUT, "index.html");
+  const html = await readFile(index, "utf8");
+  await writeFile(index, html.replace("<!-- brand-icons -->", await brandSymbols()), "utf8");
   console.log(`built ${path.relative(ROOT, OUT)}/`);
+}
+
+const BRANDS = ["claudecode", "claude", "cursor", "windsurf", "zedindustries", "cline", "githubcopilot", "googlegemini", "jetbrains", "opencode", "warp", "amp", "ollama", "githubactions", "github"];
+
+async function brandSymbols() {
+  const dir = path.dirname(require.resolve("simple-icons/icons/github.svg"));
+  const out = [];
+  for (const slug of BRANDS) {
+    const svg = await readFile(path.join(dir, `${slug}.svg`), "utf8");
+    const d = /<path d="([^"]+)"/.exec(svg)?.[1];
+    if (!d) throw new Error(`no path in simple-icons/${slug}.svg`);
+    out.push(`<symbol id="lg-${slug}" viewBox="0 0 24 24"><path fill="currentColor" d="${d}"/></symbol>`);
+  }
+  return out.join("");
 }
 
 /* Numbers -------------------------------------------------------------- */

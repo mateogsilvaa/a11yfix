@@ -150,27 +150,86 @@
     }, 2200);
   }
 
-  /* How it works: the stage follows the step in the middle of the screen --- */
-  const sv = document.querySelector(".sv");
-  const storySteps = [...document.querySelectorAll(".story-steps li")];
-  if (sv && storySteps.length && motion) {
-    // Side by side (wide screens) the stage follows the steps; stacked (narrow) it shows the final state.
-    const wide = matchMedia("(min-width: 901px)");
-    let step = 1;
-    const paint = () => {
-      const n = wide.matches ? step : 6;
-      for (let k = 1; k <= 6; k++) sv.classList.toggle(`s${k}`, k <= n);
-      storySteps.forEach((li) => li.classList.toggle("current", wide.matches && Number(li.dataset.step) === step));
+  /* Header: denser once the page scrolls; the current section is marked ---- */
+  const header = document.querySelector(".site-header");
+  const onScrollHeader = () => header?.classList.toggle("scrolled", scrollY > 24);
+  addEventListener("scroll", onScrollHeader, { passive: true });
+  onScrollHeader();
+  const navLinks = new Map([...document.querySelectorAll(".nav-links a")].map((a) => [a.getAttribute("href").slice(1), a]));
+  const navSpy = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      navLinks.forEach((a, id) => (id === e.target.id ? a.setAttribute("aria-current", "true") : a.removeAttribute("aria-current")));
+    }
+  }, { rootMargin: "-40% 0px -55% 0px" });
+  navLinks.forEach((_, id) => { const s = document.getElementById(id); if (s) navSpy.observe(s); });
+
+  /* How it works: pinned on wide screens, one step per stretch of scroll --- */
+  const scene = document.querySelector(".scene");
+  if (scene && motion) {
+    const steps = [...scene.querySelectorAll(".scene-steps li")];
+    const track = scene.querySelector(".scene-track");
+    const wide = matchMedia("(min-width: 961px)");
+    let last = 0;
+    const set = (n) => {
+      if (n === last) return;
+      last = n;
+      for (let k = 1; k <= 6; k++) scene.classList.toggle(`s${k}`, k <= n);
+      steps.forEach((li) => li.classList.toggle("current", Number(li.dataset.step) === n && scene.classList.contains("pinned")));
     };
-    const spy = new IntersectionObserver((entries) => {
-      for (const e of entries) if (e.isIntersecting) { step = Number(e.target.dataset.step); paint(); }
-    }, { rootMargin: "-45% 0px -45% 0px" });
-    storySteps.forEach((li) => spy.observe(li));
-    wide.addEventListener("change", paint);
-    paint();
+    const update = () => {
+      if (!scene.classList.contains("pinned")) return;
+      const r = track.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
+      scene.style.setProperty("--sp", p.toFixed(3));
+      set(Math.min(6, Math.floor(p * 6.2) + 1));
+    };
+    const mode = () => {
+      scene.classList.toggle("pinned", wide.matches);
+      last = 0;
+      if (wide.matches) update();
+      else set(6);
+    };
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    wide.addEventListener("change", mode);
+    mode();
   }
 
   if (!motion) return;
+
+  /* Hero tour: a focus ring tabs through the mock page, verdicts pop up ----- */
+  const tour = document.querySelector(".tour");
+  if (tour) {
+    const page = tour.querySelector(".tour-page");
+    const ring = tour.querySelector(".t-ring");
+    const stops = [...tour.querySelectorAll("[data-tour]")].sort((a, b) => a.dataset.tour - b.dataset.tour);
+    tour.classList.add("js");
+    let k = 0;
+    const place = (el) => {
+      const pr = page.getBoundingClientRect();
+      const r = el.getBoundingClientRect();
+      Object.assign(ring.style, { left: `${r.left - pr.left - 5}px`, top: `${r.top - pr.top - 5}px`, width: `${r.width + 10}px`, height: `${r.height + 10}px` });
+    };
+    const tick = () => {
+      if (k === stops.length) {
+        k = 0;
+        tour.querySelectorAll(".t-chip.on").forEach((c) => c.classList.remove("on"));
+        setTimeout(tick, 700);
+        return;
+      }
+      const el = stops[k++];
+      place(el);
+      setTimeout(() => el.querySelector(".t-chip")?.classList.add("on"), 450);
+      setTimeout(tick, k === stops.length ? 3200 : 1300);
+    };
+    addEventListener("resize", () => stops[Math.max(0, k - 1)] && place(stops[Math.max(0, k - 1)]));
+    setTimeout(tick, 500);
+  }
+
+  /* Logo strip: duplicate it once so the marquee loops without a seam ----- */
+  const mq = document.querySelector(".mq-list");
+  if (mq) for (const li of [...mq.children]) { const c = li.cloneNode(true); c.setAttribute("aria-hidden", "true"); mq.append(c); }
 
   /* Reveal on scroll, with a small stagger between siblings ---------------- */
   const groups = new Map();

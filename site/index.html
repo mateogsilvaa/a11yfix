@@ -17,6 +17,7 @@
 <a class="skip" href="#main">Skip to content</a>
 
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
+  <!-- brand-icons -->
   <symbol id="mark" viewBox="0 0 64 64"><rect x="7" y="7" width="50" height="50" rx="15" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="7.6 6" stroke-linecap="round"/><path d="M21 32.5l8 8 15-17" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-ok" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M5.6 10.4l2.9 2.9 5.9-6.3" fill="none" stroke="#08090a" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-no" viewBox="0 0 20 20"><circle cx="10" cy="10" r="10" fill="currentColor"/><path d="M6.6 6.6l6.8 6.8M13.4 6.6l-6.8 6.8" fill="none" stroke="#08090a" stroke-width="2.4" stroke-linecap="round"/></symbol>
@@ -28,20 +29,20 @@
 </svg>
 
 <header class="site-header">
-  <div class="wrap header-row">
+  <div class="bar">
     <a class="brand" href="#top"><svg class="brand-mark" width="22" height="22" aria-hidden="true"><use href="#mark"/></svg><span>verifa<b>11</b>y</span></a>
     <nav aria-label="Main">
       <ul class="nav-links">
-        <li><a href="#examples">Examples</a></li>
         <li><a href="#how">How it works</a></li>
+        <li><a href="#why">Why</a></li>
+        <li><a href="#examples">Examples</a></li>
         <li><a href="#results">Results</a></li>
-        <li><a href="#compare">Compared</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
     <div class="header-actions">
-      <a class="link-quiet" href="https://github.com/mateogsilvaa/verifa11y">GitHub</a>
-      <a class="btn btn-light btn-sm" href="#install">Install</a>
+      <a class="gh" href="https://github.com/mateogsilvaa/verifa11y"><svg aria-hidden="true"><use href="#lg-github"/></svg><span>GitHub</span></a>
+      <a class="btn btn-green btn-sm" href="#install">Install</a>
     </div>
   </div>
 </header>
@@ -50,29 +51,164 @@
 
 <section class="hero" id="top" aria-labelledby="hero-title">
   <div class="glow" aria-hidden="true"></div>
-  <div class="wrap hero-head">
-    <svg class="hero-mark" viewBox="0 0 64 64" width="88" height="88" aria-hidden="true" focusable="false"><rect class="m-ring" x="7" y="7" width="50" height="50" rx="15" fill="none" stroke="currentColor" stroke-width="3.2" stroke-dasharray="7.6 6" stroke-linecap="round"/><path class="m-check" d="M21 32.5l8 8 15-17" fill="none" stroke="currentColor" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg>
-    <h1 id="hero-title">Accessibility fixes that prove themselves.</h1>
-    <p class="lede">verifa11y finds WCAG violations in your HTML, writes the smallest fix for each and re-checks the page in a real browser. A fix that only silences the checker is thrown out, and you're told why.</p>
-    <div class="actions">
-      <a class="btn btn-light try" href="#install" data-try>
-        <span>Try it in</span>
-        <span class="try-rot">
-          <span data-tab="t-claude"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Claude Code</span>
-          <span data-tab="t-cli"><svg aria-hidden="true"><use href="#ic-term"/></svg>your terminal</span>
-          <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Cursor</span>
-          <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</span>
-          <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-plug"/></svg>any MCP host</span>
-          <span data-tab="t-gha"><svg aria-hidden="true"><use href="#ic-branch"/></svg>GitHub Actions</span>
-        </span>
-      </a>
-      <a class="btn btn-ghost" href="#examples">See it judge a fix</a>
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <p class="eyebrow"><svg class="hero-mark" viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" focusable="false"><rect class="m-ring" x="7" y="7" width="50" height="50" rx="15" fill="none" stroke="currentColor" stroke-width="4" stroke-dasharray="7.6 6" stroke-linecap="round"/><path class="m-check" d="M21 32.5l8 8 15-17" fill="none" stroke="currentColor" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" pathLength="1"/></svg> Open source · runs on your machine</p>
+      <h1 id="hero-title">Accessibility fixes that <span class="hl">prove themselves.</span></h1>
+      <p class="lede">verifa11y finds WCAG violations in your HTML, writes the smallest fix for each and re-checks the page in a real browser. If a fix only silences the checker, it's thrown out, and you're told why.</p>
+      <div class="actions">
+        <a class="btn btn-light try" href="#install" data-try>
+          <span>Try it in</span>
+          <span class="try-rot">
+            <span data-tab="t-claude"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</span>
+            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</span>
+            <span data-tab="t-cli"><svg aria-hidden="true"><use href="#ic-term"/></svg>your terminal</span>
+            <span data-tab="t-gha"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</span>
+          </span>
+        </a>
+        <a class="btn btn-ghost" href="#how">How it works</a>
+      </div>
     </div>
-    <p class="hero-meta">Open source · Apache-2.0 · No account · Runs on your machine</p>
-  </div>
 
-  <div class="wrap demo-wrap" id="examples">
-    <p class="demo-label">Six real cases from the benchmark. Pick one.</p>
+    <figure class="tour" aria-labelledby="tour-cap">
+      <div class="tour-win" aria-hidden="true">
+        <div class="tour-chrome"><i></i><i></i><i></i><span>riverside-garden.local</span></div>
+        <div class="tour-page">
+          <div class="t-nav"><span class="t-el t-logo" data-tour="1"><span class="t-chip warn">needs a person</span></span><span class="t-el t-links" data-tour="2">Plots · Events · Volunteer<span class="t-chip ok">role fixed</span></span></div>
+          <div class="t-h1">Grow your own food<br>by the river</div>
+          <div class="t-el t-h2" data-tour="3">Rent a plot<span class="t-chip ok">h3 → h2</span></div>
+          <div class="t-row">
+            <div class="t-el t-img" data-tour="4"><span class="t-chip no">alt = file name</span></div>
+            <div class="t-lines"><i></i><i></i><i></i><i class="short"></i></div>
+          </div>
+          <div class="t-form"><div class="t-input">Email address</div><div class="t-el t-btn" data-tour="5">Join the waitlist<span class="t-chip ok">role fixed</span></div></div>
+          <span class="t-ring"></span>
+        </div>
+      </div>
+      <figcaption id="tour-cap">The demo page, tabbed through like a keyboard user would: fixes verified, a quick fix rejected, a finding left for a person.</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="everywhere" aria-labelledby="everywhere-title">
+  <h2 id="everywhere-title" class="ew-title">Works wherever your agent does</h2>
+  <div class="marquee">
+    <ul class="mq-list">
+      <li><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</li>
+      <li><svg aria-hidden="true"><use href="#lg-claude"/></svg>Claude Desktop</li>
+      <li><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</li>
+      <li><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</li>
+      <li><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</li>
+      <li><svg aria-hidden="true"><use href="#lg-githubcopilot"/></svg>GitHub Copilot</li>
+      <li><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</li>
+      <li><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</li>
+      <li><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</li>
+      <li><svg aria-hidden="true"><use href="#lg-cline"/></svg>Cline</li>
+      <li><svg aria-hidden="true"><use href="#lg-jetbrains"/></svg>JetBrains</li>
+      <li><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</li>
+      <li><svg aria-hidden="true"><use href="#lg-warp"/></svg>Warp</li>
+      <li><svg aria-hidden="true"><use href="#lg-amp"/></svg>Amp</li>
+      <li><svg aria-hidden="true"><use href="#lg-ollama"/></svg>Ollama</li>
+      <li><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</li>
+      <li><svg aria-hidden="true"><use href="#ic-term"/></svg>any terminal</li>
+    </ul>
+  </div>
+  <p class="ew-note">Any host that speaks MCP, any agent CLI through <code>--generator-cmd</code>, and pull requests through the GitHub Action. Logos belong to their owners.</p>
+</section>
+
+<section class="scene s1 s2 s3 s4 s5 s6" id="how" aria-labelledby="how-title">
+  <div class="scene-track">
+    <div class="scene-pin">
+      <div class="wrap scene-grid">
+        <div class="scene-copy">
+          <p class="label">How it works</p>
+          <h2 id="how-title">From a broken page to a patch you can trust.</h2>
+          <ol class="scene-steps">
+            <li data-step="1"><span class="sn">01</span><div><h3>Audit</h3><p>axe-core runs in headless Chromium and pins each violation to its exact line in your file.</p></div></li>
+            <li data-step="2"><span class="sn">02</span><div><h3>Patch</h3><p>A codemod writes the fixes the markup can prove. What needs judgment goes to your model, if you added one.</p></div></li>
+            <li data-step="3"><span class="sn">03</span><div><h3>Shape</h3><p>Each patch must quote your file exactly and stay small. Nothing invented reaches the browser.</p></div></li>
+            <li data-step="4"><span class="sn">04</span><div><h3>Copy</h3><p>Patches go onto a copy. Your file isn't touched until you choose to apply the result.</p></div></li>
+            <li data-step="5"><span class="sn">05</span><div><h3>Verify</h3><p>Six checks per patch. Two pass. The alt text only restates the file name: rejected.</p></div></li>
+            <li data-step="6"><span class="sn">06</span><div><h3>Review</h3><p>You get one <code>.patch</code> with what held up, and a report of what didn't, with the reason.</p></div></li>
+          </ol>
+          <div class="scene-progress" aria-hidden="true"><span></span></div>
+        </div>
+
+        <div class="scene-stage" aria-hidden="true">
+          <div class="st-win st-original"><div class="st-chrome"><i></i><i></i><i></i><span>index.html · original</span></div><div class="st-lock">untouched</div></div>
+          <div class="st-win st-main">
+            <div class="st-chrome"><i></i><i></i><i></i><span>riverside-garden.local</span><b class="st-copy">copy</b></div>
+            <div class="st-page">
+              <div class="st-nav st-flag f-nav"><span class="st-dot"></span>Plots · Events · Volunteer<em class="st-tag t-bad">aria-roles · line 19</em><em class="st-tag t-ok">verified</em></div>
+              <div class="st-h1">Grow your own food by the river</div>
+              <div class="st-h2 st-flag f-h">Rent a plot<em class="st-tag t-bad">heading-order · line 28</em><em class="st-tag t-ok">verified</em></div>
+              <div class="st-row">
+                <div class="st-img st-flag f-img"><em class="st-tag t-bad">image-alt · line 30</em><em class="st-tag t-no">rejected</em></div>
+                <div class="st-lines"><i></i><i></i><i></i><i class="short"></i></div>
+              </div>
+              <div class="st-scan"></div>
+            </div>
+            <div class="st-drawer">
+              <div class="st-diff"><span class="d-del">- &lt;nav role="navigaton"&gt;</span><span class="d-add">+ &lt;nav role="navigation"&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-ok">✓ 6/6</span></div>
+              <div class="st-diff"><span class="d-del">- &lt;h3&gt;Rent a plot&lt;/h3&gt;</span><span class="d-add">+ &lt;h2&gt;Rent a plot&lt;/h2&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-ok">✓ 6/6</span></div>
+              <div class="st-diff"><span class="d-del">- &lt;img src="plot-map.png"&gt;</span><span class="d-add bad">+ &lt;img src="plot-map.png" alt="plot map"&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-no">✕ 4/6</span></div>
+            </div>
+          </div>
+          <div class="st-patch">
+            <p class="pf"><svg width="18" height="18"><use href="#mark"/></svg>verifa11y.patch</p>
+            <p><b>2 fixes</b> ready for <code>git apply</code></p>
+            <p class="rej">1 rejected · <code>alt="plot map"</code> only restates the file name</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="why" aria-labelledby="what-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="label">Why this tool</p>
+      <h2 id="what-title">A quiet checker is not a fixed page.</h2>
+      <p class="sub">Coding agents fix accessibility by the hundred, and most confirm it by re-running a checker. But hide the element, add a generic label or restate the file name, and the checker goes quiet. verifa11y keeps a fix only if it survives checks a silenced violation can't pass.</p>
+    </div>
+    
+    <ul class="facts">
+      <li data-reveal><p class="fact-num">95.9%</p><p>of the top one million home pages had detected WCAG 2 failures.</p><a class="src" href="https://webaim.org/projects/million/">WebAIM Million, 2026</a></li>
+      <li data-reveal><p class="fact-num">28 Jun 2025</p><p>The European Accessibility Act applies across the EU.</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882, Art. 31</a></li>
+      <li data-reveal><p class="fact-num">WCAG 2.1 AA</p><p>for US state and local government sites under ADA Title II, from April 2027 for large entities.</p><a class="src" href="https://www.ada.gov/resources/2024-03-08-web-rule/">U.S. DOJ, ADA Title II web rule</a></li>
+    </ul>
+    <div class="why-gap"></div>
+    <div class="panel" data-reveal>
+      <div class="panel-head">
+        <h3>What the verifier adds</h3>
+        <p>The naive fixer's patches (dev pages), judged by weaker verifiers. Green: what the full verifier keeps. Red: what it rejects.</p>
+      </div>
+      <ul class="bars">
+        <li><span class="b-label">No verifier</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.rejected" style="--v:250"></span></span><span class="b-num"><b data-metric="naive.dev.applied">653</b> shipped · <b class="bad" data-metric="naive.dev.rejected">250</b> wrong</span></li>
+        <li><span class="b-label">axe-core only</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.axeRejected" style="--v:223"></span></span><span class="b-num"><b data-metric="naive.dev.axeAccepted">626</b> shipped · <b class="bad" data-metric="naive.dev.axeRejected">223</b> wrong</span></li>
+        <li><span class="b-label">+ source checks</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.sourceRejected" style="--v:4"></span></span><span class="b-num"><b data-metric="naive.dev.sourceAccepted">407</b> shipped · <b class="bad" data-metric="naive.dev.sourceRejected">4</b> wrong</span></li>
+        <li><span class="b-label">Full verifier</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span></span><span class="b-num"><b data-metric="naive.dev.verified">403</b> shipped</span></li>
+      </ul>
+      <p class="fine">“Wrong” means rejected by the full verifier, the reference here, not ground truth.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="examples" aria-labelledby="examples-title">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <p class="label">Examples</p>
+      <h2 id="examples-title">Six real fixes. Six verdicts.</h2>
+      <p class="sub">Taken word for word from the benchmark. Pick one and watch the checks run.</p>
+    </div>
     <div class="verdict-app">
       <div class="va-tabs" role="tablist" aria-label="Real patches from the benchmark" hidden>
         <button role="tab" id="t-alt" aria-controls="p-alt" aria-selected="true">Alt from the file name</button>
@@ -185,72 +321,22 @@
 </div>
       </div>
     </div>
-  </div>
-
-  <div class="wrap works" aria-label="Works with">
-    <span>Works with</span><b><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</b><b><svg aria-hidden="true"><use href="#ic-agent"/></svg>Claude Code</b><b><svg aria-hidden="true"><use href="#ic-agent"/></svg>Cursor</b><b><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</b><b><svg aria-hidden="true"><use href="#ic-branch"/></svg>GitHub Actions</b><b><svg aria-hidden="true"><use href="#ic-plug"/></svg>any MCP host</b>
-  </div>
-</section>
-
-<section class="section" id="what" aria-labelledby="what-title">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">What it's for</p>
-      <h2 id="what-title">A quiet checker is not a fixed page.</h2>
-      <p class="sub">Coding agents fix accessibility by the hundred, and most confirm it by re-running a checker. But hide the element, add a generic label or restate the file name, and the checker goes quiet. verifa11y keeps a fix only if it survives checks a silenced violation can't pass.</p>
+    <div class="compare-block">
+      <h3 class="compare-title" data-reveal>Where it fits, and where it doesn't</h3>
+      <div class="table-wrap compare" role="region" tabindex="0" aria-labelledby="tbl-compare" data-reveal>
+      <table>
+        <caption id="tbl-compare" class="sr-only">verifa11y next to auditors and coding agents</caption>
+        <thead><tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col">Auditors <small>axe, Lighthouse</small></th><th scope="col">Coding agent <small>on its own</small></th><th scope="col" class="us">verifa11y</th></tr></thead>
+        <tbody>
+          <tr><th scope="row">Finds violations</th><td><span class="y">Yes</span></td><td><span class="p">If it runs an auditor</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          <tr><th scope="row">Writes the fix</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          <tr><th scope="row">Re-checks it in a real browser</th><td><span class="n">No</span></td><td><span class="p">Re-runs the auditor, at best</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          <tr><th scope="row">Rejects fixes that only silence the checker</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          <tr><th scope="row">Patches React, Vue, templates</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="n">Not yet</span></td></tr>
+          <tr><th scope="row">Proves WCAG conformance</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="n">No</span> <small>no tool can</small></td></tr>
+        </tbody>
+      </table>
     </div>
-    <ul class="facts">
-      <li data-reveal><p class="fact-num">95.9%</p><p>of the top one million home pages had detected WCAG 2 failures.</p><a class="src" href="https://webaim.org/projects/million/">WebAIM Million, 2026</a></li>
-      <li data-reveal><p class="fact-num">28 Jun 2025</p><p>The European Accessibility Act applies across the EU.</p><a class="src" href="https://eur-lex.europa.eu/eli/dir/2019/882/oj">Directive (EU) 2019/882, Art. 31</a></li>
-      <li data-reveal><p class="fact-num">WCAG 2.1 AA</p><p>for US state and local government sites under ADA Title II, from April 2027 for large entities.</p><a class="src" href="https://www.ada.gov/resources/2024-03-08-web-rule/">U.S. DOJ, ADA Title II web rule</a></li>
-    </ul>
-  </div>
-</section>
-
-<section class="section" id="how" aria-labelledby="how-title">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">How it works</p>
-      <h2 id="how-title">Watch one page go through it.</h2>
-      <p class="sub">Three violations on a real demo page. Scroll, and follow them from the audit to the patch you review.</p>
-    </div>
-    <div class="story">
-      <div class="story-stage">
-        <div class="sv s1 s2 s3 s4 s5 s6" aria-hidden="true">
-          <div class="sv-head"><span class="sv-file">demo/before/index.html</span><span class="sv-copy from-4">copy · your file is untouched</span></div>
-          <div class="sv-line">
-            <span class="ln">19</span><code>&lt;nav role="<span class="old">navigaton</span><span class="new from-2">navigation</span>"&gt;</code>
-            <span class="sv-tag from-1">aria-roles</span><span class="sv-src from-2">codemod</span><span class="sv-res ok from-5"><svg><use href="#i-ok"/></svg></span>
-          </div>
-          <div class="sv-line">
-            <span class="ln">28</span><code>&lt;<span class="old">h3</span><span class="new from-2">h2</span>&gt;Rent a plot&lt;/<span class="old">h3</span><span class="new from-2">h2</span>&gt;</code>
-            <span class="sv-tag from-1">heading-order</span><span class="sv-src from-2">codemod</span><span class="sv-res ok from-5"><svg><use href="#i-ok"/></svg></span>
-          </div>
-          <div class="sv-line">
-            <span class="ln">30</span><code>&lt;img src="plot-map.png"<span class="new bad from-2"> alt="plot map"</span>&gt;</code>
-            <span class="sv-tag from-1">image-alt</span><span class="sv-src from-2">quick fix</span><span class="sv-res no from-5"><svg><use href="#i-no"/></svg></span>
-          </div>
-          <div class="sv-row from-3"><span class="chip ok">exact quote</span><span class="chip ok">≤ 6 lines</span><span class="chip ok">≤ 2 hunks</span></div>
-          <div class="sv-row sv-checks from-5">
-            <span class="sv-k">six checks</span>
-            <span class="dots-row"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i></span>
-            <span class="dots-row"><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i><i class="g"></i></span>
-            <span class="dots-row"><i class="g"></i><i class="g"></i><i class="r"></i><i class="r"></i><i class="g"></i><i class="g"></i></span>
-          </div>
-          <div class="sv-out from-6">
-            <p><b>verifa11y.patch</b> · 2 fixes, ready for <code>git apply</code></p>
-            <p class="rej">Rejected: <code>alt="plot map"</code> only restates the file name</p>
-          </div>
-        </div>
-      </div>
-      <ol class="story-steps">
-        <li data-step="1"><span class="n">01 · Audit</span><h3>Find every violation, to the line.</h3><p>verifa11y opens the page in headless Chromium and runs axe-core. Each violation is pinned to the exact line in your source file.</p></li>
-        <li data-step="2"><span class="n">02 · Patch</span><h3>Write the smallest fix.</h3><p>A codemod fixes what the markup can prove: a misspelled role, a skipped heading. The image needs judgment, so here a quick fix guesses. With a model configured, your model writes it instead.</p></li>
-        <li data-step="3"><span class="n">03 · Shape</span><h3>Nothing invented gets through.</h3><p>Every patch must quote your file exactly and stay small: at most 6 lines and 2 hunks.</p></li>
-        <li data-step="4"><span class="n">04 · Copy</span><h3>Your file stays put.</h3><p>Patches go onto a copy that renders exactly like the original. Page scripts never run, and requests to other sites are blocked.</p></li>
-        <li data-step="5"><span class="n">05 · Verify</span><h3>Six checks per patch.</h3><p>The role and the heading pass all six. The alt text passes axe, then fails two checks: it only restates the file name. Rejected.</p></li>
-        <li data-step="6"><span class="n">06 · Review</span><h3>You decide what ships.</h3><p>One <code>.patch</code> with the fixes that held up, and a report of everything rejected or skipped, with the reason.</p></li>
-      </ol>
     </div>
   </div>
 </section>
@@ -304,19 +390,6 @@
       <li data-reveal><p class="big" data-metric="naive.all.axeOnlyRejected" data-count>238</p><p>quick fixes that pass axe-core and that verifa11y rejects, from a deliberately naive fixer.</p></li>
       <li data-reveal><p class="big muted">—</p><p>for a real model. Not measured yet, so not published.</p></li>
     </ul>
-    <div class="panel" data-reveal>
-      <div class="panel-head">
-        <h3>What the verifier adds</h3>
-        <p>The naive fixer's patches (dev pages), judged by weaker verifiers. Green: what the full verifier keeps. Red: what it rejects.</p>
-      </div>
-      <ul class="bars">
-        <li><span class="b-label">No verifier</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.rejected" style="--v:250"></span></span><span class="b-num"><b data-metric="naive.dev.applied">653</b> shipped · <b class="bad" data-metric="naive.dev.rejected">250</b> wrong</span></li>
-        <li><span class="b-label">axe-core only</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.axeRejected" style="--v:223"></span></span><span class="b-num"><b data-metric="naive.dev.axeAccepted">626</b> shipped · <b class="bad" data-metric="naive.dev.axeRejected">223</b> wrong</span></li>
-        <li><span class="b-label">+ source checks</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span><span class="b-bad" data-bar="naive.dev.sourceRejected" style="--v:4"></span></span><span class="b-num"><b data-metric="naive.dev.sourceAccepted">407</b> shipped · <b class="bad" data-metric="naive.dev.sourceRejected">4</b> wrong</span></li>
-        <li><span class="b-label">Full verifier</span><span class="b-track"><span class="b-ok" data-bar="naive.dev.verified" style="--v:403"></span></span><span class="b-num"><b data-metric="naive.dev.verified">403</b> shipped</span></li>
-      </ul>
-      <p class="fine">“Wrong” means rejected by the full verifier, the reference here, not ground truth.</p>
-    </div>
     <div class="results-grid">
       <div class="table-wrap" role="region" tabindex="0" aria-labelledby="tbl-sets" data-reveal>
         <table>
@@ -335,29 +408,6 @@
         <p>The naive fixer gets more patches past the verifier than the codemods do, and many would fail a review: invented state, inline colour overrides, a live region deleted. None makes the page worse, which is what a verifier can prove. “Verified” is an upper bound, not a grade.</p>
         <p><a href="https://github.com/mateogsilvaa/verifa11y/blob/main/bench/baselines/naive/report.md">Every patch and verdict →</a></p>
       </div>
-    </div>
-  </div>
-</section>
-
-<section class="section" id="compare" aria-labelledby="compare-title">
-  <div class="wrap">
-    <div class="section-head" data-reveal>
-      <p class="label">Compared</p>
-      <h2 id="compare-title">Where it fits, and where it doesn't.</h2>
-    </div>
-    <div class="table-wrap compare" role="region" tabindex="0" aria-labelledby="tbl-compare" data-reveal>
-      <table>
-        <caption id="tbl-compare" class="sr-only">verifa11y next to auditors and coding agents</caption>
-        <thead><tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col">Auditors <small>axe, Lighthouse</small></th><th scope="col">Coding agent <small>on its own</small></th><th scope="col" class="us">verifa11y</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Finds violations</th><td><span class="y">Yes</span></td><td><span class="p">If it runs an auditor</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Writes the fix</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Re-checks it in a real browser</th><td><span class="n">No</span></td><td><span class="p">Re-runs the auditor, at best</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Rejects fixes that only silence the checker</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Patches React, Vue, templates</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="n">Not yet</span></td></tr>
-          <tr><th scope="row">Proves WCAG conformance</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="n">No</span> <small>no tool can</small></td></tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
@@ -389,10 +439,10 @@
     </div>
     <div class="guide" data-reveal>
       <div class="ca-tabs" role="tablist" aria-label="Where to use verifa11y" hidden>
-        <button role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Claude Code</button>
+        <button role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</button>
         <button role="tab" id="t-cli" aria-controls="p-cli" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</button>
-        <button role="tab" id="t-mcp" aria-controls="p-mcp" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Cursor, Codex, any MCP host</button>
-        <button role="tab" id="t-gha" aria-controls="p-gha" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-branch"/></svg>GitHub Actions</button>
+        <button role="tab" id="t-mcp" aria-controls="p-mcp" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Any MCP host</button>
+        <button role="tab" id="t-gha" aria-controls="p-gha" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</button>
       </div>
 
       <div class="ca-panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude">
@@ -417,10 +467,11 @@
       </div>
 
       <div class="ca-panel" role="tabpanel" id="p-mcp" aria-labelledby="t-mcp">
-        <h3 class="ca-title">Cursor, Codex, any MCP host</h3>
+        <h3 class="ca-title">Any MCP host</h3>
+        <p class="hosts">Cursor, Codex, Windsurf, Claude Desktop, GitHub Copilot, Gemini CLI, OpenClaw, Zed, Cline, JetBrains, opencode, Warp, Amp and any other client that speaks MCP.</p>
         <ol class="steps">
           <li><p>Install the browser, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
-          <li><p>Add the server to your host's MCP configuration (Cursor's <code>.cursor/mcp.json</code>, Claude Desktop's config, and so on).</p><div class="code" data-copy-block><pre><code>{
+          <li><p>Add it to your host as a stdio MCP server: command <code>npx</code>, arguments <code>-y verifa11y-mcp --root .</code>. In JSON-configured hosts (Cursor's <code>.cursor/mcp.json</code>, Claude Desktop) that is:</p><div class="code" data-copy-block><pre><code>{
   "mcpServers": {
     "verifa11y": {
       "command": "npx",
