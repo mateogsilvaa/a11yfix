@@ -27,8 +27,8 @@ import {
   type Element,
   type Finding,
   type Patch,
-} from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+} from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const CORPUS = fileURLToPath(new URL("../../../corpus/handwritten/", import.meta.url));
 const registry = createCoreRegistry();

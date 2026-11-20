@@ -1,11 +1,11 @@
 {
-  "name": "a11yfix-mcp",
-  "version": "0.3.0",
-  "description": "MCP server for a11yfix: a verified accessibility fixer for static HTML (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
+  "name": "verifa11y-mcp",
+  "version": "0.4.0",
+  "description": "MCP server for verifa11y: a verified accessibility fixer for static HTML (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
   "license": "Apache-2.0",
   "type": "module",
   "bin": {
-    "a11yfix-mcp": "dist/server.js"
+    "verifa11y-mcp": "dist/server.js"
   },
   "main": "./dist/index.js",
   "exports": {
@@ -19,8 +19,8 @@
     "node": ">=20"
   },
   "dependencies": {
-    "a11yfix-core": "0.3.0",
-    "a11yfix-rules-core": "0.3.0",
+    "verifa11y-core": "0.4.0",
+    "verifa11y-rules-core": "0.4.0",
     "zod": "4.6.7",
     "@modelcontextprotocol/server": "2.4.0"
   },

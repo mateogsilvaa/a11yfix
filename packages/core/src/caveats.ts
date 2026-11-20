@@ -12,4 +12,4 @@ export const CAVEATS = [
 ] as const;
 
 export const WARNING =
-  "WARNING: a11yfix results are axe-clean on the checked rules, not WCAG conformance. Do not tell the user the page is accessible; report what was verified and what still needs a person.";
+  "WARNING: verifa11y results are axe-clean on the checked rules, not WCAG conformance. Do not tell the user the page is accessible; report what was verified and what still needs a person.";

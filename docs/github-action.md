@@ -1,16 +1,16 @@
 # GitHub Action
 
-The a11yfix action reviews pull requests. It audits the HTML files a pull request changes, runs
+The verifa11y action reviews pull requests. It audits the HTML files a pull request changes, runs
 `fix --verify --strict --mode codemod` on each, and posts **one review** whose inline comments are GitHub
 suggestions, one per verified fix, on the exact lines it changes. A reviewer accepts or ignores each suggestion with
 the usual buttons. Decision record: [ADR 0016](adr/0016-github-action.md).
 
-> a11yfix results are axe-clean on the checked rules, not WCAG conformance. Every comment and the review body say so,
+> verifa11y results are axe-clean on the checked rules, not WCAG conformance. Every comment and the review body say so,
 > with the same caveats as the MCP server. A person reviews every suggestion before it is committed.
 
 ## Use it
 
-Copy [`examples/a11yfix-pull-request.yml`](examples/a11yfix-pull-request.yml) to `.github/workflows/a11yfix.yml`:
+Copy [`examples/verifa11y-pull-request.yml`](examples/verifa11y-pull-request.yml) to `.github/workflows/verifa11y.yml`:
 
 ```yaml
 on:
@@ -22,7 +22,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  a11yfix:
+  verifa11y:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -32,15 +32,15 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
-      - uses: mateogsilvaa/a11yfix@COMMIT_SHA
-        id: a11yfix
+      - uses: mateogsilvaa/verifa11y@COMMIT_SHA
+        id: verifa11y
 ```
 
 - **Check out the head commit.** `actions/checkout` checks out the merge commit by default, whose line numbers can
   differ from the head's. The action compares `HEAD` with the pull request head and stops with an error if they
   differ, instead of suggesting on the wrong lines.
-- **Pin a commit.** No release is tagged or published to the Marketplace yet; use a full commit SHA. The action runs
-  the CLI from this repository: `npx a11yfix` is an unrelated npm package.
+- **Pin a commit.** No release is tagged or published to the Marketplace yet; use a full commit SHA. The action builds
+  and runs the CLI from that commit of this repository, not from npm.
 - **Node.js 20 or later** must be on the runner (`actions/setup-node`). The action installs its dependencies with
   `npm ci --ignore-scripts` from its own lockfile, then Playwright's `chromium-headless-shell` (cached with
   `actions/cache`; on Linux `--with-deps` installs system libraries with `sudo`).
@@ -61,10 +61,10 @@ jobs:
 | `github-token` | `github.token` | Reads the pull request; posts the review when it has `pull-requests: write`. |
 
 Tier 1 runs only when the workflow names a generator. The action never falls back to `ANTHROPIC_API_KEY` or
-`A11YFIX_GENERATOR_CMD` from the environment:
+`VERIFA11Y_GENERATOR_CMD` from the environment:
 
 ```yaml
-      - uses: mateogsilvaa/a11yfix@COMMIT_SHA
+      - uses: mateogsilvaa/verifa11y@COMMIT_SHA
         with:
           mode: auto
           generator-cmd: claude -p # installed and signed in by an earlier step
@@ -101,7 +101,7 @@ or skipped, never suggested.
   lines, or not expressible as a suggestion) with their diff, **suspicious patches (never suggested)**, patches the
   verifier rejected, skipped findings, and files that could not be audited, each with its reason. Then the caveats.
 - **No duplicates.** A suggestion carries a content key and is not posted again on a later push; when nothing
-  changed since the last a11yfix review, no new review is posted. A clean audit posts no review.
+  changed since the last verifa11y review, no new review is posted. A clean audit posts no review.
 
 ## Fork pull requests and read-only tokens
 

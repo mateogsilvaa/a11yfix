@@ -130,7 +130,7 @@ export async function runAxe(page: Page, subset: string[]): Promise<AxeRun> {
   await page.evaluate(axe);
   // Installed via CDP evaluate (not new Function in the page), so a page CSP
   // of script-src 'none' does not block it.
-  await page.evaluate(`globalThis.__a11yfixContext = (${extractNodeContext.toString()})`);
+  await page.evaluate(`globalThis.__verifa11yContext = (${extractNodeContext.toString()})`);
   return page.evaluate(runAxeInPage, { subset, tags: REGRESSION_TAGS });
 }
 
@@ -229,7 +229,7 @@ async function runAxeInPage(args: {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const w = window as any;
   const axe = w.axe;
-  const extractContext = w.__a11yfixContext as (el: Element, ruleId: string) => NodeContext;
+  const extractContext = w.__verifa11yContext as (el: Element, ruleId: string) => NodeContext;
 
   const wcagRules: string[] = axe
     .getRules(args.tags)

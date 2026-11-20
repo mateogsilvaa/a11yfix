@@ -1,8 +1,8 @@
 [
   {
     "name": "rules",
-    "title": "List a11yfix rules",
-    "description": "The rules a11yfix can patch: axe rule, WCAG criteria, tier (0 = deterministic codemod, 1 = needs a model or you), and what each one declines by design. Call it first, so you know what fix will do on its own, what needs judgment, and what will end up skipped.",
+    "title": "List verifa11y rules",
+    "description": "The rules verifa11y can patch: axe rule, WCAG criteria, tier (0 = deterministic codemod, 1 = needs a model or you), and what each one declines by design. Call it first, so you know what fix will do on its own, what needs judgment, and what will end up skipped.",
     "inputSchema": {
       "type": "object",
       "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -102,7 +102,7 @@
   {
     "name": "audit",
     "title": "Audit an HTML file",
-    "description": "Audit a static HTML file with axe-core. Returns the violations a11yfix can patch, with id, WCAG criteria, exact source lines and text, tier, whether a codemod exists, and rule guidance; plus how many other WCAG A/AA violations the page has. Does not change anything.",
+    "description": "Audit a static HTML file with axe-core. Returns the violations verifa11y can patch, with id, WCAG criteria, exact source lines and text, tier, whether a codemod exists, and rule guidance; plus how many other WCAG A/AA violations the page has. Does not change anything.",
     "inputSchema": {
       "type": "object",
       "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -263,7 +263,7 @@
   {
     "name": "fix",
     "title": "Generate verified fixes as a patch",
-    "description": "Audit an HTML file, generate a patch per finding (mode=codemod: deterministic codemods only, offline, the default; mode=auto: also a tier-1 model configured in the server's environment), verify every patch, and write the verified ones as a git patch under the output directory (<out>/<runId>/a11yfix.patch). Never edits the HTML file: the user applies the patch with git apply and reviews it. strict (default true) leaves suspicious patches out.",
+    "description": "Audit an HTML file, generate a patch per finding (mode=codemod: deterministic codemods only, offline, the default; mode=auto: also a tier-1 model configured in the server's environment), verify every patch, and write the verified ones as a git patch under the output directory (<out>/<runId>/verifa11y.patch). Never edits the HTML file: the user applies the patch with git apply and reviews it. strict (default true) leaves suspicious patches out.",
     "inputSchema": {
       "type": "object",
       "$schema": "https://json-schema.org/draft/2020-12/schema",
@@ -285,7 +285,7 @@
           "type": "boolean"
         },
         "out": {
-          "description": "Output directory, relative to the server root (default .a11yfix)",
+          "description": "Output directory, relative to the server root (default .verifa11y)",
           "type": "string"
         },
         "limit": {

@@ -14,4 +14,4 @@ built-in Anthropic client stays as the default when an API key is set and no com
 ## Consequences
 Any model or agent can produce tier-1 patches, including fully offline local models. Token usage is unknown for
 commands and reported as zero; benchmark reports name the command. Command output is untrusted data: it can only
-become a patch, and only a verified one reaches `a11yfix.patch` (or a suspicious one, without `--strict`).
+become a patch, and only a verified one reaches `verifa11y.patch` (or a suspicious one, without `--strict`).

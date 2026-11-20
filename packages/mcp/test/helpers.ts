@@ -13,7 +13,7 @@ const shop = fileURLToPath(new URL("../../core/test/fixtures/deep-cases.html", i
 const labels = fileURLToPath(new URL("../../../corpus/handwritten/02-newsletter-labels.html", import.meta.url));
 
 export async function makeRoot(): Promise<string> {
-  const root = await mkdtemp(path.join(os.tmpdir(), "a11yfix-mcp-"));
+  const root = await mkdtemp(path.join(os.tmpdir(), "verifa11y-mcp-"));
   await copyFile(shop, path.join(root, "shop.html"));
   await copyFile(labels, path.join(root, "newsletter.html"));
   await writeFile(path.join(root, "notes.txt"), "not html");
@@ -22,7 +22,7 @@ export async function makeRoot(): Promise<string> {
 
 export async function connect(root: string, mode: "modern" | "legacy" = "modern"): Promise<Client> {
   const client = new Client(
-    { name: "a11yfix-test", version: "0.0.0" },
+    { name: "verifa11y-test", version: "0.0.0" },
     mode === "modern" ? { versionNegotiation: { mode: { pin: "2026-07-28" } } } : {},
   );
   await client.connect(new StdioClientTransport({ command: process.execPath, args: [SERVER, "--root", root], stderr: "ignore" }));

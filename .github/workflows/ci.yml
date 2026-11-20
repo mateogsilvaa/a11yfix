@@ -85,12 +85,12 @@ jobs:
       # Installs and runs action.yml from this checkout. The filter matches no file, so it never posts a review
       # (the corpus is full of deliberate violations); posting is covered by packages/action/test.
       - uses: ./
-        id: a11yfix
+        id: verifa11y
         with:
-          paths: a11yfix-ci-smoke-matches-nothing/**/*.html
+          paths: verifa11y-ci-smoke-matches-nothing/**/*.html
           fail-on: unfixed
       - name: The action ran and reported
-        run: test "${{ steps.a11yfix.outputs.findings }}" = "0" && test -f "${{ steps.a11yfix.outputs.results }}"
+        run: test "${{ steps.verifa11y.outputs.findings }}" = "0" && test -f "${{ steps.verifa11y.outputs.results }}"
 
   docker:
     name: container sandbox
@@ -98,17 +98,17 @@ jobs:
     needs: test
     steps:
       - uses: actions/checkout@v4
-      - run: docker build -t a11yfix .
+      - run: docker build -t verifa11y .
       # File mode must work with no network at all, read-only root, no capabilities, CPU and memory caps.
       - name: Audit and fix offline in the sandbox
         run: |
           mkdir -p out && chmod 777 out
           docker run --rm --network none --cpus 2 --memory 2g --read-only \
-            --tmpfs /tmp --tmpfs /home/a11yfix --cap-drop ALL --security-opt no-new-privileges \
+            --tmpfs /tmp --tmpfs /home/verifa11y --cap-drop ALL --security-opt no-new-privileges \
             -v "$PWD/corpus:/work:ro" -v "$PWD/out:/out" \
-            a11yfix audit handwritten/02-newsletter-labels.html --out /out/findings.json
+            verifa11y audit handwritten/02-newsletter-labels.html --out /out/findings.json
           docker run --rm --network none --cpus 2 --memory 2g --read-only \
-            --tmpfs /tmp --tmpfs /home/a11yfix --cap-drop ALL --security-opt no-new-privileges \
+            --tmpfs /tmp --tmpfs /home/verifa11y --cap-drop ALL --security-opt no-new-privileges \
             -v "$PWD/corpus:/work:ro" -v "$PWD/out:/out" \
-            a11yfix fix /out/findings.json --verify --mode codemod --out /out/patches
-          test -s out/patches/a11yfix.patch
+            verifa11y fix /out/findings.json --verify --mode codemod --out /out/patches
+          test -s out/patches/verifa11y.patch

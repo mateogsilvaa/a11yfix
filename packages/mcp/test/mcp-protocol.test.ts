@@ -25,7 +25,7 @@ describe("protocol 2026-07-28 at the wire", () => {
     assert.ok(r.supportedVersions.includes("2026-07-28"));
     assert.ok(r.capabilities.tools);
     assert.ok(r.capabilities.prompts);
-    assert.equal(r._meta["io.modelcontextprotocol/serverInfo"].name, "a11yfix");
+    assert.equal(r._meta["io.modelcontextprotocol/serverInfo"].name, "verifa11y");
     assert.equal(r.resultType, "complete");
   });
 

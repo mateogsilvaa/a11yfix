@@ -7,6 +7,6 @@
 - Outcomes: skipped 5, verified 4
 - Violations of the patched rules left in demo/after: 5
 
-`index.html` is demo/before with every verified patch applied, and `a11yfix.patch` is the same change as a
+`index.html` is demo/before with every verified patch applied, and `verifa11y.patch` is the same change as a
 patch (`git apply`). `results.json` has every finding, including the skipped and rejected ones and why.
 Regenerate with `npm run demo`.

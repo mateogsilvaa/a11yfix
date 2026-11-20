@@ -14,7 +14,7 @@
 // Nothing here talks to the network; the test feeds it a known patch.
 
 import { createHash } from "node:crypto";
-import { gitPatch, subEdits, validatePatch, type Finding, type Patch, type VerificationStatus } from "a11yfix-core";
+import { gitPatch, subEdits, validatePatch, type Finding, type Patch, type VerificationStatus } from "verifa11y-core";
 import { hunkFor, type LineRange } from "./diff.js";
 
 export interface FindingResult {
@@ -144,7 +144,7 @@ export function placeFixes(file: FileReport): { suggestions: Suggestion[]; unpla
         path: file.path,
         fix: l.fix,
         line: l.startLine,
-        why: "it edits the same code as another verified fix; apply that one and run a11yfix again",
+        why: "it edits the same code as another verified fix; apply that one and run verifa11y again",
         diff: diffOf(l.edits),
       });
       continue;

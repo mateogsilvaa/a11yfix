@@ -5,7 +5,7 @@ Accessibility tooling runs on staging sites, intranets and customer code. Anythi
 to adopt it.
 
 ## Decision
-a11yfix collects no telemetry and needs no account. Audits block every request outside the page's own origin. The
+verifa11y collects no telemetry and needs no account. Audits block every request outside the page's own origin. The
 only outbound connection is the model API, and only when tier 1 is enabled with credentials. A hosted service, if it
 ever exists, is optional.
 

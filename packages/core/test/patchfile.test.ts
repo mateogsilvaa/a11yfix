@@ -7,8 +7,8 @@ import os from "node:os";
 import path from "node:path";
 import { after, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { auditSource, closeBrowser, combine, gitPatch, limiter, processPage, type Generator, type PatchOutcome } from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+import { auditSource, closeBrowser, combine, gitPatch, limiter, processPage, type Generator, type PatchOutcome } from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
 after(() => closeBrowser());
@@ -16,7 +16,7 @@ after(() => closeBrowser());
 const git = (cwd: string, ...args: string[]) => execFileSync("git", args, { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] });
 
 async function repoWith(name: string, source: string, crlf: boolean) {
-  const dir = await mkdtemp(path.join(os.tmpdir(), "a11yfix-git-"));
+  const dir = await mkdtemp(path.join(os.tmpdir(), "verifa11y-git-"));
   git(dir, "init", "-q");
   git(dir, "config", "core.autocrlf", "false");
   await writeFile(path.join(dir, ".gitattributes"), "* -text\n");

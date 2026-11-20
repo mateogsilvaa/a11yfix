@@ -52,7 +52,7 @@ export class GitHub {
         accept: "application/vnd.github+json",
         authorization: `Bearer ${this.o.token}`,
         "x-github-api-version": "2022-11-28",
-        "user-agent": "a11yfix-action",
+        "user-agent": "verifa11y-action",
         ...(body === undefined ? {} : { "content-type": "application/json" }),
       },
       body: body === undefined ? undefined : JSON.stringify(body),

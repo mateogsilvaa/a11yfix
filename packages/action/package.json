@@ -1,8 +1,8 @@
 {
-  "name": "a11yfix-action",
-  "version": "0.3.0",
+  "name": "verifa11y-action",
+  "version": "0.4.0",
   "private": true,
-  "description": "The a11yfix GitHub Action: audits the HTML a pull request changes and posts verified fixes as suggestions. Not a conformance audit.",
+  "description": "The verifa11y GitHub Action: audits the HTML a pull request changes and posts verified fixes as suggestions. Not a conformance audit.",
   "license": "Apache-2.0",
   "type": "module",
   "main": "./dist/index.js",
@@ -17,6 +17,6 @@
     "node": ">=20"
   },
   "dependencies": {
-    "a11yfix-core": "0.3.0"
+    "verifa11y-core": "0.4.0"
   }
 }

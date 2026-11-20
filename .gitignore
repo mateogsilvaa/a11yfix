@@ -8,5 +8,5 @@ dist/
 /patches/
 /bench/run/
 *.tsbuildinfo
-/.a11yfix/
+/.verifa11y/
 /site-audit/

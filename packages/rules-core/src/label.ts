@@ -12,7 +12,7 @@ import {
   type CodemodResult,
   type Element,
   type FixContext,
-} from "a11yfix-core";
+} from "verifa11y-core";
 
 const CONTROLS = new Set(["input", "select", "textarea"]);
 const INLINE_TEXT = new Set(["span", "strong", "b", "em", "i", "small", "p", "div", "td", "th", "dt"]);

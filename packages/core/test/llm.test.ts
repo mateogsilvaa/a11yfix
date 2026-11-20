@@ -3,8 +3,8 @@
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
 import type Anthropic from "@anthropic-ai/sdk";
-import { LlmGenerator, buildFindingPrompt, type Finding } from "a11yfix-core";
-import { imageAlt } from "a11yfix-rules-core";
+import { LlmGenerator, buildFindingPrompt, type Finding } from "verifa11y-core";
+import { imageAlt } from "verifa11y-rules-core";
 
 const finding: Finding = {
   id: "f_0001",

@@ -5,7 +5,7 @@ The pages in `w3c-bad/` include material copied from the W3C Web Accessibility I
 <https://www.w3.org/WAI/demos/bad/before/home.html>.
 Copyright © World Wide Web Consortium. <https://www.w3.org/copyright/software-license-2023/>
 
-Changes made by a11yfix: an HTML comment with this attribution was added at the top of each page.
+Changes made by verifa11y: an HTML comment with this attribution was added at the top of each page.
 The pages are otherwise unchanged. Their external images, scripts and stylesheets are not included.
 
 ---

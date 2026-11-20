@@ -1,7 +1,7 @@
 {
-  "name": "a11yfix-monorepo",
+  "name": "verifa11y-monorepo",
   "private": true,
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Audit HTML for accessibility violations, generate a minimal patch per violation, and keep only the patches a re-audit proves correct.",
   "license": "Apache-2.0",
   "type": "module",
@@ -21,7 +21,7 @@
     "typecheck": "npm run build",
     "test": "npm run build && node scripts/test.mjs",
     "test:sabotage": "npm run build && node scripts/test.mjs sabotage",
-    "a11yfix": "node packages/cli/dist/cli.js",
+    "verifa11y": "node packages/cli/dist/cli.js",
     "bench:codemod": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode codemod --report bench/codemod/report.md --out bench/codemod --notes bench/codemod/analysis.md",
     "bench": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode auto --report report.md --out bench/auto --compare bench/codemod/metrics.json",
     "bench:naive": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode llm --generator-cmd \"node bench/baselines/naive-fixer.mjs\" --generator-input json --report bench/baselines/naive/report.md --out bench/baselines/naive --notes bench/baselines/naive/analysis.md --compare bench/codemod/metrics.json",

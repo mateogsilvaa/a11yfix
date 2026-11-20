@@ -3,13 +3,25 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
-## Unreleased
+## 0.4.0 (2026-11-20)
+
+The project is now **verifa11y** (ADR 0018). This release measures the verifier instead of only trusting it: a naive
+baseline shows what it catches and what it cannot, a held-out corpus keeps the numbers honest, and a GitHub Action
+brings verified fixes to pull requests.
+
+### Breaking
+- **Renamed from a11yfix to verifa11y.** Command `a11yfix` → `verifa11y`, `a11yfix-mcp` → `verifa11y-mcp`; packages
+  `a11yfix-*` → `verifa11y-*`; environment variables `A11YFIX_*` → `VERIFA11Y_*` (`VERIFA11Y_GENERATOR_CMD`,
+  `VERIFA11Y_MODEL`, `VERIFA11Y_MCP_ROOT`, `VERIFA11Y_BASIC_AUTH`); output names `a11yfix.patch` →
+  `verifa11y.patch`, `.a11yfix/` → `.verifa11y/`, `a11yfix.sqlite` → `verifa11y.sqlite`. Repository
+  `mateogsilvaa/verifa11y` (the old URL redirects). No aliases.
+- Two new verifier checks (below) can reject patches that 0.3 verified.
 
 ### Added
 - **Held-out eval corpus** (ADR 0017): 73 pages in `corpus/eval/` (Start Bootstrap templates, Bootstrap 5.3.9
   examples, MDN learning-area accessibility pages, axe-core fixtures not used in dev), each with its source and
   license, never used to write or tune codemods, rules, prompts or the verifier. The 22 existing pages are dev.
-- `a11yfix bench` reports eval and dev separately (summary, tiers, comparison, verifier ablation, outcomes and
+- `verifa11y bench` reports eval and dev separately (summary, tiers, comparison, verifier ablation, outcomes and
   per-rule tables, with intervals); `metrics.json` adds `bySet`, and `--compare` matches set to set. Tier 0 on eval:
   18 of 18 verified, 100% [82.4–100].
 - **Naive baseline** (ADR 0014): `bench/baselines/naive-fixer.mjs`, unchecked quick fixes run through
@@ -37,7 +49,7 @@ API (ADR 0006).
   56 patches from verified to suspicious (`label` 51 → 2, `aria-required-attr` 29 → 22); no tier-0 patch is flagged.
 
 ### Changed
-- The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `a11yfix-core`; `a11yfix-mcp`
+- The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `verifa11y-core`; `verifa11y-mcp`
   re-exports them unchanged.
 
 ## 0.3.0

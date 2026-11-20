@@ -7,7 +7,7 @@ Three commitments shape everything below:
    straight into a pull request. *(Done in 0.2.)*
 2. **The public contract is the plugin API, not the CLI.** That is where adoption happens. It opens only when the
    verifier can hold third-party rules to account (phase 3).
-3. **Telemetry, accounts and servers are optional, always.** a11yfix must work on a machine with no network beyond
+3. **Telemetry, accounts and servers are optional, always.** verifa11y must work on a machine with no network beyond
    the target.
 
 If the roadmap has to be cut: do 0, 1 and 3, and leave 2 out. Plain HTML with strong verification is more honest
@@ -20,13 +20,13 @@ than half-working codemods for templates.
       tiers reported separately; tier 0 at 100% precision on the corpus
 - [x] Typed Rule API (`detect`, `fix`, `verify`, `wcag`, `tier`, `confidence`), per-rule semver, written deprecation
       policy; experimental until phase 3
-- [x] Monorepo with workspaces: `a11yfix-core`, `a11yfix-cli`, `a11yfix-rules-core`
+- [x] Monorepo with workspaces: `verifa11y-core`, `verifa11y-cli`, `verifa11y-rules-core`
 - [x] Real tests, including a sabotage test: the verifier must reject every deliberately fake fix
 - [x] Pinned axe-core and Playwright; engine versions in every report
 - [x] CONTRIBUTING, CODE_OF_CONDUCT, GOVERNANCE, rule author guide, issue and PR templates, ADRs
 - [x] CI matrix (Linux, Windows, macOS × Node 20, 22, 24), lockfile installs
 - [x] No telemetry, stated in the README
-- [ ] `a11yfix-rules-wcag22` package (waits for phase 3, see ADR 0006)
+- [ ] `verifa11y-rules-wcag22` package (waits for phase 3, see ADR 0006)
 
 ## Phase 1: from one file to a site *(done in 0.3.0, ADR 0010)*
 
@@ -67,7 +67,7 @@ than half-working codemods for templates.
 ## Phase 4: rule ecosystem
 
 - Public rule registry with metadata: WCAG criterion, tier, expected confidence, author, version
-- `npm create a11yfix-rule` template and a conformance suite every external plugin must pass to be listed
+- `npm create verifa11y-rule` template and a conformance suite every external plugin must pass to be listed
 - Corpus as its own versioned repository, with its own license (MIT for hand-written pages, CC-BY for adapted
   ones); breaking the corpus fails CI
 - Conformance badge per plugin and per rule
@@ -80,14 +80,14 @@ than half-working codemods for templates.
 - Reports structured after WCAG-EM and mapped to EN 301 549: methodology, sampling, date, version, corpus hash
 - Fillable VPAT draft that separates what was verified from what needs human judgment
 - Tamper-evident log: every run with version, commit, findings, verifications and a chained hash
-- Honest wording in every report: a11yfix does not guarantee conformance
+- Honest wording in every report: verifa11y does not guarantee conformance
 
 ## Beyond the plan: any agent as tier 1 *(0.3.0, ADR 0011)*
 
 - [x] `--generator-cmd`: tier 1 through any model or agent CLI (local models, coding agents, scripts), verified like
       every other patch
-- [x] Documented protocol for agents that use a11yfix as their judge (`docs/agents.md`)
-- [x] An MCP server (`a11yfix-mcp`, ADR 0013, MCP 2026-07-28): `rules`, `audit`, `fix`, `verify` and a
+- [x] Documented protocol for agents that use verifa11y as their judge (`docs/agents.md`)
+- [x] An MCP server (`verifa11y-mcp`, ADR 0013, MCP 2026-07-28): `rules`, `audit`, `fix`, `verify` and a
       `fix-accessibility` prompt; conformance caveat in every result
 - [ ] Run the MCP server in real hosts as part of release checks (MCP Inspector, Claude Code, Claude Desktop)
 

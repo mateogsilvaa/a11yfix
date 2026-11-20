@@ -14,7 +14,7 @@ before(async () => {
 });
 after(() => client.close());
 
-describe("a11yfix MCP server, end to end", () => {
+describe("verifa11y MCP server, end to end", () => {
   it("negotiates the 2026-07-28 revision", () => {
     assert.equal(client.getNegotiatedProtocolVersion(), "2026-07-28");
   });

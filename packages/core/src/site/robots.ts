@@ -1,6 +1,6 @@
 // robots.txt (RFC 9309): groups by user agent, Allow/Disallow with the
 // longest match winning, `*` and `$` wildcards, plus the Sitemap and
-// Crawl-delay extensions. a11yfix matches the product token "a11yfix" and
+// Crawl-delay extensions. verifa11y matches the product token "verifa11y" and
 // falls back to the "*" group.
 
 export interface Robots {
@@ -23,7 +23,7 @@ interface Group {
 
 export const ALLOW_ALL: Robots = { allowed: () => true, crawlDelay: null, sitemaps: [] };
 
-export function parseRobots(text: string, agent = "a11yfix"): Robots {
+export function parseRobots(text: string, agent = "verifa11y"): Robots {
   const groups: Group[] = [];
   const sitemaps: string[] = [];
   let current: Group | null = null;

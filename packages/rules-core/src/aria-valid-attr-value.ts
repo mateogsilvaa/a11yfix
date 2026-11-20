@@ -1,4 +1,4 @@
-import { attr, defineRule, levenshtein, setAttr, type CodemodResult, type FixContext } from "a11yfix-core";
+import { attr, defineRule, levenshtein, setAttr, type CodemodResult, type FixContext } from "verifa11y-core";
 import { BOOLEAN_ATTRS, IDREF_ATTRS, TOKEN_ATTRS, TRISTATE_ATTRS, TRUE_FALSE_UNDEFINED_ATTRS, attrNamesFromData } from "./aria-data.js";
 
 const TRUTHY = new Set(["true", "yes", "1", "on"]);

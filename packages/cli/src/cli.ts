@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// a11yfix command-line interface.
+// verifa11y command-line interface.
 
 import { mkdir, readFile, readdir, stat, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
@@ -41,8 +41,8 @@ import {
   type RuleRegistry,
   type SiteAuth,
   type Viewport,
-} from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+} from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const require = createRequire(import.meta.url);
 const pkg = require("../package.json") as { version: string };
@@ -99,7 +99,7 @@ function makeLlm(o: GenOpts): Generator | null {
   if (o.generatorCmd) return new CommandGenerator({ command: o.generatorCmd, input: o.generatorInput });
   if (o.mode === "auto" && !hasCredentials()) {
     console.error(
-      "a11yfix: no model configured (no --generator-cmd, ANTHROPIC_API_KEY unset): findings that need judgment will be skipped.",
+      "verifa11y: no model configured (no --generator-cmd, ANTHROPIC_API_KEY unset): findings that need judgment will be skipped.",
     );
     return null;
   }
@@ -142,7 +142,7 @@ function parseViewports(v: string): Viewport[] {
 const registry: RuleRegistry = createCoreRegistry();
 
 const program = new Command()
-  .name("a11yfix")
+  .name("verifa11y")
   .description(
     "Audit HTML for accessibility violations, patch them, and keep only the patches a re-audit proves correct.\n" +
       "No telemetry. No network access other than the page under audit and, only for tier-1 fixes, the model you configure.",
@@ -160,7 +160,7 @@ const fixOpts = (cmd: Command) =>
     .option(
       "--generator-cmd <command>",
       "tier 1 through any agent or model CLI: gets the request on stdin, prints the patch JSON on stdout (e.g. \"claude -p\", \"ollama run qwen3\")",
-      process.env.A11YFIX_GENERATOR_CMD,
+      process.env.VERIFA11Y_GENERATOR_CMD,
     )
     .addOption(
       new Option("--generator-input <format>", "what the generator command receives on stdin").choices(["text", "json"]).default("text"),
@@ -253,11 +253,11 @@ fixOpts(
         pages.filter((p) => p.combined !== null).map((p) => ({ path: toPatchPath(p.file), before: p.src, after: p.combined! })),
       );
       await mkdir(o.out, { recursive: true });
-      await writeFile(path.join(o.out, "a11yfix.patch"), patch, "utf8");
+      await writeFile(path.join(o.out, "verifa11y.patch"), patch, "utf8");
       const included = pages.flatMap((p) => p.outcomes.filter((x) => x.included));
       const sus = included.filter((x) => x.verification.status === "rejected_suspicious").length;
       console.log(
-        `wrote ${path.join(o.out, "a11yfix.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: git apply ${path.join(o.out, "a11yfix.patch")}`,
+        `wrote ${path.join(o.out, "verifa11y.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: git apply ${path.join(o.out, "verifa11y.patch")}`,
       );
     }
     if (store) {
@@ -293,7 +293,7 @@ program
   .addOption(new Option("--level <n>", "1 = structural rules, 2 = also color-contrast").choices(["1", "2"]).default("2"))
   .option("--header <header>", 'extra request header for the target origin, "Name: value" (repeatable)', collect, [])
   .option("--cookie <cookie>", 'cookie for the target origin, "name=value" (repeatable)', collect, [])
-  .option("--basic-auth <user:pass>", "HTTP basic auth for the target origin (or set A11YFIX_BASIC_AUTH)", process.env.A11YFIX_BASIC_AUTH)
+  .option("--basic-auth <user:pass>", "HTTP basic auth for the target origin (or set VERIFA11Y_BASIC_AUTH)", process.env.VERIFA11Y_BASIC_AUTH)
   .option("--allow-origin <origin>", "let the browser load resources from this origin too (CDN); never crawled (repeatable)", collect, [])
   .option("--include <regex>", "only crawl URLs matching this")
   .option("--exclude <regex>", "never crawl URLs matching this")
@@ -493,7 +493,7 @@ fixOpts(
 program
   .parseAsync()
   .catch((err: Error) => {
-    console.error(`a11yfix: ${err.message}`);
+    console.error(`verifa11y: ${err.message}`);
     process.exitCode = 1;
   })
   .finally(() => closeBrowser());

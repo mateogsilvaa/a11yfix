@@ -14,7 +14,7 @@ let outside = "";
 let client: Client;
 before(async () => {
   root = await makeRoot();
-  outside = await mkdtemp(path.join(os.tmpdir(), "a11yfix-outside-"));
+  outside = await mkdtemp(path.join(os.tmpdir(), "verifa11y-outside-"));
   await writeFile(path.join(outside, "secret.html"), "<!doctype html><html lang=en><title>x</title><img src=x.png></html>");
   client = await connect(root);
 });
@@ -84,9 +84,9 @@ describe("writes", () => {
     assert.equal(await readFile(path.join(root, "newsletter.html"), "utf8"), before_, "input file unchanged");
     assert.notEqual(a.data.runId, b.data.runId, "each run gets its own directory");
     for (const r of [a, b]) {
-      assert.ok(r.data.patchPath.startsWith(`.a11yfix/${r.data.runId}/`));
+      assert.ok(r.data.patchPath.startsWith(`.verifa11y/${r.data.runId}/`));
       assert.ok((await readFile(path.join(root, r.data.patchPath), "utf8")).startsWith("diff --git a/newsletter.html"));
-      assert.deepEqual((await readdir(path.join(root, ".a11yfix", r.data.runId))).sort(), ["a11yfix.patch", "results.json"]);
+      assert.deepEqual((await readdir(path.join(root, ".verifa11y", r.data.runId))).sort(), ["results.json", "verifa11y.patch"]);
     }
   });
 

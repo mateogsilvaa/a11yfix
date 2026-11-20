@@ -1,5 +1,5 @@
-a11yfix
-Copyright 2026 mateogsilvaa and the a11yfix contributors
+verifa11y
+Copyright 2026 mateogsilvaa and the verifa11y contributors
 
 This product is licensed under the Apache License, Version 2.0 (see LICENSE).
 
@@ -11,4 +11,4 @@ The benchmark corpus includes third-party material under its own licenses:
   (https://www.w3.org/WAI/demos/bad/), Copyright © World Wide Web Consortium,
   W3C Software and Document License. See corpus/external/LICENSE-w3c.md.
 
-At runtime a11yfix injects axe-core (MPL-2.0, Deque Systems) into the audited page.
+At runtime verifa11y injects axe-core (MPL-2.0, Deque Systems) into the audited page.

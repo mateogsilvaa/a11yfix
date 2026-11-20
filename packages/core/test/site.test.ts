@@ -20,8 +20,8 @@ import {
   renderSiteReport,
   sharedGroups,
   type SiteResult,
-} from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+} from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
 const root = fileURLToPath(new URL("./fixtures/site/", import.meta.url));
@@ -42,7 +42,7 @@ describe("robots.txt", () => {
       "Sitemap: https://x.test/sitemap.xml",
     ].join("\n"),
   );
-  it("uses the * group when no group names a11yfix", () => assert.equal(r.allowed("https://x.test/"), true));
+  it("uses the * group when no group names verifa11y", () => assert.equal(r.allowed("https://x.test/"), true));
   it("disallows by prefix", () => assert.equal(r.allowed("https://x.test/private/a.html"), false));
   it("lets the longest match win", () => assert.equal(r.allowed("https://x.test/private/ok.html"), true));
   it("supports * and $", () => {
@@ -53,8 +53,8 @@ describe("robots.txt", () => {
     assert.equal(r.crawlDelay, 2);
     assert.deepEqual(r.sitemaps, ["https://x.test/sitemap.xml"]);
   });
-  it("prefers a group that names a11yfix", () => {
-    const s = parseRobots("User-agent: *\nDisallow: /\n\nUser-agent: a11yfix\nDisallow: /admin\n");
+  it("prefers a group that names verifa11y", () => {
+    const s = parseRobots("User-agent: *\nDisallow: /\n\nUser-agent: verifa11y\nDisallow: /admin\n");
     assert.equal(s.allowed("https://x.test/page"), true);
     assert.equal(s.allowed("https://x.test/admin/x"), false);
   });
@@ -130,7 +130,7 @@ describe("crawlSite", () => {
   let r: SiteResult;
   let shots: string;
   before(async () => {
-    shots = await mkdtemp(path.join(os.tmpdir(), "a11yfix-shots-"));
+    shots = await mkdtemp(path.join(os.tmpdir(), "verifa11y-shots-"));
     requests.length = 0;
     r = await crawl({ screenshotsDir: shots, maxDepth: 1 });
   });
@@ -232,8 +232,8 @@ const hasSqlite = await import("node:sqlite").then(
 
 describe("storage and incremental runs", { skip: hasSqlite ? false : "node:sqlite needs Node >= 22.13" }, () => {
   it("reuses unchanged pages and re-audits changed ones", async () => {
-    const dir = await mkdtemp(path.join(os.tmpdir(), "a11yfix-db-"));
-    const store = await Store.open(path.join(dir, "a11yfix.sqlite"));
+    const dir = await mkdtemp(path.join(os.tmpdir(), "verifa11y-db-"));
+    const store = await Store.open(path.join(dir, "verifa11y.sqlite"));
     try {
       const first = await crawl({ store, incremental: true });
       const audited = first.pages.filter((p) => p.status === "audited").length;

@@ -3,7 +3,7 @@
 //
 // One finding per request; strict JSON output; invalid output retried at
 // most twice, the third failure is a discard. This is the only part of
-// a11yfix that talks to a network service other than the page under audit,
+// verifa11y that talks to a network service other than the page under audit,
 // and it is optional.
 
 import Anthropic from "@anthropic-ai/sdk";
@@ -18,7 +18,7 @@ export interface Generator {
   generate(finding: Finding, src: string, rule?: Rule): Promise<GenerationResult>;
 }
 
-export const DEFAULT_MODEL = process.env.A11YFIX_MODEL ?? "claude-opus-5-5";
+export const DEFAULT_MODEL = process.env.VERIFA11Y_MODEL ?? "claude-opus-5-5";
 export type Effort = "low" | "medium" | "high" | "xhigh" | "max";
 
 export const SYSTEM_PROMPT = `You are a senior accessibility engineer who knows WCAG 2.2 in depth. You fix exactly one axe-core violation per request by proposing the smallest possible patch to an HTML source file. You never rewrite, reformat or modernize code that is not part of the fix.

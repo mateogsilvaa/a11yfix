@@ -1,4 +1,4 @@
-# a11yfix benchmark report
+# verifa11y benchmark report
 
 **Status: the tier-1 (model) benchmark has not been run yet.** The environment this repository was built in had no
 Anthropic API key, and this file only ever holds measured numbers. Generate it with:
@@ -15,4 +15,4 @@ with the offline benchmark.
 Meanwhile, the offline tier-0 run is measured: [bench/codemod/report.md](bench/codemod/report.md) (22 pages, 662
 violations, 136 tier-0 patches proposed, 136 verified: 100% precision, 20.5% fix rate), with an analysis.
 
-a11yfix does not guarantee WCAG conformance.
+verifa11y does not guarantee WCAG conformance.

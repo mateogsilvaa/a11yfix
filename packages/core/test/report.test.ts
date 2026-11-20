@@ -16,7 +16,7 @@ import {
   type ReportInput,
   type Rule,
   type Verification,
-} from "a11yfix-core";
+} from "verifa11y-core";
 
 describe("wilson", () => {
   it("matches known 95% intervals", () => {

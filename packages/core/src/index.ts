@@ -1,4 +1,4 @@
-// a11yfix-core public entry point.
+// verifa11y-core public entry point.
 
 export * from "./types.js";
 export { CAVEATS, CONFORMANCE, WARNING } from "./caveats.js";

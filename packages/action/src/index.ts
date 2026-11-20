@@ -1,4 +1,4 @@
-// a11yfix-action: the pure parts of the GitHub Action, for tests and reuse.
+// verifa11y-action: the pure parts of the GitHub Action, for tests and reuse.
 
 export { hunkFor, rightHunks, type LineRange } from "./diff.js";
 export { GitHub, GitHubError, type GitHubOptions, type PullFile, type Review } from "./github.js";

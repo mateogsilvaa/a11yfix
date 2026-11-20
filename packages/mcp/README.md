@@ -1,4 +1,4 @@
-# a11yfix-mcp
+# verifa11y-mcp
 
 An MCP server that lets AI agents **fix accessibility violations in static HTML files and have every fix verified**
 against axe-core plus the browser's accessibility tree, focus order and rendered pixels.
@@ -7,7 +7,7 @@ against axe-core plus the browser's accessibility tree, focus order and rendered
 reports the violation and the other checks found nothing worse. Every result says so in its payload, and agents must
 not tell users a page "is accessible". The contract is in [docs/agents.md](../../docs/agents.md).
 
-Version 0.x: the a11yfix Rule API is still experimental (ADR 0006).
+Version 0.x: the verifa11y Rule API is still experimental (ADR 0006).
 
 - MCP revision 2026-07-28 (`@modelcontextprotocol/server` 2.4.0, pinned); 2025-era hosts still work.
 - Tools: `rules`, `audit`, `fix` (writes a `git apply` patch under `<out>/<runId>/`, never edits the HTML), `verify`.
@@ -17,7 +17,7 @@ Version 0.x: the a11yfix Rule API is still experimental (ADR 0006).
 - Files confined to `--root`, symlinks resolved, size limits.
 
 ```sh
-claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --root .
+claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
 ```
 
 Apache-2.0.

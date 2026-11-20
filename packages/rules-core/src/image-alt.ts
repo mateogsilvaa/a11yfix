@@ -1,4 +1,4 @@
-import { defineRule } from "a11yfix-core";
+import { defineRule } from "verifa11y-core";
 
 // Tier 1: what an image means is a judgment call. There is no deterministic
 // fix that is right more often than it is wrong (file-name alt text is the

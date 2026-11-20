@@ -5,8 +5,8 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { DEFAULT_DEEP_CHECKS, LlmGenerator, auditFile, closeBrowser, countBy, limiter, pagePatch, processPage, writeJson } from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+import { DEFAULT_DEEP_CHECKS, LlmGenerator, auditFile, closeBrowser, countBy, limiter, pagePatch, processPage, writeJson } from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const BEFORE = "demo/before/index.html";
 const AFTER_DIR = "demo/after";
@@ -36,7 +36,7 @@ try {
   );
   await mkdir(AFTER_DIR, { recursive: true });
   await writeFile(path.join(AFTER_DIR, "index.html"), page.combined ?? "", "utf8");
-  await writeFile(path.join(AFTER_DIR, "a11yfix.patch"), pagePatch(page), "utf8");
+  await writeFile(path.join(AFTER_DIR, "verifa11y.patch"), pagePatch(page), "utf8");
   await writeJson(
     path.join(AFTER_DIR, "results.json"),
     page.outcomes.map((o) => ({
@@ -59,7 +59,7 @@ try {
       `- Findings in demo/before: ${audit.findings.length}\n` +
       `- Outcomes: ${Object.entries(statuses).map(([k, v]) => `${k} ${v}`).join(", ")}\n` +
       `- Violations of the patched rules left in demo/after: ${page.remaining?.length ?? "n/a"}\n\n` +
-      `\`index.html\` is demo/before with every verified patch applied, and \`a11yfix.patch\` is the same change as a\n` +
+      `\`index.html\` is demo/before with every verified patch applied, and \`verifa11y.patch\` is the same change as a\n` +
       `patch (\`git apply\`). \`results.json\` has every finding, including the skipped and rejected ones and why.\n` +
       `Regenerate with \`npm run demo\`.\n`,
     "utf8",

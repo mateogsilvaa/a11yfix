@@ -1,5 +1,5 @@
 name: Bug report
-description: Something a11yfix did wrong (a crash, a wrong patch, a wrong verdict)
+description: Something verifa11y did wrong (a crash, a wrong patch, a wrong verdict)
 labels: [bug]
 body:
   - type: markdown
@@ -31,6 +31,6 @@ body:
     id: versions
     attributes:
       label: Versions
-      description: a11yfix version, Node.js version, OS (the report header lists axe-core and Playwright versions).
+      description: verifa11y version, Node.js version, OS (the report header lists axe-core and Playwright versions).
     validations:
       required: true

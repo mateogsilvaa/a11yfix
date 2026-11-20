@@ -1,5 +1,5 @@
 // Tier 1 through any command: a coding agent's CLI, a local model runner, or
-// a script of your own. a11yfix does not care who writes the patch, only
+// a script of your own. verifa11y does not care who writes the patch, only
 // whether the verifier accepts it.
 //
 // Protocol: the command runs once per attempt through the shell. It receives

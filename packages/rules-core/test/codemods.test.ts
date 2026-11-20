@@ -5,8 +5,8 @@ import { after, describe, it } from "node:test";
 import { mkdtemp, writeFile } from "node:fs/promises";
 import os from "node:os";
 import path from "node:path";
-import { RuleRegistry, auditSource, closeBrowser, defineRule, runCodemod, verifyPatch, type Rule } from "a11yfix-core";
-import { coreRules, createCoreRegistry } from "a11yfix-rules-core";
+import { RuleRegistry, auditSource, closeBrowser, defineRule, runCodemod, verifyPatch, type Rule } from "verifa11y-core";
+import { coreRules, createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
 after(() => closeBrowser());
@@ -16,7 +16,7 @@ const page = (body: string, head = "") =>
 
 /** Audit `html`, run the codemod for the first finding of `rule`, verify the result. */
 async function codemod(html: string, rule: string, nth = 0) {
-  const dir = await mkdtemp(path.join(os.tmpdir(), "a11yfix-"));
+  const dir = await mkdtemp(path.join(os.tmpdir(), "verifa11y-"));
   const file = path.join(dir, "page.html");
   await writeFile(file, html, "utf8");
   const baseline = await auditSource(file, html, { rules: registry.axeIds() });

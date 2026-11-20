@@ -2,7 +2,7 @@
 
 ## Context
 All 22 benchmark pages had been read and debugged while the codemods and prompts were written. Their numbers show
-that a11yfix works on the cases it was built for, not how it does on pages nobody has looked at: tuning on the test
+that verifa11y works on the cases it was built for, not how it does on pages nobody has looked at: tuning on the test
 set makes every rate optimistic by an unknown amount. With 22 pages, most per-rule samples were also too small for
 the Wilson intervals to say much.
 
@@ -12,7 +12,7 @@ the Wilson intervals to say much.
   change until the eval numbers go up. Everything else in `corpus/` is dev.
 - A page used for tuning moves to dev in the same commit and is logged in `corpus/README.md`. Pages never move from
   dev to eval. New pages go to eval first, with their source and license next to them.
-- A page is eval when a directory named `eval` sits between `--corpus` (inclusive) and the page. `a11yfix bench`
+- A page is eval when a directory named `eval` sits between `--corpus` (inclusive) and the page. `verifa11y bench`
   reports eval and dev separately when a run has both: a side-by-side table, then for each set its summary, tiers,
   comparison, verifier ablation, outcomes and per-rule table, all with 95% Wilson intervals. `metrics.json` keeps
   the combined `overall`, `byTier` and `byRule` and adds `bySet`. `--compare` compares each set with the same set

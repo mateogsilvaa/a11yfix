@@ -1,7 +1,7 @@
 # 0007. License under Apache-2.0
 
 ## Context
-The prototype was MIT. Companies that would integrate a11yfix into their pipelines usually expect an explicit
+The prototype was MIT. Companies that would integrate verifa11y into their pipelines usually expect an explicit
 patent grant.
 
 ## Decision

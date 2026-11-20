@@ -1,4 +1,4 @@
-import { allElements, attr, defineRule, type CodemodResult, type FixContext } from "a11yfix-core";
+import { allElements, attr, defineRule, type CodemodResult, type FixContext } from "verifa11y-core";
 
 const HEADING = /^h([1-6])$/;
 

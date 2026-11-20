@@ -1,12 +1,12 @@
-# a11yfix in a container: pinned Node, pinned Playwright/Chromium (from the
+# verifa11y in a container: pinned Node, pinned Playwright/Chromium (from the
 # lockfile), axe-core bundled, a non-root user. Rendering third-party HTML is
 # attack surface; run it with limits, see docs/sandbox.md:
 #
-#   docker build -t a11yfix .
+#   docker build -t verifa11y .
 #   # file mode needs no network at all
 #   docker run --rm --network none --cpus 2 --memory 2g --read-only \
-#     --tmpfs /tmp --tmpfs /home/a11yfix --cap-drop ALL --security-opt no-new-privileges \
-#     -v "$PWD:/work" a11yfix audit page.html --out /work/findings.json
+#     --tmpfs /tmp --tmpfs /home/verifa11y --cap-drop ALL --security-opt no-new-privileges \
+#     -v "$PWD:/work" verifa11y audit page.html --out /work/findings.json
 
 FROM node:22.14.0-bookworm-slim
 
@@ -29,8 +29,8 @@ COPY tsconfig.base.json ./
 COPY packages packages
 RUN npm run build && npm prune --omit=dev && rm -rf packages/*/test packages/*/src
 
-RUN useradd --create-home --uid 10001 a11yfix
-USER a11yfix
+RUN useradd --create-home --uid 10001 verifa11y
+USER verifa11y
 WORKDIR /work
 ENTRYPOINT ["node", "/app/packages/cli/dist/cli.js"]
 CMD ["--help"]

@@ -1,6 +1,6 @@
-# Contributing to a11yfix
+# Contributing to verifa11y
 
-Thanks for helping. a11yfix makes one promise: a patch it calls *verified* was re-audited and broke nothing.
+Thanks for helping. verifa11y makes one promise: a patch it calls *verified* was re-audited and broke nothing.
 Every contribution is judged against that promise first.
 
 ## Ground rules
@@ -10,7 +10,7 @@ Every contribution is judged against that promise first.
   must keep rejecting every sabotaged patch.
 - **Tier 0 stays at 100% precision.** A deterministic codemod that is wrong even once on the corpus is a bug. When a
   case needs judgment, the codemod declines (returns `null`) and the finding goes to tier 1.
-- **No telemetry, no accounts, no required network access.** a11yfix must work on a machine with no network beyond
+- **No telemetry, no accounts, no required network access.** verifa11y must work on a machine with no network beyond
   the page under audit. The model tier is optional.
 - **Bad benchmark numbers are published, not hidden.** If your change lowers a metric, the PR says so and explains why.
 - **The eval set stays held out.** Pages in `corpus/eval/` are never used to write or tune codemods, rules, prompts
@@ -34,9 +34,9 @@ the change in numbers explained.
 
 | Package | What it is |
 |---|---|
-| `packages/core` (`a11yfix-core`) | audit, source mapping, validation, the verifier, the pipeline, the Rule API, the optional LLM tier |
-| `packages/rules-core` (`a11yfix-rules-core`) | the core rules; tier-0 codemods |
-| `packages/cli` (`a11yfix-cli`) | the `a11yfix` command |
+| `packages/core` (`verifa11y-core`) | audit, source mapping, validation, the verifier, the pipeline, the Rule API, the optional LLM tier |
+| `packages/rules-core` (`verifa11y-rules-core`) | the core rules; tier-0 codemods |
+| `packages/cli` (`verifa11y-cli`) | the `verifa11y` command |
 
 Architecture decisions are recorded in [`docs/adr/`](docs/adr). If your change contradicts one, write a new ADR that
 supersedes it.

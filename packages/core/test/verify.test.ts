@@ -3,8 +3,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { after, before, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { auditSource, closeBrowser, verifyPatch, type AuditResult, type Finding, type Patch } from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+import { auditSource, closeBrowser, verifyPatch, type AuditResult, type Finding, type Patch } from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const fixture = (name: string) => fileURLToPath(new URL(`./fixtures/${name}`, import.meta.url));
 const RULES = createCoreRegistry().axeIds();

@@ -1,4 +1,4 @@
-import { attr, defineRule, removeAttr, type CodemodResult, type FixContext } from "a11yfix-core";
+import { attr, defineRule, removeAttr, type CodemodResult, type FixContext } from "verifa11y-core";
 import { STATE_ATTRS, attrNamesFromData } from "./aria-data.js";
 
 /**

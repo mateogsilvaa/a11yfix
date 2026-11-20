@@ -7,7 +7,7 @@ a manual-review queue. Nobody works through queues; people review diffs in pull 
 ## Decision
 `rejected_suspicious` is its own section of every report, with the reason for each patch. By default suspicious
 patches are included in the output patch so the reviewer sees them in context; `--strict` leaves them out. The
-output of `fix --verify` is a standard unified diff with git headers (`a11yfix.patch`), applicable with
+output of `fix --verify` is a standard unified diff with git headers (`verifa11y.patch`), applicable with
 `git apply` from the repository root.
 
 ## Consequences

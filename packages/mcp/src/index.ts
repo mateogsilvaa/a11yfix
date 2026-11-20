@@ -1,7 +1,7 @@
-// a11yfix as an MCP server (protocol revision 2026-07-28, SDK v2; 2025-era
+// verifa11y as an MCP server (protocol revision 2026-07-28, SDK v2; 2025-era
 // clients are still served by the SDK's legacy path).
 //
-// A thin wrapper over a11yfix-core: path confinement, size limits, output
+// A thin wrapper over verifa11y-core: path confinement, size limits, output
 // directories and wording live here; every decision about findings, patches
 // and verification is made by the core, exactly as for the CLI.
 //
@@ -36,8 +36,8 @@ import {
   type Finding,
   type Generator,
   type RuleRegistry,
-} from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+} from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 import { z } from "zod";
 
 /* ---------------------------------------------------------------------- */
@@ -83,7 +83,7 @@ export function mcpEngine(): Record<string, string> {
   } catch {
     // keep "unknown"
   }
-  return { ...engineVersions(), "a11yfix-mcp": own.version, "@modelcontextprotocol/server": sdk };
+  return { ...engineVersions(), "verifa11y-mcp": own.version, "@modelcontextprotocol/server": sdk };
 }
 
 const FindingOut = z.object({
@@ -207,24 +207,24 @@ export function createServer(opts: ServerOptions = {}): McpServer {
 
   /** Tier 1 for mode=auto, from the server's environment only. */
   const tier1 = (): Generator => {
-    if (process.env.A11YFIX_GENERATOR_CMD) return new CommandGenerator({ command: process.env.A11YFIX_GENERATOR_CMD });
+    if (process.env.VERIFA11Y_GENERATOR_CMD) return new CommandGenerator({ command: process.env.VERIFA11Y_GENERATOR_CMD });
     if (process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN) {
       // Cheap by default: the calling agent is often a model too, and two
-      // models on one task means two bills. A11YFIX_MODEL overrides.
-      return new LlmGenerator({ model: process.env.A11YFIX_MODEL ?? "claude-haiku-5-5", effort: "low" });
+      // models on one task means two bills. VERIFA11Y_MODEL overrides.
+      return new LlmGenerator({ model: process.env.VERIFA11Y_MODEL ?? "claude-haiku-5-5", effort: "low" });
     }
     throw new Error(
-      "mode=auto needs a tier-1 generator in the server's environment (A11YFIX_GENERATOR_CMD or ANTHROPIC_API_KEY). " +
+      "mode=auto needs a tier-1 generator in the server's environment (VERIFA11Y_GENERATOR_CMD or ANTHROPIC_API_KEY). " +
         "Otherwise use mode=codemod and write the judgment fixes yourself with verify.",
     );
   };
 
   const server = new McpServer(
-    { name: "a11yfix", version: engine["a11yfix-mcp"]! },
+    { name: "verifa11y", version: engine["verifa11y-mcp"]! },
     {
       capabilities: { tools: {}, prompts: {} },
       instructions:
-        "a11yfix fixes accessibility violations in static HTML files and verifies every fix. Workflow: rules → audit → " +
+        "verifa11y fixes accessibility violations in static HTML files and verifies every fix. Workflow: rules → audit → " +
         "fix (writes a patch under the output directory, never edits the file) → the user applies it with git apply → " +
         "human review before committing. For findings that need judgment, propose a minimal edit and check it with " +
         "verify before suggesting it. Never silence a violation by hiding, deleting, aria-hidden, role=presentation, " +
@@ -242,9 +242,9 @@ export function createServer(opts: ServerOptions = {}): McpServer {
   server.registerTool(
     "rules",
     {
-      title: "List a11yfix rules",
+      title: "List verifa11y rules",
       description:
-        "The rules a11yfix can patch: axe rule, WCAG criteria, tier (0 = deterministic codemod, 1 = needs a model or " +
+        "The rules verifa11y can patch: axe rule, WCAG criteria, tier (0 = deterministic codemod, 1 = needs a model or " +
         "you), and what each one declines by design. Call it first, so you know what fix will do on its own, what needs " +
         "judgment, and what will end up skipped.",
       inputSchema: z.object({}),
@@ -292,7 +292,7 @@ export function createServer(opts: ServerOptions = {}): McpServer {
     {
       title: "Audit an HTML file",
       description:
-        "Audit a static HTML file with axe-core. Returns the violations a11yfix can patch, with id, WCAG criteria, " +
+        "Audit a static HTML file with axe-core. Returns the violations verifa11y can patch, with id, WCAG criteria, " +
         "exact source lines and text, tier, whether a codemod exists, and rule guidance; plus how many other WCAG A/AA " +
         "violations the page has. Does not change anything.",
       inputSchema: z.object({
@@ -339,14 +339,14 @@ export function createServer(opts: ServerOptions = {}): McpServer {
       description:
         "Audit an HTML file, generate a patch per finding (mode=codemod: deterministic codemods only, offline, the " +
         "default; mode=auto: also a tier-1 model configured in the server's environment), verify every patch, and write " +
-        "the verified ones as a git patch under the output directory (<out>/<runId>/a11yfix.patch). Never edits the " +
+        "the verified ones as a git patch under the output directory (<out>/<runId>/verifa11y.patch). Never edits the " +
         "HTML file: the user applies the patch with git apply and reviews it. strict (default true) leaves suspicious " +
         "patches out.",
       inputSchema: z.object({
         path: z.string().describe("HTML file, relative to the server root"),
         mode: z.enum(["codemod", "auto"]).optional().describe("codemod (default) or auto (needs a tier-1 generator in the server's environment)"),
         strict: z.boolean().optional().describe("Leave suspicious patches out of the patch (default true)"),
-        out: z.string().optional().describe("Output directory, relative to the server root (default .a11yfix)"),
+        out: z.string().optional().describe("Output directory, relative to the server root (default .verifa11y)"),
         limit: z.number().int().min(1).max(LIMITS.maxFindings).optional().describe("Only the first N findings"),
       }),
       outputSchema: z.object({
@@ -382,10 +382,10 @@ export function createServer(opts: ServerOptions = {}): McpServer {
           { registry, mode, llm, verify: true, strict, limit: a.limit, checks: DEFAULT_DEEP_CHECKS, genLimit: limiter(2), auditLimit },
           baseline,
         );
-        const { dir, runId } = await runDir(a.out ?? ".a11yfix");
+        const { dir, runId } = await runDir(a.out ?? ".verifa11y");
         const changed = page.combined !== null && page.combined !== src;
         const patch = changed ? gitPatch([{ path: rel(file), before: src, after: page.combined! }]) : "";
-        const patchFile = path.join(dir, "a11yfix.patch");
+        const patchFile = path.join(dir, "verifa11y.patch");
         await writeFile(patchFile, patch, "utf8");
         const results = page.outcomes.map((o) => ({
           findingId: o.finding.id,
@@ -513,7 +513,7 @@ export function createServer(opts: ServerOptions = {}): McpServer {
           content: {
             type: "text" as const,
             text:
-              `Fix the accessibility violations in ${p} with a11yfix:\n` +
+              `Fix the accessibility violations in ${p} with verifa11y:\n` +
               `1. Call \`rules\` to see what is fixed automatically, what needs judgment and what is declined by design.\n` +
               `2. Call \`audit\` on ${p}.\n` +
               `3. Call \`fix\` on ${p}. It writes a patch and never edits the file. Show the user the patch path and how to apply it (git apply).\n` +
@@ -521,7 +521,7 @@ export function createServer(opts: ServerOptions = {}): McpServer {
               `Describe images by purpose; alt="" only for decorative ones. Never hide, delete or silence content.\n` +
               `5. Ask the user to review the changes before committing.\n` +
               `6. Summarize what was verified, what was rejected or skipped and why. Never write "the page is accessible now": ` +
-              `a11yfix results are axe-clean on the checked rules, not WCAG conformance.`,
+              `verifa11y results are axe-clean on the checked rules, not WCAG conformance.`,
           },
         },
       ],

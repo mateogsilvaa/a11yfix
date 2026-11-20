@@ -4,8 +4,8 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { after, describe, it } from "node:test";
 import { fileURLToPath } from "node:url";
-import { CommandGenerator, auditSource, closeBrowser, extractPatch, limiter, processPage } from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+import { CommandGenerator, auditSource, closeBrowser, extractPatch, limiter, processPage } from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
 after(() => closeBrowser());

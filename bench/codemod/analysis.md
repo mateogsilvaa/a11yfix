@@ -7,7 +7,7 @@ says tier 0 did not fail on pages it was not written for, not that it never will
 pages hold 547 of the 738. 29 of the 73 eval pages have no violation of the patched rules. The rest of this analysis
 was written about the 22 dev pages, which were read while the codemods were written.
 
-This run is **tier 0 only**: deterministic codemods, no model, no network. It is the floor a11yfix gives on a
+This run is **tier 0 only**: deterministic codemods, no model, no network. It is the floor verifa11y gives on a
 machine with nothing configured, and the part of the system that must never be wrong.
 
 **Precision: every tier-0 patch verified.** No suspicious patches, no regressions, no patches that left the

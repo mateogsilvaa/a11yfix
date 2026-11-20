@@ -1,11 +1,11 @@
 # 0010. Site mode renders for real and only audits
 
 ## Context
-Phase 1 takes a11yfix from one file to a whole site. A live page runs scripts, depends on the network, and has no
+Phase 1 takes verifa11y from one file to a whole site. A live page runs scripts, depends on the network, and has no
 source file: what the browser renders may come from templates, a CMS or client-side code.
 
 ## Decision
-`a11yfix site` crawls the start URL's origin (depth and page limits, robots.txt, sitemap.xml), renders each page with
+`verifa11y site` crawls the start URL's origin (depth and page limits, robots.txt, sitemap.xml), renders each page with
 scripts on and waits for network idle, audits it in one or more viewports, and reports. It does not patch: patches need
 a source file, and guessing one from rendered HTML would produce patches nobody can apply.
 

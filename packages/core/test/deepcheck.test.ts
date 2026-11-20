@@ -15,8 +15,8 @@ import {
   verifyPatch,
   type AuditResult,
   type Finding,
-} from "a11yfix-core";
-import { createCoreRegistry } from "a11yfix-rules-core";
+} from "verifa11y-core";
+import { createCoreRegistry } from "verifa11y-rules-core";
 
 const registry = createCoreRegistry();
 const file = fileURLToPath(new URL("./fixtures/deep-cases.html", import.meta.url));

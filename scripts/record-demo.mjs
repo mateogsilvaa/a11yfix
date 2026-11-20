@@ -27,7 +27,7 @@ const BAD_PATCH = {
   confidence: "high",
 };
 
-const work = await mkdtemp(path.join(os.tmpdir(), "a11yfix-demo-"));
+const work = await mkdtemp(path.join(os.tmpdir(), "verifa11y-demo-"));
 const events = []; // [seconds, text] with text ending in \n
 let clock = 0;
 const emit = (text, gap) => {
@@ -75,8 +75,8 @@ async function show(display, text, filter = () => true) {
 
 try {
   await copyFile(path.join(ROOT, "demo/before/index.html"), path.join(work, "index.html"));
-  await run("a11yfix audit index.html --out findings.json", ["audit", "index.html", "--out", "findings.json"]);
-  await run("a11yfix fix findings.json --verify --strict --mode codemod --out patches", [
+  await run("verifa11y audit index.html --out findings.json", ["audit", "index.html", "--out", "findings.json"]);
+  await run("verifa11y fix findings.json --verify --strict --mode codemod --out patches", [
     "fix",
     "findings.json",
     "--verify",
@@ -86,11 +86,11 @@ try {
     "--out",
     "patches",
   ]);
-  const patch = await readFile(path.join(work, "patches/a11yfix.patch"), "utf8");
-  await show("grep '^[-+][^-+]' patches/a11yfix.patch", patch, (l) => /^[-+][^-+]/.test(l));
+  const patch = await readFile(path.join(work, "patches/verifa11y.patch"), "utf8");
+  await show("grep '^[-+][^-+]' patches/verifa11y.patch", patch, (l) => /^[-+][^-+]/.test(l));
   await writeFile(path.join(work, "patch.json"), JSON.stringify(BAD_PATCH, null, 2));
   await show("cat patch.json   # a quick fix someone wrote by hand", JSON.stringify(BAD_PATCH, null, 2));
-  const verdict = await run("a11yfix verify index.html patch.json --findings findings.json | head -11", ["verify", "index.html", "patch.json", "--findings", "findings.json"], 11);
+  const verdict = await run("verifa11y verify index.html patch.json --findings findings.json | head -11", ["verify", "index.html", "patch.json", "--findings", "findings.json"], 11);
   if (!verdict.some((l) => l.includes("rejected_suspicious"))) throw new Error(`expected a rejection, got:\n${verdict.join("\n")}`);
   clock += 6; // hold the last screen
 
@@ -102,7 +102,7 @@ try {
 }
 
 function cast(evts) {
-  const header = { version: 2, width: COLS, height: ROWS, title: "a11yfix: audit, fix, verify" };
+  const header = { version: 2, width: COLS, height: ROWS, title: "verifa11y: audit, fix, verify" };
   return [JSON.stringify(header), ...evts.map(([t, s]) => JSON.stringify([Number(t.toFixed(3)), s.replace(/\n/g, "\r\n")]))].join("\n") + "\n";
 }
 
@@ -156,8 +156,8 @@ function svg(evts) {
   css.push(`@keyframes scroll{${frames.join("")}}#content{animation:scroll ${total.toFixed(2)}s steps(1,end) infinite}`);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" role="img" aria-labelledby="title desc">
-<title id="title">a11yfix demo: audit, fix, verify</title>
-<desc id="desc">A terminal recording. a11yfix audits demo/before/index.html and finds 9 violations, fixes 4 with deterministic codemods that the verifier accepts, shows the resulting patch, and then rejects a hand-written patch whose alt text only restates the image file name.</desc>
+<title id="title">verifa11y demo: audit, fix, verify</title>
+<desc id="desc">A terminal recording. verifa11y audits demo/before/index.html and finds 9 violations, fixes 4 with deterministic codemods that the verifier accepts, shows the resulting patch, and then rejects a hand-written patch whose alt text only restates the image file name.</desc>
 <style>
 text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:14px;fill:#d6dde6}
 .cmd{fill:#7cc4ff;font-weight:600}.add{fill:#7ee787}.del{fill:#ff8f8f}.ok{fill:#7ee787}.bad{fill:#ffb86b}.dim{fill:#8b96a3}

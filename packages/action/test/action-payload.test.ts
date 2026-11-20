@@ -4,7 +4,7 @@
 // verified is ever suggested.
 import assert from "node:assert/strict";
 import { describe, it } from "node:test";
-import { CAVEATS, CONFORMANCE, WARNING, type Finding, type Patch, type VerificationStatus } from "a11yfix-core";
+import { CAVEATS, CONFORMANCE, WARNING, type Finding, type Patch, type VerificationStatus } from "verifa11y-core";
 import {
   GitHub,
   GitHubError,
@@ -22,9 +22,9 @@ import {
   type FileReport,
   type FindingResult,
   type RunInfo,
-} from "a11yfix-action";
+} from "verifa11y-action";
 
-const RUN: RunInfo = { mode: "codemod", strict: true, version: "0.3.0", generator: null, notAudited: [] };
+const RUN: RunInfo = { mode: "codemod", strict: true, version: "0.4.0", generator: null, notAudited: [] };
 
 function finding(id: string, src: string, snippet: string, ruleId = "aria-roles", file = "site/index.html"): Finding {
   const start = src.indexOf(snippet);

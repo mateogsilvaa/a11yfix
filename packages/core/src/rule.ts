@@ -1,6 +1,6 @@
 // The Rule plugin API.
 //
-// STATUS: experimental (0.x). The shape below is what a11yfix-rules-core is
+// STATUS: experimental (0.x). The shape below is what verifa11y-rules-core is
 // written against, and it is versioned, but it is not yet open to third-party
 // rule packages: per ADR 0006 the API opens only after the verifier covers the
 // accessibility tree and visual regressions (roadmap phase 3). Until then,

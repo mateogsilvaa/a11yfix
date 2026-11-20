@@ -1,4 +1,4 @@
-import { defineRule } from "a11yfix-core";
+import { defineRule } from "verifa11y-core";
 
 // Tier 1: no codemod. The missing value is a fact about the widget's state
 // (is the checkbox checked? what is the slider's value?) that the markup does

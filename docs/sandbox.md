@@ -1,6 +1,6 @@
-# Running a11yfix on untrusted pages
+# Running verifa11y on untrusted pages
 
-Rendering someone else's HTML in a browser is attack surface, and site mode runs the site's scripts. a11yfix limits
+Rendering someone else's HTML in a browser is attack surface, and site mode runs the site's scripts. verifa11y limits
 what a page can do in layers. Only the first two are always on.
 
 ## 1. In the browser (always on)
@@ -23,17 +23,17 @@ The [Dockerfile](../Dockerfile) pins Node (22.14), Playwright and Chromium (from
 as an unprivileged user.
 
 ```sh
-docker build -t a11yfix .
+docker build -t verifa11y .
 
 # file mode: no network at all
 docker run --rm --network none --cpus 2 --memory 2g --read-only \
-  --tmpfs /tmp --tmpfs /home/a11yfix --cap-drop ALL --security-opt no-new-privileges \
-  -v "$PWD:/work" a11yfix audit page.html --out /work/findings.json
+  --tmpfs /tmp --tmpfs /home/verifa11y --cap-drop ALL --security-opt no-new-privileges \
+  -v "$PWD:/work" verifa11y audit page.html --out /work/findings.json
 
 # site mode: network is needed; keep the other limits
 docker run --rm --cpus 2 --memory 2g --read-only \
-  --tmpfs /tmp --tmpfs /home/a11yfix --cap-drop ALL --security-opt no-new-privileges \
-  -v "$PWD/out:/work" a11yfix site https://staging.example.com/ --out /work
+  --tmpfs /tmp --tmpfs /home/verifa11y --cap-drop ALL --security-opt no-new-privileges \
+  -v "$PWD/out:/work" verifa11y site https://staging.example.com/ --out /work
 ```
 
 CI builds the image and runs an audit and a verified fix inside it with `--network none`, a read-only root, no

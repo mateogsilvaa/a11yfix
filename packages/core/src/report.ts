@@ -179,7 +179,7 @@ export function renderReport(r: ReportInput): string {
   const split = splitPages(r.corpus, r.pages);
 
   const L: string[] = [];
-  L.push(`# a11yfix benchmark report`);
+  L.push(`# verifa11y benchmark report`);
   L.push("");
   L.push(`- Mode: \`${r.mode}\` (${r.generator})${r.strict ? ", strict" : ""}`);
   L.push(
@@ -188,7 +188,7 @@ export function renderReport(r: ReportInput): string {
   L.push(`- Engines: ${Object.entries(r.versions).map(([k, v]) => `${k} ${v}`).join(", ")}`);
   L.push(`- Run ${r.date}, total wall time ${(r.wallMs / 1000).toFixed(1)} s`);
   L.push("");
-  L.push(`> a11yfix does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.`);
+  L.push(`> verifa11y does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.`);
   L.push("");
 
   if (split) {

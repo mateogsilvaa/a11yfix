@@ -1,4 +1,4 @@
-import { attr, defineRule, levenshtein, setAttr, textContent, type CodemodResult, type FixContext } from "a11yfix-core";
+import { attr, defineRule, levenshtein, setAttr, textContent, type CodemodResult, type FixContext } from "verifa11y-core";
 import { ABSTRACT_ROLES, CONCRETE_ROLES, NAMED_ROLES, REQUIRED_ATTRS, STRUCTURAL_ROLES } from "./aria-data.js";
 
 /**

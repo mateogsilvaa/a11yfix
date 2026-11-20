@@ -1,6 +1,6 @@
-// a11yfix-rules-core: the core rule set.
+// verifa11y-rules-core: the core rule set.
 
-import { RuleRegistry, type Rule } from "a11yfix-core";
+import { RuleRegistry, type Rule } from "verifa11y-core";
 import { ariaAllowedAttr } from "./aria-allowed-attr.js";
 import { ariaRoles } from "./aria-roles.js";
 import { ariaValidAttrValue } from "./aria-valid-attr-value.js";

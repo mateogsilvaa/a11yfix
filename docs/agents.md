@@ -1,6 +1,6 @@
-# The a11yfix agent contract
+# The verifa11y agent contract
 
-For AI agents and the people who configure them. a11yfix is a **fixer verified against axe-core and the
+For AI agents and the people who configure them. verifa11y is a **fixer verified against axe-core and the
 browser's accessibility tree, focus order and pixels**. It is not an accessibility audit and it does not certify
 anything. This document defines what its results mean; agents must not claim more than this.
 
@@ -29,7 +29,7 @@ fine. Automated checks cover a subset of WCAG; most success criteria need a pers
    declines (`declines`). These need judgment too.
 
 **Forbidden.** Never tell a user "the page is accessible now", "the site is WCAG compliant" or anything equivalent
-based on a11yfix results. Say what was verified, what was rejected or skipped, and that a person must review it.
+based on verifa11y results. Say what was verified, what was rejected or skipped, and that a person must review it.
 Every MCP result carries `conformance: "axe-clean on the checked rules, not WCAG conformance"` and a list of
 `caveats`, and its text starts with a warning; repeat them, do not drop them.
 
@@ -46,53 +46,53 @@ Every MCP result carries `conformance: "axe-clean on the checked rules, not WCAG
 
 ## 1. The MCP server
 
-`a11yfix-mcp` (ADR 0013) implements MCP revision 2026-07-28 with the v2 TypeScript SDK and still serves 2025-era
+`verifa11y-mcp` (ADR 0013) implements MCP revision 2026-07-28 with the v2 TypeScript SDK and still serves 2025-era
 hosts. It never calls a model unless `mode: "auto"` is passed explicitly and the server's environment configures one.
 
 ```sh
-claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --root .
+claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
 ```
 
 ```json
-{ "mcpServers": { "a11yfix": { "command": "node", "args": ["/path/to/a11yfix/packages/mcp/dist/server.js", "--root", "/path/to/project"] } } }
+{ "mcpServers": { "verifa11y": { "command": "node", "args": ["/path/to/verifa11y/packages/mcp/dist/server.js", "--root", "/path/to/project"] } } }
 ```
 
 | Tool | Input | Result (`structuredContent`) | Annotations |
 |---|---|---|---|
 | `rules` | none | every rule: `id`, `version`, `axe`, `wcag`, `tier`, `hasCodemod`, `description`, `declines`, `deprecated` | read-only, idempotent |
 | `audit` | `path`; optional `level` (1 = structural rules, 2 = also contrast; default 2) | `findings` (id, rule, WCAG, impact, source `lines` and text, `tier`, `hasCodemod`, help, guidance), `truncated`, `otherWcagViolations` | read-only, idempotent |
-| `fix` | `path`; optional `mode` (`codemod` default, `auto`), `strict` (default `true`), `out` (default `.a11yfix`), `limit` | `runId`, `patchPath` (`<out>/<runId>/a11yfix.patch`), `applyWith`, `counts` per status, `included`, `rejected` with reasons, `skipped` with causes, `diff` (inline up to 20 kB), `remainingFindings` | writes only under `<out>/<runId>/`, idempotent |
+| `fix` | `path`; optional `mode` (`codemod` default, `auto`), `strict` (default `true`), `out` (default `.verifa11y`), `limit` | `runId`, `patchPath` (`<out>/<runId>/verifa11y.patch`), `applyWith`, `counts` per status, `included`, `rejected` with reasons, `skipped` with causes, `diff` (inline up to 20 kB), `remainingFindings` | writes only under `<out>/<runId>/`, idempotent |
 | `verify` | `path`, `patch` (`findingId`, `before`, `after`, optional `rationale`, `confidence`) | `verification`: `status`, `verified`, `reason`, `newViolations`, `accessibilityTree`, `focus`, `visual`, `diff` | read-only |
 
-Every result also has `conformance`, `caveats` and `engine` (versions of a11yfix, axe-core, Playwright, Node and the
+Every result also has `conformance`, `caveats` and `engine` (versions of verifa11y, axe-core, Playwright, Node and the
 MCP SDK). The `fix-accessibility` prompt encodes the workflow above.
 
-**Limits and safety.** Only `.html` files inside the roots (`--root`, repeatable, or `A11YFIX_MCP_ROOT`; default: the
+**Limits and safety.** Only `.html` files inside the roots (`--root`, repeatable, or `VERIFA11Y_MCP_ROOT`; default: the
 working directory), after resolving symlinks; files up to 2 MB; at most 500 findings per `audit`. Writes go only to a
 new directory per run, so parallel agents never overwrite each other. Pages are rendered with scripts blocked and every
 network request outside the file's directory aborted. There is no site crawling and no benchmark over MCP.
 
-**Tier 1 over MCP and cost.** `mode: "auto"` uses `A11YFIX_GENERATOR_CMD` or `ANTHROPIC_API_KEY` from the server's
-environment (default model `claude-haiku-5-5` with low effort, override with `A11YFIX_MODEL`). If the agent calling
+**Tier 1 over MCP and cost.** `mode: "auto"` uses `VERIFA11Y_GENERATOR_CMD` or `ANTHROPIC_API_KEY` from the server's
+environment (default model `claude-haiku-5-5` with low effort, override with `VERIFA11Y_MODEL`). If the agent calling
 the server is itself a model, that is two bills for one task: usually it is better to keep `mode: "codemod"` and let
 the calling agent write the judgment fixes and `verify` them.
 
 ## 2. The CLI as a judge
 
 ```sh
-a11yfix audit page.html --out findings.json
+verifa11y audit page.html --out findings.json
 # write patch.json: {"findingId", "rationale", "before", "after", "confidence"}
-a11yfix verify page.html patch.json --findings findings.json --out verdict.json   # exit 0 = verified
-a11yfix fix findings.json --verify --strict --mode codemod --out patches           # then: git apply patches/a11yfix.patch
+verifa11y verify page.html patch.json --findings findings.json --out verdict.json   # exit 0 = verified
+verifa11y fix findings.json --verify --strict --mode codemod --out patches           # then: git apply patches/verifa11y.patch
 ```
 
-## 3. a11yfix drives, the agent writes patches: `--generator-cmd`
+## 3. verifa11y drives, the agent writes patches: `--generator-cmd`
 
 ```sh
-a11yfix fix findings.json --verify --strict --generator-cmd "<command>"   # or A11YFIX_GENERATOR_CMD
+verifa11y fix findings.json --verify --strict --generator-cmd "<command>"   # or VERIFA11Y_GENERATOR_CMD
 ```
 
-For each finding that tier 0 cannot fix, a11yfix runs the command through the shell, writes the request to stdin and
+For each finding that tier 0 cannot fix, verifa11y runs the command through the shell, writes the request to stdin and
 reads a patch from stdout.
 
 - Request, `--generator-input text` (default): the system instructions, the source file with line numbers, and the

@@ -12,8 +12,8 @@ import os from "node:os";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { after, before, describe, it } from "node:test";
-import { CAVEATS, WARNING } from "a11yfix-core";
-import { REVIEW_MARKER } from "a11yfix-action";
+import { CAVEATS, WARNING } from "verifa11y-core";
+import { REVIEW_MARKER } from "verifa11y-action";
 
 const MAIN = fileURLToPath(new URL("../dist/main.js", import.meta.url));
 const PAGE = fileURLToPath(new URL("../../../corpus/handwritten/02-newsletter-labels.html", import.meta.url));
@@ -41,7 +41,7 @@ const git = (...args: string[]) => {
 };
 
 before(async () => {
-  repo = await mkdtemp(path.join(os.tmpdir(), "a11yfix-action-"));
+  repo = await mkdtemp(path.join(os.tmpdir(), "verifa11y-action-"));
   await mkdir(path.join(repo, "site"));
   await copyFile(PAGE, path.join(repo, "site", "newsletter.html"));
   await writeFile(path.join(repo, "README.md"), "not html\n");
@@ -90,7 +90,7 @@ before(async () => {
 after(() => new Promise<void>((resolve) => server.close(() => resolve())));
 
 async function runAction(o: { headRepo?: string; sha?: string; failOn?: string; tag: string }) {
-  const dir = await mkdtemp(path.join(os.tmpdir(), `a11yfix-action-${o.tag}-`));
+  const dir = await mkdtemp(path.join(os.tmpdir(), `verifa11y-action-${o.tag}-`));
   const event = path.join(dir, "event.json");
   await writeFile(
     event,
@@ -105,8 +105,8 @@ async function runAction(o: { headRepo?: string; sha?: string; failOn?: string; 
     GITHUB_STEP_SUMMARY: path.join(dir, "summary.md"),
     GITHUB_OUTPUT: path.join(dir, "output.txt"),
     RUNNER_TEMP: dir,
-    A11YFIX_ACTION_TOKEN: "test-token",
-    A11YFIX_ACTION_FAIL_ON: o.failOn ?? "none",
+    VERIFA11Y_ACTION_TOKEN: "test-token",
+    VERIFA11Y_ACTION_FAIL_ON: o.failOn ?? "none",
   };
   const child = spawn(process.execPath, [MAIN], { cwd: repo, env, stdio: ["ignore", "pipe", "pipe"] });
   let out = "";
@@ -144,7 +144,7 @@ describe("GitHub Action end to end (fake API on localhost)", { timeout: 300_000 
     }
     assert.equal(Number(r.outputs.suggested), p.comments.reduce((n, c) => n + (c.body.match(/^- `/gm)?.length ?? 0), 0));
     assert.ok(Number(r.outputs.findings) >= Number(r.outputs.verified));
-    assert.ok(r.summary.includes("### a11yfix accessibility review"));
+    assert.ok(r.summary.includes("### verifa11y accessibility review"));
 
     // The patch the action writes applies to the checkout as is.
     const patch = r.outputs.patch!;
@@ -175,7 +175,7 @@ describe("GitHub Action end to end (fake API on localhost)", { timeout: 300_000 
     const r = await runAction({ tag: "again" });
     assert.equal(r.code, 0, r.out);
     assert.equal(posted.length, 1, "nothing changed, so no second review");
-    assert.match(r.out, /nothing changed since the last a11yfix review/);
+    assert.match(r.out, /nothing changed since the last verifa11y review/);
   });
 
   it("writes the job summary instead of posting on a fork pull request, and honours fail-on", async () => {
@@ -185,7 +185,7 @@ describe("GitHub Action end to end (fake API on localhost)", { timeout: 300_000 
     assert.ok(r.summary.includes("```diff\n"));
     assert.ok(r.summary.includes(WARNING));
     assert.equal(r.code, 1, "fail-on: findings with findings present");
-    assert.match(r.out, /::error::a11yfix: \d+ finding\(s\)/);
+    assert.match(r.out, /::error::verifa11y: \d+ finding\(s\)/);
   });
 
   it("refuses to comment when the checkout is not the pull request head", async () => {

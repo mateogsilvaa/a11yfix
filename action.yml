@@ -1,13 +1,13 @@
-name: a11yfix
+name: verifa11y
 description: >-
   Audit the HTML a pull request changes and suggest only the accessibility fixes a verifier accepted.
   Axe-clean on the checked rules, not WCAG conformance.
-author: a11yfix contributors
+author: verifa11y contributors
 branding:
   icon: check-circle
   color: blue
 
-# Runs the a11yfix CLI from this repository (the npm name `a11yfix` is an unrelated project).
+# Runs the verifa11y CLI built from this repository at the pinned commit, not a package from npm.
 # Docs: docs/github-action.md. Decision record: docs/adr/0016-github-action.md.
 
 inputs:
@@ -89,27 +89,27 @@ runs:
     - name: Check Node.js
       shell: bash
       run: |
-        node -e 'if (Number(process.versions.node.split(".")[0]) < 20) { console.log("::error::a11yfix needs Node.js 20 or later: add actions/setup-node before this action"); process.exit(1); }'
+        node -e 'if (Number(process.versions.node.split(".")[0]) < 20) { console.log("::error::verifa11y needs Node.js 20 or later: add actions/setup-node before this action"); process.exit(1); }'
 
     - name: Browser cache key
       id: key
       shell: bash
       run: |
         hash=$(node -e 'const c=require("crypto"),f=require("fs");process.stdout.write(c.createHash("sha256").update(f.readFileSync(process.argv[1])).digest("hex").slice(0,16))' "$GITHUB_ACTION_PATH/package-lock.json")
-        echo "key=a11yfix-browsers-${RUNNER_OS}-${RUNNER_ARCH}-${hash}" >> "$GITHUB_OUTPUT"
+        echo "key=verifa11y-browsers-${RUNNER_OS}-${RUNNER_ARCH}-${hash}" >> "$GITHUB_OUTPUT"
 
     - name: Restore browser
       uses: actions/cache@v4
       with:
-        path: ${{ runner.temp }}/a11yfix-browsers
+        path: ${{ runner.temp }}/verifa11y-browsers
         key: ${{ steps.key.outputs.key }}
 
-    - name: Install a11yfix
+    - name: Install verifa11y
       shell: bash
       working-directory: ${{ github.action_path }}
       env:
-        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/a11yfix-browsers
-      # Lockfile only, no install scripts; then the one browser a11yfix renders with.
+        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/verifa11y-browsers
+      # Lockfile only, no install scripts; then the one browser verifa11y renders with.
       run: |
         npm ci --ignore-scripts --no-audit --no-fund
         npx --no-install playwright install --with-deps chromium-headless-shell
@@ -120,13 +120,13 @@ runs:
       shell: bash
       working-directory: ${{ inputs.working-directory }}
       env:
-        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/a11yfix-browsers
-        A11YFIX_ACTION_PATHS: ${{ inputs.paths }}
-        A11YFIX_ACTION_MODE: ${{ inputs.mode }}
-        A11YFIX_ACTION_STRICT: ${{ inputs.strict }}
-        A11YFIX_ACTION_FAIL_ON: ${{ inputs.fail-on }}
-        A11YFIX_ACTION_GENERATOR_CMD: ${{ inputs.generator-cmd }}
-        A11YFIX_ACTION_MAX_FILES: ${{ inputs.max-files }}
-        A11YFIX_ACTION_TOKEN: ${{ inputs.github-token }}
-        A11YFIX_ACTION_OUT: ${{ runner.temp }}/a11yfix
+        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/verifa11y-browsers
+        VERIFA11Y_ACTION_PATHS: ${{ inputs.paths }}
+        VERIFA11Y_ACTION_MODE: ${{ inputs.mode }}
+        VERIFA11Y_ACTION_STRICT: ${{ inputs.strict }}
+        VERIFA11Y_ACTION_FAIL_ON: ${{ inputs.fail-on }}
+        VERIFA11Y_ACTION_GENERATOR_CMD: ${{ inputs.generator-cmd }}
+        VERIFA11Y_ACTION_MAX_FILES: ${{ inputs.max-files }}
+        VERIFA11Y_ACTION_TOKEN: ${{ inputs.github-token }}
+        VERIFA11Y_ACTION_OUT: ${{ runner.temp }}/verifa11y
       run: node "$GITHUB_ACTION_PATH/packages/action/dist/main.js"

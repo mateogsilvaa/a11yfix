@@ -178,7 +178,7 @@ export async function crawlSite(opts: CrawlOptions): Promise<SiteResult> {
   const fetchText = async (url: string): Promise<{ status: number; type: string; body: string } | null> => {
     try {
       const res = await fetch(url, {
-        headers: { "user-agent": "a11yfix", ...(new URL(url).origin === origin ? authHeaders : {}) },
+        headers: { "user-agent": "verifa11y", ...(new URL(url).origin === origin ? authHeaders : {}) },
         redirect: "follow",
         signal: AbortSignal.timeout(timeoutMs),
       });

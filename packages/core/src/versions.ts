@@ -16,7 +16,7 @@ function versionOf(pkg: string): string {
 
 export function engineVersions(): Record<string, string> {
   return {
-    "a11yfix-core": versionOf("a11yfix-core"),
+    "verifa11y-core": versionOf("verifa11y-core"),
     "axe-core": versionOf("axe-core"),
     playwright: versionOf("playwright"),
     node: process.versions.node,

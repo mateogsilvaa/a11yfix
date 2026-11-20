@@ -1,4 +1,4 @@
-// The verifier. a11yfix does not trust its own patches: each one is applied
+// The verifier. verifa11y does not trust its own patches: each one is applied
 // to a copy of the page, the copy is re-audited with the full rule set, and
 // the patch is kept only if
 //   1. the original violation is gone from the target node, and

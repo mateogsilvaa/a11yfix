@@ -28,9 +28,9 @@ describe("action.yml, code and docs agree", () => {
         assert.ok(actionYml.includes("working-directory: ${{ inputs.working-directory }}"));
         continue;
       }
-      const env = `A11YFIX_ACTION_${ENV[name] ?? name.toUpperCase().replace(/-/g, "_")}`;
+      const env = `VERIFA11Y_ACTION_${ENV[name] ?? name.toUpperCase().replace(/-/g, "_")}`;
       assert.ok(actionYml.includes(`${env}: \${{ inputs.${name} }}`), `action.yml does not pass ${name} as ${env}`);
-      assert.ok(main.includes(`"${env.slice("A11YFIX_ACTION_".length)}"`), `main.ts does not read ${env}`);
+      assert.ok(main.includes(`"${env.slice("VERIFA11Y_ACTION_".length)}"`), `main.ts does not read ${env}`);
     }
   });
 

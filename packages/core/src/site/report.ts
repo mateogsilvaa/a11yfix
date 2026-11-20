@@ -34,7 +34,7 @@ export function renderSiteReport(r: SiteResult, registry: RuleRegistry, date = n
   const st = siteStats(r);
   const all: Array<{ page: string; f: SiteFinding }> = r.pages.flatMap((p) => p.findings.map((f) => ({ page: p.url, f })));
   const L: string[] = [];
-  L.push(`# a11yfix site audit: ${r.origin}`);
+  L.push(`# verifa11y site audit: ${r.origin}`);
   L.push("");
   L.push(
     `${date}. Start: ${r.start}. Viewports: ${r.viewports.join(", ")}. Engines: ${Object.entries(r.engine)
@@ -44,8 +44,8 @@ export function renderSiteReport(r: SiteResult, registry: RuleRegistry, date = n
   L.push("");
   L.push(
     "> This is an automated audit of the pages as rendered at crawl time, with axe-core. It finds a subset of WCAG " +
-      "failures and cannot judge most of WCAG. a11yfix does not guarantee WCAG conformance. Site mode does not patch: " +
-      "the live site has no source file to edit. Fix the source files with `a11yfix fix`.",
+      "failures and cannot judge most of WCAG. verifa11y does not guarantee WCAG conformance. Site mode does not patch: " +
+      "the live site has no source file to edit. Fix the source files with `verifa11y fix`.",
   );
   L.push("");
   L.push("## Summary");

@@ -1,5 +1,5 @@
-# Example workflow: copy to .github/workflows/a11yfix.yml in your repository.
-# Docs: https://github.com/mateogsilvaa/a11yfix/blob/main/docs/github-action.md
+# Example workflow: copy to .github/workflows/verifa11y.yml in your repository.
+# Docs: https://github.com/mateogsilvaa/verifa11y/blob/main/docs/github-action.md
 name: accessibility
 
 on:
@@ -12,7 +12,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  a11yfix:
+  verifa11y:
     runs-on: ubuntu-latest
     steps:
       # The pull request head, not the merge commit: suggestions point at the head's lines.
@@ -25,18 +25,18 @@ jobs:
         with:
           node-version: 22
 
-      # No release is tagged yet: pin a full commit SHA of mateogsilvaa/a11yfix.
-      - uses: mateogsilvaa/a11yfix@COMMIT_SHA
-        id: a11yfix
+      # No release is tagged yet: pin a full commit SHA of mateogsilvaa/verifa11y.
+      - uses: mateogsilvaa/verifa11y@COMMIT_SHA
+        id: verifa11y
         with:
           mode: codemod # deterministic fixes only, no model, no secrets
           fail-on: none # or: findings, unfixed
 
       # The combined `git apply` patch and every result, for whoever reviews the pull request.
       - uses: actions/upload-artifact@v4
-        if: always() && steps.a11yfix.outputs.results != ''
+        if: always() && steps.verifa11y.outputs.results != ''
         with:
-          name: a11yfix
+          name: verifa11y
           path: |
-            ${{ steps.a11yfix.outputs.patch }}
-            ${{ steps.a11yfix.outputs.results }}
+            ${{ steps.verifa11y.outputs.patch }}
+            ${{ steps.verifa11y.outputs.results }}

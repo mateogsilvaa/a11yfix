@@ -1,6 +1,6 @@
 # Benchmark corpus
 
-Pages with accessibility violations, in two sets. `a11yfix bench` searches this directory recursively and reports
+Pages with accessibility violations, in two sets. `verifa11y bench` searches this directory recursively and reports
 each set separately:
 
 - **dev**: everything outside `eval/`. These pages have been read, debugged and used while writing the codemods
@@ -32,7 +32,7 @@ each set separately:
 
 | Folder | Pages | Source | License |
 |---|---|---|---|
-| `handwritten/` | 10 | Written for a11yfix. Each covers one or two rules, with easy and ambiguous cases. | Apache-2.0 (this repository) |
+| `handwritten/` | 10 | Written for verifa11y. Each covers one or two rules, with easy and ambiguous cases. | Apache-2.0 (this repository) |
 | `external/w3c-bad/` | 4 | Inaccessible "before" pages of the W3C WAI [Before and After Demonstration](https://www.w3.org/WAI/demos/bad/) (home, news, tickets, survey). | W3C Software and Document License, see [`external/LICENSE-w3c.md`](external/LICENSE-w3c.md) |
 | `external/axe-core/` | 8 | axe-core integration fixtures for each patched rule (`test/integration/rules/<rule>/`), wrapped in a page skeleton. Fixture markup unchanged. | Mozilla Public License 2.0, see [`external/LICENSE-axe-core`](external/LICENSE-axe-core) |
 

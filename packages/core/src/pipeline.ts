@@ -346,7 +346,7 @@ export async function writePageArtifacts(dir: string, page: PageOutcome): Promis
     await writeJson(path.join(dir, `${id}.verification.json`), { ...verification, tier: o.generation.patch ? o.generation.tier : null });
     if (diff) await writeFile(path.join(dir, `${id}.diff`), diff, "utf8");
   }
-  await writeFile(path.join(dir, "a11yfix.patch"), pagePatch(page), "utf8");
+  await writeFile(path.join(dir, "verifa11y.patch"), pagePatch(page), "utf8");
   await writeJson(path.join(dir, "summary.json"), {
     file: page.file,
     findings: page.findings.length,

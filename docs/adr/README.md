@@ -1,6 +1,6 @@
 # Architecture decision records
 
-Short records of decisions that shape a11yfix, in the format: context, decision, consequences.
+Short records of decisions that shape verifa11y, in the format: context, decision, consequences.
 A decision is changed by a new ADR that supersedes the old one, never by editing it.
 
 | # | Decision | Status |
@@ -22,3 +22,4 @@ A decision is changed by a new ADR that supersedes the old one, never by editing
 | [0015](0015-identifier-labels-and-dangling-id-references.md) | Suspicious: labels that restate an identifier, id references to nothing | Accepted |
 | [0016](0016-github-action.md) | A GitHub Action that suggests only verified fixes, on the lines they change | Accepted |
 | [0017](0017-held-out-eval-corpus.md) | A held-out eval corpus, reported apart from dev | Accepted |
+| [0018](0018-rename-to-verifa11y.md) | Rename the project to verifa11y | Accepted |

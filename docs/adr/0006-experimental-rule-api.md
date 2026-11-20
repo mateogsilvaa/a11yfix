@@ -6,10 +6,10 @@ axe reports invites rules that make axe quiet without making pages better.
 
 ## Decision
 The typed `Rule` interface (`detect`, `fix`, `verify`, `wcag`, `tier`, `confidence`, versioning, deprecation) is the
-contract `a11yfix-rules-core` is written against, but it stays **experimental** (breaking changes allowed in minor
+contract `verifa11y-rules-core` is written against, but it stays **experimental** (breaking changes allowed in minor
 versions) and closed to external packages until the verifier diffs the accessibility tree and checks visual
 regressions (roadmap phase 3). Rules can only add verification checks, never remove core ones.
 
 ## Consequences
-Community rule packages (`a11yfix-rules-community`), `a11yfix-rules-wcag22` and the public registry wait for phase 3.
+Community rule packages (`verifa11y-rules-community`), `verifa11y-rules-wcag22` and the public registry wait for phase 3.
 In the meantime the API is exercised by the core rules and documented in the rule author guide.

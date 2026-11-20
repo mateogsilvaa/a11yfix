@@ -1,5 +1,5 @@
 // Local SQLite storage: sites, runs, pages, findings, patches and
-// verifications. Optional (pass --db): a11yfix works without it, but
+// verifications. Optional (pass --db): verifa11y works without it, but
 // incremental site runs need somewhere to remember what was audited.
 //
 // Uses node:sqlite (built into Node >= 22.13, no native add-on to compile).

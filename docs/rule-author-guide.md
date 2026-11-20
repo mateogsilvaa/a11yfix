@@ -1,13 +1,13 @@
 # Rule author guide
 
 > The Rule API is **experimental** until the verifier covers the accessibility tree and visual regressions
-> (roadmap phase 3, ADR 0006). Rules live in this repository until then. Write against `a11yfix-core` and expect
+> (roadmap phase 3, ADR 0006). Rules live in this repository until then. Write against `verifa11y-core` and expect
 > small breaking changes in minor versions.
 
 ## Anatomy of a rule
 
 ```ts
-import { defineRule, setAttr, type FixContext, type CodemodResult } from "a11yfix-core";
+import { defineRule, setAttr, type FixContext, type CodemodResult } from "verifa11y-core";
 
 export const myRule = defineRule({
   id: "my-rule",              // permanent, kebab-case (docs/rule-versioning.md)

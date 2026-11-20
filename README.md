@@ -1,30 +1,30 @@
-# a11yfix
+# verifa11y
 
-**a11yfix audits HTML for accessibility violations, writes a concrete patch for each one, applies it to a copy,
+**verifa11y audits HTML for accessibility violations, writes a concrete patch for each one, applies it to a copy,
 re-audits, and keeps only the patches that provably fixed the violation without breaking anything else.** The result
 is a standard `.patch` you can `git apply` and put in a pull request, plus a report of everything that was fixed,
 rejected, or left for a human, and why.
 
-Auditors like axe and Lighthouse stop at detection. a11yfix closes the loop to the fix, and does not trust itself:
+Auditors like axe and Lighthouse stop at detection. verifa11y closes the loop to the fix, and does not trust itself:
 every patch, whether it comes from a deterministic codemod, a model, or **any AI agent you plug in**, goes through the
 same verifier. The verifier checks more than axe does: it compares the browser's accessibility tree, the keyboard
 focus order and the rendered pixels before and after each patch.
 
-> **Scope, up front.** a11yfix **patches static HTML files on disk**. It can also **crawl and audit a live site**
-> (`a11yfix site`), with scripts running, but site mode only reports: a live page has no source file to patch.
+> **Scope, up front.** verifa11y **patches static HTML files on disk**. It can also **crawl and audit a live site**
+> (`verifa11y site`), with scripts running, but site mode only reports: a live page has no source file to patch.
 > Templates and JavaScript frameworks are not patched (roadmap phase 2). See [Limitations](#limitations).
 >
-> **a11yfix does not guarantee WCAG conformance.** "Verified" means the checks below found the violation gone and
+> **verifa11y does not guarantee WCAG conformance.** "Verified" means the checks below found the violation gone and
 > nothing else worse. It is not a human review.
 >
 > **No telemetry, no account, no server.** The only network traffic is the page under audit and, only if you
 > configure one, the model or agent that writes tier-1 patches.
 
-![Terminal recording: a11yfix audits a page and finds 9 violations, fixes 4 with codemods the verifier accepts, shows the patch, then rejects a hand-written patch whose alt text only restates the image file name.](docs/demo.svg)
+![Terminal recording: verifa11y audits a page and finds 9 violations, fixes 4 with codemods the verifier accepts, shows the patch, then rejects a hand-written patch whose alt text only restates the image file name.](docs/demo.svg)
 
 Recorded from real runs by [`scripts/record-demo.mjs`](scripts/record-demo.mjs) (`npm run demo:record`); only the
 pauses are shortened. The same session for asciinema: [`docs/demo.cast`](docs/demo.cast). The patch it writes:
-[`demo/after/a11yfix.patch`](demo/after/a11yfix.patch).
+[`demo/after/verifa11y.patch`](demo/after/verifa11y.patch).
 
 ## Results, including the uncomfortable ones
 
@@ -77,7 +77,7 @@ patch.
 
 ### A rejected patch
 
-What the verifier says about the alt text a hurried fixer writes (from the demo above, `a11yfix verify`):
+What the verifier says about the alt text a hurried fixer writes (from the demo above, `verifa11y verify`):
 
 ```json
 {
@@ -109,7 +109,7 @@ HTML file
   → tier 1           a model or any agent CLI, only for what needs judgment (optional)
   → shape validator  JSON schema, `before` is an exact substring, ≤ 6 lines, ≤ 2 hunks
   → VERIFIER         apply to a copy; axe, static checks, accessibility tree, focus order, pixels
-  → output           a11yfix.patch (git apply), per-finding JSON, report, optional SQLite
+  → output           verifa11y.patch (git apply), per-finding JSON, report, optional SQLite
 ```
 
 ### Tiers
@@ -136,26 +136,26 @@ Tier 1 is not tied to one provider. Any command that reads a request on stdin an
 
 ```sh
 # a local model, fully offline
-a11yfix fix findings.json --verify --generator-cmd "ollama run qwen3:8b --think=false"
+verifa11y fix findings.json --verify --generator-cmd "ollama run qwen3:8b --think=false"
 # a coding agent's CLI (docs/agents.md says which ones are tested)
-a11yfix fix findings.json --verify --generator-cmd "claude -p"
-a11yfix fix findings.json --verify --generator-cmd "codex exec -"
+verifa11y fix findings.json --verify --generator-cmd "claude -p"
+verifa11y fix findings.json --verify --generator-cmd "codex exec -"
 # your own script, with a structured request
-a11yfix fix findings.json --verify --generator-cmd "python my_fixer.py" --generator-input json
+verifa11y fix findings.json --verify --generator-cmd "python my_fixer.py" --generator-input json
 ```
 
-Agents answer in prose, with markdown fences around the JSON; a11yfix finds the patch object in the output, retries
+Agents answer in prose, with markdown fences around the JSON; verifa11y finds the patch object in the output, retries
 twice with the error when it cannot, and then **verifies the patch exactly like every other one**. A weak model
 produces more rejected patches, never wrong ones in the output. Without `--generator-cmd`, tier 1 uses the built-in
 Anthropic client (`claude-opus-5-5`) if `ANTHROPIC_API_KEY` is set.
 
-The reverse also works: an agent that is fixing a page can use a11yfix as its judge (`audit`, propose a patch,
+The reverse also works: an agent that is fixing a page can use verifa11y as its judge (`audit`, propose a patch,
 `verify`, read the JSON verdict). See [docs/agents.md](docs/agents.md) for both directions and the exact protocol;
 [AGENTS.md](AGENTS.md) has ready-made instructions that coding agents pick up when they open this repository.
 
-### MCP server: a11yfix as a tool for any agent
+### MCP server: verifa11y as a tool for any agent
 
-`a11yfix-mcp` serves a11yfix over the [Model Context Protocol](https://modelcontextprotocol.io) (revision 2026-07-28,
+`verifa11y-mcp` serves verifa11y over the [Model Context Protocol](https://modelcontextprotocol.io) (revision 2026-07-28,
 v2 SDK; 2025-era hosts still work), so any MCP client (Claude Desktop, Claude Code, Cursor, VS Code, and others) can
 call it:
 
@@ -168,20 +168,20 @@ call it:
 
 Every result is structured JSON that carries `conformance: "axe-clean on the checked rules, not WCAG conformance"`
 and its caveats, and its text starts with that warning: agents summarize results, and "4 verified" must not become
-"your page is accessible". The agent writes the judgment fixes itself and a11yfix decides whether they hold. Files are
+"your page is accessible". The agent writes the judgment fixes itself and verifa11y decides whether they hold. Files are
 read and written only inside `--root`. The contract for agents is [docs/agents.md](docs/agents.md).
 
 ```sh
 # Claude Code
-claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --root .
+claude mcp add verifa11y -- node /path/to/verifa11y/packages/mcp/dist/server.js --root .
 ```
 
 ```json
 {
   "mcpServers": {
-    "a11yfix": {
+    "verifa11y": {
       "command": "node",
-      "args": ["/path/to/a11yfix/packages/mcp/dist/server.js", "--root", "/path/to/your/project"]
+      "args": ["/path/to/verifa11y/packages/mcp/dist/server.js", "--root", "/path/to/your/project"]
     }
   }
 }
@@ -204,7 +204,7 @@ Fork pull requests (read-only token) get the report in the job summary instead. 
 - uses: actions/setup-node@v4
   with:
     node-version: 22
-- uses: mateogsilvaa/a11yfix@COMMIT_SHA # no release tagged yet: pin a commit
+- uses: mateogsilvaa/verifa11y@COMMIT_SHA # no release tagged yet: pin a commit
 ```
 
 Full example, inputs and outputs: [docs/github-action.md](docs/github-action.md).
@@ -235,7 +235,7 @@ Statuses: `verified`, `rejected_persists`, `rejected_regression`, `rejected_susp
 `rejected_apply_failed`, and `skipped` (nothing attempted). `--regression-impact` sets the minimum impact for a new
 violation to reject a patch (default: any).
 
-Suspicious patches get their own section in the report. They are included in `a11yfix.patch` so a reviewer sees them
+Suspicious patches get their own section in the report. They are included in `verifa11y.patch` so a reviewer sees them
 in context, unless you pass **`--strict`**, which leaves them out (use it in CI). Rules can add checks; they cannot
 remove these.
 
@@ -249,8 +249,8 @@ comparison rejects, and honest fixes that pass all of them.
 ### Site mode
 
 ```sh
-a11yfix site https://staging.example.com/ --depth 2 --max-pages 100 --viewports desktop,mobile \
-  --basic-auth "$STAGING_USER:$STAGING_PASS" --db a11yfix.sqlite --incremental
+verifa11y site https://staging.example.com/ --depth 2 --max-pages 100 --viewports desktop,mobile \
+  --basic-auth "$STAGING_USER:$STAGING_PASS" --db verifa11y.sqlite --incremental
 ```
 
 - Crawls the start URL's origin only, to `--depth` links and `--max-pages` pages, seeded from `sitemap.xml`; honours
@@ -260,7 +260,7 @@ a11yfix site https://staging.example.com/ --depth 2 --max-pages 100 --viewports 
 - Captures a screenshot of each finding's element.
 - Deduplicates pages by a hash of the rendered DOM (`/` and `/index.html` are audited once), and groups findings with
   the same rule and markup across pages: one template issue reported as one, with the pages it affects.
-- Authentication for staging: `--header`, `--cookie`, `--basic-auth` (or `A11YFIX_BASIC_AUTH`), sent to the target
+- Authentication for staging: `--header`, `--cookie`, `--basic-auth` (or `VERIFA11Y_BASIC_AUTH`), sent to the target
   origin only.
 - Sandbox: the browser loads only the target origin and origins you allow with `--allow-origin`; every other request
   is blocked and counted. One isolated browser context per page, bounded concurrency, `--delay` between requests.
@@ -268,9 +268,9 @@ a11yfix site https://staging.example.com/ --depth 2 --max-pages 100 --viewports 
   `--incremental` re-renders only pages whose HTML changed since the last run.
 
 Writes `site-report.md`, `site.json` and `screenshots/`. Site mode does not patch: fix the source files with
-`a11yfix fix`.
+`verifa11y fix`.
 
-For untrusted sites, run a11yfix in the container: see [docs/sandbox.md](docs/sandbox.md).
+For untrusted sites, run verifa11y in the container: see [docs/sandbox.md](docs/sandbox.md).
 
 ### Design notes
 
@@ -293,8 +293,8 @@ For untrusted sites, run a11yfix in the container: see [docs/sandbox.md](docs/sa
 Requires Node.js 20+ (Node 22.13+ for `--db`).
 
 ```sh
-git clone https://github.com/mateogsilvaa/a11yfix.git
-cd a11yfix
+git clone https://github.com/mateogsilvaa/verifa11y.git
+cd verifa11y
 npm ci
 npx playwright install chromium-headless-shell
 npm run build
@@ -304,21 +304,21 @@ Tier 1 is optional, with either:
 
 ```sh
 export ANTHROPIC_API_KEY=...                       # the built-in client
-export A11YFIX_GENERATOR_CMD="ollama run qwen3:8b"  # or any model or agent CLI (same as --generator-cmd)
+export VERIFA11Y_GENERATOR_CMD="ollama run qwen3:8b"  # or any model or agent CLI (same as --generator-cmd)
 ```
 
-Run the CLI with `node packages/cli/dist/cli.js <command>` (or `npm run a11yfix -- <command>`), or in Docker:
-`docker build -t a11yfix .` (see [docs/sandbox.md](docs/sandbox.md)).
+Run the CLI with `node packages/cli/dist/cli.js <command>` (or `npm run verifa11y -- <command>`), or in Docker:
+`docker build -t verifa11y .` (see [docs/sandbox.md](docs/sandbox.md)).
 
 ## Usage
 
 ```sh
-a11yfix audit <file.html> --out findings.json [--level 1|2]
-a11yfix fix findings.json --verify --out patches/ [--strict] [--mode auto|codemod|llm] [--generator-cmd CMD] [--db FILE]
-a11yfix verify <file.html> <patch.json> [--findings findings.json]
-a11yfix site <url> [--depth N] [--max-pages N] [--viewports LIST] [--db FILE --incremental]
-a11yfix bench --corpus ./corpus --report report.md [--mode ...] [--strict] [--compare metrics.json]
-git apply patches/a11yfix.patch
+verifa11y audit <file.html> --out findings.json [--level 1|2]
+verifa11y fix findings.json --verify --out patches/ [--strict] [--mode auto|codemod|llm] [--generator-cmd CMD] [--db FILE]
+verifa11y verify <file.html> <patch.json> [--findings findings.json]
+verifa11y site <url> [--depth N] [--max-pages N] [--viewports LIST] [--db FILE --incremental]
+verifa11y bench --corpus ./corpus --report report.md [--mode ...] [--strict] [--compare metrics.json]
+git apply patches/verifa11y.patch
 ```
 
 - `--verify` is off by default for `fix` only to iterate quickly while developing; without it no `.patch` is written.
@@ -327,7 +327,7 @@ git apply patches/a11yfix.patch
 - Tier 1: `--generator-cmd`, `--generator-input text|json`, `--model` (built-in client, default `claude-opus-5-5`),
   `--effort`, `--concurrency`. `--limit N` caps findings per file.
 
-`fix` writes `a11yfix.patch` (paths relative to the current directory, for `git apply` from the repository root) and,
+`fix` writes `verifa11y.patch` (paths relative to the current directory, for `git apply` from the repository root) and,
 per finding, `<id>.patch.json`, `<id>.verification.json` (with the accessibility-tree, focus and visual results) and
 `<id>.diff`.
 
@@ -344,11 +344,11 @@ built-in client uses a JSON schema as the response format and caches the file bl
 
 | Package | Contents |
 |---|---|
-| [`a11yfix-core`](packages/core) | audit, source mapping, validation, verifier, site crawler, storage, pipeline, report, Rule API, tier-1 generators |
-| [`a11yfix-rules-core`](packages/rules-core) | the core rules and their tier-0 codemods |
-| [`a11yfix-cli`](packages/cli) | the `a11yfix` command |
-| [`a11yfix-mcp`](packages/mcp) | the MCP server (`a11yfix-mcp`): a thin wrapper over the core |
-| [`a11yfix-action`](packages/action) | the GitHub Action's logic (`action.yml` at the root); private, not published |
+| [`verifa11y-core`](packages/core) | audit, source mapping, validation, verifier, site crawler, storage, pipeline, report, Rule API, tier-1 generators |
+| [`verifa11y-rules-core`](packages/rules-core) | the core rules and their tier-0 codemods |
+| [`verifa11y-cli`](packages/cli) | the `verifa11y` command |
+| [`verifa11y-mcp`](packages/mcp) | the MCP server (`verifa11y-mcp`): a thin wrapper over the core |
+| [`verifa11y-action`](packages/action) | the GitHub Action's logic (`action.yml` at the root); private, not published |
 
 A rule is a typed object: `id`, `version` (semver), `axe`, `wcag`, `level`, `tier`, `confidence`, `detect`, `fix`
 (the codemod), `guidance` (for tier 1), `verify` (extra checks) and `deprecated`. See the
@@ -416,7 +416,7 @@ about what the image means, and a `label` can be present and confusing. "Verifie
 none of these checks found anything worse*. Review the patch before merging it.
 
 **Patching is static HTML only.** Site mode audits rendered pages, but a finding in generated markup must be fixed in
-the template or component, and a11yfix cannot find it there yet (roadmap phase 2).
+the template or component, and verifa11y cannot find it there yet (roadmap phase 2).
 
 **Contrast is fixed as a loose value.** Tier 1 changes a colour where the text is styled; resolving the background up
 the tree and proposing a design-token change instead is roadmap phase 3 work that is not done.

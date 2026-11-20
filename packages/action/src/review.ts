@@ -5,16 +5,16 @@
 // must not conclude more than was verified.
 
 import { createHash } from "node:crypto";
-import { CAVEATS, CONFORMANCE, WARNING, type VerificationStatus } from "a11yfix-core";
+import { CAVEATS, CONFORMANCE, WARNING, type VerificationStatus } from "verifa11y-core";
 import { placeFixes, type FileReport, type FindingResult, type Suggestion, type Unplaced } from "./suggest.js";
 
-export const REVIEW_MARKER = "<!-- a11yfix:review";
-export const SUGGESTION_MARKER = "<!-- a11yfix:suggestion";
+export const REVIEW_MARKER = "<!-- verifa11y:review";
+export const SUGGESTION_MARKER = "<!-- verifa11y:suggestion";
 
 export interface RunInfo {
   mode: string;
   strict: boolean;
-  /** a11yfix version that produced the results. */
+  /** verifa11y version that produced the results. */
   version: string;
   /** Name of the tier-1 generator, or null (codemods only). */
   generator: string | null;
@@ -101,7 +101,7 @@ export function commentBody(s: Suggestion): string {
   const fixes = s.fixes.map((r) => `- ${describeFix(r)}`).join("\n");
   return [
     `${SUGGESTION_MARKER} ${s.key} -->`,
-    `**a11yfix: verified fix${s.fixes.length > 1 ? `es (${s.fixes.length}, combined because they touch the same lines)` : ""}.** Review it before you commit it.`,
+    `**verifa11y: verified fix${s.fixes.length > 1 ? `es (${s.fixes.length}, combined because they touch the same lines)` : ""}.** Review it before you commit it.`,
     "",
     fixes,
     "",
@@ -175,7 +175,7 @@ export function planReview(files: FileReport[], run: RunInfo): ReviewPlan {
     sections.push(
       `#### Verified, but not suggested inline (${unplaced.length})`,
       "",
-      "These fixes passed the verifier. They are in the job's `a11yfix.patch` (apply with `git apply`), not suggested here, because:",
+      "These fixes passed the verifier. They are in the job's `verifa11y.patch` (apply with `git apply`), not suggested here, because:",
       "",
       ...capped(unplaced, (u) => {
         const d = u.diff ? `\n\n  <details><summary>diff</summary>\n\n  ${fenceFor(u.diff)}diff\n${u.diff.trimEnd().split("\n").map((l) => `  ${l}`).join("\n")}\n  ${fenceFor(u.diff)}\n\n  </details>` : "";
@@ -213,11 +213,11 @@ export function planReview(files: FileReport[], run: RunInfo): ReviewPlan {
   const tier1 = run.generator ? `, tier 1 through \`${inline(run.generator)}\`` : ", codemods only (no model)";
   const intro =
     counts.findings === 0 && counts.errors === 0
-      ? `a11yfix found no violations of the rules it checks in the ${files.length} changed HTML file(s). That is not a review of the rest of WCAG.`
-      : `a11yfix audited ${files.length} changed HTML file(s) (mode \`${run.mode}\`${tier1}${run.strict ? ", strict" : ""}). Only patches the verifier accepted are suggested; suspicious ones never are.`;
+      ? `verifa11y found no violations of the rules it checks in the ${files.length} changed HTML file(s). That is not a review of the rest of WCAG.`
+      : `verifa11y audited ${files.length} changed HTML file(s) (mode \`${run.mode}\`${tier1}${run.strict ? ", strict" : ""}). Only patches the verifier accepted are suggested; suspicious ones never are.`;
 
   const content = [
-    "### a11yfix accessibility review",
+    "### verifa11y accessibility review",
     "",
     `> ${WARNING}`,
     "",
@@ -237,7 +237,7 @@ export function planReview(files: FileReport[], run: RunInfo): ReviewPlan {
     "",
     caveatList(),
     "",
-    `<sub>a11yfix ${inline(run.version)}: ${CONFORMANCE}. A person must review every suggestion before it is committed.</sub>`,
+    `<sub>verifa11y ${inline(run.version)}: ${CONFORMANCE}. A person must review every suggestion before it is committed.</sub>`,
   ].join("\n");
 
   const digest = createHash("sha256")

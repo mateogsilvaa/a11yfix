@@ -4,7 +4,7 @@
 
 - **Maintainers** review and merge pull requests, cut releases, and own the verifier and the benchmark.
   Current maintainers: [@mateogsilvaa](https://github.com/mateogsilvaa).
-- **Rule owners** are contributors responsible for one or more rules in `a11yfix-rules-core`. They review changes to
+- **Rule owners** are contributors responsible for one or more rules in `verifa11y-rules-core`. They review changes to
   those rules. A rule owner is listed in the rule's source file.
 - **Contributors**: anyone who opens an issue or a pull request.
 
@@ -27,6 +27,6 @@ pins and links the benchmark report it was measured with.
 
 ## What the project will not do
 
-- Claim or imply WCAG conformance. Reports always say that a11yfix does not guarantee it.
+- Claim or imply WCAG conformance. Reports always say that verifa11y does not guarantee it.
 - Require an account, a hosted service, or telemetry.
 - Route mechanical fixes through a model.

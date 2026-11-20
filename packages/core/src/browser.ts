@@ -14,7 +14,7 @@ import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium, type Browser, type Page } from "playwright";
 
-const ORIGIN = "http://a11yfix.local";
+const ORIGIN = "http://verifa11y.local";
 
 let browserPromise: Promise<Browser> | null = null;
 
@@ -49,7 +49,7 @@ const MIME: Record<string, string> = {
  * Open `html` as if it were the file at `filePath`, run `fn` on the page,
  * and dispose of the context.
  *
- * Page scripts never run: a11yfix v1 targets static HTML, and scripts would
+ * Page scripts never run: verifa11y v1 targets static HTML, and scripts would
  * make the DOM diverge from the source we patch. We cannot simply disable
  * JavaScript in the context, because then timers stop firing and axe.run()
  * never resolves. Instead the page is served with a CSP of script-src 'none',

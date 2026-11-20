@@ -1,14 +1,14 @@
 # 0013. An MCP server: a thin, honest wrapper over the core
 
 ## Context
-ADR 0011 lets any agent CLI write tier-1 patches when a11yfix drives. Agents that are already editing a project
+ADR 0011 lets any agent CLI write tier-1 patches when verifa11y drives. Agents that are already editing a project
 (Claude Desktop, Claude Code, Cursor, and others) speak the Model Context Protocol and call tools more reliably than
-they parse CLI output. Exposing a11yfix to agents that run unsupervised has a cost: whatever the verifier misses, an
+they parse CLI output. Exposing verifa11y to agents that run unsupervised has a cost: whatever the verifier misses, an
 agent repeats with confidence, and an agent summarizing "4 verified" will tell a user their page is accessible unless
 the result itself says otherwise.
 
 ## Decision
-A separate package, `a11yfix-mcp`, on the v2 TypeScript SDK (`@modelcontextprotocol/server`, pinned exactly, MCP
+A separate package, `verifa11y-mcp`, on the v2 TypeScript SDK (`@modelcontextprotocol/server`, pinned exactly, MCP
 revision 2026-07-28; the SDK still serves 2025-era hosts). It is a thin wrapper: path confinement, limits, output
 directories and wording live there; every decision about findings, patches and verification is the core's.
 
@@ -27,7 +27,7 @@ directories and wording live there; every decision about findings, patches and v
   path confinement, and the warning test.
 
 ## Consequences
-Any MCP client gets a11yfix without a key and without a11yfix knowing which model it is; the verifier stays the
+Any MCP client gets verifa11y without a key and without verifa11y knowing which model it is; the verifier stays the
 contract. The server is 0.x while the Rule API is experimental. Running it in a real host (MCP Inspector, Claude
 Code, Claude Desktop) is still a manual step: the automated tests use the SDK client and raw JSON-RPC, which validate
 what the authors believe the protocol to be.

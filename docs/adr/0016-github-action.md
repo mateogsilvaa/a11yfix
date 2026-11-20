@@ -1,10 +1,11 @@
 # 0016. A GitHub Action that suggests only verified fixes, on the lines they change
 
 ## Context
-Phase 6 is distribution, and a pull-request check is where most people would meet a11yfix without installing
+Phase 6 is distribution, and a pull-request check is where most people would meet verifa11y without installing
 anything. It is also where an overconfident tool does the most damage: a suggestion button makes a patch one click
-from being merged, and a green check reads as "accessible". The npm name `a11yfix` belongs to an unrelated project,
-so the action cannot `npx a11yfix`.
+from being merged, and a green check reads as "accessible". The action builds the CLI from
+its own checkout instead of `npx`, so the code that runs is exactly the pinned commit. (When this was decided the
+project was called a11yfix and that npm name belonged to an unrelated project; see ADR 0018.)
 
 ## Decision
 A composite action, `action.yml` at the repository root, and a small workspace package, `packages/action`
@@ -15,7 +16,7 @@ A composite action, `action.yml` at the repository root, and a small workspace p
   artifacts of files with the same name cannot collide. It reads the per-finding artifacts back; it makes no decision
   about a patch that the CLI did not make.
 - **Codemods by default; a model only when named.** `mode` defaults to `codemod`. `auto` and `llm` require the
-  `generator-cmd` input; `ANTHROPIC_API_KEY` and `A11YFIX_GENERATOR_CMD` in the environment are ignored, and the
+  `generator-cmd` input; `ANTHROPIC_API_KEY` and `VERIFA11Y_GENERATOR_CMD` in the environment are ignored, and the
   GitHub token is removed from the CLI's environment.
 - **One review, suggestions for verified patches only.** Each verified patch is re-located with the core validator,
   shrunk to the lines it changes (`subEdits`) and posted as a ```` ```suggestion ```` replacing exactly those lines.
@@ -28,13 +29,13 @@ A composite action, `action.yml` at the repository root, and a small workspace p
 - **The head, not the merge commit.** The action compares `HEAD` with `pull_request.head.sha` and stops if they
   differ, because suggestions are anchored to the head's lines.
 - **The caveats travel with every comment.** The conformance warning and the caveats move from the MCP server to
-  `a11yfix-core` (`CONFORMANCE`, `CAVEATS`, `WARNING`), and every comment and the body quote them verbatim. A clean
+  `verifa11y-core` (`CONFORMANCE`, `CAVEATS`, `WARNING`), and every comment and the body quote them verbatim. A clean
   audit says it is not a review of the rest of WCAG.
 - **Read-only tokens fall back to the job summary.** On fork pull requests (and on 403/404 when posting) the full
   report, with suggestions as diffs, goes to `$GITHUB_STEP_SUMMARY`. A 422 on the inline comments retries once with
   the suggestions in the body.
 - **No noise on re-runs.** Suggestions carry a content key and are not re-posted; a review identical to the last
-  a11yfix review is not posted again; a clean audit posts nothing.
+  verifa11y review is not posted again; a clean audit posts nothing.
 - **Failing is opt-in.** `fail-on: none | findings | unfixed`, default `none`.
 - Tests: the payload test turns known patches into the exact comment payload (no network); an end-to-end test runs
   the built action against a git checkout and a fake GitHub API on `127.0.0.1` (posting, de-duplication, fork

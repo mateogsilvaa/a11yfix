@@ -4,7 +4,7 @@
 // fails, the server can make an agent tell a user their site is accessible.
 import assert from "node:assert/strict";
 import { after, before, describe, it } from "node:test";
-import { CAVEATS, CONFORMANCE, WARNING } from "a11yfix-mcp";
+import { CAVEATS, CONFORMANCE, WARNING } from "verifa11y-mcp";
 import type { Client } from "@modelcontextprotocol/client";
 import { call, connect, makeRoot } from "./helpers.js";
 
