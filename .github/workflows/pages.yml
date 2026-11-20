@@ -1,0 +1,52 @@
+name: site
+
+# Builds the website from site/, checks it, and publishes it to GitHub Pages.
+# The check fails the deploy if axe-core reports any WCAG 2.x A/AA violation on the page,
+# or if any number on it differs from the benchmark reports in bench/.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "site/**"
+      - "docs/demo.svg"
+      - "bench/**/metrics.json"
+      - "scripts/site.mjs"
+      - ".github/workflows/pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium-headless-shell
+      - run: npm run check:site
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .site-build
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
