@@ -1,4 +1,4 @@
-# 0014. A GitHub Action that suggests only verified fixes, on the lines they change
+# 0016. A GitHub Action that suggests only verified fixes, on the lines they change
 
 ## Context
 Phase 6 is distribution, and a pull-request check is where most people would meet a11yfix without installing

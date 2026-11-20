@@ -8,7 +8,7 @@ branding:
   color: blue
 
 # Runs the a11yfix CLI from this repository (the npm name `a11yfix` is an unrelated project).
-# Docs: docs/github-action.md. Decision record: docs/adr/0014-github-action.md.
+# Docs: docs/github-action.md. Decision record: docs/adr/0016-github-action.md.
 
 inputs:
   paths:

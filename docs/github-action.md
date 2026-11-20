@@ -3,7 +3,7 @@
 The a11yfix action reviews pull requests. It audits the HTML files a pull request changes, runs
 `fix --verify --strict --mode codemod` on each, and posts **one review** whose inline comments are GitHub
 suggestions, one per verified fix, on the exact lines it changes. A reviewer accepts or ignores each suggestion with
-the usual buttons. Decision record: [ADR 0014](adr/0014-github-action.md).
+the usual buttons. Decision record: [ADR 0016](adr/0016-github-action.md).
 
 > a11yfix results are axe-clean on the checked rules, not WCAG conformance. Every comment and the review body say so,
 > with the same caveats as the MCP server. A person reviews every suggestion before it is committed.

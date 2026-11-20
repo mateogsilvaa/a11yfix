@@ -6,7 +6,7 @@ API (ADR 0006).
 ## Unreleased
 
 ### Added
-- **GitHub Action** (`action.yml`, `packages/action`, ADR 0014). On `pull_request`, audits the changed HTML files, runs
+- **GitHub Action** (`action.yml`, `packages/action`, ADR 0016). On `pull_request`, audits the changed HTML files, runs
   `fix --verify` (codemods by default; tier 1 only with an explicit `generator-cmd`) and posts one review whose
   inline comments are suggestions for verified patches only, on the exact lines they change. Suspicious, rejected
   and skipped findings are listed in the body, never suggested. Job summary for fork pull requests. Inputs `paths`,

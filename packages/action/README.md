@@ -9,4 +9,4 @@ The logic of the a11yfix GitHub Action (`action.yml` at the repository root). Pr
 - `src/diff.ts`, `src/glob.ts`, `src/github.ts`: hunk ranges, path filters, the few REST calls.
 
 Usage, inputs and outputs: [docs/github-action.md](../../docs/github-action.md). Decision record:
-[ADR 0014](../../docs/adr/0014-github-action.md).
+[ADR 0016](../../docs/adr/0016-github-action.md).
