@@ -393,7 +393,8 @@ program
     const findings = o.findings ? await readFindings(o.findings) : baseline.findings;
     const finding = findings.find((f) => f.id === patch.findingId);
     if (!finding) throw new Error(`finding ${patch.findingId} not found ${o.findings ? `in ${o.findings}` : `in a fresh audit of ${file}`}`);
-    const { verification } = await verifyPatch({ file, src, finding, patch, baseline, rule: registry.forFinding(finding) });
+    // The full verifier: axe, static checks, accessibility tree, focus order, desktop pixels.
+    const { verification } = await verifyPatch({ file, src, finding, patch, baseline, rule: registry.forFinding(finding), checks: DEFAULT_DEEP_CHECKS });
     const { diff, ...rest } = verification;
     console.log(JSON.stringify(rest, null, 2));
     if (diff) console.log(`\n${diff}`);
