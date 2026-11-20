@@ -21,6 +21,13 @@ API (ADR 0006).
   and skipped findings are listed in the body, never suggested. Job summary for fork pull requests. Inputs `paths`,
   `mode`, `strict`, `fail-on`, `generator-cmd`, `max-files`, `working-directory`, `github-token`. Example workflow in
   `docs/examples/`. Not tagged or published to the Marketplace yet.
+- **Verifier: labels that restate an identifier** (ADR 0015). An `aria-label` added by the patch whose words all come
+  from the element's `name` or `id` (`name="first"` → `aria-label="first"`) is suspicious, unless it contains the
+  visible text next to the element (label in name, WCAG 2.5.3).
+- **Verifier: dangling id references** (ADR 0015). An `aria-controls`, `aria-labelledby`, `aria-describedby`,
+  `aria-owns`, `aria-activedescendant` (or another id-reference attribute) that the patch leaves pointing at no
+  element on the page (`aria-controls="false"`) is suspicious.
+- Both in the sabotage suite and in `verify.test.ts` (fixture `identifiers.html`).
 
 ### Changed
 - The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `a11yfix-core`; `a11yfix-mcp`
