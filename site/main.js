@@ -1,6 +1,10 @@
-// Progressive enhancement only: without this file every panel, step and command is still on the page.
+// Progressive enhancement only. Without this file every panel, number and command is on the page, still.
 (() => {
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const motion = !reduce;
+  if (motion) document.documentElement.classList.add("motion");
+  const wait = (ms) => new Promise((r) => setTimeout(r, ms));
+
   const status = document.createElement("p");
   status.className = "sr-only";
   status.setAttribute("role", "status");
@@ -22,12 +26,16 @@
       try {
         await navigator.clipboard.writeText(getText());
         b.textContent = "Copied";
+        b.classList.add("done");
         announce("Copied to the clipboard.");
       } catch {
-        b.textContent = "Select and copy";
+        b.textContent = "Select it";
         announce("Could not copy. Select the text and copy it instead.");
       }
-      setTimeout(() => (b.textContent = "Copy"), 2200);
+      setTimeout(() => {
+        b.textContent = "Copy";
+        b.classList.remove("done");
+      }, 1800);
     });
     host.append(b);
   };
@@ -58,49 +66,60 @@
         const k = { ArrowRight: 1, ArrowLeft: -1, Home: "home", End: "end" }[e.key];
         if (k === undefined) return;
         e.preventDefault();
-        const n = k === "home" ? 0 : k === "end" ? tabs.length - 1 : (i + k + tabs.length) % tabs.length;
-        select(n, true);
+        select(k === "home" ? 0 : k === "end" ? tabs.length - 1 : (i + k + tabs.length) % tabs.length, true);
       });
     });
     select(0, false);
   }
 
-  /* The verdict window: checks light up one by one ------------------------ */
-  let timers = [];
-  const run = (panel) => {
-    timers.forEach(clearTimeout);
-    timers = [];
+  /* The demo: type the command, then run the checks one by one ------------ */
+  const typed = document.querySelector(".typed");
+  const command = typed?.textContent ?? "";
+  let runId = 0;
+  async function run(panel) {
+    const id = ++runId;
     const items = [...panel.querySelectorAll(".va-checks li")];
     const verdict = panel.querySelector(".va-verdict strong")?.textContent ?? "";
-    if (reduce) {
-      panel.classList.remove("running", "done");
-      return;
-    }
+    if (!motion) return;
     panel.classList.remove("done");
     panel.classList.add("running");
-    items.forEach((li) => li.classList.remove("shown"));
-    items.forEach((li, i) => timers.push(setTimeout(() => li.classList.add("shown"), 350 + i * 380)));
-    timers.push(
-      setTimeout(() => {
-        panel.classList.add("done");
-        announce(verdict);
-      }, 450 + items.length * 380),
-    );
-  };
+    items.forEach((li) => li.classList.remove("shown", "active"));
+    if (typed) {
+      for (let n = 0; n <= command.length; n += 2) {
+        if (id !== runId) return;
+        typed.textContent = command.slice(0, n);
+        await wait(18);
+      }
+      typed.textContent = command;
+    }
+    for (const li of items) {
+      if (id !== runId) return;
+      li.classList.add("active");
+      await wait(380);
+      li.classList.remove("active");
+      li.classList.add("shown");
+    }
+    await wait(150);
+    if (id !== runId) return;
+    panel.classList.add("done");
+    announce(verdict);
+  }
   const vaTabs = document.querySelector(".va-tabs");
   if (vaTabs) {
     let seen = false;
     setupTabs(vaTabs, (panel) => seen && run(panel));
     const replay = document.querySelector(".replay");
-    replay.hidden = false;
-    replay.addEventListener("click", () => run(document.querySelector(".va-panel:not([hidden])")));
+    if (motion) {
+      replay.hidden = false;
+      replay.addEventListener("click", () => run(document.querySelector(".va-panel:not([hidden])")));
+    }
     const io = new IntersectionObserver((entries) => {
-      if (entries.some((e) => e.isIntersecting) && !seen) {
+      if (!seen && entries.some((e) => e.isIntersecting)) {
         seen = true;
         run(document.querySelector(".va-panel:not([hidden])"));
         io.disconnect();
       }
-    }, { threshold: 0.45 });
+    }, { threshold: 0.35 });
     io.observe(document.querySelector(".va-window"));
   }
 
@@ -111,4 +130,49 @@
     setupTabs(caTabs);
   }
 
+  if (!motion) return;
+
+  /* Reveal on scroll, with a small stagger between siblings ---------------- */
+  const groups = new Map();
+  for (const el of document.querySelectorAll("[data-reveal]")) {
+    const i = groups.get(el.parentElement) ?? 0;
+    groups.set(el.parentElement, i + 1);
+    el.style.setProperty("--d", `${Math.min(i, 5) * 70}ms`);
+  }
+  const countUp = (el) => {
+    const target = Number(el.textContent.replace(/[^\d]/g, ""));
+    if (!target) return;
+    const start = performance.now();
+    const step = (t) => {
+      const k = Math.min(1, (t - start) / 1100);
+      el.textContent = String(Math.round(target * (1 - Math.pow(1 - k, 3))));
+      if (k < 1) requestAnimationFrame(step);
+      else el.textContent = String(target);
+    };
+    requestAnimationFrame(step);
+  };
+  const reveal = new IntersectionObserver((entries) => {
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      e.target.classList.add("in");
+      for (const n of e.target.querySelectorAll("[data-count]")) countUp(n);
+      if (e.target.matches("[data-count]")) countUp(e.target);
+      reveal.unobserve(e.target);
+    }
+  }, { rootMargin: "0px 0px -12% 0px" });
+  document.querySelectorAll("[data-reveal]").forEach((el) => reveal.observe(el));
+
+  /* The pipeline line fills as the section scrolls through ---------------- */
+  const track = document.querySelector(".track");
+  if (track) {
+    const section = track.closest("section");
+    const update = () => {
+      const r = section.getBoundingClientRect();
+      const p = Math.min(1, Math.max(0, (innerHeight * 0.85 - r.top) / (r.height * 0.9)));
+      track.style.setProperty("--p", p.toFixed(3));
+    };
+    addEventListener("scroll", update, { passive: true });
+    addEventListener("resize", update);
+    update();
+  }
 })();
