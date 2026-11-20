@@ -58,3 +58,5 @@ export { parseRobots, type Robots } from "./site/robots.js";
 export { parseSitemap, type SitemapDoc } from "./site/sitemap.js";
 export { Store, SCHEMA_VERSION, type PreviousPage } from "./site/store.js";
 export { renderSiteReport, sharedGroups, type SiteGroup } from "./site/report.js";
+export { probePage, type AxInfo, type Probe, type ProbeOptions, type VisualCapture } from "./probe.js";
+export { DEFAULT_DEEP_CHECKS, deepCheck, probeOptions, type DeepCheckOptions, type DeepCheckResult, type VisualDiff } from "./deepcheck.js";

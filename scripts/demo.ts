@@ -5,7 +5,7 @@
 
 import { mkdir, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { LlmGenerator, auditFile, closeBrowser, countBy, limiter, pagePatch, processPage, writeJson } from "a11yfix-core";
+import { DEFAULT_DEEP_CHECKS, LlmGenerator, auditFile, closeBrowser, countBy, limiter, pagePatch, processPage, writeJson } from "a11yfix-core";
 import { createCoreRegistry } from "a11yfix-rules-core";
 
 const BEFORE = "demo/before/index.html";
@@ -27,6 +27,7 @@ try {
       llm,
       verify: true,
       strict: true,
+      checks: DEFAULT_DEEP_CHECKS,
       genLimit: limiter(4),
       auditLimit: limiter(4),
       log: console.log,
@@ -53,6 +54,7 @@ try {
     path.join(AFTER_DIR, "GENERATED_BY.md"),
     `# How demo/after was produced\n\n` +
       `- Mode: ${llm ? `tier 0 codemods + tier 1 \`${llm.name}\`` : "tier 0 codemods only (no model)"}, strict\n` +
+      `- Verifier: axe-core, static checks, accessibility tree, focus order, visual (desktop)\n` +
       `- Date: ${new Date().toISOString().slice(0, 10)}\n` +
       `- Findings in demo/before: ${audit.findings.length}\n` +
       `- Outcomes: ${Object.entries(statuses).map(([k, v]) => `${k} ${v}`).join(", ")}\n` +

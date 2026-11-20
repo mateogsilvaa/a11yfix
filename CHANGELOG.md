@@ -3,6 +3,39 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## 0.3.0
+
+Roadmap phases 1 (sites) and 3 (verification beyond axe), and tier 1 through any model or agent.
+
+### Added
+- **Verifier: accessibility tree** (ADR 0012). Chromium's computed role, name, states and focusability of every
+  element before and after each patch. Lost names, roles or states, elements no longer exposed or focusable, and new
+  generic or file-name names make a patch suspicious.
+- **Verifier: focus order.** Real Tab presses before and after; elements leaving the tab order or a reordered
+  sequence make a patch suspicious.
+- **Verifier: visual regression.** Full-page screenshots per viewport (`--visual`), pixel diff outside the patched
+  elements (`--max-visual-change`, default 0.1%), layout shift measured (`--max-layout-shift` to enforce).
+- **Verifier: `--regression-impact`** to tolerate new violations below an impact level (reported, not rejected).
+- **Verifier: `inert`** added to the static suspicion checks (it silences axe).
+- **Second sabotage suite** and `deepcheck.test.ts`: fakes that axe and the static checks accept and only the new
+  checks reject, and honest fixes that pass everything.
+- **`a11yfix site <url>`** (ADR 0010): same-origin crawler with depth and page limits, robots.txt, sitemap.xml,
+  rendered-DOM deduplication, real rendering with network-idle wait, several viewports, element captures, findings
+  grouped across pages, auth (headers, cookies, basic), origin allowlist, concurrency and delay.
+- **SQLite storage** (`--db`, `node:sqlite`, Node 22.13+): sites, runs, pages, findings, patches, verifications.
+  `site --incremental` reuses unchanged pages. `fix --db` records patches and verifications.
+- **`--generator-cmd`** (ADR 0011): tier 1 through any command (local models, agent CLIs, scripts), text or JSON
+  request on stdin, patch JSON on stdout, tolerant parsing, retries with feedback. `A11YFIX_GENERATOR_CMD`.
+- **docs/agents.md**: using a11yfix from agents, in both directions. **docs/sandbox.md**, **Dockerfile** and a CI job
+  that runs it with no network, read-only root, no capabilities and CPU/memory caps.
+- Benchmark with a local model (`qwen3:8b` through Ollama) as tier 1: `bench/local-qwen3-8b/`.
+
+### Changed
+- `fix` and `bench` run the accessibility-tree, focus and desktop visual checks by default (`--no-ax`, `--no-focus`,
+  `--visual none` to turn them off). Library callers opt in with `checks`.
+- Reports have a "Verifier checks" section. `PageViolation` and `ViolationRef` carry the axe impact.
+- `audit.ts` exposes `runAxe` and `normalize` for pages loaded by other means (site mode).
+
 ## 0.2.0
 
 Phase 0 of the roadmap: consolidate the core.

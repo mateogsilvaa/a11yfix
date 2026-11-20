@@ -5,5 +5,29 @@
   "suspicious": false,
   "reason": null,
   "status": "verified",
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 4,
+      "after": 4,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 10
+      }
+    ]
+  },
   "tier": 0
 }

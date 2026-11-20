@@ -1,6 +1,6 @@
 {
   "name": "a11yfix-core",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "a11yfix engine: axe-core audit, source mapping, patch validation, the verifier, the Rule plugin API and the optional LLM tier.",
   "license": "Apache-2.0",
   "type": "module",

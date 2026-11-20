@@ -7,6 +7,7 @@ import path from "node:path";
 import { Command, InvalidArgumentError, Option } from "commander";
 import {
   CommandGenerator,
+  DEFAULT_DEEP_CHECKS,
   DEFAULT_MODEL,
   Store,
   VIEWPORTS,
@@ -29,6 +30,8 @@ import {
   writeJson,
   writePageArtifacts,
   type CommandInput,
+  type DeepCheckOptions,
+  type Impact,
   type Effort,
   type Finding,
   type Generator,
@@ -51,6 +54,32 @@ const int = (v: string) => {
 };
 
 const hasCredentials = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_PROFILE);
+
+interface CheckOpts {
+  ax: boolean;
+  focus: boolean;
+  visual: Viewport[];
+  maxVisualChange: number;
+  maxLayoutShift?: number;
+  regressionImpact: Impact;
+}
+
+function deepChecks(o: CheckOpts): DeepCheckOptions | undefined {
+  if (!o.ax && !o.focus && o.visual.length === 0) return undefined;
+  return {
+    ax: o.ax,
+    focus: o.focus,
+    visual: o.visual,
+    maxVisualChange: o.maxVisualChange / 100,
+    maxLayoutShift: o.maxLayoutShift ?? null,
+  };
+}
+
+const percent = (v: string) => {
+  const n = Number(v);
+  if (!Number.isFinite(n) || n < 0 || n > 100) throw new InvalidArgumentError("must be a percentage between 0 and 100");
+  return n;
+};
 
 interface GenOpts {
   mode: Mode;
@@ -99,6 +128,17 @@ async function listHtml(dir: string): Promise<string[]> {
   return out.sort();
 }
 
+function parseViewports(v: string): Viewport[] {
+  return v.split(",").map((raw) => {
+    const name = raw.trim();
+    const vp = VIEWPORTS[name];
+    if (vp) return vp;
+    const m = /^(\d+)x(\d+)$/.exec(name);
+    if (m) return { name, width: Number(m[1]), height: Number(m[2]) };
+    throw new InvalidArgumentError(`unknown viewport ${JSON.stringify(name)} (desktop, tablet, mobile or WIDTHxHEIGHT)`);
+  });
+}
+
 const registry: RuleRegistry = createCoreRegistry();
 
 const program = new Command()
@@ -127,7 +167,22 @@ const fixOpts = (cmd: Command) =>
     )
     .option("--model <id>", "Claude model id for the built-in tier-1 client", DEFAULT_MODEL)
     .addOption(new Option("--effort <level>", "model effort").choices(["low", "medium", "high", "xhigh", "max"]).default("medium"))
-    .option("--concurrency <n>", "parallel model calls", int, 4);
+    .option("--concurrency <n>", "parallel model calls", int, 4)
+    .option("--no-ax", "verifier: skip the accessibility-tree comparison")
+    .option("--no-focus", "verifier: skip the focus-order comparison")
+    .option(
+      "--visual <viewports>",
+      'verifier: viewports for the visual comparison (desktop, tablet, mobile, WIDTHxHEIGHT) or "none"',
+      (v: string) => (v === "none" ? [] : parseViewports(v)),
+      DEFAULT_DEEP_CHECKS.visual as Viewport[],
+    )
+    .option("--max-visual-change <percent>", "verifier: page pixels that may change outside the patched elements", percent, DEFAULT_DEEP_CHECKS.maxVisualChange * 100)
+    .option("--max-layout-shift <n>", "verifier: elements outside the patch that may move (default: measured, not enforced)", (v) => Number(v))
+    .addOption(
+      new Option("--regression-impact <level>", "verifier: new violations below this impact are reported, not rejected")
+        .choices(["minor", "moderate", "serious", "critical"])
+        .default("minor"),
+    );
 
 program
   .command("audit")
@@ -162,7 +217,7 @@ fixOpts(
 ).action(
   async (
     findingsFile: string,
-    o: GenOpts & { out: string; verify: boolean; strict: boolean; limit?: number; concurrency: number; db?: string },
+    o: GenOpts & CheckOpts & { out: string; verify: boolean; strict: boolean; limit?: number; concurrency: number; db?: string },
   ) => {
     const llm = makeLlm(o);
     const store = o.db ? await Store.open(o.db) : undefined;
@@ -180,6 +235,8 @@ fixOpts(
         verify: o.verify,
         strict: o.strict,
         limit: o.limit,
+        checks: deepChecks(o),
+        regressionImpact: o.regressionImpact,
         genLimit,
         auditLimit,
         log: console.log,
@@ -224,16 +281,6 @@ function parseCookie(c: string): { name: string; value: string } {
   return { name: c.slice(0, i).trim(), value: c.slice(i + 1).trim() };
 }
 
-function parseViewports(v: string): Viewport[] {
-  return v.split(",").map((raw) => {
-    const name = raw.trim();
-    const vp = VIEWPORTS[name];
-    if (vp) return vp;
-    const m = /^(\d+)x(\d+)$/.exec(name);
-    if (m) return { name, width: Number(m[1]), height: Number(m[2]) };
-    throw new InvalidArgumentError(`unknown viewport ${JSON.stringify(name)} (desktop, tablet, mobile or WIDTHxHEIGHT)`);
-  });
-}
 
 program
   .command("site")
@@ -366,7 +413,7 @@ fixOpts(
     .option("--notes <file>", "markdown appended to the report (analysis)")
     .option("--compare <file>", "metrics.json of another run to compare against"),
 ).action(
-  async (o: GenOpts & {
+  async (o: GenOpts & CheckOpts & {
     corpus: string;
     report: string;
     out: string;
@@ -395,7 +442,18 @@ fixOpts(
           const page = await processPage(
             file,
             baseline.findings,
-            { registry, mode: o.mode, llm, verify: true, strict: o.strict, limit: o.limit, genLimit, auditLimit },
+            {
+              registry,
+              mode: o.mode,
+              llm,
+              verify: true,
+              strict: o.strict,
+              limit: o.limit,
+              checks: deepChecks(o),
+              regressionImpact: o.regressionImpact,
+              genLimit,
+              auditLimit,
+            },
             baseline,
           );
           const rel = path.relative(o.corpus, file).replace(/\.html?$/i, "").split(path.sep).join("/");
@@ -421,6 +479,8 @@ fixOpts(
       date: new Date().toISOString().slice(0, 10),
       notes: o.notes ? await readFile(o.notes, "utf8") : undefined,
       compare,
+      checks: deepChecks(o) ?? null,
+      regressionImpact: o.regressionImpact,
     };
     await mkdir(path.dirname(path.resolve(o.report)), { recursive: true });
     await writeFile(o.report, renderReport(input), "utf8");

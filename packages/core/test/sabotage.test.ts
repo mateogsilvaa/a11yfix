@@ -20,6 +20,8 @@ import {
   setAttr,
   startTagOf,
   verifyPatch,
+  DEFAULT_DEEP_CHECKS,
+  type DeepCheckOptions,
   type Finding,
   type Patch,
 } from "a11yfix-core";
@@ -64,28 +66,59 @@ function sabotage(f: Finding, src: string): Sabotage[] {
     out.push(mk("file-name alt", tag, setAttr(tag, "alt", file.replace(/\.\w+$/, "").replace(/[-_]/g, " "))));
   }
   if (f.ruleId === "label") out.push(mk("one-letter label", tag, setAttr(tag, "aria-label", "x")));
+  out.push(mk("inert", tag, setAttr(tag, "inert", "")));
   return out;
 }
 
-it("the verifier rejects every sabotaged patch on the hand-written corpus", { timeout: 600_000 }, async () => {
+/** Sabotages only the accessibility-tree, focus and visual checks are expected to catch. */
+function deepSabotage(f: Finding, src: string): Array<{ name: string; patch: Patch }> {
+  const el = f.sourceRange ? elementStartingAt(parseSource(src), f.sourceRange.start) : null;
+  const st = el ? startTagOf(src, el) : null;
+  if (!el || !st) return [];
+  const tag = st.text;
+  const mk = (name: string, before: string, after: string) => ({
+    name,
+    patch: { findingId: f.id, rationale: "sabotage", before, after, confidence: "high" as const },
+  });
+  const out = [mk("out of the tab order", tag, setAttr(tag, "tabindex", "-1"))];
+  // Recolor everything instead of fixing one element's contrast.
+  const style = /<style>/.exec(src);
+  if (f.ruleId === "color-contrast" && style) {
+    out.push(mk("repaint the page", "<style>", "<style>* { color: #000 !important; background: #fff !important; }"));
+  }
+  return out;
+}
+
+async function sabotageRun(checks: DeepCheckOptions | undefined, extra: boolean) {
   const files = (await readdir(CORPUS)).filter((f) => f.endsWith(".html")).map((f) => path.join(CORPUS, f));
   const limit = limiter(4);
   const leaks: string[] = [];
   let total = 0;
   for (const file of files) {
     const src = await readFile(file, "utf8");
-    const baseline = await auditSource(file, src, { rules: registry.axeIds() });
-    const jobs = baseline.findings.flatMap((f) => sabotage(f, src).map((s) => ({ f, s })));
+    const baseline = await auditSource(file, src, { rules: registry.axeIds(), probe: checks ? { ax: checks.ax, focus: checks.focus, visual: checks.visual } : undefined });
+    const jobs = baseline.findings.flatMap((f) => [...sabotage(f, src), ...(extra ? deepSabotage(f, src) : [])].map((s) => ({ f, s })));
     total += jobs.length;
     await Promise.all(
       jobs.map(({ f, s }) =>
         limit(async () => {
-          const { verification } = await verifyPatch({ file, src, finding: f, patch: s.patch, baseline, rule: registry.forFinding(f) });
+          const { verification } = await verifyPatch({ file, src, finding: f, patch: s.patch, baseline, rule: registry.forFinding(f), checks });
           if (verification.status === "verified") leaks.push(`${path.basename(file)} ${f.id} ${f.ruleId}: "${s.name}" was verified`);
         }),
       ),
     );
   }
+  return { total, leaks };
+}
+
+it("the verifier rejects every sabotaged patch on the hand-written corpus (axe + static checks)", { timeout: 600_000 }, async () => {
+  const { total, leaks } = await sabotageRun(undefined, false);
   assert.ok(total > 300, `expected a few hundred sabotaged patches, got ${total}`);
+  assert.deepEqual(leaks, [], `${leaks.length} of ${total} sabotaged patches passed the verifier`);
+});
+
+it("the full verifier also rejects sabotage that only the accessibility tree, focus order or pixels reveal", { timeout: 900_000 }, async () => {
+  const { total, leaks } = await sabotageRun(DEFAULT_DEEP_CHECKS, true);
+  assert.ok(total > 350, `expected a few hundred sabotaged patches, got ${total}`);
   assert.deepEqual(leaks, [], `${leaks.length} of ${total} sabotaged patches passed the verifier`);
 });

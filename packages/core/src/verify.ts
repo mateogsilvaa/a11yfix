@@ -16,6 +16,8 @@ import { allElements, attr, parseSource, type Element } from "./source.js";
 import type { Rule } from "./rule.js";
 import type { Finding, Verification, ViolationRef } from "./types.js";
 import { validatePatch } from "./validate.js";
+import { deepCheck, probeOptions, type DeepCheckOptions } from "./deepcheck.js";
+import type { Impact } from "./types.js";
 
 export interface VerifyInput {
   file: string;
@@ -27,7 +29,15 @@ export interface VerifyInput {
   baseline?: AuditResult;
   /** The rule that owns the finding; its verify() can add suspicion reasons. */
   rule?: Rule;
+  /** Accessibility-tree, focus-order and visual checks. Omit to run axe-only verification. */
+  checks?: DeepCheckOptions;
+  /** New violations below this impact are reported but do not reject the patch. Default: every impact counts. */
+  regressionImpact?: Impact;
 }
+
+const IMPACT_ORDER: Impact[] = ["minor", "moderate", "serious", "critical"];
+const atLeast = (i: Impact | null | undefined, min: Impact) =>
+  IMPACT_ORDER.indexOf(i ?? "critical") >= IMPACT_ORDER.indexOf(min);
 
 export interface VerifyOutput {
   verification: Verification;
@@ -50,13 +60,15 @@ export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
   if (!v.ok) return { verification: { ...base, status: v.status, reason: v.reason }, patched: null };
   const applied = v.applied;
 
-  const baseline = input.baseline ?? (await auditSource(file, src, { rules: [finding.ruleId] }));
+  const probe = input.checks ? probeOptions(input.checks) : undefined;
+  let baseline = input.baseline ?? (await auditSource(file, src, { rules: [finding.ruleId], probe }));
+  if (probe && !baseline.probe) baseline = await auditSource(file, src, { rules: baseline.rules, probe });
   // Re-audit with the same rules as the baseline (plus the target's rule, in
   // case it is not a WCAG-tagged rule such as heading-order).
   const rules = Array.from(new Set([...baseline.rules, finding.ruleId]));
   let after: AuditResult;
   try {
-    after = await auditSource(file, applied.patched, { rules });
+    after = await auditSource(file, applied.patched, { rules, probe });
   } catch (err) {
     return {
       verification: {
@@ -70,7 +82,16 @@ export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
   }
 
   const cmp = compare(baseline.all, after.all, finding, applied);
+  const min = input.regressionImpact;
+  const tolerated = min ? cmp.newViolations.filter((v) => !atLeast(v.impact, min)) : [];
+  if (min) cmp.newViolations = cmp.newViolations.filter((v) => atLeast(v.impact, min));
   const sus = suspicionReasons(src, applied, finding);
+  let checks: Verification["checks"];
+  if (input.checks && baseline.probe && after.probe) {
+    const deep = await deepCheck(src, applied, baseline.probe, after.probe, finding, input.checks);
+    sus.push(...deep.reasons);
+    checks = { ax: deep.ax, focus: deep.focus, visual: deep.visual };
+  }
   if (input.rule?.verify) {
     const oldElements = allElements(parseSource(src));
     const newElements = allElements(parseSource(applied.patched));
@@ -84,6 +105,8 @@ export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
     reason: null,
     status: "verified",
     diff: applied.diff,
+    ...(tolerated.length ? { toleratedViolations: tolerated } : {}),
+    ...(checks ? { checks } : {}),
   };
 
   if (!cmp.ruleGone) {
@@ -123,7 +146,7 @@ export function compare(
   ap: AppliedPatch,
 ): { ruleGone: boolean; newViolations: ViolationRef[] } {
   const targetKey = keyBefore(
-    { ruleId: finding.ruleId, selector: finding.selector, sourceRange: finding.sourceRange, sourceLines: finding.sourceLines },
+    { ruleId: finding.ruleId, impact: finding.impact, selector: finding.selector, sourceRange: finding.sourceRange, sourceLines: finding.sourceLines },
     ap,
   );
   const afterKeys = after.map((v) => keyAfter(v, ap));
@@ -140,7 +163,7 @@ export function compare(
     const k = afterKeys[i]!;
     const n = pool.get(k) ?? 0;
     if (n > 0) pool.set(k, n - 1);
-    else newViolations.push({ ruleId: v.ruleId, selector: v.selector, sourceLines: v.sourceLines });
+    else newViolations.push({ ruleId: v.ruleId, impact: v.impact, selector: v.selector, sourceLines: v.sourceLines });
   });
   return { ruleGone, newViolations };
 }
@@ -270,6 +293,11 @@ export function suspicionReasons(src: string, ap: AppliedPatch, finding: Finding
   // 2. aria-hidden="true" added.
   const hidden = (el: Element) => (attr(el, "aria-hidden") ?? "").trim().toLowerCase() === "true";
   if (count(newEls, hidden) > count(oldEls, hidden)) reasons.push('added aria-hidden="true"');
+
+  // 2b. inert added: removes the subtree from the accessibility tree and the
+  //     tab order, and axe stops checking it.
+  const inert = (el: Element) => attr(el, "inert") !== undefined;
+  if (count(newEls, inert) > count(oldEls, inert)) reasons.push("added inert");
 
   // 3. role="presentation" / role="none" added.
   const presentational = (el: Element) => /^(presentation|none)$/i.test((attr(el, "role") ?? "").trim());

@@ -1,7 +1,7 @@
 {
   "name": "a11yfix-monorepo",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Audit HTML for accessibility violations, generate a minimal patch per violation, and keep only the patches a re-audit proves correct.",
   "license": "Apache-2.0",
   "type": "module",

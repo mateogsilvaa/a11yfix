@@ -14,3 +14,6 @@ A decision is changed by a new ADR that supersedes the old one, never by editing
 | [0007](0007-apache-2-license.md) | License under Apache-2.0 | Accepted |
 | [0008](0008-suspicious-and-patch-output.md) | Suspicious patches: report section and `--strict`; output a git patch | Accepted |
 | [0009](0009-offline-no-telemetry.md) | No telemetry; no network beyond the target and the optional model | Accepted |
+| [0010](0010-site-mode-audits-only.md) | Site mode renders for real and only audits | Accepted |
+| [0011](0011-any-agent-as-tier-1.md) | Tier 1 through any command: the verifier, not the vendor, is the contract | Accepted |
+| [0012](0012-verification-beyond-axe.md) | Verification beyond axe: accessibility tree, focus order, pixels | Accepted |

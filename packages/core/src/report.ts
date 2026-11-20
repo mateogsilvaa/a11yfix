@@ -11,6 +11,8 @@
 //   false-fix    = suspicious / (verified + suspicious)   (share of axe-passing patches that only silenced axe)
 //   regression   = rejected_regression / applied
 
+import type { DeepCheckOptions } from "./deepcheck.js";
+import type { Impact } from "./types.js";
 import path from "node:path";
 import { estimateUsd } from "./llm.js";
 import type { PageOutcome, PatchOutcome } from "./pipeline.js";
@@ -73,6 +75,9 @@ export interface ReportInput {
   notes?: string;
   /** Metrics of another run to compare against. */
   compare?: MetricsFile;
+  /** Verifier checks beyond axe that ran (accessibility tree, focus, visual). */
+  checks?: DeepCheckOptions | null;
+  regressionImpact?: Impact;
 }
 
 /** Machine-readable metrics written next to every report (used for comparisons). */
@@ -266,6 +271,11 @@ export function renderReport(r: ReportInput): string {
     L.push("");
   }
 
+  L.push(`## Verifier checks`);
+  L.push("");
+  L.push(renderChecks(r, all));
+  L.push("");
+
   L.push(`## Definitions`);
   L.push("");
   L.push(`- **Detected**: violations of the patched rule subset reported by axe-core, one per node.`);
@@ -273,7 +283,7 @@ export function renderReport(r: ReportInput): string {
   L.push(`- **Proposed**: a well-formed patch was produced, by a tier-0 codemod or by the tier-1 model (valid JSON matching the schema, within 3 attempts).`);
   L.push(`- **Applied**: the patch passed shape validation (exact \`before\` substring, ≤ 6 lines, ≤ 2 hunks) and the patched page was re-audited.`);
   L.push(
-    `- **Verified**: after applying the patch to a copy, the original violation is gone from the target node, no new WCAG 2.x A/AA violation appeared anywhere on the page, and no suspicion check fired.`,
+    `- **Verified**: after applying the patch to a copy, the original violation is gone from the target node, no new WCAG 2.x A/AA violation appeared anywhere on the page, and no suspicion check fired (static checks, plus the accessibility-tree, focus-order and visual comparisons when they ran).`,
   );
   L.push(`- **False-fix rate**: of the patches that made axe happy, the share flagged as suspicious.`);
   L.push(`- **Regression rate**: of the applied patches, the share that introduced a new violation.`);
@@ -284,5 +294,35 @@ export function renderReport(r: ReportInput): string {
     L.push(r.notes.trim());
     L.push("");
   }
+  return L.join("\n");
+}
+
+function renderChecks(r: ReportInput, all: PatchOutcome[]): string {
+  const c = r.checks;
+  const L: string[] = [];
+  L.push(`Every applied patch is compared with the original page: axe-core with the full WCAG 2.x A/AA rule set${r.regressionImpact && r.regressionImpact !== "minor" ? ` (new violations below "${r.regressionImpact}" impact are reported, not rejected)` : ""}, static suspicion checks on the patched source, and:`);
+  L.push("");
+  L.push(`- accessibility tree (computed role, name, states, focusability of every element): ${c?.ax ? "on" : "off"}`);
+  L.push(`- focus order (Tab sequence): ${c?.focus ? "on" : "off"}`);
+  L.push(
+    `- visual (full-page screenshots): ${c?.visual.length ? `${c.visual.map((v) => `${v.name} ${v.width}x${v.height}`).join(", ")}; limit ${(c.maxVisualChange * 100).toFixed(2)}% of pixels changed outside the patched elements${c.maxLayoutShift !== null ? `, at most ${c.maxLayoutShift} element(s) moved` : "; layout shifts measured, not enforced"}` : "off"}`,
+  );
+  if (!c) return L.join("\n");
+  const checked = all.filter((o) => o.verification.checks);
+  const reasonHas = (o: PatchOutcome, prefix: string) => (o.verification.reason ?? "").includes(prefix);
+  const flagged = (prefix: string) => all.filter((o) => o.verification.status === "rejected_suspicious" && reasonHas(o, prefix)).length;
+  const visual = checked.flatMap((o) => o.verification.checks?.visual ?? []);
+  const shifted = checked.filter((o) => (o.verification.checks?.visual ?? []).some((v) => v.layoutShift > 0));
+  const maxChange = visual.reduce((m, v) => Math.max(m, v.layoutShift === 0 ? v.changeOutside : 0), 0);
+  L.push("");
+  L.push(`| | Patches |`);
+  L.push(`|---|---:|`);
+  L.push(`| Compared beyond axe | ${checked.length} |`);
+  L.push(`| Rejected by the accessibility-tree comparison | ${flagged("accessibility tree:")} |`);
+  L.push(`| Rejected by the focus-order comparison | ${flagged("focus order:")} |`);
+  L.push(`| Rejected by the visual comparison | ${flagged("visual (")} |`);
+  L.push(`| Moved other elements on the page (layout shift, reported only) | ${shifted.length} |`);
+  L.push("");
+  L.push(`Largest pixel change outside the patched elements on a page without layout shift: ${(maxChange * 100).toFixed(3)}%.`);
   return L.join("\n");
 }

@@ -82,6 +82,7 @@ export type VerificationStatus =
 
 export interface ViolationRef {
   ruleId: string;
+  impact?: Impact | null;
   selector: string;
   sourceLines: SourceLocation | null;
 }
@@ -95,6 +96,14 @@ export interface Verification {
   reason: string | null;
   /** Unified diff of the patch against the original file (empty when not applied). */
   diff?: string;
+  /** New violations below the regression threshold (--regression-impact): reported, not rejected. */
+  toleratedViolations?: ViolationRef[];
+  /** Accessibility-tree, focus-order and visual comparison, when they ran. */
+  checks?: {
+    ax?: string[];
+    focus?: { before: number; after: number; lost: string[]; added: string[]; reordered: boolean };
+    visual?: Array<{ viewport: string; changeOutside: number; changedPixelsOutside: number; size: [number, number, number, number]; layoutShift: number }>;
+  };
 }
 
 export interface Usage {

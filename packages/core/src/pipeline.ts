@@ -24,6 +24,8 @@ import { parseSource } from "./source.js";
 import { ZERO_USAGE, addUsage, type Finding, type GenerationResult, type Patch, type Usage, type Verification } from "./types.js";
 import { validatePatch } from "./validate.js";
 import { verifyPatch } from "./verify.js";
+import { probeOptions, type DeepCheckOptions } from "./deepcheck.js";
+import type { Impact } from "./types.js";
 
 export type Mode = "auto" | "codemod" | "llm";
 
@@ -92,6 +94,10 @@ export interface ProcessOptions {
   /** Exclude suspicious patches from the output patch. */
   strict: boolean;
   limit?: number;
+  /** Accessibility-tree, focus-order and visual checks in the verifier. Omit for axe-only verification. */
+  checks?: DeepCheckOptions;
+  /** New violations below this impact do not reject a patch. */
+  regressionImpact?: Impact;
   genLimit: ReturnType<typeof limiter>;
   auditLimit: ReturnType<typeof limiter>;
   log?: (msg: string) => void;
@@ -157,7 +163,12 @@ export async function processPage(
   const log = opts.log ?? (() => {});
   const ruleIds = Array.from(new Set([...opts.registry.axeIds(2), ...selected.map((f) => f.ruleId)]));
 
-  const base = opts.verify ? (baseline ?? (await opts.auditLimit(() => auditSource(file, src, { rules: ruleIds })))) : null;
+  const probe = opts.checks ? probeOptions(opts.checks) : undefined;
+  let base = opts.verify ? (baseline ?? (await opts.auditLimit(() => auditSource(file, src, { rules: ruleIds, probe })))) : null;
+  if (base && probe && !base.probe) {
+    const b = base;
+    base = await opts.auditLimit(() => auditSource(file, src, { rules: b.rules, probe }));
+  }
 
   const generate = async (f: Finding, rule: Rule | undefined): Promise<GenerationResult | string> => {
     let declined = rule ? "" : "no rule registered for this finding";
@@ -205,7 +216,7 @@ export async function processPage(
       };
     } else {
       const out = await opts.auditLimit(() =>
-        verifyPatch({ file, src, finding: f, patch: g.patch, baseline: base!, rule }),
+        verifyPatch({ file, src, finding: f, patch: g.patch, baseline: base!, rule, checks: opts.checks, regressionImpact: opts.regressionImpact }),
       );
       verification = out.verification;
     }

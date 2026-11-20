@@ -1,7 +1,8 @@
 # How demo/after was produced
 
 - Mode: tier 0 codemods only (no model), strict
-- Date: 2026-11-19
+- Verifier: axe-core, static checks, accessibility tree, focus order, visual (desktop)
+- Date: 2026-11-20
 - Findings in demo/before: 9
 - Outcomes: skipped 5, verified 4
 - Violations of the patched rules left in demo/after: 5

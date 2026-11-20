@@ -28,16 +28,19 @@ than half-working codemods for templates.
 - [x] No telemetry, stated in the README
 - [ ] `a11yfix-rules-wcag22` package (waits for phase 3, see ADR 0006)
 
-## Phase 1: from one file to a site
+## Phase 1: from one file to a site *(done in 0.3.0, ADR 0010)*
 
-- Crawler with depth limit, robots.txt and sitemap.xml, per-domain limits, deduplication by content hash
-- URL mode with real rendering: network-idle wait, viewports (mobile, tablet, desktop), a capture per finding
-- Authentication by cookies, headers and basic auth, to audit staging
-- Incremental runs: re-audit only what changed since the last hash (a 500-page site is unusable without it)
-- Browser pool, isolated context per worker, configurable concurrency
-- SQLite storage: sites, pages, findings, patches, verifications, runs
-- Sandbox: container with pinned Playwright and axe, network restricted to the target, CPU and memory limits
-  (rendering third-party HTML is attack surface)
+- [x] Crawler with depth limit, robots.txt and sitemap.xml, per-domain limits (concurrency, delay, Crawl-delay),
+      deduplication by rendered-DOM hash
+- [x] URL mode with real rendering: network-idle wait, viewports (mobile, tablet, desktop, custom), a capture per
+      finding; findings repeated across pages grouped as template candidates
+- [x] Authentication by cookies, headers and basic auth, to audit staging (sent to the target origin only)
+- [x] Incremental runs: pages whose served HTML is byte-identical reuse the stored audit
+- [x] Shared browser, isolated context per page, configurable concurrency
+- [x] SQLite storage (`node:sqlite`): sites, pages, findings, patches, verifications, runs
+- [x] Sandbox: browser-level allowlist of origins; container with pinned Node, Playwright and axe, non-root, CPU and
+      memory limits, tested in CI with `--network none`
+- [ ] Network-level egress restricted to the target (needs an egress proxy; documented in docs/sandbox.md, not shipped)
 
 ## Phase 2: from text patch to codemod
 
@@ -48,17 +51,18 @@ than half-working codemods for templates.
 - Framework detection by content, not extension; explicit warning for unsupported formats
 - `--out-format json|patch|sarif`
 
-## Phase 3: serious verification
+## Phase 3: serious verification *(mostly done in 0.3.0, ADR 0012)*
 
-- Accessibility-tree diff before and after: name, role, state and description of every node in the touched subtree
-  (a bad alt shows up there even when axe is silent)
-- Visual regression per viewport with a pixel threshold, to catch contrast fixes that wreck the design
-- Focus-order assertions with simulated Tab over the touched subtree
-- Wider suspicion scoring (node removed, aria-hidden, role=presentation, generic alt, alt equal to the file name,
-  text hidden with clip-path: most already done)
-- Real contrast: resolve the background up the tree, ignore image backgrounds, propose a token change (CSS variable,
-  tailwind.config entry) instead of a loose hex value
-- Configurable regression threshold
+- [x] Accessibility-tree diff before and after: role, name, states and focusability of every element, from
+      Chromium's computed tree (a bad name shows up there even when axe is silent)
+- [x] Visual regression per viewport with a pixel threshold outside the patched elements; layout shift measured
+- [x] Focus-order assertions with real Tab presses (lost stops, reordered sequence)
+- [x] Wider suspicion scoring: node removed, aria-hidden, `inert`, role=presentation, generic alt, alt equal to the
+      file name, text hidden with clip-path
+- [x] Configurable regression threshold (`--regression-impact`, `--max-visual-change`, `--max-layout-shift`)
+- [ ] Real contrast: resolve the background up the tree, ignore image backgrounds, propose a token change (CSS
+      variable, tailwind.config entry) instead of a loose hex value
+- [ ] Open the Rule API to external packages (after the contrast work and the phase 4 conformance suite)
 
 ## Phase 4: rule ecosystem
 
@@ -77,6 +81,13 @@ than half-working codemods for templates.
 - Fillable VPAT draft that separates what was verified from what needs human judgment
 - Tamper-evident log: every run with version, commit, findings, verifications and a chained hash
 - Honest wording in every report: a11yfix does not guarantee conformance
+
+## Beyond the plan: any agent as tier 1 *(0.3.0, ADR 0011)*
+
+- [x] `--generator-cmd`: tier 1 through any model or agent CLI (local models, coding agents, scripts), verified like
+      every other patch
+- [x] Documented protocol for agents that use a11yfix as their judge (`docs/agents.md`)
+- [ ] An MCP server exposing `audit` and `verify` as tools, for agents that speak MCP
 
 ## Phase 6: distribution
 

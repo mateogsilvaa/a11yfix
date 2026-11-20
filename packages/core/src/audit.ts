@@ -10,6 +10,7 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import type { Page } from "playwright";
 import { withPage } from "./browser.js";
+import { probePage, type Probe, type ProbeOptions } from "./probe.js";
 import { extractNodeContext } from "./context.js";
 import { REGRESSION_TAGS, wcagFromTags } from "./wcag.js";
 import {
@@ -54,6 +55,7 @@ export interface RawViolation {
 /** A violating node anywhere on the page, located in the source when possible. */
 export interface PageViolation {
   ruleId: string;
+  impact: Impact | null;
   selector: string;
   sourceRange: SourceRange | null;
   sourceLines: SourceLocation | null;
@@ -68,6 +70,8 @@ export interface AuditResult {
   /** Every WCAG A/AA (+ subset) violation on the page, one entry per node. */
   all: PageViolation[];
   axeVersion: string;
+  /** Accessibility tree, focus order and captures, when requested. */
+  probe?: Probe;
   ms: number;
 }
 
@@ -76,6 +80,8 @@ export interface AuditOptions {
   rules?: string[];
   /** Drop findings a rule's `detect()` filter rejects. */
   filter?: (f: Finding) => boolean;
+  /** Also read the accessibility tree, focus order and/or screenshots (for the verifier). */
+  probe?: ProbeOptions;
 }
 
 /** Audit a file on disk. */
@@ -96,10 +102,13 @@ export async function auditSource(
 ): Promise<AuditResult> {
   const started = Date.now();
   const subset = opts.rules ?? [];
-  const { version, violations } = await withPage(file, src, (page) => runAxe(page, subset));
+  const { version, violations, probe } = await withPage(file, src, async (page) => {
+    const run = await runAxe(page, subset);
+    return { ...run, probe: opts.probe ? await probePage(page, opts.probe) : undefined };
+  });
   const sourceFile = toPosix(path.relative(process.cwd(), path.resolve(file)));
   const { findings, all } = normalize(violations, subset, { src, sourceFile, filter: opts.filter });
-  return { sourceFile, rules: subset, findings, all, axeVersion: version, ms: Date.now() - started };
+  return { sourceFile, rules: subset, findings, all, axeVersion: version, probe, ms: Date.now() - started };
 }
 
 /** Raw axe output for a page that is already loaded (file mode or URL mode). */
@@ -148,7 +157,7 @@ export function normalize(
     const inSubset = subset.includes(v.ruleId);
     v.nodes.forEach((n, nodeIndex) => {
       const located = parsed ? locate(parsed, n.path) : { sourceRange: null, sourceLines: null };
-      all.push({ ruleId: v.ruleId, selector: n.selector, ...located });
+      all.push({ ruleId: v.ruleId, impact: v.impact, selector: n.selector, ...located });
       if (!inSubset) return;
       findings.push({
         id: "", // assigned below, after sorting

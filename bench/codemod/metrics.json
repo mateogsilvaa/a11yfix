@@ -1,9 +1,9 @@
 {
   "generator": "codemods only",
-  "date": "2026-11-19",
+  "date": "2026-11-20",
   "pages": 22,
   "versions": {
-    "a11yfix-core": "0.2.0",
+    "a11yfix-core": "0.3.0",
     "axe-core": "4.14.1",
     "playwright": "1.65.1",
     "node": "24.15.0"
