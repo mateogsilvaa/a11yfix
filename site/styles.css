@@ -616,3 +616,34 @@ td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-sp
 .tour.js .t-img .t-chip.on { transform: none; }
 .tour-page { padding-bottom: 2.2rem; }
 .t-nav { padding-bottom: 0.4rem; }
+
+/* ===================== v6 fixes ===================== */
+/* Axe card: before → after */
+.viz-axe .row { display: flex; justify-content: space-between; align-items: center; }
+.viz-axe .cnt { display: inline-flex; align-items: center; gap: 0.5rem; }
+.viz-axe .cnt s { color: var(--red); text-decoration-thickness: 2px; margin: 0; }
+.viz-axe .cnt i { font-style: normal; color: var(--muted); }
+.viz-axe .cnt b { color: var(--green); margin: 0; padding: 0; }
+.viz .bad { color: var(--text-2); text-decoration-color: var(--red); }
+
+/* Focus card: four equal columns; the ring is one column wide and steps by its own width */
+.viz-focus { display: grid; grid-template-columns: repeat(4, 1fr); align-items: center; justify-items: center; padding: 0 1.4rem; }
+.viz-focus i { z-index: 1; }
+.viz-focus .ring { position: absolute; left: 1.4rem; top: 50%; width: calc((100% - 2.8rem) / 4); height: 46px; margin-top: -23px; display: grid; place-items: center; border: 0; box-shadow: none; border-radius: 0; }
+.viz-focus .ring::before { content: ""; width: 46px; height: 46px; border-radius: 12px; border: 2px dashed var(--green); box-shadow: 0 0 0 4px rgb(74 222 128 / 0.14); }
+.motion .card.in .viz-focus .ring { animation: hop4 4s var(--ease) infinite; }
+@keyframes hop4 { 0%, 18% { transform: translateX(0); } 25%, 43% { transform: translateX(100%); } 50%, 68% { transform: translateX(200%); } 75%, 93% { transform: translateX(300%); } 100% { transform: translateX(0); } }
+
+/* Scene: labels open to the right of their element, never past the left edge */
+.st-tag { left: -2px; right: auto; }
+
+/* Install: a grid of tools with their logos */
+.tool-tabs { display: grid; grid-template-columns: repeat(auto-fill, minmax(158px, 1fr)); width: 100%; gap: 0.45rem; padding: 0; background: none; border: 0; border-radius: 0; margin-bottom: 1.4rem; }
+.tool-tabs[hidden] { display: none; }
+.guide .tool-tabs button { justify-content: flex-start; gap: 0.6rem; padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid var(--line); background: var(--card); color: var(--text-2); font-size: 0.86rem; }
+.guide .tool-tabs button:hover { border-color: var(--line-2); color: var(--text); background: var(--card-2); }
+.guide .tool-tabs button[aria-selected="true"] { border: 1.5px dashed var(--green); background: rgb(74 222 128 / 0.07); color: var(--text); box-shadow: none; }
+.tool-tabs svg { width: 18px; height: 18px; flex: none; }
+.guide .ca-title { display: flex; align-items: center; gap: 0.55rem; }
+.guide .ca-title svg { width: 20px; height: 20px; }
+.steps em { color: var(--text); font-style: normal; }

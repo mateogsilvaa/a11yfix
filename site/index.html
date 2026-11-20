@@ -61,13 +61,13 @@
           <span>Try it in</span>
           <span class="try-rot">
             <span data-tab="t-claude"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</span>
-            <span data-tab="t-mcp"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</span>
+            <span data-tab="t-cursor"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</span>
+            <span data-tab="t-codex"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</span>
+            <span data-tab="t-windsurf"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</span>
+            <span data-tab="t-gemini"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</span>
+            <span data-tab="t-openclaw"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</span>
+            <span data-tab="t-zed"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</span>
+            <span data-tab="t-opencode"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</span>
             <span data-tab="t-cli"><svg aria-hidden="true"><use href="#ic-term"/></svg>your terminal</span>
             <span data-tab="t-gha"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</span>
           </span>
@@ -332,8 +332,6 @@
           <tr><th scope="row">Writes the fix</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="y">Yes</span></td></tr>
           <tr><th scope="row">Re-checks it in a real browser</th><td><span class="n">No</span></td><td><span class="p">Re-runs the auditor, at best</span></td><td class="us"><span class="y">Yes</span></td></tr>
           <tr><th scope="row">Rejects fixes that only silence the checker</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Patches React, Vue, templates</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="n">Not yet</span></td></tr>
-          <tr><th scope="row">Proves WCAG conformance</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="n">No</span> <small>no tool can</small></td></tr>
         </tbody>
       </table>
     </div>
@@ -350,7 +348,7 @@
     </div>
     <ul class="bento">
       <li class="card" data-reveal>
-        <div class="viz viz-axe" aria-hidden="true"><span class="row gone">image-alt <s>1</s> <b>0</b></span><span class="row">new violations <b>0</b></span></div>
+        <div class="viz viz-axe" aria-hidden="true"><span class="row"><span>image-alt</span><span class="cnt"><s>1</s><i>→</i><b>0</b></span></span><span class="row"><span>new violations</span><span class="cnt"><b>0</b></span></span></div>
         <h3>Gone, and nothing new</h3><p>axe-core with every WCAG 2.x A/AA rule, on the whole page.</p>
       </li>
       <li class="card" data-reveal>
@@ -438,40 +436,46 @@
       <p class="sub">Node.js 20 or later. No model needed: verifa11y applies the fixes it can prove and tells you why it skipped the rest.</p>
     </div>
     <div class="guide" data-reveal>
-      <div class="ca-tabs" role="tablist" aria-label="Where to use verifa11y" hidden>
+      <div class="ca-tabs tool-tabs" role="tablist" aria-label="Where to use verifa11y" hidden>
         <button role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</button>
+        <button role="tab" id="t-codex" aria-controls="p-codex" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</button>
+        <button role="tab" id="t-cursor" aria-controls="p-cursor" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</button>
+        <button role="tab" id="t-windsurf" aria-controls="p-windsurf" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</button>
+        <button role="tab" id="t-copilot" aria-controls="p-copilot" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubcopilot"/></svg>VS Code · Copilot</button>
+        <button role="tab" id="t-gemini" aria-controls="p-gemini" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</button>
+        <button role="tab" id="t-desktop" aria-controls="p-desktop" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-claude"/></svg>Claude Desktop</button>
+        <button role="tab" id="t-zed" aria-controls="p-zed" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</button>
+        <button role="tab" id="t-cline" aria-controls="p-cline" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cline"/></svg>Cline</button>
+        <button role="tab" id="t-opencode" aria-controls="p-opencode" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</button>
+        <button role="tab" id="t-openclaw" aria-controls="p-openclaw" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</button>
+        <button role="tab" id="t-ollama" aria-controls="p-ollama" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-ollama"/></svg>Ollama (local)</button>
         <button role="tab" id="t-cli" aria-controls="p-cli" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</button>
-        <button role="tab" id="t-mcp" aria-controls="p-mcp" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Any MCP host</button>
         <button role="tab" id="t-gha" aria-controls="p-gha" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</button>
+        <button role="tab" id="t-mcp" aria-controls="p-mcp" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Other MCP hosts</button>
       </div>
-
       <div class="ca-panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude">
-        <h3 class="ca-title">Claude Code</h3>
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</h3>
         <ol class="steps">
           <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
-          <li><p>Add the MCP server to your project.</p><div class="code" data-copy-block><pre><code>claude mcp add verifa11y -- npx -y verifa11y-mcp --root .</code></pre></div></li>
-          <li><p>Ask for it in plain words, for example:</p><div class="code" data-copy-block><pre><code>Fix the accessibility of index.html with verifa11y.</code></pre></div></li>
-          <li><p>Claude gets a patch under <code>.verifa11y/</code>, never an edited file. Review the diff, then <code>git apply</code> it.</p></li>
+          <li><p>Add the server from your project folder.</p><div class="code" data-copy-block><pre><code>claude mcp add verifa11y -- npx -y verifa11y-mcp --root .</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
         </ol>
       </div>
 
-      <div class="ca-panel" role="tabpanel" id="p-cli" aria-labelledby="t-cli">
-        <h3 class="ca-title">Terminal</h3>
+      <div class="ca-panel" role="tabpanel" id="p-codex" aria-labelledby="t-codex">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</h3>
         <ol class="steps">
-          <li><p>Install the browser, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y install-browser</code></pre></div></li>
-          <li><p>Audit a page. Every violation, with its rule, WCAG criterion and source lines.</p><div class="code" data-copy-block><pre><code>npx verifa11y audit page.html --out findings.json</code></pre></div></li>
-          <li><p>Fix and verify. Only patches that pass all six checks make it into the output.</p><div class="code" data-copy-block><pre><code>npx verifa11y fix findings.json --verify --strict --out patches</code></pre></div></li>
-          <li><p>Read the report, then apply what you agree with.</p><div class="code" data-copy-block><pre><code>git apply patches/verifa11y.patch</code></pre></div></li>
-          <li><p>Optional: let any model or agent CLI write the fixes that need judgment. Its patches face the same checks.</p><div class="code" data-copy-block><pre><code>npx verifa11y fix findings.json --verify --strict --generator-cmd "claude -p"</code></pre></div></li>
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add the server. It is saved in <code>~/.codex/config.toml</code>, which the Codex CLI, IDE extension and app all read.</p><div class="code" data-copy-block><pre><code>codex mcp add verifa11y -- npx -y verifa11y-mcp --root .</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
         </ol>
       </div>
 
-      <div class="ca-panel" role="tabpanel" id="p-mcp" aria-labelledby="t-mcp">
-        <h3 class="ca-title">Any MCP host</h3>
-        <p class="hosts">Cursor, Codex, Windsurf, Claude Desktop, GitHub Copilot, Gemini CLI, OpenClaw, Zed, Cline, JetBrains, opencode, Warp, Amp and any other client that speaks MCP.</p>
+      <div class="ca-panel" role="tabpanel" id="p-cursor" aria-labelledby="t-cursor">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</h3>
         <ol class="steps">
-          <li><p>Install the browser, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
-          <li><p>Add it to your host as a stdio MCP server: command <code>npx</code>, arguments <code>-y verifa11y-mcp --root .</code>. In JSON-configured hosts (Cursor's <code>.cursor/mcp.json</code>, Claude Desktop) that is:</p><div class="code" data-copy-block><pre><code>{
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add it to <code>.cursor/mcp.json</code> in your project.</p><div class="code" data-copy-block><pre><code>{
   "mcpServers": {
     "verifa11y": {
       "command": "npx",
@@ -479,12 +483,158 @@
     }
   }
 }</code></pre></div></li>
-          <li><p>The agent gets four tools: <code>rules</code>, <code>audit</code>, <code>fix</code> and <code>verify</code>. Every result says what was verified and that a person must review it.</p></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-windsurf" aria-labelledby="t-windsurf">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add it to <code>~/.codeium/windsurf/mcp_config.json</code>, then press refresh in Cascade's MCP panel.</p><div class="code" data-copy-block><pre><code>{
+  "mcpServers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "."]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-copilot" aria-labelledby="t-copilot">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-githubcopilot"/></svg>VS Code · Copilot</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add it to <code>.vscode/mcp.json</code> in your workspace and start it from the MCP view.</p><div class="code" data-copy-block><pre><code>{
+  "servers": {
+    "verifa11y": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "${workspaceFolder}"]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-gemini" aria-labelledby="t-gemini">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add it to <code>~/.gemini/settings.json</code> (or <code>.gemini/settings.json</code> in the project).</p><div class="code" data-copy-block><pre><code>{
+  "mcpServers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "."]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-desktop" aria-labelledby="t-desktop">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-claude"/></svg>Claude Desktop</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Open Settings → Developer → Edit Config and add it to <code>claude_desktop_config.json</code>. Use the absolute path of your project as <code>--root</code>.</p><div class="code" data-copy-block><pre><code>{
+  "mcpServers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "/path/to/your/project"]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-zed" aria-labelledby="t-zed">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Open your settings file (<code>zed: open settings file</code>) and add a context server.</p><div class="code" data-copy-block><pre><code>{
+  "context_servers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "."]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-cline" aria-labelledby="t-cline">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-cline"/></svg>Cline</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>In Cline, open MCP Servers → Configure and add it to <code>cline_mcp_settings.json</code>.</p><div class="code" data-copy-block><pre><code>{
+  "mcpServers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "."]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-opencode" aria-labelledby="t-opencode">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add the server from your project folder.</p><div class="code" data-copy-block><pre><code>opencode mcp add verifa11y -- npx -y verifa11y-mcp --root .</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-openclaw" aria-labelledby="t-openclaw">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>Add it under <code>mcp.servers</code> in <code>~/.openclaw/openclaw.json</code> (or with <code>openclaw mcp add</code>).</p><div class="code" data-copy-block><pre><code>{
+  "mcp": {
+    "servers": {
+      "verifa11y": {
+        "command": "npx",
+        "args": ["-y", "verifa11y-mcp", "--root", "/path/to/your/project"]
+      }
+    }
+  }
+}</code></pre></div></li>
+          <li><p>Check that it connects and lists its tools.</p><div class="code" data-copy-block><pre><code>openclaw mcp doctor verifa11y --probe</code></pre></div></li>
+          <li><p>Ask your agent in plain words, for example: <em>“Fix the accessibility of index.html with verifa11y.”</em> It gets a patch to review, never an edited file.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-ollama" aria-labelledby="t-ollama">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-ollama"/></svg>Ollama (local)</h3>
+        <ol class="steps">
+          <li><p>Install the browser, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y install-browser</code></pre></div></li>
+          <li><p>Audit the page.</p><div class="code" data-copy-block><pre><code>npx verifa11y audit page.html --out findings.json</code></pre></div></li>
+          <li><p>Let a local model write the fixes that need judgment. Fully offline; every patch still faces the six checks.</p><div class="code" data-copy-block><pre><code>npx verifa11y fix findings.json --verify --strict --generator-cmd "ollama run qwen3:8b --think=false"</code></pre></div></li>
+          <li><p>Review and apply.</p><div class="code" data-copy-block><pre><code>git apply patches/verifa11y.patch</code></pre></div></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-cli" aria-labelledby="t-cli">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</h3>
+        <ol class="steps">
+          <li><p>Install the browser, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y install-browser</code></pre></div></li>
+          <li><p>Audit a page: every violation, with its rule, WCAG criterion and source lines.</p><div class="code" data-copy-block><pre><code>npx verifa11y audit page.html --out findings.json</code></pre></div></li>
+          <li><p>Fix and verify. Only patches that pass all six checks make it into the output.</p><div class="code" data-copy-block><pre><code>npx verifa11y fix findings.json --verify --strict --out patches</code></pre></div></li>
+          <li><p>Read the report, then apply what you agree with.</p><div class="code" data-copy-block><pre><code>git apply patches/verifa11y.patch</code></pre></div></li>
+          <li><p>Optional: any agent CLI can write the fixes that need judgment.</p><div class="code" data-copy-block><pre><code>npx verifa11y fix findings.json --verify --strict --generator-cmd "claude -p"</code></pre></div></li>
         </ol>
       </div>
 
       <div class="ca-panel" role="tabpanel" id="p-gha" aria-labelledby="t-gha">
-        <h3 class="ca-title">GitHub Actions</h3>
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</h3>
         <ol class="steps">
           <li><p>Add a workflow. On every pull request it audits the HTML that changed.</p><div class="code" data-copy-block><pre><code>name: accessibility
 on:
@@ -505,6 +655,22 @@ jobs:
         with: { node-version: 22 }
       - uses: mateogsilvaa/verifa11y@v0.4.1</code></pre></div></li>
           <li><p>Verified fixes arrive as suggestions on the exact lines. Suspicious and skipped findings are listed for a person, never suggested.</p></li>
+        </ol>
+      </div>
+
+      <div class="ca-panel" role="tabpanel" id="p-mcp" aria-labelledby="t-mcp">
+        <h3 class="ca-title"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Other MCP hosts</h3>
+        <ol class="steps">
+          <li><p>Install the browser verifa11y renders with, once.</p><div class="code" data-copy-block><pre><code>npx verifa11y-mcp --install-browser</code></pre></div></li>
+          <li><p>JetBrains, Warp, Amp and any other client that speaks MCP: add a stdio server with command <code>npx</code> and arguments <code>-y verifa11y-mcp --root .</code>. In JSON-configured hosts:</p><div class="code" data-copy-block><pre><code>{
+  "mcpServers": {
+    "verifa11y": {
+      "command": "npx",
+      "args": ["-y", "verifa11y-mcp", "--root", "."]
+    }
+  }
+}</code></pre></div></li>
+          <li><p>The agent gets four tools: <code>rules</code>, <code>audit</code>, <code>fix</code> and <code>verify</code>. Every result says what was verified and that a person must review it.</p></li>
         </ol>
       </div>
     </div>
