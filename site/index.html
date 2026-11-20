@@ -15,6 +15,7 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+<div class="ambient" aria-hidden="true"></div>
 
 <svg width="0" height="0" class="defs" aria-hidden="true" focusable="false">
   <!-- brand-icons -->
@@ -316,17 +317,20 @@
     <div class="compare-block">
       <h3 class="compare-title" data-reveal>Where it fits, and where it doesn't</h3>
       <div class="table-wrap compare" role="region" tabindex="0" aria-labelledby="tbl-compare" data-reveal>
-      <table>
-        <caption id="tbl-compare" class="sr-only">verifa11y next to auditors and coding agents</caption>
-        <thead><tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col">Auditors <small>axe, Lighthouse</small></th><th scope="col">Coding agent <small>on its own</small></th><th scope="col" class="us">verifa11y</th></tr></thead>
-        <tbody>
-          <tr><th scope="row">Finds violations</th><td><span class="y">Yes</span></td><td><span class="p">If it runs an auditor</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Writes the fix</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Re-checks it in a real browser</th><td><span class="n">No</span></td><td><span class="p">Re-runs the auditor, at best</span></td><td class="us"><span class="y">Yes</span></td></tr>
-          <tr><th scope="row">Rejects fixes that only silence the checker</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
-        </tbody>
-      </table>
-    </div>
+        <table>
+          <caption id="tbl-compare" class="sr-only">verifa11y next to auditors and coding agents</caption>
+          <thead><tr><th scope="col"><span class="sr-only">Capability</span></th><th scope="col"><span class="c-name">Auditors</span><span class="c-sub">axe, Lighthouse</span></th><th scope="col"><span class="c-name">A coding agent</span><span class="c-sub">on its own</span></th><th scope="col" class="us"><span class="c-name"><svg class="brand-mark" width="18" height="18" aria-hidden="true"><use href="#mark"/></svg>verifa11y</span><span class="c-sub">this project</span></th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Finds violations</th><td><span class="y">Yes</span></td><td><span class="p">If it runs an auditor</span></td><td class="us"><span class="y">Yes, to the line</span></td></tr>
+            <tr><th scope="row">Writes the fix</th><td><span class="n">No</span></td><td><span class="y">Yes</span></td><td class="us"><span class="y">Yes</span></td></tr>
+            <tr><th scope="row">Re-checks the fix in a real browser</th><td><span class="n">No</span></td><td><span class="p">Re-runs the auditor, at best</span></td><td class="us"><span class="y">Six checks</span></td></tr>
+            <tr><th scope="row">Rejects fixes that only silence the checker</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
+            <tr><th scope="row">Says why a fix was rejected</th><td><span class="n">No</span></td><td><span class="n">No</span></td><td class="us"><span class="y">Yes</span></td></tr>
+            <tr><th scope="row">Hands you a patch to review</th><td><span class="n">No</span></td><td><span class="p">Edits your files directly</span></td><td class="us"><span class="y">A <code>.patch</code> file</span></td></tr>
+            <tr><th scope="row">Works offline, no account</th><td><span class="y">Yes</span></td><td><span class="p">Depends on the agent</span></td><td class="us"><span class="y">Yes</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -335,36 +339,24 @@
   <div class="wrap">
     <div class="section-head" data-reveal>
       <p class="label">The verifier</p>
-      <h2 id="checks-title">Six checks. None of them trusts the patch.</h2>
-      <p class="sub">Each one catches a way of making a violation disappear without fixing it. Same rules for every patch, including verifa11y's own.</p>
+      <h2 id="checks-title">Six gates. A fix has to clear every one.</h2>
+      <p class="sub">Each gate catches a way of making a violation disappear without fixing it. Every patch goes through all six, whoever wrote it, verifa11y's own codemods included.</p>
     </div>
-    <ul class="bento">
-      <li class="card" data-reveal>
-        <div class="viz viz-axe" aria-hidden="true"><span class="row"><span>image-alt</span><span class="cnt"><s>1</s><i>→</i><b>0</b></span></span><span class="row"><span>new violations</span><span class="cnt"><b>0</b></span></span></div>
-        <h3>Gone, and nothing new</h3><p>axe-core with every WCAG 2.x A/AA rule, on the whole page.</p>
-      </li>
-      <li class="card" data-reveal>
-        <div class="viz viz-hide" aria-hidden="true"><code>&lt;img <span class="bad">aria-hidden="true"</span>&gt;</code><span class="tag">rejected</span></div>
-        <h3>Nothing hidden</h3><p>No <code>aria-hidden</code>, <code>role="presentation"</code>, <code>inert</code>, <code>display:none</code> or deleted elements.</p>
-      </li>
-      <li class="card" data-reveal>
-        <div class="viz viz-name" aria-hidden="true"><code>alt="plot map"</code><span class="eq">= plot-map.png</span></div>
-        <h3>Names that mean something</h3><p>No “image”, no alt that restates the file name, no label that restates the field's <code>name</code>.</p>
-      </li>
-      <li class="card" data-reveal>
-        <div class="viz viz-tree" aria-hidden="true"><span>main</span><span class="in">nav · navigation</span><span class="in">img · "plot map"</span><span class="in">button · Join</span></div>
-        <h3>Accessibility tree</h3><p>Chromium's computed role, name and state of every element, before and after.</p>
-      </li>
-      <li class="card" data-reveal>
-        <div class="viz viz-focus" aria-hidden="true"><i>1</i><i>2</i><i>3</i><i>4</i><span class="ring"></span></div>
-        <h3>Focus order</h3><p>Real Tab presses, before and after. Nothing may leave the tab order or reorder.</p>
-      </li>
-      <li class="card" data-reveal>
-        <div class="viz viz-px" aria-hidden="true"><span class="grid"><i></i><i></i><i></i><i></i><i class="hit"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span><span class="pct">0.00% outside</span></div>
-        <h3>Pixels and references</h3><p>Nothing outside the patch changes on screen; every <code>aria-controls</code> points at something real.</p>
-      </li>
-    </ul>
-    <p class="limits" data-reveal><strong>What no check can tell you:</strong> whether alt text describes what an image is for, whether a state is true, whether a colour fits your design, or the large part of WCAG that isn't machine-testable. Every patch still goes to a person.</p>
+    <div class="gates g0" data-reveal>
+      <div class="lanes" aria-hidden="true">
+        <div class="lane lane-ok"><span class="token"><code>role="navigation"</code></span><span class="lane-end">verified</span></div>
+        <div class="lane lane-no"><span class="token"><code>alt="plot map"</code></span><span class="lane-end">rejected at gate 3</span></div>
+      </div>
+      <ol class="gate-list">
+        <li class="gate"><span class="g-n">1</span><h3>Gone</h3><p>axe-core no longer reports the violation on that element.</p><code class="g-ex">image-alt <s>1</s> → 0</code></li>
+        <li class="gate"><span class="g-n">2</span><h3>Nothing new</h3><p>Every WCAG 2.x A and AA rule, on the whole page.</p><code class="g-ex">new violations: 0</code></li>
+        <li class="gate"><span class="g-n">3</span><h3>Nothing faked</h3><p>No hidden elements, no “image”, no text that restates a file or field name.</p><code class="g-ex bad">alt = plot-map.png</code></li>
+        <li class="gate"><span class="g-n">4</span><h3>Accessibility tree</h3><p>Chromium's computed role, name and state, before and after.</p><code class="g-ex">nav → navigation</code></li>
+        <li class="gate"><span class="g-n">5</span><h3>Focus order</h3><p>Real Tab presses. Nothing leaves the order or moves.</p><code class="g-ex">7 stops → 7 stops</code></li>
+        <li class="gate"><span class="g-n">6</span><h3>Pixels and references</h3><p>Nothing outside the patch changes; every reference exists.</p><code class="g-ex">0.00% outside</code></li>
+      </ol>
+    </div>
+    <p class="limits" data-reveal><strong>What no gate can tell you:</strong> whether alt text describes what an image is for, whether a state is true, whether a colour fits your design, or the large part of WCAG that isn't machine-testable. Every patch still goes to a person.</p>
   </div>
 </section>
 
@@ -429,26 +421,32 @@
     </div>
     <div class="guide" data-reveal>
       <div class="picker" hidden>
-        <label for="tool-search">Claude Code, Codex, Cursor and more. Find yours:</label>
+        <label for="tool-search">Find your tool</label>
         <input id="tool-search" type="search" placeholder="Search tools" autocomplete="off" aria-controls="tool-list">
+      </div>
+      <div class="cats" role="group" aria-label="Tool categories" hidden>
+        <button type="button" data-cat="agents" aria-pressed="true">Agents and CLIs</button>
+        <button type="button" data-cat="editors" aria-pressed="false">Editors</button>
+        <button type="button" data-cat="apps" aria-pressed="false">Apps and local models</button>
+        <button type="button" data-cat="ci" aria-pressed="false">CI and terminal</button>
       </div>
       <p class="no-match" role="status"></p>
       <div class="ca-tabs tool-tabs" id="tool-list" role="tablist" aria-label="Where to use verifa11y" hidden>
-        <button role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</button>
-        <button role="tab" id="t-codex" aria-controls="p-codex" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</button>
-        <button role="tab" id="t-cursor" aria-controls="p-cursor" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</button>
-        <button role="tab" id="t-windsurf" aria-controls="p-windsurf" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</button>
-        <button role="tab" id="t-copilot" aria-controls="p-copilot" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubcopilot"/></svg>VS Code · Copilot</button>
-        <button role="tab" id="t-gemini" aria-controls="p-gemini" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</button>
-        <button role="tab" id="t-desktop" aria-controls="p-desktop" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-claude"/></svg>Claude Desktop</button>
-        <button role="tab" id="t-zed" aria-controls="p-zed" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</button>
-        <button role="tab" id="t-cline" aria-controls="p-cline" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cline"/></svg>Cline</button>
-        <button role="tab" id="t-opencode" aria-controls="p-opencode" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</button>
-        <button role="tab" id="t-openclaw" aria-controls="p-openclaw" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</button>
-        <button role="tab" id="t-ollama" aria-controls="p-ollama" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-ollama"/></svg>Ollama (local)</button>
-        <button role="tab" id="t-cli" aria-controls="p-cli" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</button>
-        <button role="tab" id="t-gha" aria-controls="p-gha" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</button>
-        <button role="tab" id="t-mcp" aria-controls="p-mcp" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Other MCP hosts</button>
+        <button role="tab" id="t-claude" aria-controls="p-claude" data-cat="agents" aria-selected="true"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</button>
+        <button role="tab" id="t-codex" aria-controls="p-codex" data-cat="agents" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</button>
+        <button role="tab" id="t-cursor" aria-controls="p-cursor" data-cat="editors" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</button>
+        <button role="tab" id="t-windsurf" aria-controls="p-windsurf" data-cat="editors" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-windsurf"/></svg>Windsurf</button>
+        <button role="tab" id="t-copilot" aria-controls="p-copilot" data-cat="editors" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubcopilot"/></svg>VS Code · Copilot</button>
+        <button role="tab" id="t-gemini" aria-controls="p-gemini" data-cat="agents" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-googlegemini"/></svg>Gemini CLI</button>
+        <button role="tab" id="t-desktop" aria-controls="p-desktop" data-cat="apps" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-claude"/></svg>Claude Desktop</button>
+        <button role="tab" id="t-zed" aria-controls="p-zed" data-cat="editors" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-zedindustries"/></svg>Zed</button>
+        <button role="tab" id="t-cline" aria-controls="p-cline" data-cat="editors" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cline"/></svg>Cline</button>
+        <button role="tab" id="t-opencode" aria-controls="p-opencode" data-cat="agents" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-opencode"/></svg>opencode</button>
+        <button role="tab" id="t-openclaw" aria-controls="p-openclaw" data-cat="agents" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>OpenClaw</button>
+        <button role="tab" id="t-ollama" aria-controls="p-ollama" data-cat="apps" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-ollama"/></svg>Ollama (local)</button>
+        <button role="tab" id="t-cli" aria-controls="p-cli" data-cat="ci" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-term"/></svg>Terminal</button>
+        <button role="tab" id="t-gha" aria-controls="p-gha" data-cat="ci" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-githubactions"/></svg>GitHub Actions</button>
+        <button role="tab" id="t-mcp" aria-controls="p-mcp" data-cat="ci" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-plug"/></svg>Other MCP hosts</button>
       </div>
       <div class="ca-panel" role="tabpanel" id="p-claude" aria-labelledby="t-claude">
         <h3 class="ca-title"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</h3>

@@ -168,20 +168,88 @@
   const picker = document.querySelector(".picker");
   const search = document.getElementById("tool-search");
   const noMatch = document.querySelector(".no-match");
+  const cats = document.querySelector(".cats");
   if (picker && search && caTabs) {
     picker.hidden = false;
     const toolTabs = [...caTabs.querySelectorAll('[role="tab"]')];
-    search.addEventListener("input", () => {
+    const catButtons = cats ? [...cats.querySelectorAll("button")] : [];
+    let cat = catButtons[0]?.dataset.cat ?? null;
+    // One row of tools at a time: the chosen category, or whatever the search matches.
+    const filter = () => {
       const q = search.value.trim().toLowerCase();
       let shown = 0;
       for (const t of toolTabs) {
-        const hit = !q || t.textContent.toLowerCase().includes(q);
+        const hit = q ? t.textContent.toLowerCase().includes(q) : !cat || t.dataset.cat === cat;
         t.hidden = !hit;
         if (hit) shown++;
       }
-      noMatch.textContent = shown ? "" : "Not listed? Any tool that speaks MCP works: pick “Other MCP hosts”.";
-      if (shown === 1) toolTabs.find((t) => !t.hidden).click();
+      catButtons.forEach((b) => b.setAttribute("aria-pressed", String(!q && b.dataset.cat === cat)));
+      noMatch.textContent = shown ? "" : "Not listed? Any tool that speaks MCP works: pick “Other MCP hosts” under CI and terminal.";
+      return toolTabs.filter((t) => !t.hidden);
+    };
+    if (cats) {
+      cats.hidden = false;
+      catButtons.forEach((b) => b.addEventListener("click", () => {
+        cat = b.dataset.cat;
+        search.value = "";
+        const visible = filter();
+        if (!visible.some((t) => t.getAttribute("aria-selected") === "true")) visible[0]?.click();
+      }));
+    }
+    search.addEventListener("input", () => {
+      const visible = filter();
+      if (visible.length === 1) visible[0].click();
     });
+    // When something else opens a tab (the hero button), show its category.
+    caTabs.addEventListener("click", (e) => {
+      const t = e.target.closest('[role="tab"]');
+      if (t && !search.value) { cat = t.dataset.cat ?? cat; filter(); }
+    });
+    for (const t of toolTabs) {
+      new MutationObserver(() => {
+        if (t.getAttribute("aria-selected") === "true" && t.hidden && !search.value) { cat = t.dataset.cat; filter(); }
+      }).observe(t, { attributes: true, attributeFilter: ["aria-selected"] });
+    }
+    filter();
+  }
+
+  /* The verifier: two real fixes go through the six gates ------------------- */
+  const gates = document.querySelector(".gates");
+  if (gates) {
+    const list = [...gates.querySelectorAll(".gate")];
+    const paint = (a, b) => {
+      gates.style.setProperty("--a", String(a));
+      gates.style.setProperty("--b", String(b));
+      list.forEach((g, i) => { g.classList.toggle("lit", i < a); g.classList.toggle("stop", i === 2 && b >= 3); });
+      gates.classList.toggle("g-end", a >= 6);
+      gates.classList.toggle("g-stop", b >= 3);
+    };
+    if (!motion) paint(6, 3);
+    else {
+      paint(0.6, 0.6);
+      let started = false;
+      const run = async () => {
+        for (let k = 1; k <= 6; k++) { paint(k, Math.min(k, 3)); await wait(650); }
+        await wait(2600);
+        paint(0.6, 0.6);
+        await wait(900);
+        run();
+      };
+      new IntersectionObserver((entries, o) => {
+        if (!started && entries.some((e) => e.isIntersecting)) { started = true; o.disconnect(); setTimeout(run, 400); }
+      }, { threshold: 0.4 }).observe(gates);
+    }
+  }
+
+  /* Background: the glow drifts with how far down the page you are -------- */
+  const ambient = document.querySelector(".ambient");
+  if (ambient) {
+    const drift = () => {
+      const max = document.documentElement.scrollHeight - innerHeight;
+      ambient.style.setProperty("--sp", (max > 0 ? scrollY / max : 0).toFixed(3));
+    };
+    addEventListener("scroll", drift, { passive: true });
+    drift();
   }
 
   /* How it works: a scan line runs down the page with your scroll ----------- */
@@ -232,20 +300,7 @@
 
   if (!motion) return;
 
-  /* Background: now and then a focus ring lands on a cell of the dot grid ---- */
-  const bgRing = document.createElement("span");
-  bgRing.className = "bg-focus";
-  bgRing.setAttribute("aria-hidden", "true");
-  document.body.prepend(bgRing);
-  const hop = () => {
-    const cell = 28;
-    const edge = Math.random() < 0.5 ? cell * (1 + Math.floor(Math.random() * 3)) : innerWidth - cell * (3 + Math.floor(Math.random() * 3));
-    bgRing.style.left = `${Math.floor(edge / cell) * cell - 14}px`;
-    bgRing.style.top = `${Math.floor((innerHeight * (0.15 + Math.random() * 0.7)) / cell) * cell - 14}px`;
-    bgRing.classList.add("on");
-    setTimeout(() => bgRing.classList.remove("on"), 1600);
-  };
-  setInterval(hop, 3800);
+
 
   /* Hero tour: a focus ring tabs through the mock page, verdicts pop up ----- */
   const tour = document.querySelector(".tour");
