@@ -124,18 +124,15 @@
     io.observe(document.querySelector(".va-window"));
   }
 
-  /* Install guide tabs, and the hero button that opens the right one -------- */
-  const caTabs = document.querySelector(".ca-tabs");
-  let guide = null;
-  if (caTabs) {
-    caTabs.closest(".guide, .code-app").classList.add("tabbed");
-    for (const t of document.querySelectorAll(".ca-title")) t.classList.add("sr-only");
-    guide = setupTabs(caTabs);
-  }
+  /* The hero button opens the install guide on the tool it is showing ------ */
+  const pickTool = (id) => {
+    const radio = document.getElementById(`tool-${id}`);
+    if (radio) { radio.checked = true; radio.dispatchEvent(new Event("change", { bubbles: true })); }
+  };
   const tryBtn = document.querySelector("[data-try]");
   const rot = tryBtn?.querySelector(".try-rot");
   let current = rot?.firstElementChild ?? null;
-  if (tryBtn && guide) tryBtn.addEventListener("click", () => current && guide.selectById(current.dataset.tab));
+  if (tryBtn) tryBtn.addEventListener("click", () => current && pickTool(current.dataset.tab.replace(/^t-/, "")));
   if (rot && motion) {
     const items = [...rot.children];
     let i = 0;
@@ -164,53 +161,32 @@
   }, { rootMargin: "-40% 0px -55% 0px" });
   navLinks.forEach((_, id) => { const s = document.getElementById(id); if (s) navSpy.observe(s); });
 
-  /* Install: filter the tools by name -------------------------------------- */
-  const picker = document.querySelector(".picker");
+  /* Install, on phones: picking a tool scrolls to its steps (pointer only, never while arrowing through the list) */
+  const docs = document.querySelector(".docs");
+  const narrow = matchMedia("(max-width: 760px)");
+  docs?.addEventListener("click", (e) => {
+    const label = e.target.closest(".tool");
+    if (!label || e.detail === 0 || !narrow.matches) return;
+    const panel = document.getElementById(`p-${label.querySelector("input").value}`);
+    setTimeout(() => panel?.scrollIntoView({ behavior: motion ? "smooth" : "auto", block: "start" }), 60);
+  });
+
+  /* Install: search the list of tools ------------------------------------- */
   const search = document.getElementById("tool-search");
-  const noMatch = document.querySelector(".no-match");
-  const cats = document.querySelector(".cats");
-  if (picker && search && caTabs) {
-    picker.hidden = false;
-    const toolTabs = [...caTabs.querySelectorAll('[role="tab"]')];
-    const catButtons = cats ? [...cats.querySelectorAll("button")] : [];
-    let cat = catButtons[0]?.dataset.cat ?? null;
-    // One row of tools at a time: the chosen category, or whatever the search matches.
-    const filter = () => {
-      const q = search.value.trim().toLowerCase();
-      let shown = 0;
-      for (const t of toolTabs) {
-        const hit = q ? t.textContent.toLowerCase().includes(q) : !cat || t.dataset.cat === cat;
-        t.hidden = !hit;
-        if (hit) shown++;
-      }
-      catButtons.forEach((b) => b.setAttribute("aria-pressed", String(!q && b.dataset.cat === cat)));
-      noMatch.textContent = shown ? "" : "Not listed? Any tool that speaks MCP works: pick “Other MCP hosts” under CI and terminal.";
-      return toolTabs.filter((t) => !t.hidden);
-    };
-    if (cats) {
-      cats.hidden = false;
-      catButtons.forEach((b) => b.addEventListener("click", () => {
-        cat = b.dataset.cat;
-        search.value = "";
-        const visible = filter();
-        if (!visible.some((t) => t.getAttribute("aria-selected") === "true")) visible[0]?.click();
-      }));
-    }
+  const docsSearch = document.querySelector(".docs-search");
+  const noMatch = document.querySelector(".docs .no-match");
+  if (search && docsSearch) {
+    docsSearch.hidden = false;
+    const tools = [...document.querySelectorAll(".docs .tool")];
+    const groups = [...document.querySelectorAll(".docs .tool-group")];
     search.addEventListener("input", () => {
-      const visible = filter();
-      if (visible.length === 1) visible[0].click();
+      const q = search.value.trim().toLowerCase();
+      for (const t of tools) t.hidden = !!q && !t.textContent.toLowerCase().includes(q);
+      for (const g of groups) g.hidden = !g.querySelector(".tool:not([hidden])");
+      const visible = tools.filter((t) => !t.hidden);
+      noMatch.textContent = visible.length ? "" : "Not listed? Anything that speaks MCP works: see Other MCP hosts.";
+      if (visible.length === 1) visible[0].querySelector("input").click();
     });
-    // When something else opens a tab (the hero button), show its category.
-    caTabs.addEventListener("click", (e) => {
-      const t = e.target.closest('[role="tab"]');
-      if (t && !search.value) { cat = t.dataset.cat ?? cat; filter(); }
-    });
-    for (const t of toolTabs) {
-      new MutationObserver(() => {
-        if (t.getAttribute("aria-selected") === "true" && t.hidden && !search.value) { cat = t.dataset.cat; filter(); }
-      }).observe(t, { attributes: true, attributeFilter: ["aria-selected"] });
-    }
-    filter();
   }
 
   /* The verifier: two real fixes go through the six gates ------------------- */
@@ -241,59 +217,127 @@
     }
   }
 
-  /* Background: the glow drifts with how far down the page you are -------- */
+  /* Background: three soft glows drift, split and join as you scroll, and end up lighting the footer word */
   const ambient = document.querySelector(".ambient");
-  if (ambient) {
-    const drift = () => {
+  if (ambient && motion) {
+    const blobs = [...ambient.children];
+    const word = document.querySelector(".foot-word");
+    const lerp = (a, b, k) => a + (b - a) * k;
+    let sp = 0;
+    const onScroll = () => {
       const max = document.documentElement.scrollHeight - innerHeight;
-      ambient.style.setProperty("--sp", (max > 0 ? scrollY / max : 0).toFixed(3));
+      sp = max > 0 ? scrollY / max : 0;
     };
-    addEventListener("scroll", drift, { passive: true });
-    drift();
+    addEventListener("scroll", onScroll, { passive: true });
+    addEventListener("resize", onScroll);
+    onScroll();
+    let lastGlow = -1;
+    const frame = (ms) => {
+      const t = ms / 1000;
+      const W = innerWidth, H = innerHeight;
+      // Where the glows wander: side to side with the scroll, up and down slowly with time
+      const cx = 0.5 + 0.3 * Math.sin(sp * Math.PI * 3 + t * 0.06);
+      const cy = 0.25 + 0.4 * (0.5 + 0.5 * Math.sin(sp * Math.PI * 2.4 + 0.8 + t * 0.045));
+      // How far apart the two main glows are: 0 is one merged glow
+      const split = 0.22 * (0.5 + 0.5 * Math.sin(t * 0.19 + sp * 10));
+      const pts = [
+        [cx - split, cy - split * 0.45],
+        [cx + split, cy + split * 0.45],
+        [cx + 0.18 * Math.cos(t * 0.15 + 1), cy + 0.14 * Math.sin(t * 0.12)],
+      ];
+      // Near the end of the page they gather behind the footer word
+      let f = 0, r = null;
+      if (word) {
+        r = word.getBoundingClientRect();
+        // 0 until the word is a third of a screen away, 1 once it is in view
+        f = Math.min(1, Math.max(0, (H * 1.3 - r.top) / (H * 0.3 + r.height * 0.8)));
+        f = f * f * (3 - 2 * f);
+      }
+      const xs = [];
+      pts.forEach(([x, y], i) => {
+        let X = x * W, Y = y * H;
+        if (r && f > 0) {
+          const spread = [-0.26, 0.26, 0][i] * r.width + Math.sin(t * 0.4 + i * 2) * r.width * 0.12;
+          X = lerp(X, r.left + r.width / 2 + spread, f * 0.9);
+          Y = lerp(Y, r.top + r.height * 0.55, f * 0.9);
+        }
+        xs.push(X);
+        blobs[i].style.transform = `translate3d(${X.toFixed(1)}px, ${Y.toFixed(1)}px, 0)`;
+      });
+      if (r && (f > 0 || lastGlow !== 0)) {
+        word.style.setProperty("--glow", f.toFixed(3));
+        word.style.setProperty("--ga", `${(((xs[0] - r.left) / r.width) * 100).toFixed(1)}%`);
+        word.style.setProperty("--gb", `${(((xs[1] - r.left) / r.width) * 100).toFixed(1)}%`);
+        lastGlow = f;
+      }
+      requestAnimationFrame(frame);
+    };
+    ambient.classList.add("live");
+    requestAnimationFrame(frame);
   }
 
-  /* How it works: a scan line runs down the page with your scroll ----------- */
+  /* How it works: a scan line runs down the demo page and the report fills in.
+     Wide screens: driven by your scroll while the frame is pinned. Narrow screens: it plays once when it comes into view. */
   const scan = document.querySelector(".scan");
   if (scan && motion) {
     const track = scan.querySelector(".scan-track");
-    const frame = scan.querySelector(".scan-frame");
-    const rows = [...scan.querySelectorAll(".sf-row[data-at]")];
+    const site = scan.querySelector(".site");
+    const els = [...scan.querySelectorAll(".sp-el[data-n]")];
+    const items = els.map((el) => scan.querySelector(`.finding[data-n="${el.dataset.n}"]`));
     const hud = Object.fromEntries([...scan.querySelectorAll("[data-hud]")].map((el) => [el.dataset.hud, el]));
     const wide = matchMedia("(min-width: 861px)");
     let at = [];
     const measure = () => {
-      const fh = frame.offsetHeight || 1;
-      at = rows.map((r) => { const p = r.querySelector(".sf-page"); return (p.offsetTop + p.offsetHeight * 0.5) / fh; });
+      const sr = site.getBoundingClientRect();
+      at = els.map((el) => { const r = el.getBoundingClientRect(); return (r.top + r.height / 2 - sr.top) / (sr.height || 1); });
     };
-    const update = () => {
+    const apply = (p) => {
+      scan.style.setProperty("--sp", p.toFixed(4));
+      scan.classList.toggle("end", p >= 0.995);
+      let ok = 0, no = 0;
+      els.forEach((el, i) => {
+        // flagged when the line reaches it, patched, then judged (the last one is judged as the line ends)
+        const phase = p < at[i] ? 0 : p < Math.min(at[i] + 0.05, 0.96) ? 1 : p < Math.min(at[i] + 0.1, 0.99) ? 2 : 3;
+        for (const n of [el, items[i]]) { if (phase) n.dataset.phase = String(phase); else delete n.dataset.phase; }
+        if (phase === 3) el.dataset.ok === "1" ? ok++ : no++;
+      });
+      hud.ok.textContent = ok; hud.no.textContent = no;
+    };
+    const fromScroll = () => {
       if (!scan.classList.contains("pinned")) return;
       const r = track.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, (-r.top + innerHeight * 0.15) / Math.max(1, r.height - innerHeight * 0.85)));
-      scan.style.setProperty("--sp", p.toFixed(4));
-      let found = 0, ok = 0, no = 0;
-      rows.forEach((row, i) => {
-        const phase = p < at[i] ? 0 : p < at[i] + 0.05 ? 1 : p < at[i] + 0.1 ? 2 : 3;
-        if (phase) row.dataset.phase = String(phase); else delete row.dataset.phase;
-        if (phase) found++;
-        if (phase === 3) row.dataset.ok === "1" ? ok++ : no++;
-      });
-      hud.found.textContent = found; hud.ok.textContent = ok; hud.no.textContent = no;
+      apply(Math.min(1, Math.max(0, (-r.top + innerHeight * 0.1) / Math.max(1, r.height - innerHeight * 0.9))));
     };
+    let played = false;
+    const play = () => {
+      if (played) return;
+      played = true;
+      measure();
+      const start = performance.now();
+      const step = (now) => {
+        if (scan.classList.contains("pinned")) return;
+        const k = Math.min(1, (now - start) / 5200);
+        apply(k);
+        if (k < 1) requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    const io = new IntersectionObserver((entries) => {
+      if (!scan.classList.contains("pinned") && entries.some((e) => e.isIntersecting)) play();
+    }, { threshold: 0.55 });
+    io.observe(site);
     const mode = () => {
       const on = wide.matches;
       scan.classList.toggle("pinned", on);
-      scan.classList.toggle("live", on);
-      scan.classList.toggle("done", !on);
-      if (on) { measure(); update(); }
-      else {
-        rows.forEach((row) => delete row.dataset.phase);
-        hud.found.textContent = rows.length;
-        hud.ok.textContent = rows.filter((r) => r.dataset.ok === "1").length;
-        hud.no.textContent = rows.filter((r) => r.dataset.ok === "0").length;
-      }
+      scan.classList.add("live");
+      scan.classList.remove("done");
+      measure();
+      if (on) fromScroll();
+      else apply(played ? 1 : 0);
     };
-    addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", () => { measure(); update(); });
+    addEventListener("scroll", fromScroll, { passive: true });
+    addEventListener("resize", () => { measure(); fromScroll(); });
+    addEventListener("load", () => { measure(); fromScroll(); });
     wide.addEventListener("change", mode);
     mode();
   }

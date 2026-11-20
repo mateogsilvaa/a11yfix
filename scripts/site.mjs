@@ -4,7 +4,8 @@
 //   node scripts/site.mjs build   copy site/ and the demo recording into .site-build/
 //   node scripts/site.mjs serve   build, then serve .site-build/ on http://localhost:4173 (PORT to change)
 //   node scripts/site.mjs check   build, then fail if
-//                                 - verifa11y/axe-core report any WCAG 2.x A/AA violation on the page, or
+//                                 - verifa11y/axe-core report any WCAG 2.x A/AA violation on the page (desktop and
+//                                   375px wide), the page scrolls sideways on a phone, or
 //                                 - any number marked data-metric differs from the benchmark reports.
 //
 // The page claims it is checked before every deploy; this is that check.
@@ -12,7 +13,7 @@
 import { cp, mkdir, readFile, rm, writeFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const OUT = path.join(ROOT, ".site-build");
@@ -139,6 +140,30 @@ async function checkAccessibility(file) {
   }
 }
 
+// The phone layout swaps some parts (the comparison becomes cards, header labels collapse), so axe runs there too,
+// after the page's own scripts. Playwright and axe-core come from verifa11y-core's dependencies.
+async function checkPhone(file) {
+  const coreRequire = createRequire(path.join(ROOT, "packages/core/package.json"));
+  const { chromium } = coreRequire("playwright");
+  const browser = await chromium.launch();
+  try {
+    // Reduced motion: the settled page, not a frame halfway through an animation.
+    const page = await browser.newPage({ viewport: { width: 375, height: 812 }, isMobile: true, hasTouch: true, reducedMotion: "reduce" });
+    await page.goto(pathToFileURL(file).href);
+    await page.waitForLoadState("load");
+    await page.addScriptTag({ path: coreRequire.resolve("axe-core/axe.min.js") });
+    const found = await page.evaluate(async () => {
+      const r = await globalThis.axe.run(document, { runOnly: { type: "tag", values: ["wcag2a", "wcag2aa", "wcag21a", "wcag21aa", "wcag22aa"] } });
+      return r.violations.map((v) => `${v.id} at ${v.nodes.map((n) => n.target.join(" ")).join(", ")}`);
+    });
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - innerWidth);
+    if (overflow > 0) found.push(`the page scrolls sideways by ${overflow}px at 375px wide`);
+    return found;
+  } finally {
+    await browser.close();
+  }
+}
+
 const cmd = process.argv[2];
 if (cmd === "build") {
   await build();
@@ -148,10 +173,12 @@ if (cmd === "build") {
   const html = await readFile(page, "utf8");
   const metrics = await checkMetrics(html);
   const violations = await checkAccessibility(page);
+  const phone = await checkPhone(page);
   for (const e of metrics.errors) console.error(`numbers: ${e}`);
   for (const v of violations) console.error(`accessibility: ${v}`);
-  if (metrics.errors.length || violations.length) process.exit(1);
-  console.log(`site check passed: ${metrics.count} numbers match the reports; no WCAG 2.x A/AA violation reported by axe-core.`);
+  for (const v of phone) console.error(`accessibility (phone): ${v}`);
+  if (metrics.errors.length || violations.length || phone.length) process.exit(1);
+  console.log(`site check passed: ${metrics.count} numbers match the reports; no WCAG 2.x A/AA violation reported by axe-core, on desktop or at phone width.`);
 } else if (cmd === "serve") {
   await build();
   const { createServer } = await import("node:http");
