@@ -76,6 +76,12 @@ export interface Rule {
   /** Expected confidence of the rule's fixes. */
   confidence: Confidence;
   description: string;
+  /**
+   * What the rule leaves alone by design: cases its codemod declines (tier 0)
+   * or why it has no codemod (tier 1). Shown to agents and in reports so that
+   * "skipped" is an expected outcome, not a surprise.
+   */
+  declines?: string[];
   /** Narrow axe's findings (return false to ignore a node). */
   detect?(finding: Finding): boolean;
   /** Tier-0 codemod. Return null to decline. */

@@ -48,6 +48,12 @@ export const ariaRoles = defineRule({
   tier: 0,
   confidence: "high",
   description: "role attributes must hold valid, non-abstract WAI-ARIA roles.",
+  declines: [
+    "roles with no unique valid correction within edit distance 2",
+    "abstract roles and structural roles (choosing one is a design decision)",
+    "corrections whose role requires attributes the element does not have (role=\"chekbox\" would need aria-checked)",
+    "roles that need an accessible name the element does not have",
+  ],
   fix,
   guidance:
     "Replace the invalid or abstract role with the valid WAI-ARIA role the author evidently intended (add any states that role requires, reflecting the element's current state), or remove the role attribute if the native element already has the right semantics. Never use role=presentation or role=none to silence the rule.",

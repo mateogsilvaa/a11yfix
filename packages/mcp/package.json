@@ -1,0 +1,30 @@
+{
+  "name": "a11yfix-mcp",
+  "version": "0.3.0",
+  "description": "MCP server for a11yfix: a verified accessibility fixer for static HTML (axe-core plus accessibility-tree, focus and visual checks). Not a conformance audit.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "bin": {
+    "a11yfix-mcp": "dist/server.js"
+  },
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "a11yfix-core": "0.3.0",
+    "a11yfix-rules-core": "0.3.0",
+    "zod": "4.6.7",
+    "@modelcontextprotocol/server": "2.4.0"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/client": "2.4.0"
+  }
+}

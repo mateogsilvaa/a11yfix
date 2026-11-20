@@ -101,6 +101,12 @@ export const headingOrder = defineRule({
   tier: 0,
   confidence: "high",
   description: "Heading levels should only increase by one.",
+  declines: [
+    "pages with role=\"heading\" or aria-level (the outline is not only in the tags)",
+    "pages whose rendered outline differs from the source outline",
+    "changes that would need more than 6 lines or 2 places (re-levelling a long run of siblings)",
+    "headings that were already out of order before the target (left for a person)",
+  ],
   fix,
   guidance: [
     "Heading levels should only increase by one. Fix the target heading's level so it fits the outline.",

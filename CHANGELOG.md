@@ -26,7 +26,13 @@ Roadmap phases 1 (sites) and 3 (verification beyond axe), and tier 1 through any
   `site --incremental` reuses unchanged pages. `fix --db` records patches and verifications.
 - **`--generator-cmd`** (ADR 0011): tier 1 through any command (local models, agent CLIs, scripts), text or JSON
   request on stdin, patch JSON on stdout, tolerant parsing, retries with feedback. `A11YFIX_GENERATOR_CMD`.
-- **docs/agents.md**: using a11yfix from agents, in both directions. **docs/sandbox.md**, **Dockerfile** and a CI job
+- **`a11yfix-mcp`** (ADR 0013): MCP server on the v2 SDK (revision 2026-07-28, 2025-era hosts still served) with
+  `rules`, `audit`, `fix` and `verify` tools and a `fix-accessibility` prompt. Structured results with the conformance
+  caveat in every one; `fix` defaults to codemod mode and strict, writes a git patch under `<out>/<runId>/` and never
+  edits the input; files confined to `--root`. Tests for the warning, path confinement, wire conformance and the tool
+  schema snapshot. **AGENTS.md** for coding agents.
+- **Rule API**: optional `declines` field, what a rule leaves alone by design (filled for every core rule).
+- **docs/agents.md**: using a11yfix from agents, in all three directions. **docs/sandbox.md**, **Dockerfile** and a CI job
   that runs it with no network, read-only root, no capabilities and CPU/memory caps.
 - Benchmark with a local model (`qwen3:8b` through Ollama) as tier 1: `bench/local-qwen3-8b/`.
 

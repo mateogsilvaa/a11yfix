@@ -20,6 +20,7 @@ COPY package.json package-lock.json ./
 COPY packages/core/package.json packages/core/
 COPY packages/rules-core/package.json packages/rules-core/
 COPY packages/cli/package.json packages/cli/
+COPY packages/mcp/package.json packages/mcp/
 RUN npm ci --include=dev
 # Chromium version comes from the pinned playwright package.
 RUN npx playwright install --with-deps chromium-headless-shell && rm -rf /root/.cache /tmp/*

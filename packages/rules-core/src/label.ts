@@ -148,6 +148,12 @@ export const label = defineRule({
   tier: 0,
   confidence: "high",
   description: "Form controls must have an accessible name, preferably from visible text.",
+  declines: [
+    "controls that already have aria-label or aria-labelledby",
+    "controls with no short visible text right before them (or right after, for checkboxes and radios), no text-only element to point at, no two-cell table row and no placeholder",
+    "several controls sharing one visible label (for example first and last name under one heading)",
+    "label text longer than a short phrase",
+  ],
   fix,
   guidance: [
     "Prefer associating visible text that is already on the page: wrap it with the control in a <label>, or point aria-labelledby at it.",

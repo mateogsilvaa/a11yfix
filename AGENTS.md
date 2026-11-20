@@ -30,13 +30,18 @@ Loop for each HTML file you change:
 Or let a11yfix drive you: `a11yfix fix findings.json --verify --strict --generator-cmd "<your CLI>"` sends you one
 finding at a time on stdin and keeps only the patches that verify. Protocol: [docs/agents.md](docs/agents.md).
 
+If your client speaks MCP, use the `a11yfix-mcp` server instead of the shell: `rules` → `audit` → `fix` (writes a
+patch, never edits the file) → the user runs `git apply` → human review; `verify` for fixes you write yourself. Setup
+and the exact meaning of every status: [docs/agents.md](docs/agents.md).
+
 For a live site: `a11yfix site <url>` audits it (it does not patch). Use it only on sites you are allowed to crawl.
 
-a11yfix does not guarantee WCAG conformance. Tell the user what was verified and what still needs a person.
+a11yfix does not guarantee WCAG conformance. Never tell the user "the page is accessible now": say what was verified,
+what was rejected or skipped and why, and that a person must review it.
 
 ## Working on this repository
 
-- TypeScript ESM, npm workspaces: `packages/core`, `packages/rules-core`, `packages/cli`. Node 20+.
+- TypeScript ESM, npm workspaces: `packages/core`, `packages/rules-core`, `packages/cli`, `packages/mcp`. Node 20+.
 - `npm test` builds and runs every test with a real browser, including both sabotage suites. It must pass.
 - `npm run bench:codemod` when you touch rules, the verifier or the pipeline. Tier 0 must stay at 100% precision.
 - Never weaken the verifier to improve a number. Never commit benchmark numbers you did not measure.

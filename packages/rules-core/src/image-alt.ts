@@ -12,6 +12,9 @@ export const imageAlt = defineRule({
   tier: 1,
   confidence: "medium",
   description: "Images must have a text alternative that conveys their purpose, or an empty alt when decorative.",
+  declines: [
+    "always: a text alternative depends on what the image means on the page (tier 1, or a person)",
+  ],
   guidance: [
     "Describe the image's purpose (what it communicates or what it does), not its appearance.",
     "If the image is inside a link or button, the alt must describe the destination or action.",

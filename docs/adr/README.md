@@ -17,3 +17,4 @@ A decision is changed by a new ADR that supersedes the old one, never by editing
 | [0010](0010-site-mode-audits-only.md) | Site mode renders for real and only audits | Accepted |
 | [0011](0011-any-agent-as-tier-1.md) | Tier 1 through any command: the verifier, not the vendor, is the contract | Accepted |
 | [0012](0012-verification-beyond-axe.md) | Verification beyond axe: accessibility tree, focus order, pixels | Accepted |
+| [0013](0013-mcp-server.md) | An MCP server: a thin, honest wrapper over the core | Accepted |

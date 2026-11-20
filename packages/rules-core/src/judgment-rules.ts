@@ -13,6 +13,9 @@ export const ariaRequiredAttr = defineRule({
   tier: 1,
   confidence: "medium",
   description: "Elements with ARIA roles must have the states and properties the role requires.",
+  declines: [
+    "always: the missing state (checked, expanded, level, ...) depends on how the widget behaves (tier 1, or a person)",
+  ],
   guidance:
     "Add the missing required ARIA attribute(s) with a value that matches the element's current state as shown in the markup, classes or text (for example aria-checked reflecting whether it looks checked). If the state cannot be known, use the initial state the markup implies and set confidence to low. Do not remove the role unless it is clearly wrong.",
 });
@@ -28,6 +31,9 @@ export const colorContrast = defineRule({
   tier: 1,
   confidence: "medium",
   description: "Text must have sufficient contrast against its background.",
+  declines: [
+    "always: a contrast fix is a design decision (tier 1, or a person)",
+  ],
   guidance: [
     "The text must reach the required contrast ratio against its resolved background (see the contrast data).",
     "Prefer darkening (or lightening) the text color over changing the background, and keep the same hue where possible.",

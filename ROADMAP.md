@@ -87,7 +87,9 @@ than half-working codemods for templates.
 - [x] `--generator-cmd`: tier 1 through any model or agent CLI (local models, coding agents, scripts), verified like
       every other patch
 - [x] Documented protocol for agents that use a11yfix as their judge (`docs/agents.md`)
-- [ ] An MCP server exposing `audit` and `verify` as tools, for agents that speak MCP
+- [x] An MCP server (`a11yfix-mcp`, ADR 0013, MCP 2026-07-28): `rules`, `audit`, `fix`, `verify` and a
+      `fix-accessibility` prompt; conformance caveat in every result
+- [ ] Run the MCP server in real hosts as part of release checks (MCP Inspector, Claude Code, Claude Desktop)
 
 ## Phase 6: distribution
 

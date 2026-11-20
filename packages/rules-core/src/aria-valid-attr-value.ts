@@ -69,6 +69,12 @@ export const ariaValidAttrValue = defineRule({
   tier: 0,
   confidence: "high",
   description: "ARIA attributes must have valid values.",
+  declines: [
+    "aria-hidden (hiding content is never mechanical)",
+    "numbers and free text",
+    "id references with no unique close match on the page",
+    "values with no valid token within edit distance 2",
+  ],
   fix,
   guidance:
     "Replace the invalid ARIA attribute value with a valid one that preserves the evident intent (for example an aria-labelledby/aria-controls that points at an existing id, or true/false for boolean attributes). If no valid value preserves intent, remove the attribute.",

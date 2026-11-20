@@ -8,21 +8,23 @@
   "workspaces": [
     "packages/core",
     "packages/rules-core",
-    "packages/cli"
+    "packages/cli",
+    "packages/mcp"
   ],
   "engines": {
     "node": ">=20"
   },
   "scripts": {
-    "build": "tsc -b packages/core packages/rules-core packages/cli",
-    "clean": "tsc -b --clean packages/core packages/rules-core packages/cli",
+    "build": "tsc -b packages/core packages/rules-core packages/cli packages/mcp",
+    "clean": "tsc -b --clean packages/core packages/rules-core packages/cli packages/mcp",
     "typecheck": "npm run build",
     "test": "npm run build && node scripts/test.mjs",
     "test:sabotage": "npm run build && node scripts/test.mjs sabotage",
     "a11yfix": "node packages/cli/dist/cli.js",
     "bench:codemod": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode codemod --report bench/codemod/report.md --out bench/codemod --notes bench/codemod/analysis.md",
     "bench": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode auto --report report.md --out bench/auto --compare bench/codemod/metrics.json",
-    "demo": "npm run build && tsx scripts/demo.ts"
+    "demo": "npm run build && tsx scripts/demo.ts",
+    "mcp": "node packages/mcp/dist/server.js"
   },
   "devDependencies": {
     "@types/node": "26.6.6",

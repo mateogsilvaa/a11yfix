@@ -1,0 +1,730 @@
+[
+  {
+    "name": "rules",
+    "title": "List a11yfix rules",
+    "description": "The rules a11yfix can patch: axe rule, WCAG criteria, tier (0 = deterministic codemod, 1 = needs a model or you), and what each one declines by design. Call it first, so you know what fix will do on its own, what needs judgment, and what will end up skipped.",
+    "inputSchema": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {}
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "outputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "conformance": {
+          "type": "string",
+          "const": "axe-clean on the checked rules, not WCAG conformance"
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "version": {
+                "type": "string"
+              },
+              "axe": {
+                "type": "string"
+              },
+              "wcag": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "tier": {
+                "type": "number"
+              },
+              "hasCodemod": {
+                "type": "boolean"
+              },
+              "description": {
+                "type": "string"
+              },
+              "declines": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "deprecated": {
+                "type": "boolean"
+              }
+            },
+            "required": [
+              "id",
+              "version",
+              "axe",
+              "wcag",
+              "tier",
+              "hasCodemod",
+              "description",
+              "declines",
+              "deprecated"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "engine": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "conformance",
+        "caveats",
+        "rules",
+        "engine"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "audit",
+    "title": "Audit an HTML file",
+    "description": "Audit a static HTML file with axe-core. Returns the violations a11yfix can patch, with id, WCAG criteria, exact source lines and text, tier, whether a codemod exists, and rule guidance; plus how many other WCAG A/AA violations the page has. Does not change anything.",
+    "inputSchema": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "HTML file, relative to the server root"
+        },
+        "level": {
+          "description": "1 = structural rules only, 2 = also color-contrast (default)",
+          "anyOf": [
+            {
+              "type": "number",
+              "const": 1
+            },
+            {
+              "type": "number",
+              "const": 2
+            }
+          ]
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "outputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "conformance": {
+          "type": "string",
+          "const": "axe-clean on the checked rules, not WCAG conformance"
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "file": {
+          "type": "string"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "ruleId": {
+                "type": "string"
+              },
+              "wcag": {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              "impact": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              },
+              "lines": {
+                "anyOf": [
+                  {
+                    "type": "array",
+                    "items": {
+                      "type": "number"
+                    }
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "tier": {
+                "type": [
+                  "number",
+                  "null"
+                ]
+              },
+              "hasCodemod": {
+                "type": "boolean"
+              },
+              "help": {
+                "type": "string"
+              },
+              "helpUrl": {
+                "type": "string"
+              },
+              "failureSummary": {
+                "type": "string"
+              },
+              "source": {
+                "type": "string"
+              },
+              "guidance": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "ruleId",
+              "wcag",
+              "impact",
+              "lines",
+              "tier",
+              "hasCodemod",
+              "help",
+              "helpUrl",
+              "failureSummary",
+              "source",
+              "guidance"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "truncated": {
+          "type": "boolean"
+        },
+        "otherWcagViolations": {
+          "type": "number"
+        },
+        "engine": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "conformance",
+        "caveats",
+        "file",
+        "findings",
+        "truncated",
+        "otherWcagViolations",
+        "engine"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "fix",
+    "title": "Generate verified fixes as a patch",
+    "description": "Audit an HTML file, generate a patch per finding (mode=codemod: deterministic codemods only, offline, the default; mode=auto: also a tier-1 model configured in the server's environment), verify every patch, and write the verified ones as a git patch under the output directory (<out>/<runId>/a11yfix.patch). Never edits the HTML file: the user applies the patch with git apply and reviews it. strict (default true) leaves suspicious patches out.",
+    "inputSchema": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "HTML file, relative to the server root"
+        },
+        "mode": {
+          "description": "codemod (default) or auto (needs a tier-1 generator in the server's environment)",
+          "type": "string",
+          "enum": [
+            "codemod",
+            "auto"
+          ]
+        },
+        "strict": {
+          "description": "Leave suspicious patches out of the patch (default true)",
+          "type": "boolean"
+        },
+        "out": {
+          "description": "Output directory, relative to the server root (default .a11yfix)",
+          "type": "string"
+        },
+        "limit": {
+          "description": "Only the first N findings",
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 500
+        }
+      },
+      "required": [
+        "path"
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": false,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "outputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "conformance": {
+          "type": "string",
+          "const": "axe-clean on the checked rules, not WCAG conformance"
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "file": {
+          "type": "string"
+        },
+        "runId": {
+          "type": "string"
+        },
+        "patchPath": {
+          "type": "string"
+        },
+        "applyWith": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "strict": {
+          "type": "boolean"
+        },
+        "counts": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "number"
+          }
+        },
+        "included": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "findingId": {
+                "type": "string"
+              },
+              "ruleId": {
+                "type": "string"
+              },
+              "tier": {
+                "type": "number"
+              },
+              "status": {
+                "type": "string"
+              },
+              "rationale": {
+                "type": "string"
+              }
+            },
+            "required": [
+              "findingId",
+              "ruleId",
+              "tier",
+              "status",
+              "rationale"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "rejected": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "findingId": {
+                "type": "string"
+              },
+              "ruleId": {
+                "type": "string"
+              },
+              "status": {
+                "type": "string"
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "findingId",
+              "ruleId",
+              "status",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "skipped": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "findingId": {
+                "type": "string"
+              },
+              "ruleId": {
+                "type": "string"
+              },
+              "reason": {
+                "type": [
+                  "string",
+                  "null"
+                ]
+              }
+            },
+            "required": [
+              "findingId",
+              "ruleId",
+              "reason"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "diff": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "diffTruncated": {
+          "type": "boolean"
+        },
+        "remainingFindings": {
+          "type": [
+            "number",
+            "null"
+          ]
+        },
+        "engine": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "conformance",
+        "caveats",
+        "file",
+        "runId",
+        "patchPath",
+        "applyWith",
+        "mode",
+        "strict",
+        "counts",
+        "included",
+        "rejected",
+        "skipped",
+        "diff",
+        "diffTruncated",
+        "remainingFindings",
+        "engine"
+      ],
+      "additionalProperties": false
+    }
+  },
+  {
+    "name": "verify",
+    "title": "Verify a proposed fix",
+    "description": "Judge a fix you propose for one finding, without changing the file. The patch replaces `before` (copied exactly from the file; at most 6 changed lines in 2 places) with `after`. The verifier applies it to a copy and checks: the violation is gone; no new WCAG A/AA violation; nothing hidden, deleted or silenced; no element lost its accessible name, role, state or focusability; the Tab order is intact; nothing changed visually outside the patched elements. Suggest the edit only if verified is true.",
+    "inputSchema": {
+      "type": "object",
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "properties": {
+        "path": {
+          "type": "string",
+          "description": "HTML file, relative to the server root"
+        },
+        "patch": {
+          "type": "object",
+          "properties": {
+            "findingId": {
+              "type": "string",
+              "description": "Finding id from audit, e.g. f_0003"
+            },
+            "before": {
+              "type": "string",
+              "description": "Exact text from the file to replace"
+            },
+            "after": {
+              "type": "string",
+              "description": "Replacement text"
+            },
+            "rationale": {
+              "type": "string"
+            },
+            "confidence": {
+              "type": "string",
+              "enum": [
+                "high",
+                "medium",
+                "low"
+              ]
+            }
+          },
+          "required": [
+            "findingId",
+            "before",
+            "after"
+          ]
+        }
+      },
+      "required": [
+        "path",
+        "patch"
+      ]
+    },
+    "annotations": {
+      "readOnlyHint": true,
+      "idempotentHint": true,
+      "openWorldHint": false
+    },
+    "outputSchema": {
+      "$schema": "https://json-schema.org/draft/2020-12/schema",
+      "type": "object",
+      "properties": {
+        "conformance": {
+          "type": "string",
+          "const": "axe-clean on the checked rules, not WCAG conformance"
+        },
+        "caveats": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "verification": {
+          "type": "object",
+          "properties": {
+            "findingId": {
+              "type": "string"
+            },
+            "status": {
+              "type": "string"
+            },
+            "verified": {
+              "type": "boolean"
+            },
+            "reason": {
+              "type": [
+                "string",
+                "null"
+              ]
+            },
+            "ruleGone": {
+              "type": "boolean"
+            },
+            "newViolations": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ruleId": {
+                    "type": "string"
+                  },
+                  "selector": {
+                    "type": "string"
+                  },
+                  "lines": {
+                    "anyOf": [
+                      {
+                        "type": "array",
+                        "items": {
+                          "type": "number"
+                        }
+                      },
+                      {
+                        "type": "null"
+                      }
+                    ]
+                  }
+                },
+                "required": [
+                  "ruleId",
+                  "selector",
+                  "lines"
+                ],
+                "additionalProperties": false
+              }
+            },
+            "accessibilityTree": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "focus": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "before": {
+                      "type": "number"
+                    },
+                    "after": {
+                      "type": "number"
+                    },
+                    "lost": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "added": {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    "reordered": {
+                      "type": "boolean"
+                    }
+                  },
+                  "required": [
+                    "before",
+                    "after",
+                    "lost",
+                    "added",
+                    "reordered"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "visual": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "viewport": {
+                        "type": "string"
+                      },
+                      "changeOutside": {
+                        "type": "number"
+                      },
+                      "layoutShift": {
+                        "type": "number"
+                      }
+                    },
+                    "required": [
+                      "viewport",
+                      "changeOutside",
+                      "layoutShift"
+                    ],
+                    "additionalProperties": false
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "diff": {
+              "type": [
+                "string",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "findingId",
+            "status",
+            "verified",
+            "reason",
+            "ruleGone",
+            "newViolations",
+            "accessibilityTree",
+            "focus",
+            "visual",
+            "diff"
+          ],
+          "additionalProperties": false
+        },
+        "engine": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "conformance",
+        "caveats",
+        "verification",
+        "engine"
+      ],
+      "additionalProperties": false
+    }
+  }
+]

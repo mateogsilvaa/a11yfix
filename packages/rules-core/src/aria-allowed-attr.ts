@@ -38,6 +38,9 @@ export const ariaAllowedAttr = defineRule({
   tier: 0,
   confidence: "high",
   description: "ARIA attributes must be allowed for the element's role.",
+  declines: [
+    "state attributes on the wrong role (aria-checked, aria-expanded, aria-pressed, aria-selected, aria-current, ...): the role is usually what is wrong",
+  ],
   fix,
   guidance:
     "Remove the ARIA attribute that is not allowed on this role, or, if the attribute reveals the intended role (for example aria-pressed on a toggle, aria-selected on a tab), fix the role or use the attribute the role supports instead. Do not add aria-hidden.",

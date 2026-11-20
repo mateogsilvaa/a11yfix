@@ -1,88 +1,113 @@
-# a11yfix with any AI agent
+# The a11yfix agent contract
 
-a11yfix does not care who writes a patch. It cares whether the patch survives the verifier. That works in two
-directions.
+For AI agents and the people who configure them. a11yfix is a **fixer verified against axe-core and the
+browser's accessibility tree, focus order and pixels**. It is not an accessibility audit and it does not certify
+anything. This document defines what its results mean; agents must not claim more than this.
 
-## 1. An agent writes tier-1 patches: `--generator-cmd`
+## What the results mean
+
+| Status | Meaning |
+|---|---|
+| `verified` | After applying the patch to a copy: axe-core no longer reports the violation on that node; no new WCAG 2.x A/AA violation appeared anywhere on the page; no static suspicion check fired (nothing hidden, deleted or silenced); no element lost its accessible name, role, state or focusability; the Tab order of untouched elements is the same; no pixels changed outside the patched elements beyond the threshold. |
+| `rejected_persists` | axe still reports the violation on the target. |
+| `rejected_regression` | the patch introduced a new violation somewhere on the page. |
+| `rejected_suspicious` | the patch makes axe quiet in a way that looks like hiding, silencing or damaging the page; the reason says which check fired. Listed in the report for human review. **With `strict` (the MCP default) it is not in the patch.** |
+| `rejected_invalid` | the patch was malformed: wrong shape, `before` not found verbatim in the file, too large. |
+| `rejected_apply_failed` | `before` matched more than one place, or the patched page could not be loaded. |
+| `skipped` | nothing was attempted (see below). |
+
+`verified` does **not** mean: WCAG conformance; that a person reviewed it; that the alternative text is *right*
+about what an image means; that the page is usable with a screen reader; that anything outside the checked rules is
+fine. Automated checks cover a subset of WCAG; most success criteria need a person.
+
+**`skipped` has exactly two causes**:
+
+1. *Needs judgment, no tier-1 generator configured*: tier-1 rules (`image-alt`, `color-contrast`,
+   `aria-required-attr`) have no codemod. In MCP `mode: "codemod"` (the default) they are always skipped; propose the
+   fix yourself and check it with `verify`.
+2. *Declined by design*: a tier-0 codemod refuses cases it cannot prove. The `rules` tool lists, per rule, what it
+   declines (`declines`). These need judgment too.
+
+**Forbidden.** Never tell a user "the page is accessible now", "the site is WCAG compliant" or anything equivalent
+based on a11yfix results. Say what was verified, what was rejected or skipped, and that a person must review it.
+Every MCP result carries `conformance: "axe-clean on the checked rules, not WCAG conformance"` and a list of
+`caveats`, and its text starts with a warning; repeat them, do not drop them.
+
+## Required workflow
+
+1. `rules`: learn what will be fixed automatically, what needs judgment and what is declined by design.
+2. `audit` the file.
+3. `fix` the file. It writes a patch under the output directory and **never edits the HTML file**.
+4. The user applies the patch with `git apply` (the diff is visible before anything changes).
+5. For findings that need judgment: propose the smallest edit, check it with `verify`, and suggest only verified
+   edits.
+6. A person reviews the changes before committing.
+7. Report honestly: verified, rejected (with reasons), skipped (with the cause), and the conformance caveat.
+
+## 1. The MCP server
+
+`a11yfix-mcp` (ADR 0013) implements MCP revision 2026-07-28 with the v2 TypeScript SDK and still serves 2025-era
+hosts. It never calls a model unless `mode: "auto"` is passed explicitly and the server's environment configures one.
 
 ```sh
-a11yfix fix findings.json --verify --generator-cmd "<command>"
-# or once for every run
-export A11YFIX_GENERATOR_CMD="<command>"
+claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --root .
 ```
-
-For every finding that tier 0 cannot fix, a11yfix runs `<command>` through the shell, writes the request to its
-stdin, and reads its stdout.
-
-**Request (`--generator-input text`, the default).** One plain-text prompt: the system instructions (minimal patch,
-one violation, never hide or delete, describe function not appearance, ...), the source file with line numbers, and
-the finding (rule, axe's help and failure summary, the element's source and DOM, context, rule guidance, limits). It
-works with any CLI that takes a prompt on stdin.
-
-**Request (`--generator-input json`).** One JSON object, for scripts that build their own request:
 
 ```json
-{
-  "system": "…the system instructions…",
-  "file": "…the full source file…",
-  "sourceFile": "corpus/handwritten/01-bakery-images.html",
-  "prompt": "…the finding as text…",
-  "finding": { "id": "f_0003", "ruleId": "image-alt", "selector": "…", "sourceSnippet": "…", "…": "…" },
-  "schema": { "…": "the JSON schema of the answer" }
-}
+{ "mcpServers": { "a11yfix": { "command": "node", "args": ["/path/to/a11yfix/packages/mcp/dist/server.js", "--root", "/path/to/project"] } } }
 ```
 
-**Answer.** A patch object on stdout:
+| Tool | Input | Result (`structuredContent`) | Annotations |
+|---|---|---|---|
+| `rules` | none | every rule: `id`, `version`, `axe`, `wcag`, `tier`, `hasCodemod`, `description`, `declines`, `deprecated` | read-only, idempotent |
+| `audit` | `path`; optional `level` (1 = structural rules, 2 = also contrast; default 2) | `findings` (id, rule, WCAG, impact, source `lines` and text, `tier`, `hasCodemod`, help, guidance), `truncated`, `otherWcagViolations` | read-only, idempotent |
+| `fix` | `path`; optional `mode` (`codemod` default, `auto`), `strict` (default `true`), `out` (default `.a11yfix`), `limit` | `runId`, `patchPath` (`<out>/<runId>/a11yfix.patch`), `applyWith`, `counts` per status, `included`, `rejected` with reasons, `skipped` with causes, `diff` (inline up to 20 kB), `remainingFindings` | writes only under `<out>/<runId>/`, idempotent |
+| `verify` | `path`, `patch` (`findingId`, `before`, `after`, optional `rationale`, `confidence`) | `verification`: `status`, `verified`, `reason`, `newViolations`, `accessibilityTree`, `focus`, `visual`, `diff` | read-only |
 
-```json
-{ "findingId": "f_0003", "rationale": "…", "before": "<img src=\"cake.jpg\">", "after": "<img src=\"cake.jpg\" alt=\"Three-tier lemon cake\">", "confidence": "medium" }
+Every result also has `conformance`, `caveats` and `engine` (versions of a11yfix, axe-core, Playwright, Node and the
+MCP SDK). The `fix-accessibility` prompt encodes the workflow above.
+
+**Limits and safety.** Only `.html` files inside the roots (`--root`, repeatable, or `A11YFIX_MCP_ROOT`; default: the
+working directory), after resolving symlinks; files up to 2 MB; at most 500 findings per `audit`. Writes go only to a
+new directory per run, so parallel agents never overwrite each other. Pages are rendered with scripts blocked and every
+network request outside the file's directory aborted. There is no site crawling and no benchmark over MCP.
+
+**Tier 1 over MCP and cost.** `mode: "auto"` uses `A11YFIX_GENERATOR_CMD` or `ANTHROPIC_API_KEY` from the server's
+environment (default model `claude-haiku-5-5` with low effort, override with `A11YFIX_MODEL`). If the agent calling
+the server is itself a model, that is two bills for one task: usually it is better to keep `mode: "codemod"` and let
+the calling agent write the judgment fixes and `verify` them.
+
+## 2. The CLI as a judge
+
+```sh
+a11yfix audit page.html --out findings.json
+# write patch.json: {"findingId", "rationale", "before", "after", "confidence"}
+a11yfix verify page.html patch.json --findings findings.json --out verdict.json   # exit 0 = verified
+a11yfix fix findings.json --verify --strict --mode codemod --out patches           # then: git apply patches/a11yfix.patch
 ```
 
-`before` must be an exact substring of the file. Prose and markdown fences around the object are fine: a11yfix takes
-the first JSON object in the output that matches the schema. If there is none, it runs the command again (at most
-twice more) with the error appended to the request. A command that cannot start stops the run; a non-zero exit with
-no output, or a timeout (5 minutes per attempt), counts as a failed attempt.
+## 3. a11yfix drives, the agent writes patches: `--generator-cmd`
 
-The patch then goes through shape validation and the full verifier (axe, static checks, accessibility tree, focus
-order, pixels). Nothing the agent says is trusted: a vague or harmful patch ends up rejected with a reason in the
-report, not in `a11yfix.patch`.
+```sh
+a11yfix fix findings.json --verify --strict --generator-cmd "<command>"   # or A11YFIX_GENERATOR_CMD
+```
+
+For each finding that tier 0 cannot fix, a11yfix runs the command through the shell, writes the request to stdin and
+reads a patch from stdout.
+
+- Request, `--generator-input text` (default): the system instructions, the source file with line numbers, and the
+  finding. Works with any CLI that takes a prompt on stdin.
+- Request, `--generator-input json`: `{system, file, sourceFile, prompt, finding, schema}`.
+- Answer: `{"findingId", "rationale", "before", "after", "confidence"}`. Prose and markdown fences around it are
+  tolerated; invalid output is retried twice with the error appended; a command that cannot start stops the run;
+  5 minutes per attempt.
+
+The patch then goes through the same verifier. The command receives the full page source: use a model you are allowed
+to send it to.
 
 | Command | Status in this repository |
 |---|---|
-| `ollama run qwen3:8b --think=false` | Tested end to end; the [local benchmark](../bench/local-qwen3-8b/report.md) uses it. Offline. |
-| `claude -p` | Protocol tested; the CLI must be signed in (`claude` once interactively). |
-| `codex exec -`, `llm -m <model>`, `aider --message-file -`, … | Not tested here. Anything that reads stdin and prints the answer works. |
-| a script of yours | See the test agent in [`packages/core/test/fixtures/agents/alt-agent.mjs`](../packages/core/test/fixtures/agents/alt-agent.mjs). |
-
-**Privacy.** The command receives the full source of the page being fixed. Use a model or service you are allowed to
-send that page to; with a local model nothing leaves the machine. Token usage is not reported for commands (a11yfix
-cannot know it).
-
-## 2. An agent uses a11yfix as its judge
-
-An agent that edits HTML (in an editor, in a CI bot) can call the CLI and read JSON:
-
-```sh
-a11yfix audit page.html --out findings.json          # what is wrong, with exact source lines
-# the agent writes patch.json for one finding: {findingId, rationale, before, after, confidence}
-a11yfix verify page.html patch.json --findings findings.json --out verdict.json
-echo $?                                              # 0 = verified, 1 = rejected
-```
-
-`verdict.json` has the status, the reason, the new violations, and the accessibility-tree, focus and visual results.
-A reasonable agent loop: audit, pick a finding, propose the smallest patch, verify, and if it is rejected read the
-reason and try again, or leave the finding for a person. `fix --verify` does the same for every finding at once and
-writes a `git apply` patch.
-
-Instructions you can paste into an agent's configuration (`AGENTS.md`, `CLAUDE.md`, a system prompt):
-
-```text
-When you change HTML for accessibility, use a11yfix to check your work:
-1. `a11yfix audit <file> --out findings.json` lists violations with exact source lines.
-2. Fix one finding at a time with the smallest edit. Never hide, delete, or silence (aria-hidden, role="presentation",
-   inert, display:none, generic alt text) to make a violation disappear.
-3. Write the edit as {"findingId", "rationale", "before", "after", "confidence"} to patch.json; "before" must be copied
-   exactly from the file.
-4. Run `a11yfix verify <file> patch.json --findings findings.json`. Apply the edit only if it exits 0. If it is
-   rejected, read the reason; do not work around the verifier.
-```
+| `ollama run qwen3:8b --think=false` | Tested end to end, offline ([local benchmark](../bench/local-qwen3-8b/report.md)). |
+| `claude -p` | Protocol tested; the CLI must be signed in. |
+| `codex exec -`, `llm -m <model>`, others | Not tested here. Anything that reads stdin and prints the answer works. |
+| a script of yours | See [`packages/core/test/fixtures/agents/alt-agent.mjs`](../packages/core/test/fixtures/agents/alt-agent.mjs). |

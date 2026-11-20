@@ -110,6 +110,42 @@ The reverse also works: an agent that is fixing a page can use a11yfix as its ju
 `verify`, read the JSON verdict). See [docs/agents.md](docs/agents.md) for both directions and the exact protocol;
 [AGENTS.md](AGENTS.md) has ready-made instructions that coding agents pick up when they open this repository.
 
+### MCP server: a11yfix as a tool for any agent
+
+`a11yfix-mcp` serves a11yfix over the [Model Context Protocol](https://modelcontextprotocol.io) (revision 2026-07-28,
+v2 SDK; 2025-era hosts still work), so any MCP client (Claude Desktop, Claude Code, Cursor, VS Code, and others) can
+call it:
+
+| Tool | Does |
+|---|---|
+| `rules` | lists the rules: tier, WCAG criteria, and what each codemod declines by design |
+| `audit` | findings for an HTML file, with source lines, tier and rule guidance |
+| `fix` | runs the codemods (offline by default), verifies every patch, writes a `git apply` patch under `<out>/<runId>/`; never edits the file |
+| `verify` | runs the full verifier on an edit the agent proposes, without touching the file |
+
+Every result is structured JSON that carries `conformance: "axe-clean on the checked rules, not WCAG conformance"`
+and its caveats, and its text starts with that warning: agents summarize results, and "4 verified" must not become
+"your page is accessible". The agent writes the judgment fixes itself and a11yfix decides whether they hold. Files are
+read and written only inside `--root`. The contract for agents is [docs/agents.md](docs/agents.md).
+
+```sh
+# Claude Code
+claude mcp add a11yfix -- node /path/to/a11yfix/packages/mcp/dist/server.js --root .
+```
+
+```json
+{
+  "mcpServers": {
+    "a11yfix": {
+      "command": "node",
+      "args": ["/path/to/a11yfix/packages/mcp/dist/server.js", "--root", "/path/to/your/project"]
+    }
+  }
+}
+```
+
+(The JSON form goes in Claude Desktop's `claude_desktop_config.json`, Cursor's `.cursor/mcp.json`, and similar.)
+
 ### The verifier
 
 For each patch that passes shape validation:
@@ -248,6 +284,7 @@ built-in client uses a JSON schema as the response format and caches the file bl
 | [`a11yfix-core`](packages/core) | audit, source mapping, validation, verifier, site crawler, storage, pipeline, report, Rule API, tier-1 generators |
 | [`a11yfix-rules-core`](packages/rules-core) | the core rules and their tier-0 codemods |
 | [`a11yfix-cli`](packages/cli) | the `a11yfix` command |
+| [`a11yfix-mcp`](packages/mcp) | the MCP server (`a11yfix-mcp`): a thin wrapper over the core |
 
 A rule is a typed object: `id`, `version` (semver), `axe`, `wcag`, `level`, `tier`, `confidence`, `detect`, `fix`
 (the codemod), `guidance` (for tier 1), `verify` (extra checks) and `deprecated`. See the
