@@ -122,50 +122,42 @@
   <p class="ew-note">Any host that speaks MCP, any agent CLI through <code>--generator-cmd</code>, and pull requests through the GitHub Action. Logos belong to their owners.</p>
 </section>
 
-<section class="scene s1 s2 s3 s4 s5 s6" id="how" aria-labelledby="how-title">
-  <div class="scene-track">
-    <div class="scene-pin">
-      <div class="wrap scene-grid">
-        <div class="scene-copy">
-          <p class="label">How it works</p>
-          <h2 id="how-title">From a broken page to a patch you can trust.</h2>
-          <ol class="scene-steps">
-            <li data-step="1"><span class="sn">01</span><div><h3>Audit</h3><p>axe-core runs in headless Chromium and pins each violation to its exact line in your file.</p></div></li>
-            <li data-step="2"><span class="sn">02</span><div><h3>Patch</h3><p>A codemod writes the fixes the markup can prove. What needs judgment goes to your model, if you added one.</p></div></li>
-            <li data-step="3"><span class="sn">03</span><div><h3>Shape</h3><p>Each patch must quote your file exactly and stay small. Nothing invented reaches the browser.</p></div></li>
-            <li data-step="4"><span class="sn">04</span><div><h3>Copy</h3><p>Patches go onto a copy. Your file isn't touched until you choose to apply the result.</p></div></li>
-            <li data-step="5"><span class="sn">05</span><div><h3>Verify</h3><p>Six checks per patch. Two pass. The alt text only restates the file name: rejected.</p></div></li>
-            <li data-step="6"><span class="sn">06</span><div><h3>Review</h3><p>You get one <code>.patch</code> with what held up, and a report of what didn't, with the reason.</p></div></li>
-          </ol>
-          <div class="scene-progress" aria-hidden="true"><span></span></div>
+<section class="scan done" id="how" aria-labelledby="how-title">
+  <div class="wrap scan-head" data-reveal>
+    <p class="label">How it works</p>
+    <h2 id="how-title">Scroll, and watch verifa11y go through a page.</h2>
+    <p class="sub">It audits the page, writes a fix for each violation, checks every fix on a copy of the page, and keeps only the ones that hold up.</p>
+  </div>
+  <div class="scan-track">
+    <div class="scan-pin">
+      <div class="wrap">
+        <div class="scan-hud" aria-hidden="true">
+          <span class="hud-file">demo/before/index.html</span>
+          <span class="hud-stat"><b data-hud="found">4</b> flagged</span>
+          <span class="hud-stat ok"><b data-hud="ok">3</b> verified</span>
+          <span class="hud-stat no"><b data-hud="no">1</b> rejected</span>
+          <span class="hud-bar"><span></span></span>
         </div>
-
-        <div class="scene-stage" aria-hidden="true">
-          <div class="st-win st-original"><div class="st-chrome"><i></i><i></i><i></i><span>index.html · original</span></div><div class="st-lock">untouched</div></div>
-          <div class="st-win st-main">
-            <div class="st-chrome"><i></i><i></i><i></i><span>riverside-garden.local</span><b class="st-copy">copy</b></div>
-            <div class="st-page">
-              <div class="st-nav st-flag f-nav"><span class="st-dot"></span>Plots · Events · Volunteer<em class="st-tag t-bad">aria-roles · line 19</em><em class="st-tag t-ok">verified</em></div>
-              <div class="st-h1">Grow your own food by the river</div>
-              <div class="st-h2 st-flag f-h">Rent a plot<em class="st-tag t-bad">heading-order · line 28</em><em class="st-tag t-ok">verified</em></div>
-              <div class="st-row">
-                <div class="st-img st-flag f-img"><em class="st-tag t-bad">image-alt · line 30</em><em class="st-tag t-no">rejected</em></div>
-                <div class="st-lines"><i></i><i></i><i></i><i class="short"></i></div>
-              </div>
-              <div class="st-scan"></div>
-            </div>
-            <div class="st-drawer">
-              <div class="st-diff"><span class="d-del">- &lt;nav role="navigaton"&gt;</span><span class="d-add">+ &lt;nav role="navigation"&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-ok">✓ 6/6</span></div>
-              <div class="st-diff"><span class="d-del">- &lt;h3&gt;Rent a plot&lt;/h3&gt;</span><span class="d-add">+ &lt;h2&gt;Rent a plot&lt;/h2&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-ok">✓ 6/6</span></div>
-              <div class="st-diff"><span class="d-del">- &lt;img src="plot-map.png"&gt;</span><span class="d-add bad">+ &lt;img src="plot-map.png" alt="plot map"&gt;</span><span class="st-chips"><b>exact quote ✓</b><b>2 lines ✓</b></span><span class="st-res r-no">✕ 4/6</span></div>
-            </div>
-          </div>
-          <div class="st-patch">
-            <p class="pf"><svg width="18" height="18"><use href="#mark"/></svg>verifa11y.patch</p>
-            <p><b>2 fixes</b> ready for <code>git apply</code></p>
-            <p class="rej">1 rejected · <code>alt="plot map"</code> only restates the file name</p>
-          </div>
+        <div class="scan-frame" aria-hidden="true">
+          <div class="sf-row top"><div class="sf-page"><span class="sp-chrome"><i></i><i></i><i></i>riverside-garden.local</span></div><div class="sf-note"></div></div>
+          <div class="sf-row" data-at="0.12" data-ok="1"><div class="sf-page"><div class="sp-el sp-nav"><span class="sp-logo"></span>Plots · Events · Volunteer</div></div>
+            <div class="sf-note"><p class="n-rule">aria-roles · line 19</p><p class="n-diff"><span class="d-del">role="navigaton"</span> → <span class="d-add">role="navigation"</span></p><p class="n-verdict ok">✓ verified · 6/6 checks</p></div></div>
+          <div class="sf-row"><div class="sf-page"><div class="sp-h1">Grow your own food by the river</div></div><div class="sf-note"></div></div>
+          <div class="sf-row" data-at="0.33" data-ok="1"><div class="sf-page"><div class="sp-el sp-h2">Rent a plot</div></div>
+            <div class="sf-note"><p class="n-rule">heading-order · line 28</p><p class="n-diff"><span class="d-del">&lt;h3&gt;</span> → <span class="d-add">&lt;h2&gt;</span></p><p class="n-verdict ok">✓ verified · 6/6 checks</p></div></div>
+          <div class="sf-row" data-at="0.52" data-ok="0"><div class="sf-page"><div class="sp-media"><div class="sp-el sp-img"></div><div class="sp-lines"><i></i><i></i><i></i><i class="short"></i></div></div></div>
+            <div class="sf-note"><p class="n-rule">image-alt · line 30</p><p class="n-diff">quick fix: <span class="d-add bad">alt="plot map"</span></p><p class="n-verdict no">✕ rejected · only restates the file name</p></div></div>
+          <div class="sf-row" data-at="0.74" data-ok="1"><div class="sf-page"><div class="sp-form"><div class="sp-input">Email address</div><div class="sp-el sp-btn">Join the waitlist</div></div></div>
+            <div class="sf-note"><p class="n-rule">aria-roles · line 36</p><p class="n-diff"><span class="d-del">role="buton"</span> → <span class="d-add">role="button"</span></p><p class="n-verdict ok">✓ verified · 6/6 checks</p></div></div>
+          <div class="sf-row bottom"><div class="sf-page"></div><div class="sf-note"></div></div>
+          <div class="scan-line"><span>verifying</span></div>
         </div>
+        <ol class="scan-legend">
+          <li><b>Audit</b> axe-core finds each violation and its line</li>
+          <li><b>Patch</b> the smallest fix: a codemod, or your model</li>
+          <li><b>Verify</b> six checks on a copy of the page</li>
+          <li><b>Review</b> one <code>.patch</code> with what held up</li>
+        </ol>
       </div>
     </div>
   </div>
@@ -436,7 +428,12 @@
       <p class="sub">Node.js 20 or later. No model needed: verifa11y applies the fixes it can prove and tells you why it skipped the rest.</p>
     </div>
     <div class="guide" data-reveal>
-      <div class="ca-tabs tool-tabs" role="tablist" aria-label="Where to use verifa11y" hidden>
+      <div class="picker" hidden>
+        <label for="tool-search">Claude Code, Codex, Cursor and more. Find yours:</label>
+        <input id="tool-search" type="search" placeholder="Search tools" autocomplete="off" aria-controls="tool-list">
+      </div>
+      <p class="no-match" role="status"></p>
+      <div class="ca-tabs tool-tabs" id="tool-list" role="tablist" aria-label="Where to use verifa11y" hidden>
         <button role="tab" id="t-claude" aria-controls="p-claude" aria-selected="true"><svg aria-hidden="true"><use href="#lg-claudecode"/></svg>Claude Code</button>
         <button role="tab" id="t-codex" aria-controls="p-codex" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#ic-agent"/></svg>Codex</button>
         <button role="tab" id="t-cursor" aria-controls="p-cursor" aria-selected="false" tabindex="-1"><svg aria-hidden="true"><use href="#lg-cursor"/></svg>Cursor</button>

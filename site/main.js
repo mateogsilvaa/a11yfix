@@ -164,39 +164,88 @@
   }, { rootMargin: "-40% 0px -55% 0px" });
   navLinks.forEach((_, id) => { const s = document.getElementById(id); if (s) navSpy.observe(s); });
 
-  /* How it works: pinned on wide screens, one step per stretch of scroll --- */
-  const scene = document.querySelector(".scene");
-  if (scene && motion) {
-    const steps = [...scene.querySelectorAll(".scene-steps li")];
-    const track = scene.querySelector(".scene-track");
-    const wide = matchMedia("(min-width: 961px)");
-    let last = 0;
-    const set = (n) => {
-      if (n === last) return;
-      last = n;
-      for (let k = 1; k <= 6; k++) scene.classList.toggle(`s${k}`, k <= n);
-      steps.forEach((li) => li.classList.toggle("current", Number(li.dataset.step) === n && scene.classList.contains("pinned")));
+  /* Install: filter the tools by name -------------------------------------- */
+  const picker = document.querySelector(".picker");
+  const search = document.getElementById("tool-search");
+  const noMatch = document.querySelector(".no-match");
+  if (picker && search && caTabs) {
+    picker.hidden = false;
+    const toolTabs = [...caTabs.querySelectorAll('[role="tab"]')];
+    search.addEventListener("input", () => {
+      const q = search.value.trim().toLowerCase();
+      let shown = 0;
+      for (const t of toolTabs) {
+        const hit = !q || t.textContent.toLowerCase().includes(q);
+        t.hidden = !hit;
+        if (hit) shown++;
+      }
+      noMatch.textContent = shown ? "" : "Not listed? Any tool that speaks MCP works: pick “Other MCP hosts”.";
+      if (shown === 1) toolTabs.find((t) => !t.hidden).click();
+    });
+  }
+
+  /* How it works: a scan line runs down the page with your scroll ----------- */
+  const scan = document.querySelector(".scan");
+  if (scan && motion) {
+    const track = scan.querySelector(".scan-track");
+    const frame = scan.querySelector(".scan-frame");
+    const rows = [...scan.querySelectorAll(".sf-row[data-at]")];
+    const hud = Object.fromEntries([...scan.querySelectorAll("[data-hud]")].map((el) => [el.dataset.hud, el]));
+    const wide = matchMedia("(min-width: 861px)");
+    let at = [];
+    const measure = () => {
+      const fh = frame.offsetHeight || 1;
+      at = rows.map((r) => { const p = r.querySelector(".sf-page"); return (p.offsetTop + p.offsetHeight * 0.5) / fh; });
     };
     const update = () => {
-      if (!scene.classList.contains("pinned")) return;
+      if (!scan.classList.contains("pinned")) return;
       const r = track.getBoundingClientRect();
-      const p = Math.min(1, Math.max(0, -r.top / Math.max(1, r.height - innerHeight)));
-      scene.style.setProperty("--sp", p.toFixed(3));
-      set(Math.min(6, Math.floor(p * 6.2) + 1));
+      const p = Math.min(1, Math.max(0, (-r.top + innerHeight * 0.15) / Math.max(1, r.height - innerHeight * 0.85)));
+      scan.style.setProperty("--sp", p.toFixed(4));
+      let found = 0, ok = 0, no = 0;
+      rows.forEach((row, i) => {
+        const phase = p < at[i] ? 0 : p < at[i] + 0.05 ? 1 : p < at[i] + 0.1 ? 2 : 3;
+        if (phase) row.dataset.phase = String(phase); else delete row.dataset.phase;
+        if (phase) found++;
+        if (phase === 3) row.dataset.ok === "1" ? ok++ : no++;
+      });
+      hud.found.textContent = found; hud.ok.textContent = ok; hud.no.textContent = no;
     };
     const mode = () => {
-      scene.classList.toggle("pinned", wide.matches);
-      last = 0;
-      if (wide.matches) update();
-      else set(6);
+      const on = wide.matches;
+      scan.classList.toggle("pinned", on);
+      scan.classList.toggle("live", on);
+      scan.classList.toggle("done", !on);
+      if (on) { measure(); update(); }
+      else {
+        rows.forEach((row) => delete row.dataset.phase);
+        hud.found.textContent = rows.length;
+        hud.ok.textContent = rows.filter((r) => r.dataset.ok === "1").length;
+        hud.no.textContent = rows.filter((r) => r.dataset.ok === "0").length;
+      }
     };
     addEventListener("scroll", update, { passive: true });
-    addEventListener("resize", update);
+    addEventListener("resize", () => { measure(); update(); });
     wide.addEventListener("change", mode);
     mode();
   }
 
   if (!motion) return;
+
+  /* Background: now and then a focus ring lands on a cell of the dot grid ---- */
+  const bgRing = document.createElement("span");
+  bgRing.className = "bg-focus";
+  bgRing.setAttribute("aria-hidden", "true");
+  document.body.prepend(bgRing);
+  const hop = () => {
+    const cell = 28;
+    const edge = Math.random() < 0.5 ? cell * (1 + Math.floor(Math.random() * 3)) : innerWidth - cell * (3 + Math.floor(Math.random() * 3));
+    bgRing.style.left = `${Math.floor(edge / cell) * cell - 14}px`;
+    bgRing.style.top = `${Math.floor((innerHeight * (0.15 + Math.random() * 0.7)) / cell) * cell - 14}px`;
+    bgRing.classList.add("on");
+    setTimeout(() => bgRing.classList.remove("on"), 1600);
+  };
+  setInterval(hop, 3800);
 
   /* Hero tour: a focus ring tabs through the mock page, verdicts pop up ----- */
   const tour = document.querySelector(".tour");
