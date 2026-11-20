@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "inline text color #000000",
+  "before": "<h2 class=\"page-section-heading text-center text-uppercase text-white\">",
+  "after": "<h2 class=\"page-section-heading text-center text-uppercase text-white\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

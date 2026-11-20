@@ -1,0 +1,92 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\creative\\index.html",
+  "findings": 4,
+  "statuses": {
+    "verified": 1,
+    "rejected_persists": 3
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 3,
+  "wcagViolationsBefore": 4,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 4900,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 47,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 59,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 233,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 247,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

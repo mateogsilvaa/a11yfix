@@ -1,0 +1,46 @@
+{
+  "findingId": "f_0004",
+  "ruleGone": true,
+  "newViolations": [
+    {
+      "ruleId": "heading-order",
+      "impact": "moderate",
+      "selector": ".col-6.col-md:nth-child(3) > h5",
+      "sourceLines": {
+        "start": 560,
+        "end": 560
+      }
+    }
+  ],
+  "suspicious": true,
+  "reason": "introduced 1 new violation(s): heading-order at line 560",
+  "status": "rejected_regression",
+  "flaggedBy": [
+    "visual"
+  ],
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 26,
+      "after": 26,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0026981342859861215,
+        "changedPixelsOutside": 7033,
+        "size": [
+          1280,
+          2056,
+          1280,
+          2055
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

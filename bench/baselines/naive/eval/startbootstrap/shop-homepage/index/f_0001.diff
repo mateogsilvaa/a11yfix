@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -64,7 +64,7 @@
+                             <div class="card-body p-4">
+                                 <div class="text-center">
+                                     <!-- Product name-->
+-                                    <h5 class="fw-bolder">Fancy Product</h5>
++                                    <h2 class="fw-bolder">Fancy Product</h2>
+                                     <!-- Product price-->
+                                     $40.00 - $80.00
+                                 </div>

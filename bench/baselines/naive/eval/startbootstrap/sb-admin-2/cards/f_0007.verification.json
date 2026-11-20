@@ -1,0 +1,33 @@
+{
+  "findingId": "f_0007",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "color-contrast is still reported on the target node",
+  "status": "rejected_persists",
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 17,
+      "after": 17,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

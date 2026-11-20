@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -319,7 +319,7 @@
+                   <use xlink:href="#grid-fill"></use>
+                 </svg>
+                 <div>
+-                  <h5 class="mb-0">Grid view</h5>
++                  <h3 class="mb-0">Grid view</h3>
+                   Not into lists? Try the new grid view.
+                 </div>
+               </li>

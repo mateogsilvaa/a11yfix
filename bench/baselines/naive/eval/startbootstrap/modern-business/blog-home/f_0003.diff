@@ -1,0 +1,12 @@
+===================================================================
+--- a/blog-home.html
++++ b/blog-home.html
+@@ -86,7 +86,7 @@
+                             </div>
+                             <!-- News item-->
+                             <div class="mb-5">
+-                                <div class="small text-muted">Apr 21, 2023</div>
++                                <div class="small text-muted" style="color: #000000">Apr 21, 2023</div>
+                                 <a class="link-dark" href="#!"><h3>This is another news article headline, but this one is a little bit longer</h3></a>
+                             </div>
+                             <div class="text-end mb-5 mb-xl-0">

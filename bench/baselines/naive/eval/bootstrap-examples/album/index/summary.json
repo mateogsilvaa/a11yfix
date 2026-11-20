@@ -1,0 +1,18 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\album\\index.html",
+  "findings": 0,
+  "statuses": {},
+  "included": [],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 6,
+  "wcagViolationsAfter": 6,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 974,
+  "results": []
+}

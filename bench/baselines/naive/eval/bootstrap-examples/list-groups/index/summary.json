@@ -1,0 +1,55 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\list-groups\\index.html",
+  "findings": 2,
+  "statuses": {
+    "rejected_persists": 2
+  },
+  "included": [],
+  "remainingSubsetViolations": 2,
+  "wcagViolationsBefore": 4,
+  "wcagViolationsAfter": 4,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 3082,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 398,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 399,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

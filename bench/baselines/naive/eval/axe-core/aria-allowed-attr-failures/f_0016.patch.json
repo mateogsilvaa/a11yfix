@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0016",
+  "rationale": "remove aria-level",
+  "before": "<div role=\"button\" id=\"fail12\" aria-grabbed=\"true\" aria-level=\"2\">",
+  "after": "<div role=\"button\" id=\"fail12\" aria-grabbed=\"true\">",
+  "confidence": "medium"
+}

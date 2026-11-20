@@ -1,0 +1,166 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\freelancer\\index.html",
+  "findings": 8,
+  "statuses": {
+    "verified": 5,
+    "rejected_persists": 2,
+    "rejected_suspicious": 1
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0004",
+    "f_0005",
+    "f_0006",
+    "f_0008"
+  ],
+  "remainingSubsetViolations": 2,
+  "wcagViolationsBefore": 12,
+  "wcagViolationsAfter": 6,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 5132,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 43,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 51,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 128,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 137,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "color-contrast",
+      "line": 138,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "visual (desktop): 0.15% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "color-contrast",
+      "line": 142,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "color-contrast",
+      "line": 214,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "heading-order",
+      "line": 226,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

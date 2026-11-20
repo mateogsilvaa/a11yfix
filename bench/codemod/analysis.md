@@ -1,5 +1,12 @@
 ## Analysis
 
+**Eval first.** On the 73 held-out eval pages, tier 0 proposed 18 patches (8 `heading-order`, 8 `aria-allowed-attr`,
+2 `label`) and the verifier accepted all 18: 100% [82.4–100]. Eighteen patches cannot tell 100% from 85%, so this
+says tier 0 did not fail on pages it was not written for, not that it never will. The eval fix rate is 2.4%
+[1.5–3.8] (18 of 738): 677 of the 738 eval violations are `color-contrast`, which tier 0 never touches, and three
+pages hold 547 of the 738. 29 of the 73 eval pages have no violation of the patched rules. The rest of this analysis
+was written about the 22 dev pages, which were read while the codemods were written.
+
 This run is **tier 0 only**: deterministic codemods, no model, no network. It is the floor a11yfix gives on a
 machine with nothing configured, and the part of the system that must never be wrong.
 

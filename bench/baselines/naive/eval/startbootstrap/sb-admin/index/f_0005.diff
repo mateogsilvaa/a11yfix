@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -102,7 +102,7 @@
+                         </div>
+                     </div>
+                     <div class="sb-sidenav-footer">
+-                        <div class="small">Logged in as:</div>
++                        <div class="small" style="color: #ffffff">Logged in as:</div>
+                         Start Bootstrap
+                     </div>
+                 </nav>

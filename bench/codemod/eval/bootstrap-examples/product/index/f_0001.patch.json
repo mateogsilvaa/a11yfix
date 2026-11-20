@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "h3 follows h1: re-levelled to h2",
+  "before": "<h3 class=\"fw-normal text-body-secondary mb-3\">\n            Build anything you want with Aperture\n          </h3>",
+  "after": "<h2 class=\"fw-normal text-body-secondary mb-3\">\n            Build anything you want with Aperture\n          </h2>",
+  "confidence": "high"
+}

@@ -1,0 +1,40 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\clean-blog\\index.html",
+  "findings": 1,
+  "statuses": {
+    "verified": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 4,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1839,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 108,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

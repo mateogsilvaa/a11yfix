@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -668,7 +668,7 @@
+                                             target="_blank" rel="nofollow" href="https://undraw.co/">unDraw</a>, a
+                                         constantly updated collection of beautiful svg images that you can use
+                                         completely free and without attribution!</p>
+-                                    <a target="_blank" rel="nofollow" href="https://undraw.co/">Browse Illustrations on
++                                    <a target="_blank" rel="nofollow" href="https://undraw.co/" style="color: #000000">Browse Illustrations on
+                                         unDraw &rarr;</a>
+                                 </div>
+                             </div>

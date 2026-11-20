@@ -1,0 +1,55 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\modern-business\\faq.html",
+  "findings": 2,
+  "statuses": {
+    "skipped": 2
+  },
+  "included": [],
+  "remainingSubsetViolations": 2,
+  "wcagViolationsBefore": 6,
+  "wcagViolationsAfter": 6,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 942,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 138,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 141,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

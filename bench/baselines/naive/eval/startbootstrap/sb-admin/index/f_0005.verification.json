@@ -1,0 +1,33 @@
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": null,
+  "status": "verified",
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 16,
+      "after": 16,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.004053505692849955,
+        "changedPixelsOutside": 11138,
+        "size": [
+          1280,
+          2151,
+          1280,
+          2151
+        ],
+        "layoutShift": 20
+      }
+    ]
+  },
+  "tier": 1
+}

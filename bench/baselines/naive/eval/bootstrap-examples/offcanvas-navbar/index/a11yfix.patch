@@ -1,0 +1,12 @@
+diff --git a/corpus/eval/bootstrap-examples/offcanvas-navbar/index.html b/corpus/eval/bootstrap-examples/offcanvas-navbar/index.html
+--- a/corpus/eval/bootstrap-examples/offcanvas-navbar/index.html
++++ b/corpus/eval/bootstrap-examples/offcanvas-navbar/index.html
+@@ -284,7 +284,7 @@
+         />
+         <div class="lh-1">
+           <h1 class="h6 mb-0 text-white lh-1">Bootstrap</h1>
+-          <small>Since 2011</small>
++          <small style="color: #ffffff">Since 2011</small>
+         </div>
+       </div>
+       <div class="my-3 p-3 bg-body rounded shadow-sm">

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -736,7 +736,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Bruno Nash</td>
+-                                            <td>Software Engineer</td>
++                                            <td style="color: #000000">Software Engineer</td>
+                                             <td>London</td>
+                                             <td>38</td>
+                                             <td>2011/05/03</td>

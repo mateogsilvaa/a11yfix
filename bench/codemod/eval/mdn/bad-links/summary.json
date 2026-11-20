@@ -1,0 +1,18 @@
+{
+  "file": "corpus\\eval\\mdn\\bad-links.html",
+  "findings": 0,
+  "statuses": {},
+  "included": [],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 0,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 756,
+  "results": []
+}

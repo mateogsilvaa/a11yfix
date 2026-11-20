@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -640,7 +640,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Michelle House</td>
+-                                            <td>Integration Specialist</td>
++                                            <td style="color: #000000">Integration Specialist</td>
+                                             <td>Sidney</td>
+                                             <td>37</td>
+                                             <td>2011/06/02</td>

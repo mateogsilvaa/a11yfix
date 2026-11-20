@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -441,7 +441,7 @@
+                                         <tr>
+                                             <td>Brielle Williamson</td>
+                                             <td>Integration Specialist</td>
+-                                            <td>New York</td>
++                                            <td style="color: #000000">New York</td>
+                                             <td>61</td>
+                                             <td>2012/12/02</td>
+                                             <td>$372,000</td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast-text-shadows.html
++++ b/color-contrast-text-shadows.html
+@@ -1008,7 +1008,7 @@
+   <div class="f1">
+     <i id="b11-f1-i1">b11-f1-i1</i>
+     <i id="b11-f1-i2">b11-f1-i2</i>
+-    <i id="b11-f1-i3">b11-f1-i3</i>
++    <i id="b11-f1-i3" style="color: #000000">b11-f1-i3</i>
+     <i id="b11-f1-i4">b11-f1-i4</i>
+   </div>
+   <div class="f2">

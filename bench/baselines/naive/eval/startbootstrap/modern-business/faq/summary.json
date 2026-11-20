@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\modern-business\\faq.html",
+  "findings": 2,
+  "statuses": {
+    "rejected_persists": 1,
+    "verified": 1
+  },
+  "included": [
+    "f_0002"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 6,
+  "wcagViolationsAfter": 5,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2992,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 138,
+      "tier": 1,
+      "status": "rejected_persists",
+      "included": false,
+      "reason": "color-contrast is still reported on the target node",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 141,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

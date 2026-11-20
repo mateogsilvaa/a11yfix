@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -783,7 +783,7 @@
+                                             <td>$125,250</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Zorita Serrano</td>
++                                            <td style="color: #000000">Zorita Serrano</td>
+                                             <td>Software Engineer</td>
+                                             <td>San Francisco</td>
+                                             <td>56</td>

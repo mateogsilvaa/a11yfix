@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -607,7 +607,7 @@
+                                             <td>$92,575</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Jennifer Chang</td>
++                                            <td style="color: #000000">Jennifer Chang</td>
+                                             <td>Regional Director</td>
+                                             <td>Singapore</td>
+                                             <td>28</td>

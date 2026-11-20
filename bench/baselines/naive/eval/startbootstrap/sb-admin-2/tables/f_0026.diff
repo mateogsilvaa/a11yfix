@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -407,7 +407,7 @@
+                                             <td>$320,800</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Garrett Winters</td>
++                                            <td style="color: #000000">Garrett Winters</td>
+                                             <td>Accountant</td>
+                                             <td>Tokyo</td>
+                                             <td>63</td>

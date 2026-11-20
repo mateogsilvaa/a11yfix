@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -644,7 +644,7 @@
+                                     <div class="card bg-dark text-white shadow">
+                                         <div class="card-body">
+                                             Dark
+-                                            <div class="text-white-50 small">#5a5c69</div>
++                                            <div class="text-white-50 small" style="color: #ffffff">#5a5c69</div>
+                                         </div>
+                                     </div>
+                                 </div>

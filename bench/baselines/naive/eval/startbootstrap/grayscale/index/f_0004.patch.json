@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h4 class=\"text-uppercase m-0\">Address</h4>",
+  "after": "<h3 class=\"text-uppercase m-0\">Address</h3>",
+  "confidence": "medium"
+}

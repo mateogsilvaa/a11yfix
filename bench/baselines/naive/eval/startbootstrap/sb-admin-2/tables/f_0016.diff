@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -391,7 +391,7 @@
+                                         <tr>
+                                             <th>Name</th>
+                                             <th>Position</th>
+-                                            <th>Office</th>
++                                            <th style="color: #000000">Office</th>
+                                             <th>Age</th>
+                                             <th>Start date</th>
+                                             <th>Salary</th>

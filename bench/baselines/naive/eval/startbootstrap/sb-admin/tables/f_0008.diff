@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -619,7 +619,7 @@
+                             <div>
+                                 <a href="#">Privacy Policy</a>
+                                 &middot;
+-                                <a href="#">Terms &amp; Conditions</a>
++                                <a href="#" style="color: #000000">Terms &amp; Conditions</a>
+                             </div>
+                         </div>
+                     </div>

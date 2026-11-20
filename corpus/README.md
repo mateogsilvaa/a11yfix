@@ -51,8 +51,9 @@ images, scripts and web fonts are not included, stylesheets are.
 | `eval/mdn/` | 13 | MDN [learning-area](https://github.com/mdn/learning-area/tree/main/accessibility) accessibility pages, several inaccessible on purpose. | CC0 1.0 |
 | `eval/axe-core/` | 7 | axe-core fixtures not used in dev (`aria-allowed-attr` failures, text shadows, full-page contrast and heading tests). Same project as the dev fixtures, so the weakest held-out evidence here. | Mozilla Public License 2.0 |
 
-Some eval pages may have no violation of the patched rules. They stay: choosing pages by how they score would bias
-the set.
+In the first measured run, 29 of the 73 eval pages had no violation of the patched rules, 677 of the 738 violations
+were `color-contrast`, and three pages held 547 of the 738. The pages stay as they are: choosing pages by how they
+score would bias the set. Add pages, from new sources, to make it broader.
 
 ## Hand-written pages
 

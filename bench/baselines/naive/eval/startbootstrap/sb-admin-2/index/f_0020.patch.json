@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0020",
+  "rationale": "inline text color #000000",
+  "before": "<span\n                                            class=\"float-right\">",
+  "after": "<span\n                                            class=\"float-right\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

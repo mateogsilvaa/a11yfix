@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0010",
+  "rationale": "remove aria-multiline",
+  "before": "<div id=\"fail7\" role=\"combobox\" aria-multiline=\"true\" contenteditable>",
+  "after": "<div id=\"fail7\" role=\"combobox\" contenteditable>",
+  "confidence": "medium"
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -619,7 +619,7 @@
+                                             <td>Software Engineer</td>
+                                             <td>San Francisco</td>
+                                             <td>28</td>
+-                                            <td>2011/06/07</td>
++                                            <td style="color: #000000">2011/06/07</td>
+                                             <td>$206,850</td>
+                                         </tr>
+                                         <tr>

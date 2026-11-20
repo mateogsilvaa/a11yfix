@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -608,7 +608,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Jennifer Chang</td>
+-                                            <td>Regional Director</td>
++                                            <td style="color: #000000">Regional Director</td>
+                                             <td>Singapore</td>
+                                             <td>28</td>
+                                             <td>2010/11/14</td>

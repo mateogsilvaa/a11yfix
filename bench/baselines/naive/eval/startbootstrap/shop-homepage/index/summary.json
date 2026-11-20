@@ -1,0 +1,38 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\shop-homepage\\index.html",
+  "findings": 1,
+  "statuses": {
+    "rejected_regression": 1
+  },
+  "included": [],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 1,
+  "wcagViolationsAfter": 1,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 3459,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 67,
+      "tier": 1,
+      "status": "rejected_regression",
+      "included": false,
+      "reason": "introduced 1 new violation(s): heading-order at line 88",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

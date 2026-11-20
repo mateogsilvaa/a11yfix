@@ -1,0 +1,72 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\blog\\index.html",
+  "findings": 3,
+  "statuses": {
+    "skipped": 3
+  },
+  "included": [],
+  "remainingSubsetViolations": 3,
+  "wcagViolationsBefore": 24,
+  "wcagViolationsAfter": 24,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1641,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 308,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 3 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "heading-order",
+      "line": 634,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 4 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "heading-order",
+      "line": 660,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 4 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

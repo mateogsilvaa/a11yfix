@@ -1,0 +1,12 @@
+===================================================================
+--- a/blog-post.html
++++ b/blog-post.html
+@@ -69,7 +69,7 @@
+                                     <div class="text-muted fst-italic mb-2">January 1, 2023</div>
+                                     <!-- Post categories-->
+                                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
+-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
++                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!" style="color: #000000">Freebies</a>
+                                 </header>
+                                 <!-- Preview image figure-->
+                                 <figure class="mb-4"><img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /></figure>

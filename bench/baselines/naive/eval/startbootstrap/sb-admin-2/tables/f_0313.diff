@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -788,7 +788,7 @@
+                                             <td>San Francisco</td>
+                                             <td>56</td>
+                                             <td>2012/06/01</td>
+-                                            <td>$115,000</td>
++                                            <td style="color: #000000">$115,000</td>
+                                         </tr>
+                                         <tr>
+                                             <td>Jennifer Acosta</td>

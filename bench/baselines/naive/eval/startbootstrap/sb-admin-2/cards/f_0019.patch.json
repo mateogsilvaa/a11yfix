@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0019",
+  "rationale": "inline text color #000000",
+  "before": "<strong>",
+  "after": "<strong style=\"color: #000000\">",
+  "confidence": "medium"
+}

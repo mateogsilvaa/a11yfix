@@ -6,6 +6,12 @@ API (ADR 0006).
 ## Unreleased
 
 ### Added
+- **Held-out eval corpus** (ADR 0017): 73 pages in `corpus/eval/` (Start Bootstrap templates, Bootstrap 5.3.9
+  examples, MDN learning-area accessibility pages, axe-core fixtures not used in dev), each with its source and
+  license, never used to write or tune codemods, rules, prompts or the verifier. The 22 existing pages are dev.
+- `a11yfix bench` reports eval and dev separately (summary, tiers, comparison, verifier ablation, outcomes and
+  per-rule tables, with intervals); `metrics.json` adds `bySet`, and `--compare` matches set to set. Tier 0 on eval:
+  18 of 18 verified, 100% [82.4–100].
 - **Naive baseline** (ADR 0014): `bench/baselines/naive-fixer.mjs`, unchecked quick fixes run through
   `--generator-cmd`, offline (`npm run bench:naive`). Results and a rule-by-rule analysis in
   `bench/baselines/naive/`, including the patches the verifier accepts that a reviewer would often reject (403 after ADR 0015).

@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -602,7 +602,7 @@
+                                 </div>
+                                 <div class="col-lg-6 mb-4">
+                                     <div class="card bg-info text-white shadow">
+-                                        <div class="card-body">
++                                        <div class="card-body" style="color: #000000">
+                                             Info
+                                             <div class="text-white-50 small">#36b9cc</div>
+                                         </div>

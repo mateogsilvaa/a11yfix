@@ -1,0 +1,38 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\features\\index.html",
+  "findings": 1,
+  "statuses": {
+    "skipped": 1
+  },
+  "included": [],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 3,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1202,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 749,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 8 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

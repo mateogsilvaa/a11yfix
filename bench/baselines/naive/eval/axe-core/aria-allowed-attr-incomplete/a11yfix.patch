@@ -1,0 +1,20 @@
+diff --git a/corpus/eval/axe-core/aria-allowed-attr-incomplete.html b/corpus/eval/axe-core/aria-allowed-attr-incomplete.html
+--- a/corpus/eval/axe-core/aria-allowed-attr-incomplete.html
++++ b/corpus/eval/axe-core/aria-allowed-attr-incomplete.html
+@@ -17,14 +17,13 @@
+ <div role="button" id="incomplete4" aria-grabbed="true" aria-dropeffect="copy">
+   Foo
+ </div>
+-<div role="checkbox" id="incomplete5" aria-busy="FALSE">Checkbox</div>
++<div role="checkbox" id="incomplete5" aria-busy="FALSE" aria-checked="false">Checkbox</div>
+ <a href="#" id="incomplete6" aria-current="TRUE">Current page</a>
+ <div
+   role="checkbox"
+   id="incomplete7"
+   aria-required="TRUE"
+-  aria-readonly="TRUE"
+-></div>
++  aria-readonly="TRUE" aria-checked="false"></div>
+ </div>
+ </body>
+ </html>

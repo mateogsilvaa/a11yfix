@@ -1,0 +1,40 @@
+{
+  "file": "corpus\\eval\\mdn\\accessible-image.html",
+  "findings": 1,
+  "statuses": {
+    "rejected_suspicious": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 1,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1966,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 18,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"dinosaur\" only restates the file name \"dinosaur.png\"; accessibility tree: <img> (line 18) has a name that only restates its file name: \"dinosaur\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/accessible-image.html
++++ b/accessible-image.html
+@@ -15,7 +15,7 @@
+ 
+     <h1>Images</h1>
+ 
+-    <img src="dinosaur.png">
++    <img src="dinosaur.png" alt="dinosaur">
+ 
+     <img src="dinosaur.png"
+          alt="A red Tyrannosaurus Rex: A two legged dinosaur standing upright like a human, with small arms, and a large head with lots of sharp teeth.">

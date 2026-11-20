@@ -1,0 +1,12 @@
+===================================================================
+--- a/login.html
++++ b/login.html
+@@ -58,7 +58,7 @@
+                                                     Me</label>
+                                             </div>
+                                         </div>
+-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
++                                        <a href="index.html" class="btn btn-primary btn-user btn-block" style="color: #000000">
+                                             Login
+                                         </a>
+                                         <hr>

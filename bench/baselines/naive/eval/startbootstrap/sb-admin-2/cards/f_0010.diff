@@ -1,0 +1,12 @@
+===================================================================
+--- a/cards.html
++++ b/cards.html
+@@ -456,7 +456,7 @@
+ 
+                             <!-- Default Card Example -->
+                             <div class="card mb-4">
+-                                <div class="card-header">
++                                <div class="card-header" style="color: #000000">
+                                     Default Card Example
+                                 </div>
+                                 <div class="card-body">

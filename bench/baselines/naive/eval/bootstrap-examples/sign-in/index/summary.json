@@ -1,0 +1,18 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\sign-in\\index.html",
+  "findings": 0,
+  "statuses": {},
+  "included": [],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 2,
+  "wcagViolationsAfter": 2,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 806,
+  "results": []
+}

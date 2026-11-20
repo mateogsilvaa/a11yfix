@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -761,7 +761,7 @@
+                                         <tr>
+                                             <td>Finn Camacho</td>
+                                             <td>Support Engineer</td>
+-                                            <td>San Francisco</td>
++                                            <td style="color: #000000">San Francisco</td>
+                                             <td>47</td>
+                                             <td>2009/07/07</td>
+                                             <td>$87,500</td>

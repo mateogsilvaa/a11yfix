@@ -1,0 +1,20 @@
+diff --git a/corpus/eval/mdn/bad-form.html b/corpus/eval/mdn/bad-form.html
+--- a/corpus/eval/mdn/bad-form.html
++++ b/corpus/eval/mdn/bad-form.html
+@@ -9,12 +9,12 @@
+     <h1>Bad form</h1>
+     <form>
+       <div>
+-        <p>Enter your name:</p>
+-        <input type="text" name="name">
++        <p id="name-label">Enter your name:</p>
++        <input type="text" name="name" aria-labelledby="name-label">
+       </div>
+       <div>
+-        <p>Enter your age:</p>
+-        <input type="text" name="age">
++        <p id="age-label">Enter your age:</p>
++        <input type="text" name="age" aria-labelledby="age-label">
+       </div>
+     </form>
+   </body>

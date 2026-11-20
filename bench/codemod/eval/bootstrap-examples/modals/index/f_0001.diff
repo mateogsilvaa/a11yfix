@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -274,7 +274,7 @@
+       <div class="modal-dialog">
+         <div class="modal-content rounded-3 shadow">
+           <div class="modal-body p-4 text-center">
+-            <h5 class="mb-0">Enable this setting?</h5>
++            <h2 class="mb-0">Enable this setting?</h2>
+             <p class="mb-0">
+               You can always change your mind in your account settings.
+             </p>

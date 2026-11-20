@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\mdn\\assessment-start.html",
+  "findings": 2,
+  "statuses": {
+    "rejected_suspicious": 2
+  },
+  "included": [
+    "f_0001",
+    "f_0002"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 11,
+  "wcagViolationsAfter": 9,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 5200,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 82,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"wild bear\" only restates the file name \"wild-bear.jpg\"; accessibility tree: <img> (line 82) has a name that only restates its file name: \"wild bear\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 86,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"urban bear\" only restates the file name \"urban-bear.jpg\"; accessibility tree: <img> (line 86) has a name that only restates its file name: \"urban bear\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

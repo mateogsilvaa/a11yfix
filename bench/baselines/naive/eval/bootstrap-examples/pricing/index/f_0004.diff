@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -522,7 +522,7 @@
+             >
+           </div>
+           <div class="col-6 col-md">
+-            <h5>Features</h5>
++            <h3>Features</h3>
+             <ul class="list-unstyled">
+               <li class="mb-1">
+                 <a class="link-secondary text-decoration-none" href="#"

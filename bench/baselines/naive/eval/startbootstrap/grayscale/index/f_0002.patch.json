@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h4>Shoreline</h4>",
+  "after": "<h3>Shoreline</h3>",
+  "confidence": "medium"
+}

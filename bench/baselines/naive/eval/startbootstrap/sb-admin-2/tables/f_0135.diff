@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -552,7 +552,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Dai Rios</td>
+-                                            <td>Personnel Lead</td>
++                                            <td style="color: #000000">Personnel Lead</td>
+                                             <td>Edinburgh</td>
+                                             <td>35</td>
+                                             <td>2012/09/26</td>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "inline text color #000000",
+  "before": "<button class=\"btn btn-primary btn-lg disabled\" id=\"submitButton\" type=\"submit\">",
+  "after": "<button class=\"btn btn-primary btn-lg disabled\" id=\"submitButton\" type=\"submit\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

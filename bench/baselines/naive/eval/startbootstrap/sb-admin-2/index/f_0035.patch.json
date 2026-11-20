@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0035",
+  "rationale": "inline text color #000000",
+  "before": "<div class=\"card-body\">",
+  "after": "<div class=\"card-body\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

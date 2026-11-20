@@ -1,0 +1,38 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\clean-blog\\contact.html",
+  "findings": 1,
+  "statuses": {
+    "skipped": 1
+  },
+  "included": [],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 4,
+  "wcagViolationsAfter": 4,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1011,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 105,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -434,7 +434,7 @@
+                                             <td>Airi Satou</td>
+                                             <td>Accountant</td>
+                                             <td>Tokyo</td>
+-                                            <td>33</td>
++                                            <td style="color: #000000">33</td>
+                                             <td>2008/11/28</td>
+                                             <td>$162,700</td>
+                                         </tr>

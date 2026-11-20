@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -585,7 +585,7 @@
+                                         <tr>
+                                             <td>Doris Wilder</td>
+                                             <td>Sales Assistant</td>
+-                                            <td>Sidney</td>
++                                            <td style="color: #000000">Sidney</td>
+                                             <td>23</td>
+                                             <td>2010/09/20</td>
+                                             <td>$85,600</td>

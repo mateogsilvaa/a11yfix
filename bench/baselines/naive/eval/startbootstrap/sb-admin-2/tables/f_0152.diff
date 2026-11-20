@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -575,7 +575,7 @@
+                                             <td>$675,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Caesar Vance</td>
++                                            <td style="color: #000000">Caesar Vance</td>
+                                             <td>Pre-Sales Support</td>
+                                             <td>New York</td>
+                                             <td>21</td>

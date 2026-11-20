@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -784,7 +784,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Zorita Serrano</td>
+-                                            <td>Software Engineer</td>
++                                            <td style="color: #000000">Software Engineer</td>
+                                             <td>San Francisco</td>
+                                             <td>56</td>
+                                             <td>2012/06/01</td>

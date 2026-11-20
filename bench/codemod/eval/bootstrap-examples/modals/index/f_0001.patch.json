@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "h5 follows h1: re-levelled to h2",
+  "before": "<h5 class=\"mb-0\">Enable this setting?</h5>",
+  "after": "<h2 class=\"mb-0\">Enable this setting?</h2>",
+  "confidence": "high"
+}

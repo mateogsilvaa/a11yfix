@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0043",
+  "rationale": "re-level to h5, one below the previous heading",
+  "before": "<h6 class=\"m-0 font-weight-bold text-primary\">Illustrations</h6>",
+  "after": "<h5 class=\"m-0 font-weight-bold text-primary\">Illustrations</h5>",
+  "confidence": "medium"
+}

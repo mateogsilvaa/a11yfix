@@ -1,0 +1,14 @@
+===================================================================
+--- a/aria-allowed-attr-failures.html
++++ b/aria-allowed-attr-failures.html
+@@ -45,8 +45,8 @@
+ <div
+   role="checkbox"
+   id="fail18"
+-  aria-required="FALSE"
+-  aria-readonly="FALSE"
++ 
++ 
+ ></div>
+ </div>
+ </body>

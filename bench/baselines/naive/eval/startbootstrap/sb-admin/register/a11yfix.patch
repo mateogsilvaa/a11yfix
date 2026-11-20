@@ -1,0 +1,24 @@
+diff --git a/corpus/eval/startbootstrap/sb-admin/register.html b/corpus/eval/startbootstrap/sb-admin/register.html
+--- a/corpus/eval/startbootstrap/sb-admin/register.html
++++ b/corpus/eval/startbootstrap/sb-admin/register.html
+@@ -59,7 +59,7 @@
+                                         </form>
+                                     </div>
+                                     <div class="card-footer text-center py-3">
+-                                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
++                                        <div class="small"><a href="login.html" style="color: #000000">Have an account? Go to login</a></div>
+                                     </div>
+                                 </div>
+                             </div>
+@@ -73,9 +73,9 @@
+                         <div class="d-flex align-items-center justify-content-between small">
+                             <div class="text-muted">Copyright &copy; Your Website 2023</div>
+                             <div>
+-                                <a href="#">Privacy Policy</a>
++                                <a href="#" style="color: #000000">Privacy Policy</a>
+                                 &middot;
+-                                <a href="#">Terms &amp; Conditions</a>
++                                <a href="#" style="color: #000000">Terms &amp; Conditions</a>
+                             </div>
+                         </div>
+                     </div>

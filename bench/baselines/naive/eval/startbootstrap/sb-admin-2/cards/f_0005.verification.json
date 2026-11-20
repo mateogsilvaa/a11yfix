@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"undraw profile\" only restates the file name \"undraw_profile.svg\"; accessibility tree: <img> (line 328) has a name that only restates its file name: \"undraw profile\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 328) has a name that only restates its file name: \"undraw profile\""
+    ],
+    "focus": {
+      "before": 17,
+      "after": 17,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

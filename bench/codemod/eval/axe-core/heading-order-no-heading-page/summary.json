@@ -1,0 +1,18 @@
+{
+  "file": "corpus\\eval\\axe-core\\heading-order-no-heading-page.html",
+  "findings": 0,
+  "statuses": {},
+  "included": [],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 1,
+  "wcagViolationsAfter": 1,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1627,
+  "results": []
+}

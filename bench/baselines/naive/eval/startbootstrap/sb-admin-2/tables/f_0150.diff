@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -571,7 +571,7 @@
+                                             <td>Chief Marketing Officer (CMO)</td>
+                                             <td>New York</td>
+                                             <td>40</td>
+-                                            <td>2009/06/25</td>
++                                            <td style="color: #000000">2009/06/25</td>
+                                             <td>$675,000</td>
+                                         </tr>
+                                         <tr>

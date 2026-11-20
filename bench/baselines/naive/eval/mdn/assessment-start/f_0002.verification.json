@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"urban bear\" only restates the file name \"urban-bear.jpg\"; accessibility tree: <img> (line 86) has a name that only restates its file name: \"urban bear\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 86) has a name that only restates its file name: \"urban bear\""
+    ],
+    "focus": {
+      "before": 16,
+      "after": 16,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.03279241782164411,
+        "changedPixelsOutside": 67725,
+        "size": [
+          1280,
+          1615,
+          1280,
+          1613
+        ],
+        "layoutShift": 35
+      }
+    ]
+  },
+  "tier": 1
+}

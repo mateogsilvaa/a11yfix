@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast-text-shadows.html
++++ b/color-contrast-text-shadows.html
+@@ -705,7 +705,7 @@
+ </section>
+ 
+ <section class="s2" id="b2">
+-  <div class="r0"><i id="sample2">Sample</i></div>
++  <div class="r0"><i id="sample2" style="color: #ffffff">Sample</i></div>
+   <div class="r1">
+     <i id="b2-r1-i1">b2-r1-i1</i>
+     <i id="b2-r1-i2">b2-r1-i2</i>

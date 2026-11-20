@@ -1,0 +1,12 @@
+===================================================================
+--- a/blog-home.html
++++ b/blog-home.html
+@@ -76,7 +76,7 @@
+                             <h2 class="fw-bolder fs-5 mb-4">News</h2>
+                             <!-- News item-->
+                             <div class="mb-4">
+-                                <div class="small text-muted">May 12, 2023</div>
++                                <div class="small text-muted" style="color: #000000">May 12, 2023</div>
+                                 <a class="link-dark" href="#!"><h3>Start Bootstrap releases Bootstrap 5 updates for templates and themes</h3></a>
+                             </div>
+                             <!-- News item-->

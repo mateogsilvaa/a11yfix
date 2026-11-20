@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\offcanvas-navbar\\index.html",
+  "findings": 2,
+  "statuses": {
+    "verified": 1,
+    "rejected_regression": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 14,
+  "wcagViolationsAfter": 13,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 5522,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 287,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "heading-order",
+      "line": 291,
+      "tier": 1,
+      "status": "rejected_regression",
+      "included": false,
+      "reason": "introduced 1 new violation(s): heading-order at line 358",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h4 class=\"fst-italic\">About</h4>",
+  "after": "<h3 class=\"fst-italic\">About</h3>",
+  "confidence": "medium"
+}

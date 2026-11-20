@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -664,7 +664,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Gavin Cortez</td>
+-                                            <td>Team Leader</td>
++                                            <td style="color: #000000">Team Leader</td>
+                                             <td>San Francisco</td>
+                                             <td>22</td>
+                                             <td>2008/10/26</td>

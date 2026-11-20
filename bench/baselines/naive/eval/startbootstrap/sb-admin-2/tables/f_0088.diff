@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -489,7 +489,7 @@
+                                         <tr>
+                                             <td>Quinn Flynn</td>
+                                             <td>Support Lead</td>
+-                                            <td>Edinburgh</td>
++                                            <td style="color: #000000">Edinburgh</td>
+                                             <td>22</td>
+                                             <td>2013/03/03</td>
+                                             <td>$342,000</td>

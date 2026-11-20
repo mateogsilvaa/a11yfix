@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -769,7 +769,7 @@
+                                         <tr>
+                                             <td>Serge Baldwin</td>
+                                             <td>Data Coordinator</td>
+-                                            <td>Singapore</td>
++                                            <td style="color: #000000">Singapore</td>
+                                             <td>64</td>
+                                             <td>2012/04/09</td>
+                                             <td>$138,575</td>

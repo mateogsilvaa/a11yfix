@@ -1,0 +1,12 @@
+diff --git a/corpus/eval/axe-core/contrast-code-highlighting.html b/corpus/eval/axe-core/contrast-code-highlighting.html
+--- a/corpus/eval/axe-core/contrast-code-highlighting.html
++++ b/corpus/eval/axe-core/contrast-code-highlighting.html
+@@ -26,7 +26,7 @@
+   <body>
+     <div id="fixture">
+       <pre>
+-        <code class="language-html">&lt;!DOCTYPE html&gt;
++        <code class="language-html" style="color: #000000">&lt;!DOCTYPE html&gt;
+           &lt;html lang="en"&gt;
+             &lt;head&gt;
+               &lt;title&gt;Test Page&lt;/title&gt;

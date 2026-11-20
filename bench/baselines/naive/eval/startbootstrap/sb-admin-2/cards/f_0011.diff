@@ -1,0 +1,12 @@
+===================================================================
+--- a/cards.html
++++ b/cards.html
+@@ -459,7 +459,7 @@
+                                 <div class="card-header">
+                                     Default Card Example
+                                 </div>
+-                                <div class="card-body">
++                                <div class="card-body" style="color: #000000">
+                                     This card uses Bootstrap's default styling with no utility classes added. Global
+                                     styles are the only things modifying the look and feel of this default card example.
+                                 </div>

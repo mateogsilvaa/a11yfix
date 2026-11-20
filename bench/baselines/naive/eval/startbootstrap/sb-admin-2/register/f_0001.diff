@@ -1,0 +1,12 @@
+===================================================================
+--- a/register.html
++++ b/register.html
+@@ -61,7 +61,7 @@
+                                             id="exampleRepeatPassword" placeholder="Repeat Password">
+                                     </div>
+                                 </div>
+-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
++                                <a href="login.html" class="btn btn-primary btn-user btn-block" style="color: #000000">
+                                     Register Account
+                                 </a>
+                                 <hr>

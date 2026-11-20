@@ -1,0 +1,140 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\landing-page\\index.html",
+  "findings": 7,
+  "statuses": {
+    "skipped": 7
+  },
+  "included": [],
+  "remainingSubsetViolations": 7,
+  "wcagViolationsBefore": 10,
+  "wcagViolationsAfter": 10,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1176,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 81,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 3 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "heading-order",
+      "line": 136,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 3 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 208,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 210,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "color-contrast",
+      "line": 212,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "color-contrast",
+      "line": 214,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "color-contrast",
+      "line": 216,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

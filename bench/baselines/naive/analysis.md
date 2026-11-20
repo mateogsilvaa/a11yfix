@@ -6,6 +6,15 @@ attribute or role axe complains about, add missing state with a default, inline 
 strawman by construction. It exists to measure the verifier, not to rate fixers, and every patch it wrote is in this
 directory.
 
+**Eval first, and why it looks better than dev.** On the 73 held-out eval pages the naive fixer gets 619 of 736
+patches verified (84.1% [81.3–86.6]), against 403 of 653 on dev. That is not the fixer doing better. 587 of the 619
+are `color-contrast` patches, the inline `style="color: ..."` override described below that a reviewer would reject,
+and `color-contrast` is 677 of the 738 eval violations; three pages hold 547 of the 738. The eval pages have only 6
+`image-alt` and 2 `label` violations, the rules where the source checks reject most naive patches on dev, so the
+verifier rejects less: 117 of 736 (15.9% [13.4–18.7]), of which axe alone would have shipped 15, axe plus source checks 4.
+The intervals assume independent findings, and hundreds of contrast findings produced by one stylesheet are not,
+so they are narrower than they should be. Everything below is about the 22 dev pages.
+
 **What the verifier catches.** Of the 653 patches that applied, the full verifier rejected 250 (38.3%). A pipeline
 that shipped everything would have called all 250 fixed; one that only re-ran axe would still have shipped 223 of
 them. Most of those are the 159 `image-alt` patches whose alt text only restates the file name
@@ -14,7 +23,7 @@ them. Most of those are the 159 `image-alt` patches whose alt text only restates
 `aria-controls="false"` (an id reference to no element), removed focusable roles, and 14 patches that broke something
 else on the page (new violations) make up the rest.
 
-**What each layer adds, on this corpus.** Axe alone removes 27 patches (regressions and violations still present).
+**What each layer adds, on the dev pages.** Axe alone removes 27 patches (regressions and violations still present).
 The source checks remove 219 more. The browser checks (accessibility tree, focus order, pixels) remove only 4 that
 the source checks had not already flagged: the accessibility-tree comparison fires on 162 patches, but 158 of them
 are the same file-name alt texts. On these pages, the browser layers are a second opinion more than a new signal.

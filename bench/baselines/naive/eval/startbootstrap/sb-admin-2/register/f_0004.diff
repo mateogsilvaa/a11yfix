@@ -1,0 +1,12 @@
+===================================================================
+--- a/register.html
++++ b/register.html
+@@ -77,7 +77,7 @@
+                                 <a class="small" href="forgot-password.html">Forgot Password?</a>
+                             </div>
+                             <div class="text-center">
+-                                <a class="small" href="login.html">Already have an account? Login!</a>
++                                <a class="small" href="login.html" style="color: #000000">Already have an account? Login!</a>
+                             </div>
+                         </div>
+                     </div>

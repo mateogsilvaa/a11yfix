@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -808,7 +808,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Hermione Butler</td>
+-                                            <td>Regional Director</td>
++                                            <td style="color: #000000">Regional Director</td>
+                                             <td>London</td>
+                                             <td>47</td>
+                                             <td>2011/03/21</td>

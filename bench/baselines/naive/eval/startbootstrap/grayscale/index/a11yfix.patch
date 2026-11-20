@@ -1,0 +1,39 @@
+diff --git a/corpus/eval/startbootstrap/grayscale/index.html b/corpus/eval/startbootstrap/grayscale/index.html
+--- a/corpus/eval/startbootstrap/grayscale/index.html
++++ b/corpus/eval/startbootstrap/grayscale/index.html
+@@ -40,7 +40,7 @@
+                     <div class="text-center">
+                         <h1 class="mx-auto my-0 text-uppercase">Grayscale</h1>
+                         <h2 class="text-white-50 mx-auto mt-2 mb-5">A free, responsive, one page Bootstrap theme created by Start Bootstrap.</h2>
+-                        <a class="btn btn-primary" href="#about">Get Started</a>
++                        <a class="btn btn-primary" href="#about" style="color: #000000">Get Started</a>
+                     </div>
+                 </div>
+             </div>
+@@ -69,7 +69,7 @@
+                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="assets/img/bg-masthead.jpg" alt="..." /></div>
+                     <div class="col-xl-4 col-lg-5">
+                         <div class="featured-text text-center text-lg-left">
+-                            <h4>Shoreline</h4>
++                            <h3>Shoreline</h3>
+                             <p class="text-black-50 mb-0">Grayscale is open source and MIT licensed. This means you can use it for any project - even commercial projects! Download it, customize it, and publish your website!</p>
+                         </div>
+                     </div>
+@@ -156,7 +156,7 @@
+                         <div class="card py-4 h-100">
+                             <div class="card-body text-center">
+                                 <i class="fas fa-map-marked-alt text-primary mb-2"></i>
+-                                <h4 class="text-uppercase m-0">Address</h4>
++                                <h3 class="text-uppercase m-0">Address</h3>
+                                 <hr class="my-4 mx-auto" />
+                                 <div class="small text-black-50">4923 Market Street, Orlando FL</div>
+                             </div>
+@@ -168,7 +168,7 @@
+                                 <i class="fas fa-envelope text-primary mb-2"></i>
+                                 <h4 class="text-uppercase m-0">Email</h4>
+                                 <hr class="my-4 mx-auto" />
+-                                <div class="small text-black-50"><a href="#!">hello@yourdomain.com</a></div>
++                                <div class="small text-black-50"><a href="#!" style="color: #000000">hello@yourdomain.com</a></div>
+                             </div>
+                         </div>
+                     </div>

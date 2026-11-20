@@ -1,0 +1,18 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\clean-blog\\about.html",
+  "findings": 0,
+  "statuses": {},
+  "included": [],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 3,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 935,
+  "results": []
+}

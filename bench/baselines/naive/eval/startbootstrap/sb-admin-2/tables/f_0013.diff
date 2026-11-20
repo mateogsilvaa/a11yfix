@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -384,7 +384,7 @@
+                                             <th>Office</th>
+                                             <th>Age</th>
+                                             <th>Start date</th>
+-                                            <th>Salary</th>
++                                            <th style="color: #000000">Salary</th>
+                                         </tr>
+                                     </thead>
+                                     <tfoot>

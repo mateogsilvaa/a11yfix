@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -576,7 +576,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Caesar Vance</td>
+-                                            <td>Pre-Sales Support</td>
++                                            <td style="color: #000000">Pre-Sales Support</td>
+                                             <td>New York</td>
+                                             <td>21</td>
+                                             <td>2011/12/12</td>

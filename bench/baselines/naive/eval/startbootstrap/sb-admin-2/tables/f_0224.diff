@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -671,7 +671,7 @@
+                                             <td>$235,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Martena Mccray</td>
++                                            <td style="color: #000000">Martena Mccray</td>
+                                             <td>Post-Sales support</td>
+                                             <td>Edinburgh</td>
+                                             <td>46</td>

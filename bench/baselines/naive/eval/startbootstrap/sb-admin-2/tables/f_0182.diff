@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -615,7 +615,7 @@
+                                             <td>$357,650</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Brenden Wagner</td>
++                                            <td style="color: #000000">Brenden Wagner</td>
+                                             <td>Software Engineer</td>
+                                             <td>San Francisco</td>
+                                             <td>28</td>

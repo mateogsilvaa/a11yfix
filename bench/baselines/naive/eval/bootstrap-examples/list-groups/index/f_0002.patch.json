@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "inline text color #000000",
+  "before": "<small class=\"d-block text-body-secondary\">",
+  "after": "<small class=\"d-block text-body-secondary\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/cards.html
++++ b/cards.html
+@@ -519,7 +519,7 @@
+                                 </a>
+                                 <!-- Card Content - Collapse -->
+                                 <div class="collapse show" id="collapseCardExample">
+-                                    <div class="card-body">
++                                    <div class="card-body" style="color: #000000">
+                                         This is a collapsable card example using Bootstrap's built in collapse
+                                         functionality. <strong>Click on the card header</strong> to see the card body
+                                         collapse and expand!

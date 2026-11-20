@@ -1,0 +1,36 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "aria-label \"age\" only restates the name attribute \"age\" and does not contain the visible text next to the <input>",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 2,
+      "after": 2,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

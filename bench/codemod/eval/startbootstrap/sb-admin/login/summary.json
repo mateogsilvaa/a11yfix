@@ -1,0 +1,89 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\sb-admin\\login.html",
+  "findings": 4,
+  "statuses": {
+    "skipped": 4
+  },
+  "included": [],
+  "remainingSubsetViolations": 4,
+  "wcagViolationsBefore": 4,
+  "wcagViolationsAfter": 4,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 543,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 43,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 55,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 57,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 59,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

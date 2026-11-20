@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast-text-shadows.html
++++ b/color-contrast-text-shadows.html
+@@ -1058,7 +1058,7 @@
+   </div>
+   <div class="l4">
+     <i id="b12-l4-i1">b12-l4-i1</i>
+-    <i id="b12-l4-i2">b12-l4-i2</i>
++    <i id="b12-l4-i2" style="color: #000000">b12-l4-i2</i>
+     <i id="b12-l4-i3">b12-l4-i3</i>
+     <i id="b12-l4-i4">b12-l4-i4</i>
+   </div>

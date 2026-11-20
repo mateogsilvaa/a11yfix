@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -471,7 +471,7 @@
+                                             <td>$205,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Sonya Frost</td>
++                                            <td style="color: #000000">Sonya Frost</td>
+                                             <td>Software Engineer</td>
+                                             <td>Edinburgh</td>
+                                             <td>23</td>

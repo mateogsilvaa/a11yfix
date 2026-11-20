@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "h4 follows h1: re-levelled to h2",
+  "before": "<h4 class=\"my-0 fw-normal\">Free</h4>",
+  "after": "<h2 class=\"my-0 fw-normal\">Free</h2>",
+  "confidence": "high"
+}

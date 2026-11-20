@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -396,7 +396,7 @@
+           />
+           <span class="pt-1 form-checked-content">
+             <strong>Finish sales report</strong>
+-            <small class="d-block text-body-secondary">
++            <small class="d-block text-body-secondary" style="color: #000000">
+               <svg
+                 class="bi me-1"
+                 width="1em"

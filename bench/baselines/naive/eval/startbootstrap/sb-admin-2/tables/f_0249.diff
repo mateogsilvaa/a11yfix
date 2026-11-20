@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -704,7 +704,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Vivian Harrell</td>
+-                                            <td>Financial Controller</td>
++                                            <td style="color: #000000">Financial Controller</td>
+                                             <td>San Francisco</td>
+                                             <td>62</td>
+                                             <td>2009/02/14</td>

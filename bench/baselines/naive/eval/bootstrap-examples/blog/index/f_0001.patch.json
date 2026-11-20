@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "re-level to h2, one below the previous heading",
+  "before": "<h3 class=\"mb-0\">Featured post</h3>",
+  "after": "<h2 class=\"mb-0\">Featured post</h2>",
+  "confidence": "medium"
+}

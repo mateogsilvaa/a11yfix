@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-allowed-attr-failures.html
++++ b/aria-allowed-attr-failures.html
+@@ -33,7 +33,7 @@
+ <testutils-element id="fail11" aria-valuetext="value"></testutils-element>
+ 
+ <!-- deprecated attr combined with an unallowed attr fails rather than incompletes -->
+-<div role="button" id="fail12" aria-grabbed="true" aria-level="2"></div>
++<div role="button" id="fail12" aria-grabbed="true"></div>
+ 
+ <div role="checkbox" id="fail13" aria-checked="TRUE">Checkbox</div>
+ <div role="checkbox" id="fail14" aria-checked="FALSE">Checkbox</div>

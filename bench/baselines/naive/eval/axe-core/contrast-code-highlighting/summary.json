@@ -1,0 +1,40 @@
+{
+  "file": "corpus\\eval\\axe-core\\contrast-code-highlighting.html",
+  "findings": 1,
+  "statuses": {
+    "verified": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 1,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1467,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 29,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

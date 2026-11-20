@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -807,7 +807,7 @@
+                                             <td>$145,600</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Hermione Butler</td>
++                                            <td style="color: #000000">Hermione Butler</td>
+                                             <td>Regional Director</td>
+                                             <td>London</td>
+                                             <td>47</td>

@@ -1,0 +1,106 @@
+{
+  "file": "corpus\\eval\\startbootstrap\\sb-admin-2\\login.html",
+  "findings": 5,
+  "statuses": {
+    "skipped": 5
+  },
+  "included": [],
+  "remainingSubsetViolations": 5,
+  "wcagViolationsBefore": 5,
+  "wcagViolationsAfter": 5,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 697,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "color-contrast",
+      "line": 57,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "color-contrast",
+      "line": 61,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 65,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "color-contrast",
+      "line": 74,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "color-contrast",
+      "line": 77,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

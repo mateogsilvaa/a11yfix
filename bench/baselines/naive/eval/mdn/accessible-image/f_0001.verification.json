@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0001",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"dinosaur\" only restates the file name \"dinosaur.png\"; accessibility tree: <img> (line 18) has a name that only restates its file name: \"dinosaur\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 18) has a name that only restates its file name: \"dinosaur\""
+    ],
+    "focus": {
+      "before": 0,
+      "after": 0,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.015655966528623284,
+        "changedPixelsOutside": 17632,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 4
+      }
+    ]
+  },
+  "tier": 1
+}

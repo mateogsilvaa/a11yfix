@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -379,7 +379,7 @@
+                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                     <thead>
+                                         <tr>
+-                                            <th>Name</th>
++                                            <th style="color: #000000">Name</th>
+                                             <th>Position</th>
+                                             <th>Office</th>
+                                             <th>Age</th>

@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0001",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"wild bear\" only restates the file name \"wild-bear.jpg\"; accessibility tree: <img> (line 82) has a name that only restates its file name: \"wild bear\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 82) has a name that only restates its file name: \"wild bear\""
+    ],
+    "focus": {
+      "before": 16,
+      "after": 16,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.041714598342241845,
+        "changedPixelsOutside": 86159,
+        "size": [
+          1280,
+          1615,
+          1280,
+          1613
+        ],
+        "layoutShift": 36
+      }
+    ]
+  },
+  "tier": 1
+}

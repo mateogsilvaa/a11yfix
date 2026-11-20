@@ -1,0 +1,12 @@
+===================================================================
+--- a/login.html
++++ b/login.html
+@@ -71,7 +71,7 @@
+                                     </form>
+                                     <hr>
+                                     <div class="text-center">
+-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
++                                        <a class="small" href="forgot-password.html" style="color: #000000">Forgot Password?</a>
+                                     </div>
+                                     <div class="text-center">
+                                         <a class="small" href="register.html">Create an Account!</a>

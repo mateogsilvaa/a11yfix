@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "inline text color #000000",
+  "before": "<a class=\"nav-link js-scroll-trigger\" href=\"#education\">",
+  "after": "<a class=\"nav-link js-scroll-trigger\" href=\"#education\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

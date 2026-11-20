@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -211,7 +211,7 @@
+                             <!-- an error submitting the form-->
+                             <div class="d-none" id="submitErrorMessage"><div class="text-center text-danger mb-3">Error sending message!</div></div>
+                             <!-- Submit Button-->
+-                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit">Send</button>
++                            <button class="btn btn-primary btn-xl disabled" id="submitButton" type="submit" style="color: #000000">Send</button>
+                         </form>
+                     </div>
+                 </div>

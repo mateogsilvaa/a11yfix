@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -721,7 +721,7 @@
+                                         <tr>
+                                             <td>Jackson Bradshaw</td>
+                                             <td>Director</td>
+-                                            <td>New York</td>
++                                            <td style="color: #000000">New York</td>
+                                             <td>65</td>
+                                             <td>2008/09/26</td>
+                                             <td>$645,750</td>
