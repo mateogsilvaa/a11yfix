@@ -49,7 +49,21 @@ export {
 } from "./pipeline.js";
 export { CommandGenerator, extractPatch, type CommandInput, type CommandOptions } from "./command.js";
 export { gitPatch, toPatchPath, type FileChange } from "./patchfile.js";
-export { metricsFile, metricsOf, rateCI, renderReport, wilson, type Metrics, type MetricsFile, type ReportInput } from "./report.js";
+export {
+  corpusSetOf,
+  EVAL_DIR,
+  metricsFile,
+  metricsOf,
+  rateCI,
+  renderReport,
+  splitPages,
+  wilson,
+  type CorpusSet,
+  type Metrics,
+  type MetricsFile,
+  type ReportInput,
+  type SetMetrics,
+} from "./report.js";
 export { engineVersions } from "./versions.js";
 export { runAxe, normalize, type AxeRun, type NormalizeOptions } from "./audit.js";
 export {
