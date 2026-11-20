@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "remove aria-atomic",
+  "before": "<div aria-atomic=\"blah\" id=\"violation3\">",
+  "after": "<div id=\"violation3\">",
+  "confidence": "medium"
+}

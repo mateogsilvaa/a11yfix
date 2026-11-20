@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0183",
+  "rationale": "remove aria-valuetext",
+  "before": "<div\n    id=\"pass191\"\n    aria-braillelabel=\"\"\n    aria-brailleroledescription=\"\"\n    aria-valuetext=\"\"\n  >",
+  "after": "<div\n    id=\"pass191\"\n    aria-braillelabel=\"\"\n    aria-brailleroledescription=\"\"\n  >",
+  "confidence": "medium"
+}

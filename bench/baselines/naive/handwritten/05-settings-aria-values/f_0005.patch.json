@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "remove aria-checked",
+  "before": "<button type=\"button\" aria-checked=\"false\">",
+  "after": "<button type=\"button\">",
+  "confidence": "medium"
+}

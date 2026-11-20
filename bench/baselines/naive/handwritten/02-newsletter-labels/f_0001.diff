@@ -1,0 +1,12 @@
+===================================================================
+--- a/02-newsletter-labels.html
++++ b/02-newsletter-labels.html
+@@ -19,7 +19,7 @@
+       </div>
+       <div class="row">
+         Full name
+-        <input type="text" name="fullname">
++        <input type="text" name="fullname" aria-label="fullname">
+       </div>
+       <div class="row">
+         <span>Country</span>

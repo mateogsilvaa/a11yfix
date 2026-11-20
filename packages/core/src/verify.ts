@@ -14,7 +14,7 @@ import { auditSource, type AuditResult, type PageViolation } from "./audit.js";
 import type { AppliedPatch } from "./apply.js";
 import { allElements, attr, parseSource, type Element } from "./source.js";
 import type { Rule } from "./rule.js";
-import type { Finding, Verification, ViolationRef } from "./types.js";
+import type { Finding, SuspicionLayer, Verification, ViolationRef } from "./types.js";
 import { validatePatch } from "./validate.js";
 import { deepCheck, probeOptions, type DeepCheckOptions } from "./deepcheck.js";
 import type { Impact } from "./types.js";
@@ -46,6 +46,13 @@ export interface VerifyOutput {
 }
 
 const REGION = "R";
+
+/** Deep-check reasons carry their layer as a prefix (see deepcheck.ts). */
+function deepLayer(reason: string): SuspicionLayer {
+  if (reason.startsWith("accessibility tree:")) return "accessibility-tree";
+  if (reason.startsWith("focus order:")) return "focus-order";
+  return "visual";
+}
 
 export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
   const { file, src, finding } = input;
@@ -86,16 +93,20 @@ export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
   const tolerated = min ? cmp.newViolations.filter((v) => !atLeast(v.impact, min)) : [];
   if (min) cmp.newViolations = cmp.newViolations.filter((v) => atLeast(v.impact, min));
   const sus = suspicionReasons(src, applied, finding);
+  const flaggedBy = new Set<SuspicionLayer>(sus.length ? ["static"] : []);
   let checks: Verification["checks"];
   if (input.checks && baseline.probe && after.probe) {
     const deep = await deepCheck(src, applied, baseline.probe, after.probe, finding, input.checks);
     sus.push(...deep.reasons);
+    for (const r of deep.reasons) flaggedBy.add(deepLayer(r));
     checks = { ax: deep.ax, focus: deep.focus, visual: deep.visual };
   }
   if (input.rule?.verify) {
     const oldElements = allElements(parseSource(src));
     const newElements = allElements(parseSource(applied.patched));
-    sus.push(...input.rule.verify({ finding, src, applied, oldElements, newElements }));
+    const own = input.rule.verify({ finding, src, applied, oldElements, newElements });
+    sus.push(...own);
+    if (own.length) flaggedBy.add("rule");
   }
   const verification: Verification = {
     ...base,
@@ -106,6 +117,7 @@ export async function verifyPatch(input: VerifyInput): Promise<VerifyOutput> {
     status: "verified",
     diff: applied.diff,
     ...(tolerated.length ? { toleratedViolations: tolerated } : {}),
+    ...(flaggedBy.size ? { flaggedBy: [...flaggedBy] } : {}),
     ...(checks ? { checks } : {}),
   };
 

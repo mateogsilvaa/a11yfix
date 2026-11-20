@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0001",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"a\" only restates the file name \"a.png\"; accessibility tree: <img> (line 15) has a name that only restates its file name: \"a\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 15) has a name that only restates its file name: \"a\""
+    ],
+    "focus": {
+      "before": 2,
+      "after": 2,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

@@ -3,6 +3,19 @@
 All notable changes. The project follows semver; while it is 0.x, minor versions may break the experimental Rule
 API (ADR 0006).
 
+## Unreleased
+
+### Added
+- **Naive baseline** (ADR 0014): `bench/baselines/naive-fixer.mjs`, unchecked quick fixes run through
+  `--generator-cmd`, offline (`npm run bench:naive`). Results and a rule-by-rule analysis in
+  `bench/baselines/naive/`, including the 459 patches the verifier accepts that a reviewer would often reject.
+- **"What the verifier adds"** in every benchmark report: the same patches judged with no verifier, axe only, axe
+  plus source checks, and the full verifier.
+- **95% Wilson intervals and n** for precision in the tier and rule tables.
+- `flaggedBy` in `verification.json`: which verifier layers raised a suspicion reason.
+- README demo recorded from real runs (`docs/demo.svg`, `docs/demo.cast`, `npm run demo:record`), a results
+  section with the naive baseline next to tier 0, and a real rejected patch.
+
 ## 0.3.0
 
 Roadmap phases 1 (sites) and 3 (verification beyond axe), and tier 1 through any model or agent.

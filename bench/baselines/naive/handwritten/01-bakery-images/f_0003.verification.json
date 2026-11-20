@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0003",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"croissant\" only restates the file name \"croissant.jpg\"; accessibility tree: <img> (line 30) has a name that only restates its file name: \"croissant\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 30) has a name that only restates its file name: \"croissant\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.000891251647728656,
+        "changedPixelsOutside": 1025,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

@@ -1,0 +1,36 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "left a focusable element without a role (role removed instead of corrected)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 6,
+      "after": 6,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

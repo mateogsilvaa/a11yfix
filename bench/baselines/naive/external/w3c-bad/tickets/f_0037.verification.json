@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0037",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"headline ticket prices\" only restates the file name \"headline_ticket_prices.gif\"; accessibility tree: <img> (line 206) has a name that only restates its file name: \"headline ticket prices\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 206) has a name that only restates its file name: \"headline ticket prices\""
+    ],
+    "focus": {
+      "before": 46,
+      "after": 46,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.06718277680961703,
+        "changedPixelsOutside": 143796,
+        "size": [
+          1280,
+          1673,
+          1280,
+          1675
+        ],
+        "layoutShift": 186
+      }
+    ]
+  },
+  "tier": 1
+}

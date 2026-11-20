@@ -1,0 +1,12 @@
+===================================================================
+--- a/home.html
++++ b/home.html
+@@ -335,7 +335,7 @@
+               <TD WIDTH=150px BGCOLOR=#A9B8BF><FONT COLOR=#41545D FACE=Verdana SIZE=2>&nbsp;<B>More City Parks</B></FONT></TD>
+             </TR>
+             <TR HEIGHT=154px>
+-              <TD WIDTH=150px><IMG SRC=./img/teaser_right2.jpg WIDTH=150px HEIGHT=154px></TD>
++              <TD WIDTH=150px><IMG SRC=./img/teaser_right2.jpg WIDTH=150px HEIGHT=154px alt="teaser right2"></TD>
+             </TR>
+             <TR>
+               <TD WIDTH=150px>

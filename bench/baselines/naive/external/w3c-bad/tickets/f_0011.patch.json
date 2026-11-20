@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0011",
+  "rationale": "inline text color #000000",
+  "before": "<a href=\"./annotated/tickets.html\" class=\"annotoggle\">",
+  "after": "<a href=\"./annotated/tickets.html\" class=\"annotoggle\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

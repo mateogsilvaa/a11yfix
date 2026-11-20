@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -243,7 +243,7 @@
+                         <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
+                       </TR>
+                       <TR bgColor=#ededed>
+-                        <TD><IMG height=24 src="./img/headline_middle.gif" width=23 align="absmiddle"> Air-Con Fact Finding Mission</TD>
++                        <TD><IMG height=24 src="./img/headline_middle.gif" width=23 align="absmiddle" alt="headline middle"> Air-Con Fact Finding Mission</TD>
+                       </TR>
+                       <TR>
+                         <TD valign="top"><DIV><img src="./img/blanca.jpg" alt="Mrs B. Wahoonie investigates shipping hot air to Australia" width="240" height="180" border="0"></DIV></TD>

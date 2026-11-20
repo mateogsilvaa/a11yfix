@@ -1,0 +1,40 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"sourdough\" only restates the file name \"sourdough.jpg\"; accessibility tree: <img> (line 26) has a name that only restates its file name: \"sourdough\"; visual (desktop): 0.13% of the page changed outside the patched elements (limit 0.10%)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree",
+    "visual"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 26) has a name that only restates its file name: \"sourdough\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0013019746180178676,
+        "changedPixelsOutside": 1497,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

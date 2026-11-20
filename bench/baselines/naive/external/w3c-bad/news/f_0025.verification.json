@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0025",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"nav home\" only restates the file name \"nav_home.gif\"; accessibility tree: <img> (line 155) has a name that only restates its file name: \"nav home\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 155) has a name that only restates its file name: \"nav home\""
+    ],
+    "focus": {
+      "before": 49,
+      "after": 49,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1987,
+          1280,
+          1987
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

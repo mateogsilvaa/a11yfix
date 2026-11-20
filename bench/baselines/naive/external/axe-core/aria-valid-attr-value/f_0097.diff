@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -225,7 +225,7 @@
+   <div aria-multiselectable="true" id="pass73">hi</div>
+   <div aria-multiselectable="false" id="pass74">hi</div>
+ 
+-  <div aria-orientation="horizontal" id="pass75">hi</div>
++  <div id="pass75">hi</div>
+   <div aria-orientation="vertical" id="pass76">hi</div>
+ 
+   <div aria-owns="ref" id="pass77">hi</div>

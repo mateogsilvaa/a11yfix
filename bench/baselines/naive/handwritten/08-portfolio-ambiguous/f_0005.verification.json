@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic alt: \"img 2057\"; text alternative \"img 2057\" only restates the file name \"IMG_2057.jpg\"; accessibility tree: <img> (line 25) now has a generic name \"img 2057\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 25) now has a generic name \"img 2057\""
+    ],
+    "focus": {
+      "before": 2,
+      "after": 2,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0025032857268027686,
+        "changedPixelsOutside": 2857,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 10
+      }
+    ]
+  },
+  "tier": 1
+}

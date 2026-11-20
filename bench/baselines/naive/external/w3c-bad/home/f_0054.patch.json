@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0054",
+  "rationale": "inline text color #000000",
+  "before": "<a href=\"../acks.html\">",
+  "after": "<a href=\"../acks.html\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

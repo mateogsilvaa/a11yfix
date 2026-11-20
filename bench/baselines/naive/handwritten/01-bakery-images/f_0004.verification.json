@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0004",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"wheat divider\" only restates the file name \"wheat-divider.png\"; accessibility tree: <img> (line 34) has a name that only restates its file name: \"wheat divider\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 34) has a name that only restates its file name: \"wheat divider\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.005804326257982477,
+        "changedPixelsOutside": 6646,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 10
+      }
+    ]
+  },
+  "tier": 1
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0010",
+  "rationale": "alt text from the file name",
+  "before": "<img src=\"assets/spacer.gif\" width=\"1\" height=\"40\">",
+  "after": "<img src=\"assets/spacer.gif\" width=\"1\" height=\"40\" alt=\"spacer\">",
+  "confidence": "medium"
+}

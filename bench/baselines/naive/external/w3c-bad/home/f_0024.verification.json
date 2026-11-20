@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0024",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"marker2 t\" only restates the file name \"marker2_t.gif\"; accessibility tree: <img> (line 250) has a name that only restates its file name: \"marker2 t\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 250) has a name that only restates its file name: \"marker2 t\""
+    ],
+    "focus": {
+      "before": 56,
+      "after": 56,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1411,
+          1280,
+          1411
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

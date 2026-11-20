@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast.html
++++ b/color-contrast.html
+@@ -254,7 +254,7 @@
+   style="background: #000; color: #000"
+   value="hello"
+ />
+-<input id="canttell15" style="background: #000; color: #000" value="hello" />
++<input id="canttell15" style="background: #000; color: #000" value="hello" aria-label="canttell15"/>
+ <div
+   id="canttell16"
+   style="background: #000; color: #000"

@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -270,7 +270,7 @@
+       <TR HEIGHT=10px>
+         <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_left.gif><IMG SRC=./img/border_bottom_left.gif WIDTH=10px HEIGHT=10px></TD>
+         <TD WIDTH=780px HEIGHT=10px BACKGROUND=./img/border_bottom.gif><IMG SRC=./img/border_bottom.gif HEIGHT=10px></TD>
+-        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_right.gif><IMG SRC=./img/border_bottom_right.gif WIDTH=10px HEIGHT=10px></TD>
++        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_right.gif><IMG SRC=./img/border_bottom_right.gif WIDTH=10px HEIGHT=10px alt="border bottom right"></TD>
+       </TR>
+     </TABLE>
+     </TD></TR></TR></TABLE>

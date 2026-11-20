@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "alt text from the file name",
+  "before": "<img src=\"photos/lentil-soup-bowl.jpg\" width=\"640\">",
+  "after": "<img src=\"photos/lentil-soup-bowl.jpg\" width=\"640\" alt=\"lentil soup bowl\">",
+  "confidence": "medium"
+}

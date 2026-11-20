@@ -1,0 +1,95 @@
+{
+  "file": "corpus\\handwritten\\02-newsletter-labels.html",
+  "findings": 4,
+  "statuses": {
+    "verified": 3,
+    "rejected_suspicious": 1
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0003",
+    "f_0004"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 5,
+  "wcagViolationsAfter": 1,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2716,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "label",
+      "line": 22,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "label",
+      "line": 33,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "label",
+      "line": 37,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "label",
+      "line": 42,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "generic aria-label: \"q\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

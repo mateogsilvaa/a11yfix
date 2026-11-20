@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0084",
+  "rationale": "remove aria-checked",
+  "before": "<div aria-checked=\"mixed\" id=\"pass12\">",
+  "after": "<div id=\"pass12\">",
+  "confidence": "medium"
+}

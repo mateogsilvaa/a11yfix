@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -265,7 +265,7 @@
+         <TD ALIGN=RIGHT><FONT COLOR=BLACK FACE=Verdana SIZE=1><a rel="Copyright" href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2012 <a href="https://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>)</FONT></TD>
+       </TR>
+     </TABLE>
+-        <TD WIDTH=10px BACKGROUND=./img/border_right.gif><IMG SRC=./img/border_right.gif WIDTH=10px></TD>
++        <TD WIDTH=10px BACKGROUND=./img/border_right.gif><IMG SRC=./img/border_right.gif WIDTH=10px alt="border right"></TD>
+       </TR>
+       <TR HEIGHT=10px>
+         <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_left.gif><IMG SRC=./img/border_bottom_left.gif WIDTH=10px HEIGHT=10px></TD>

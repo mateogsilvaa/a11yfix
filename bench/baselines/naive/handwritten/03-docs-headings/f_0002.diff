@@ -1,0 +1,12 @@
+===================================================================
+--- a/03-docs-headings.html
++++ b/03-docs-headings.html
+@@ -27,7 +27,7 @@
+     <p>You need Node.js 20 or later.</p>
+     <h3 id="install">Install</h3>
+     <p>Run the installer for your platform.</p>
+-    <h5>Linux</h5>
++    <h4>Linux</h4>
+     <pre><code>curl -fsSL https://tern.example.com/install.sh | sh</code></pre>
+     <h5>Windows</h5>
+     <pre><code>winget install tern</code></pre>

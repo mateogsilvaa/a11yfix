@@ -1,0 +1,246 @@
+{
+  "generator": "cmd:node bench/baselines/naive-fixer.mjs",
+  "date": "2026-11-20",
+  "pages": 22,
+  "versions": {
+    "a11yfix-core": "0.3.0",
+    "axe-core": "4.14.1",
+    "playwright": "1.65.1",
+    "node": "26.13.1"
+  },
+  "overall": {
+    "detected": 662,
+    "skipped": 0,
+    "proposed": 653,
+    "applied": 653,
+    "verified": 459,
+    "suspicious": 167,
+    "regression": 14,
+    "persists": 13,
+    "invalid": 0,
+    "applyFailed": 0,
+    "generationFailed": 9,
+    "axeAccepted": 626,
+    "sourceAccepted": 463,
+    "usage": {
+      "inputTokens": 0,
+      "outputTokens": 0,
+      "cacheReadTokens": 0,
+      "cacheWriteTokens": 0
+    }
+  },
+  "byTier": {
+    "0": {
+      "detected": 0,
+      "skipped": 0,
+      "proposed": 0,
+      "applied": 0,
+      "verified": 0,
+      "suspicious": 0,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 0,
+      "sourceAccepted": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "1": {
+      "detected": 653,
+      "skipped": 0,
+      "proposed": 653,
+      "applied": 653,
+      "verified": 459,
+      "suspicious": 167,
+      "regression": 14,
+      "persists": 13,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 626,
+      "sourceAccepted": 463,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  },
+  "byRule": {
+    "image-alt": {
+      "detected": 159,
+      "skipped": 0,
+      "proposed": 159,
+      "applied": 159,
+      "verified": 0,
+      "suspicious": 158,
+      "regression": 1,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 158,
+      "sourceAccepted": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "label": {
+      "detected": 55,
+      "skipped": 0,
+      "proposed": 55,
+      "applied": 55,
+      "verified": 51,
+      "suspicious": 4,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 55,
+      "sourceAccepted": 51,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "heading-order": {
+      "detected": 7,
+      "skipped": 0,
+      "proposed": 7,
+      "applied": 7,
+      "verified": 6,
+      "suspicious": 0,
+      "regression": 1,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 6,
+      "sourceAccepted": 6,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-allowed-attr": {
+      "detected": 151,
+      "skipped": 0,
+      "proposed": 149,
+      "applied": 149,
+      "verified": 145,
+      "suspicious": 1,
+      "regression": 3,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 2,
+      "axeAccepted": 146,
+      "sourceAccepted": 146,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-required-attr": {
+      "detected": 34,
+      "skipped": 0,
+      "proposed": 34,
+      "applied": 34,
+      "verified": 29,
+      "suspicious": 0,
+      "regression": 4,
+      "persists": 1,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 29,
+      "sourceAccepted": 29,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-valid-attr-value": {
+      "detected": 58,
+      "skipped": 0,
+      "proposed": 51,
+      "applied": 51,
+      "verified": 43,
+      "suspicious": 3,
+      "regression": 5,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 7,
+      "axeAccepted": 46,
+      "sourceAccepted": 46,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "aria-roles": {
+      "detected": 17,
+      "skipped": 0,
+      "proposed": 17,
+      "applied": 17,
+      "verified": 16,
+      "suspicious": 1,
+      "regression": 0,
+      "persists": 0,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 17,
+      "sourceAccepted": 16,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    "color-contrast": {
+      "detected": 181,
+      "skipped": 0,
+      "proposed": 181,
+      "applied": 181,
+      "verified": 169,
+      "suspicious": 0,
+      "regression": 0,
+      "persists": 12,
+      "invalid": 0,
+      "applyFailed": 0,
+      "generationFailed": 0,
+      "axeAccepted": 169,
+      "sourceAccepted": 169,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -134,7 +134,7 @@
+   <div aria-atomic="false" id="pass3">hi</div>
+ 
+   <div aria-autocomplete="inline" id="pass4">inline</div>
+-  <div aria-autocomplete="list" id="pass5">list</div>
++  <div id="pass5">list</div>
+   <div aria-autocomplete="both" id="pass6">both</div>
+   <div aria-autocomplete="none" id="pass7">none</div>
+ 

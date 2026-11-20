@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -34,9 +34,6 @@
+ <div
+   role="spinbutton"
+   id="pass3"
+-  aria-valuenow="value"
+-  aria-valuemax="value"
+-  aria-valuemin="value"
+ >
+   ok
+ </div>

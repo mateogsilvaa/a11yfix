@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0006",
+  "rationale": "remove aria-autocomplete",
+  "before": "<div aria-autocomplete=\"stuff\" id=\"violation4\">",
+  "after": "<div id=\"violation4\">",
+  "confidence": "medium"
+}

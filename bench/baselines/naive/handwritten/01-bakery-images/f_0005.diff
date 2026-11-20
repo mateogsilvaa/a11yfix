@@ -1,0 +1,12 @@
+===================================================================
+--- a/01-bakery-images.html
++++ b/01-bakery-images.html
+@@ -33,7 +33,7 @@
+     </section>
+     <img class="divider" src="img/wheat-divider.png" width="300">
+     <h2>Opening hours</h2>
+-    <img src="img/hours-table.png" width="400">
++    <img src="img/hours-table.png" width="400" alt="hours table">
+     <p>Call us at 555-0134 to place a large order.</p>
+     <p>
+       <a href="https://maps.example.com/crumb"><img src="img/map-pin.png" width="16"> Find us on the map</a>

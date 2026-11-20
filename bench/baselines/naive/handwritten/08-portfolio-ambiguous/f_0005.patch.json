@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "alt text from the file name",
+  "before": "<img src=\"work/IMG_2057.jpg\">",
+  "after": "<img src=\"work/IMG_2057.jpg\" alt=\"img 2057\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,77 @@
+diff --git a/corpus/external/axe-core/label.html b/corpus/external/axe-core/label.html
+--- a/corpus/external/axe-core/label.html
++++ b/corpus/external/axe-core/label.html
+@@ -17,8 +17,8 @@
+   <input type="button" id="na3" />
+   <input type="submit" id="na4" />
+   <input type="reset" id="na5" />
+-  <input type="text" id="fail1" />
+-  <textarea id="fail2"></textarea>
++  <input type="text" id="fail1" aria-label="fail1"/>
++  <textarea id="fail2" aria-label="fail2"></textarea>
+   <input type="text" aria-label="label" id="pass1" />
+   <textarea aria-label="label" id="pass2"></textarea>
+   <input type="text" aria-labelledby="label" id="pass3" />
+@@ -27,13 +27,13 @@
+   <label>Label <input type="text" id="pass5" /></label>
+   <label>Label <textarea id="pass6"></textarea></label>
+ 
+-  <label><input type="text" id="fail3" /></label>
+-  <label><textarea id="fail4"></textarea></label>
+-  <label for="fail5"></label><input type="text" id="fail5" />
+-  <label for="fail6"></label><textarea id="fail6"></textarea>
++  <label><input type="text" id="fail3" aria-label="fail3"/></label>
++  <label><textarea id="fail4" aria-label="fail4"></textarea></label>
++  <label for="fail5"></label><input type="text" id="fail5" aria-label="fail5"/>
++  <label for="fail6"></label><textarea id="fail6" aria-label="fail6"></textarea>
+ 
+   <label for="fail7" style="display: none">Text</label
+-  ><input type="text" id="fail7" /> <label for="pass7">Label</label
++  ><input type="text" id="fail7" aria-label="fail7"/> <label for="pass7">Label</label
+   ><input type="text" id="pass7" /><label for="pass8">Label</label
+   ><textarea id="pass8"></textarea>
+ 
+@@ -41,7 +41,7 @@
+   <textarea id="pass10" title="Label"></textarea>
+ 
+   <label
+-    ><label><input type="text" id="fail8" /></label
++    ><label><input type="text" id="fail8" aria-label="fail8"/></label
+   ></label>
+ 
+   <div>
+@@ -73,12 +73,12 @@
+   <div id="hiddenlabel" aria-hidden="true">Hidden label</div>
+   <input type="text" id="pass16" aria-labelledby="hiddenlabel" />
+ 
+-  <label> <input id="fail9" value="val" /></label>
+-  <label for="fail10"> <input id="fail10" value="val" /></label>
++  <label> <input id="fail9" value="val" aria-label="fail9"/></label>
++  <label for="fail10"> <input id="fail10" value="val" aria-label="fail10"/></label>
+   <div id="lbl-f13">
+-    <input id="fail11" value="val" aria-labelledby="lbl-f13" />
++    <input id="fail11" value="val" aria-labelledby="lbl-f13" aria-label="fail11"/>
+   </div>
+-  <label><textarea id="fail12"> value</textarea></label>
++  <label><textarea id="fail12" aria-label="fail12"> value</textarea></label>
+ 
+   <table>
+     <tr>
+@@ -90,7 +90,7 @@
+   <div id="fail13-label">
+     <span role="progressbar" aria-valuenow="23">23%</span>
+   </div>
+-  <input type="text" id="fail13" aria-labelledby="fail13-label" />
++  <input type="text" id="fail13" aria-labelledby="fail13-label" aria-label="fail13"/>
+ 
+   <div id="fail14-label">
+     <select>
+@@ -98,7 +98,7 @@
+       <option>Option 2</option>
+     </select>
+   </div>
+-  <input type="text" id="fail14" aria-labelledby="fail14-label" />
++  <input type="text" id="fail14" aria-labelledby="fail14-label" aria-label="fail14"/>
+ </form>
+ </div>
+ </body>

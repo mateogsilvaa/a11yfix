@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0187",
+  "rationale": "add aria-checked with a default value",
+  "before": "<div role=\"checkbox\" id=\"incomplete6\" aria-checked>",
+  "after": "<div role=\"checkbox\" id=\"incomplete6\" aria-checked aria-checked=\"false\">",
+  "confidence": "medium"
+}

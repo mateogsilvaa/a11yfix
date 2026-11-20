@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0037",
+  "rationale": "remove aria-required",
+  "before": "<div aria-required=\"stuff\" id=\"violation28\">",
+  "after": "<div id=\"violation28\">",
+  "confidence": "medium"
+}

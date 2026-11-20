@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="842" height="512" viewBox="0 0 842 512" role="img" aria-labelledby="title desc">
+<title id="title">a11yfix demo: audit, fix, verify</title>
+<desc id="desc">A terminal recording. a11yfix audits demo/before/index.html and finds 9 violations, fixes 4 with deterministic codemods that the verifier accepts, shows the resulting patch, and then rejects a hand-written patch whose alt text only restates the image file name.</desc>
+<style>
+text{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,"Liberation Mono",monospace;font-size:14px;fill:#d6dde6}
+.cmd{fill:#7cc4ff;font-weight:600}.add{fill:#7ee787}.del{fill:#ff8f8f}.ok{fill:#7ee787}.bad{fill:#ffb86b}.dim{fill:#8b96a3}
+@keyframes a0{0%,2.860%{opacity:0}2.861%,99.5%{opacity:1}100%{opacity:0}}#l0{animation:a0 20.98s steps(1,end) infinite}
+@keyframes a1{0%,12.871%{opacity:0}12.872%,99.5%{opacity:1}100%{opacity:0}}#l1{animation:a1 20.98s steps(1,end) infinite}
+@keyframes a2{0%,13.110%{opacity:0}13.111%,99.5%{opacity:1}100%{opacity:0}}#l2{animation:a2 20.98s steps(1,end) infinite}
+@keyframes a3{0%,13.348%{opacity:0}13.349%,99.5%{opacity:1}100%{opacity:0}}#l3{animation:a3 20.98s steps(1,end) infinite}
+@keyframes a4{0%,13.586%{opacity:0}13.587%,99.5%{opacity:1}100%{opacity:0}}#l4{animation:a4 20.98s steps(1,end) infinite}
+@keyframes a5{0%,13.825%{opacity:0}13.826%,99.5%{opacity:1}100%{opacity:0}}#l5{animation:a5 20.98s steps(1,end) infinite}
+@keyframes a6{0%,14.063%{opacity:0}14.064%,99.5%{opacity:1}100%{opacity:0}}#l6{animation:a6 20.98s steps(1,end) infinite}
+@keyframes a7{0%,14.301%{opacity:0}14.302%,99.5%{opacity:1}100%{opacity:0}}#l7{animation:a7 20.98s steps(1,end) infinite}
+@keyframes a8{0%,14.540%{opacity:0}14.541%,99.5%{opacity:1}100%{opacity:0}}#l8{animation:a8 20.98s steps(1,end) infinite}
+@keyframes a9{0%,17.400%{opacity:0}17.401%,99.5%{opacity:1}100%{opacity:0}}#l9{animation:a9 20.98s steps(1,end) infinite}
+@keyframes a10{0%,25.333%{opacity:0}25.334%,99.5%{opacity:1}100%{opacity:0}}#l10{animation:a10 20.98s steps(1,end) infinite}
+@keyframes a11{0%,31.053%{opacity:0}31.054%,99.5%{opacity:1}100%{opacity:0}}#l11{animation:a11 20.98s steps(1,end) infinite}
+@keyframes a12{0%,31.291%{opacity:0}31.292%,99.5%{opacity:1}100%{opacity:0}}#l12{animation:a12 20.98s steps(1,end) infinite}
+@keyframes a13{0%,31.291%{opacity:0}31.292%,99.5%{opacity:1}100%{opacity:0}}#l13{animation:a13 20.98s steps(1,end) infinite}
+@keyframes a14{0%,31.530%{opacity:0}31.531%,99.5%{opacity:1}100%{opacity:0}}#l14{animation:a14 20.98s steps(1,end) infinite}
+@keyframes a15{0%,31.768%{opacity:0}31.769%,99.5%{opacity:1}100%{opacity:0}}#l15{animation:a15 20.98s steps(1,end) infinite}
+@keyframes a16{0%,31.768%{opacity:0}31.769%,99.5%{opacity:1}100%{opacity:0}}#l16{animation:a16 20.98s steps(1,end) infinite}
+@keyframes a17{0%,32.006%{opacity:0}32.007%,99.5%{opacity:1}100%{opacity:0}}#l17{animation:a17 20.98s steps(1,end) infinite}
+@keyframes a18{0%,32.006%{opacity:0}32.007%,99.5%{opacity:1}100%{opacity:0}}#l18{animation:a18 20.98s steps(1,end) infinite}
+@keyframes a19{0%,34.748%{opacity:0}34.749%,99.5%{opacity:1}100%{opacity:0}}#l19{animation:a19 20.98s steps(1,end) infinite}
+@keyframes a20{0%,34.986%{opacity:0}34.987%,99.5%{opacity:1}100%{opacity:0}}#l20{animation:a20 20.98s steps(1,end) infinite}
+@keyframes a21{0%,35.224%{opacity:0}35.225%,99.5%{opacity:1}100%{opacity:0}}#l21{animation:a21 20.98s steps(1,end) infinite}
+@keyframes a22{0%,35.496%{opacity:0}35.497%,99.5%{opacity:1}100%{opacity:0}}#l22{animation:a22 20.98s steps(1,end) infinite}
+@keyframes a23{0%,36.740%{opacity:0}36.741%,99.5%{opacity:1}100%{opacity:0}}#l23{animation:a23 20.98s steps(1,end) infinite}
+@keyframes a24{0%,36.979%{opacity:0}36.980%,99.5%{opacity:1}100%{opacity:0}}#l24{animation:a24 20.98s steps(1,end) infinite}
+@keyframes a25{0%,40.792%{opacity:0}40.793%,99.5%{opacity:1}100%{opacity:0}}#l25{animation:a25 20.98s steps(1,end) infinite}
+@keyframes a26{0%,44.415%{opacity:0}44.416%,99.5%{opacity:1}100%{opacity:0}}#l26{animation:a26 20.98s steps(1,end) infinite}
+@keyframes a27{0%,44.701%{opacity:0}44.702%,99.5%{opacity:1}100%{opacity:0}}#l27{animation:a27 20.98s steps(1,end) infinite}
+@keyframes a28{0%,44.987%{opacity:0}44.988%,99.5%{opacity:1}100%{opacity:0}}#l28{animation:a28 20.98s steps(1,end) infinite}
+@keyframes a29{0%,45.273%{opacity:0}45.274%,99.5%{opacity:1}100%{opacity:0}}#l29{animation:a29 20.98s steps(1,end) infinite}
+@keyframes a30{0%,45.559%{opacity:0}45.560%,99.5%{opacity:1}100%{opacity:0}}#l30{animation:a30 20.98s steps(1,end) infinite}
+@keyframes a31{0%,45.845%{opacity:0}45.846%,99.5%{opacity:1}100%{opacity:0}}#l31{animation:a31 20.98s steps(1,end) infinite}
+@keyframes a32{0%,46.131%{opacity:0}46.132%,99.5%{opacity:1}100%{opacity:0}}#l32{animation:a32 20.98s steps(1,end) infinite}
+@keyframes a33{0%,46.418%{opacity:0}46.419%,99.5%{opacity:1}100%{opacity:0}}#l33{animation:a33 20.98s steps(1,end) infinite}
+@keyframes a34{0%,46.704%{opacity:0}46.705%,99.5%{opacity:1}100%{opacity:0}}#l34{animation:a34 20.98s steps(1,end) infinite}
+@keyframes a35{0%,46.704%{opacity:0}46.705%,99.5%{opacity:1}100%{opacity:0}}#l35{animation:a35 20.98s steps(1,end) infinite}
+@keyframes a36{0%,46.990%{opacity:0}46.991%,99.5%{opacity:1}100%{opacity:0}}#l36{animation:a36 20.98s steps(1,end) infinite}
+@keyframes a37{0%,46.990%{opacity:0}46.991%,99.5%{opacity:1}100%{opacity:0}}#l37{animation:a37 20.98s steps(1,end) infinite}
+@keyframes a38{0%,50.803%{opacity:0}50.804%,99.5%{opacity:1}100%{opacity:0}}#l38{animation:a38 20.98s steps(1,end) infinite}
+@keyframes a39{0%,54.426%{opacity:0}54.427%,99.5%{opacity:1}100%{opacity:0}}#l39{animation:a39 20.98s steps(1,end) infinite}
+@keyframes a40{0%,54.712%{opacity:0}54.713%,99.5%{opacity:1}100%{opacity:0}}#l40{animation:a40 20.98s steps(1,end) infinite}
+@keyframes a41{0%,54.998%{opacity:0}54.999%,99.5%{opacity:1}100%{opacity:0}}#l41{animation:a41 20.98s steps(1,end) infinite}
+@keyframes a42{0%,55.284%{opacity:0}55.285%,99.5%{opacity:1}100%{opacity:0}}#l42{animation:a42 20.98s steps(1,end) infinite}
+@keyframes a43{0%,55.570%{opacity:0}55.571%,99.5%{opacity:1}100%{opacity:0}}#l43{animation:a43 20.98s steps(1,end) infinite}
+@keyframes a44{0%,55.856%{opacity:0}55.857%,99.5%{opacity:1}100%{opacity:0}}#l44{animation:a44 20.98s steps(1,end) infinite}
+@keyframes a45{0%,56.142%{opacity:0}56.143%,99.5%{opacity:1}100%{opacity:0}}#l45{animation:a45 20.98s steps(1,end) infinite}
+@keyframes a46{0%,59.003%{opacity:0}59.004%,99.5%{opacity:1}100%{opacity:0}}#l46{animation:a46 20.98s steps(1,end) infinite}
+@keyframes a47{0%,69.014%{opacity:0}69.015%,99.5%{opacity:1}100%{opacity:0}}#l47{animation:a47 20.98s steps(1,end) infinite}
+@keyframes a48{0%,69.252%{opacity:0}69.253%,99.5%{opacity:1}100%{opacity:0}}#l48{animation:a48 20.98s steps(1,end) infinite}
+@keyframes a49{0%,69.490%{opacity:0}69.491%,99.5%{opacity:1}100%{opacity:0}}#l49{animation:a49 20.98s steps(1,end) infinite}
+@keyframes a50{0%,69.729%{opacity:0}69.730%,99.5%{opacity:1}100%{opacity:0}}#l50{animation:a50 20.98s steps(1,end) infinite}
+@keyframes a51{0%,69.967%{opacity:0}69.968%,99.5%{opacity:1}100%{opacity:0}}#l51{animation:a51 20.98s steps(1,end) infinite}
+@keyframes a52{0%,70.205%{opacity:0}70.206%,99.5%{opacity:1}100%{opacity:0}}#l52{animation:a52 20.98s steps(1,end) infinite}
+@keyframes a53{0%,70.205%{opacity:0}70.206%,99.5%{opacity:1}100%{opacity:0}}#l53{animation:a53 20.98s steps(1,end) infinite}
+@keyframes a54{0%,70.444%{opacity:0}70.445%,99.5%{opacity:1}100%{opacity:0}}#l54{animation:a54 20.98s steps(1,end) infinite}
+@keyframes a55{0%,70.682%{opacity:0}70.683%,99.5%{opacity:1}100%{opacity:0}}#l55{animation:a55 20.98s steps(1,end) infinite}
+@keyframes a56{0%,70.921%{opacity:0}70.922%,99.5%{opacity:1}100%{opacity:0}}#l56{animation:a56 20.98s steps(1,end) infinite}
+@keyframes a57{0%,71.159%{opacity:0}71.160%,99.5%{opacity:1}100%{opacity:0}}#l57{animation:a57 20.98s steps(1,end) infinite}
+@keyframes a58{0%,71.397%{opacity:0}71.398%,99.5%{opacity:1}100%{opacity:0}}#l58{animation:a58 20.98s steps(1,end) infinite}
+@keyframes scroll{0%{transform:translateY(0)}36.979%{transform:translateY(-19px)}40.792%{transform:translateY(-38px)}44.415%{transform:translateY(-57px)}44.701%{transform:translateY(-76px)}44.987%{transform:translateY(-95px)}45.273%{transform:translateY(-114px)}45.559%{transform:translateY(-133px)}45.845%{transform:translateY(-152px)}46.131%{transform:translateY(-171px)}46.418%{transform:translateY(-190px)}46.704%{transform:translateY(-209px)}46.704%{transform:translateY(-228px)}46.990%{transform:translateY(-247px)}46.990%{transform:translateY(-266px)}50.803%{transform:translateY(-285px)}54.426%{transform:translateY(-304px)}54.712%{transform:translateY(-323px)}54.998%{transform:translateY(-342px)}55.284%{transform:translateY(-361px)}55.570%{transform:translateY(-380px)}55.856%{transform:translateY(-399px)}56.142%{transform:translateY(-418px)}59.003%{transform:translateY(-437px)}69.014%{transform:translateY(-456px)}69.252%{transform:translateY(-475px)}69.490%{transform:translateY(-494px)}69.729%{transform:translateY(-513px)}69.967%{transform:translateY(-532px)}70.205%{transform:translateY(-551px)}70.205%{transform:translateY(-570px)}70.444%{transform:translateY(-589px)}70.682%{transform:translateY(-608px)}70.921%{transform:translateY(-627px)}71.159%{transform:translateY(-646px)}71.397%{transform:translateY(-665px)}99.5%{transform:translateY(-665px)}100%{transform:translateY(0)}}#content{animation:scroll 20.98s steps(1,end) infinite}
+@media (prefers-reduced-motion: reduce){[id^="l"]{animation:none!important;opacity:1}#content{animation:none!important;transform:translateY(-665px)}}
+</style>
+<rect width="842" height="512" rx="10" fill="#0d1117"/>
+<circle cx="22" cy="20" r="6" fill="#ff5f56"/><circle cx="42" cy="20" r="6" fill="#ffbd2e"/><circle cx="62" cy="20" r="6" fill="#27c93f"/>
+<clipPath id="screen"><rect x="0" y="40" width="842" height="460"/></clipPath>
+<g clip-path="url(#screen)"><g id="content">
+<text id="l0" x="16" y="54" class="cmd" xml:space="preserve">$ a11yfix audit index.html --out findings.json</text>
+<text id="l1" x="16" y="73" xml:space="preserve">9 finding(s) in index.html (2.3 s, axe 4.14.1)</text>
+<text id="l2" x="16" y="92" xml:space="preserve">  image-alt: 2 (tier 1)</text>
+<text id="l3" x="16" y="111" xml:space="preserve">  aria-roles: 2 (tier 0)</text>
+<text id="l4" x="16" y="130" xml:space="preserve">  color-contrast: 2 (tier 1)</text>
+<text id="l5" x="16" y="149" xml:space="preserve">  heading-order: 1 (tier 0)</text>
+<text id="l6" x="16" y="168" xml:space="preserve">  aria-required-attr: 1 (tier 1)</text>
+<text id="l7" x="16" y="187" xml:space="preserve">  aria-valid-attr-value: 1 (tier 0)</text>
+<text id="l8" x="16" y="206" xml:space="preserve">wrote findings.json</text>
+<text id="l9" x="16" y="225" class="cmd" xml:space="preserve">$ a11yfix fix findings.json --verify --strict --mode codemod --out patches</text>
+<text id="l10" x="16" y="244" xml:space="preserve">index.html: 9 finding(s), mode codemod, verifying</text>
+<text id="l11" x="16" y="263" class="dim" xml:space="preserve">  f_0001 image-alt: skipped (needs judgment (tier-1 rule without codemod); no model configured)</text>
+<text id="l12" x="16" y="282" class="dim" xml:space="preserve">  f_0003 color-contrast: skipped (needs judgment (tier-1 rule without codemod); no model configu</text>
+<text id="l13" x="16" y="301" xml:space="preserve">  red)</text>
+<text id="l14" x="16" y="320" class="dim" xml:space="preserve">  f_0005 image-alt: skipped (needs judgment (tier-1 rule without codemod); no model configured)</text>
+<text id="l15" x="16" y="339" class="dim" xml:space="preserve">  f_0007 aria-required-attr: skipped (needs judgment (tier-1 rule without codemod); no model con</text>
+<text id="l16" x="16" y="358" xml:space="preserve">  figured)</text>
+<text id="l17" x="16" y="377" class="dim" xml:space="preserve">  f_0009 color-contrast: skipped (needs judgment (tier-1 rule without codemod); no model configu</text>
+<text id="l18" x="16" y="396" xml:space="preserve">  red)</text>
+<text id="l19" x="16" y="415" class="ok" xml:space="preserve">  f_0002 aria-roles [tier 0]: verified</text>
+<text id="l20" x="16" y="434" class="ok" xml:space="preserve">  f_0004 heading-order [tier 0]: verified</text>
+<text id="l21" x="16" y="453" class="ok" xml:space="preserve">  f_0006 aria-roles [tier 0]: verified</text>
+<text id="l22" x="16" y="472" class="ok" xml:space="preserve">  f_0008 aria-valid-attr-value [tier 0]: verified</text>
+<text id="l23" x="16" y="491" class="ok" xml:space="preserve">  {"skipped":5,"verified":4}; 5 subset violation(s) left after the patch</text>
+<text id="l24" x="16" y="510" xml:space="preserve">wrote patches\a11yfix.patch: 4 change(s). Apply with: git apply patches\a11yfix.patch</text>
+<text id="l25" x="16" y="529" class="cmd" xml:space="preserve">$ grep '^[-+][^-+]' patches/a11yfix.patch</text>
+<text id="l26" x="16" y="548" class="del" xml:space="preserve">-    &lt;nav role="navigaton"&gt;</text>
+<text id="l27" x="16" y="567" class="add" xml:space="preserve">+    &lt;nav role="navigation"&gt;</text>
+<text id="l28" x="16" y="586" class="del" xml:space="preserve">-    &lt;h3&gt;Rent a plot&lt;/h3&gt;</text>
+<text id="l29" x="16" y="605" class="add" xml:space="preserve">+    &lt;h2&gt;Rent a plot&lt;/h2&gt;</text>
+<text id="l30" x="16" y="624" class="del" xml:space="preserve">-      &lt;div class="btn" role="buton" tabindex="0"&gt;Join the waitlist&lt;/div&gt;</text>
+<text id="l31" x="16" y="643" class="add" xml:space="preserve">+      &lt;div class="btn" role="button" tabindex="0"&gt;Join the waitlist&lt;/div&gt;</text>
+<text id="l32" x="16" y="662" class="del" xml:space="preserve">-    &lt;h3&gt;Volunteer&lt;/h3&gt;</text>
+<text id="l33" x="16" y="681" class="add" xml:space="preserve">+    &lt;h2&gt;Volunteer&lt;/h2&gt;</text>
+<text id="l34" x="16" y="700" class="del" xml:space="preserve">-    &lt;button type="button" aria-expanded="yes" aria-controls="volunteer-details"&gt;More about volu</text>
+<text id="l35" x="16" y="719" xml:space="preserve">  nteering&lt;/button&gt;</text>
+<text id="l36" x="16" y="738" class="add" xml:space="preserve">+    &lt;button type="button" aria-expanded="true" aria-controls="volunteer-details"&gt;More about vol</text>
+<text id="l37" x="16" y="757" xml:space="preserve">  unteering&lt;/button&gt;</text>
+<text id="l38" x="16" y="776" class="cmd" xml:space="preserve">$ cat patch.json   # a quick fix someone wrote by hand</text>
+<text id="l39" x="16" y="795" xml:space="preserve">{</text>
+<text id="l40" x="16" y="814" xml:space="preserve">  "findingId": "f_0005",</text>
+<text id="l41" x="16" y="833" xml:space="preserve">  "rationale": "Add alt text",</text>
+<text id="l42" x="16" y="852" xml:space="preserve">  "before": "&lt;img src=\"plot-map.png\" width=\"260\"&gt;",</text>
+<text id="l43" x="16" y="871" xml:space="preserve">  "after": "&lt;img src=\"plot-map.png\" width=\"260\" alt=\"plot map\"&gt;",</text>
+<text id="l44" x="16" y="890" xml:space="preserve">  "confidence": "high"</text>
+<text id="l45" x="16" y="909" xml:space="preserve">}</text>
+<text id="l46" x="16" y="928" class="cmd" xml:space="preserve">$ a11yfix verify index.html patch.json --findings findings.json | head -11</text>
+<text id="l47" x="16" y="947" xml:space="preserve">{</text>
+<text id="l48" x="16" y="966" xml:space="preserve">  "findingId": "f_0005",</text>
+<text id="l49" x="16" y="985" xml:space="preserve">  "ruleGone": true,</text>
+<text id="l50" x="16" y="1004" xml:space="preserve">  "newViolations": [],</text>
+<text id="l51" x="16" y="1023" class="bad" xml:space="preserve">  "suspicious": true,</text>
+<text id="l52" x="16" y="1042" class="bad" xml:space="preserve">  "reason": "text alternative \"plot map\" only restates the file name \"plot-map.png\"; accessi</text>
+<text id="l53" x="16" y="1061" class="bad" xml:space="preserve">  bility tree: &lt;img&gt; (line 30) has a name that only restates its file name: \"plot map\"",</text>
+<text id="l54" x="16" y="1080" class="bad" xml:space="preserve">  "status": "rejected_suspicious",</text>
+<text id="l55" x="16" y="1099" xml:space="preserve">  "flaggedBy": [</text>
+<text id="l56" x="16" y="1118" xml:space="preserve">    "static",</text>
+<text id="l57" x="16" y="1137" xml:space="preserve">    "accessibility-tree"</text>
+<text id="l58" x="16" y="1156" xml:space="preserve">  ],</text>
+</g></g>
+</svg>

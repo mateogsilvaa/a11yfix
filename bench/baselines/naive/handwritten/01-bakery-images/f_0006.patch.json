@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0006",
+  "rationale": "alt text from the file name",
+  "before": "<img src=\"img/map-pin.png\" width=\"16\">",
+  "after": "<img src=\"img/map-pin.png\" width=\"16\" alt=\"map pin\">",
+  "confidence": "medium"
+}

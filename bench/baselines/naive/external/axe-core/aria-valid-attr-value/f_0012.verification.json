@@ -1,0 +1,38 @@
+{
+  "findingId": "f_0012",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "accessibility tree: <div> (line 27) lost its disabled state",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<div> (line 27) lost its disabled state"
+    ],
+    "focus": {
+      "before": 10,
+      "after": 10,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          4618,
+          1280,
+          4618
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

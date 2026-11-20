@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0051",
+  "rationale": "inline text color #000000",
+  "before": "<a href=\"https://www.w3.org/WAI/EO/\">",
+  "after": "<a href=\"https://www.w3.org/WAI/EO/\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

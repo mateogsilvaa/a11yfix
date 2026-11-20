@@ -1,0 +1,103 @@
+diff --git a/corpus/external/axe-core/color-contrast.html b/corpus/external/axe-core/color-contrast.html
+--- a/corpus/external/axe-core/color-contrast.html
++++ b/corpus/external/axe-core/color-contrast.html
+@@ -96,14 +96,12 @@
+   id="ignore1"
+   style="background: #000; color: #000"
+   value="hello"
+-  type="radio"
+-/>
++  type="radio" aria-label="ignore1"/>
+ <input
+   id="ignore2"
+   style="background: #000; color: #000"
+   value="hello"
+-  type="checkbox"
+-/>
++  type="checkbox" aria-label="ignore2"/>
+ <input
+   id="ignore4"
+   style="background: #000; color: #000"
+@@ -212,8 +210,7 @@
+   id="canttell6"
+   style="background: #000; color: #000"
+   value="hello"
+-  type="text"
+-/>
++  type="text" aria-label="canttell6"/>
+ <input
+   id="canttell7"
+   style="background: #000; color: #000"
+@@ -235,7 +232,7 @@
+ <select id="canttell10" style="background: #000; color: #000">
+   <option>Hello</option>
+ </select>
+-<textarea id="canttell11" style="background: #000; color: #000">hello</textarea>
++<textarea id="canttell11" style="background: #000; color: #000" aria-label="canttell11">hello</textarea>
+ <input
+   id="canttell12"
+   type="button"
+@@ -254,7 +251,7 @@
+   style="background: #000; color: #000"
+   value="hello"
+ />
+-<input id="canttell15" style="background: #000; color: #000" value="hello" />
++<input id="canttell15" style="background: #000; color: #000" value="hello" aria-label="canttell15"/>
+ <div
+   id="canttell16"
+   style="background: #000; color: #000"
+@@ -303,7 +300,7 @@
+     font-weight: 900;
+   "
+ >
+-  <span id="fail16" style="font-weight: lighter">This is a fail</span>
++  <span id="fail16" style="color: #ffffff; font-weight: lighter">This is a fail</span>
+ </div>
+ 
+ <div
+@@ -409,7 +406,7 @@
+ </div>
+ 
+ <div style="background-color: #222; height: 40px; width: 100px"></div>
+-<div style="margin: -40px 0 40px" id="fail10">Hello world</div>
++<div style="color: #ffffff; margin: -40px 0 40px" id="fail10">Hello world</div>
+ 
+ <div
+   style="
+@@ -421,7 +418,7 @@
+   "
+ >
+   <div style="overflow: hidden; position: relative; left: 100px">
+-    <div id="fail11" style="position: relative; top: 100px">
++    <div id="fail11" style="color: #ffffff; position: relative; top: 100px">
+       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+       tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+       veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+@@ -518,7 +515,7 @@
+   Ignore.
+ </div>
+ 
+-<textarea id="pass24" style="background-color: white; color: black">
++<textarea id="pass24" style="background-color: white; color: black" aria-label="pass24">
+ Hello world</textarea>
+ 
+ <div style="position: relative; z-index: 1; width: 200px; height: 200px">
+@@ -564,7 +561,7 @@
+ </div>
+ 
+ <!-- empty text inputs: filled-state contrast cannot be known yet -->
+-<input id="canttell24" type="text" style="background: #fff; color: #eee" />
++<input id="canttell24" type="text" style="background: #fff; color: #eee" aria-label="canttell24"/>
+ <style>
+   .placeholder-000::placeholder {
+     color: #000;
+@@ -591,8 +588,7 @@
+   id="fail15"
+   type="text"
+   value="hello"
+-  style="background: #fff; color: #eee"
+-/>
++  style="background: #fff; color: #eee" aria-label="fail15"/>
+ </div>
+ </body>
+ </html>

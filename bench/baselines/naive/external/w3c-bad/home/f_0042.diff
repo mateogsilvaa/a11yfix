@@ -1,0 +1,12 @@
+===================================================================
+--- a/home.html
++++ b/home.html
+@@ -329,7 +329,7 @@
+               <TD>&nbsp;</TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=150px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=150px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+             <TR HEIGHT=25px>
+               <TD WIDTH=150px BGCOLOR=#A9B8BF><FONT COLOR=#41545D FACE=Verdana SIZE=2>&nbsp;<B>More City Parks</B></FONT></TD>

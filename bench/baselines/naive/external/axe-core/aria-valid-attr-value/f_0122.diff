@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -267,7 +267,7 @@
+   <div aria-sort="ascending" id="pass109">hi</div>
+   <div aria-sort="descending" id="pass110">hi</div>
+   <div aria-sort="other" id="pass111">hi</div>
+-  <div aria-sort="none" id="pass112">hi</div>
++  <div id="pass112">hi</div>
+ 
+   <div aria-valuemax="0.1" id="pass113">hi</div>
+   <div aria-valuemax="1.1" id="pass114">hi</div>

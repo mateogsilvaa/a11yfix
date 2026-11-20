@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0052",
+  "rationale": "inline text color #000000",
+  "before": "<acronym title=\"Web Accessibility Initiative: Training, Implementation, Education, Support\">",
+  "after": "<acronym title=\"Web Accessibility Initiative: Training, Implementation, Education, Support\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

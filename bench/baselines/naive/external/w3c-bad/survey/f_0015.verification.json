@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0015",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"border top\" only restates the file name \"border_top.gif\"; accessibility tree: <img> (line 82) has a name that only restates its file name: \"border top\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 82) has a name that only restates its file name: \"border top\""
+    ],
+    "focus": {
+      "before": 53,
+      "after": 53,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1607,
+          1280,
+          1607
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

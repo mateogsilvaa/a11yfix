@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -89,8 +89,7 @@
+       type="text"
+       id="violation45"
+       aria-invalid="true"
+-      aria-errormessage="violation45-ref"
+-    />
++      aria-errormessage="violation45-ref" aria-label="violation45"/>
+     <div id="violation45-ref" style="visibility: hidden">Error message 1</div>
+   </div>
+ 

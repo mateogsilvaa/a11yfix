@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0014",
+  "rationale": "add aria-expanded, aria-controls with a default value",
+  "before": "<div role=\"combobox\" id=\"violation4\">",
+  "after": "<div role=\"combobox\" id=\"violation4\" aria-expanded=\"false\" aria-controls=\"false\">",
+  "confidence": "medium"
+}

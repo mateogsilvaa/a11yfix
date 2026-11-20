@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -199,7 +199,7 @@
+                   </TR>
+                   <TR bgColor=#ededed>
+                     <TD><p class=headline><IMG height=24 src="./img/headline_middle.gif" width=23 align="absmiddle"><font size="3"> Your Shout</font></p></TD>
+-                    <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
++                    <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1 alt="marker2 t"></TD>
+                   </TR>
+                   <TR>
+                     <TD><blockquote><a href="../offsite.html"><img src="./img/smzappa2.jpg" width="65" height="80" alt="picture of Clara F." style="float:left;margin-right:5px;" align="left" /></a> &quot;Well I think the Mayor's getting all heated up about nothing. Remember that 15 months is pretty much a lifetime to someone like me. But hey, I'm just a baby, and can't even vote, so you can ignore my opinion. And I can tell you that I'm standing for mayor on a ticket of infant suffrage&quot;.</blockquote> <strong>&nbsp;Clara F., 15 months, via email</strong><br/><br/></TD>

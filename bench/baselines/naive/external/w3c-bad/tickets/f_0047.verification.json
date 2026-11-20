@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0047",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"border bottom right\" only restates the file name \"border_bottom_right.gif\"; accessibility tree: <img> (line 292) has a name that only restates its file name: \"border bottom right\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 292) has a name that only restates its file name: \"border bottom right\""
+    ],
+    "focus": {
+      "before": 46,
+      "after": 46,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1673,
+          1280,
+          1673
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

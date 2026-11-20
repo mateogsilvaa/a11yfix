@@ -1,0 +1,12 @@
+===================================================================
+--- a/09-event-signup.html
++++ b/09-event-signup.html
+@@ -15,7 +15,7 @@
+   <main>
+     <h1>Open Data Day Valencia</h1>
+     <p>Saturday 7 March, Las Naves. Free entry, registration required.</p>
+-    <h3>Your details</h3>
++    <h2>Your details</h2>
+     <form action="/register" method="post">
+       <table>
+         <tr>

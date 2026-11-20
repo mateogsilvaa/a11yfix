@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0029",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"nav facts\" only restates the file name \"nav_facts.gif\"; accessibility tree: <img> (line 167) has a name that only restates its file name: \"nav facts\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 167) has a name that only restates its file name: \"nav facts\""
+    ],
+    "focus": {
+      "before": 49,
+      "after": 49,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1987,
+          1280,
+          1987
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

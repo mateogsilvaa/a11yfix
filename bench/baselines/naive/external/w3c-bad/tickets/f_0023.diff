@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -143,7 +143,7 @@
+         <TD WIDTH=155px BGCOLOR=#E4E4E4 VALIGN=TOP>
+           <TABLE WIDTH=155px BORDER=0px CELLSPACING=0px CELLPADDING=0px>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=155px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=155px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+               <TD WIDTH=1px BACKGROUND=./img/marker2_t.gif ROWSPAN=9 VALIGN=TOP><IMG SRC=./img/marker2_t.gif WIDTH=1 HEIGHT=30px></TD>
+             </TR>
+             <TR HEIGHT=34px>

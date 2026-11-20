@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0038",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"marker2 w\" only restates the file name \"marker2_w.gif\"; accessibility tree: <img> (line 207) has a name that only restates its file name: \"marker2 w\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 207) has a name that only restates its file name: \"marker2 w\""
+    ],
+    "focus": {
+      "before": 49,
+      "after": 49,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1987,
+          1280,
+          1987
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

@@ -1,0 +1,59 @@
+{
+  "findingId": "f_0001",
+  "ruleGone": true,
+  "newViolations": [
+    {
+      "ruleId": "target-size",
+      "impact": "serious",
+      "selector": "a[href=\"/\"]",
+      "sourceLines": {
+        "start": 15,
+        "end": 15
+      }
+    },
+    {
+      "ruleId": "target-size",
+      "impact": "serious",
+      "selector": "a[href$=\"order\"]",
+      "sourceLines": {
+        "start": 18,
+        "end": 18
+      }
+    }
+  ],
+  "suspicious": true,
+  "reason": "introduced 2 new violation(s): target-size at line 15, target-size at line 18",
+  "status": "rejected_regression",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree",
+    "visual"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 15) has a name that only restates its file name: \"crumb logo\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.010760198312603287,
+        "changedPixelsOutside": 12371,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

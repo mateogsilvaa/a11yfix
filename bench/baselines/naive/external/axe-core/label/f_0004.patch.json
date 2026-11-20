@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "aria-label from the placeholder, name or id",
+  "before": "<textarea id=\"fail4\">",
+  "after": "<textarea id=\"fail4\" aria-label=\"fail4\">",
+  "confidence": "medium"
+}

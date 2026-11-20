@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "add aria-controls with a default value",
+  "before": "<div\n  role=\"combobox\"\n  id=\"comboboxWithOwns\"\n  aria-expanded=\"true\"\n  aria-owns=\"ownsElement\"\n>",
+  "after": "<div\n  role=\"combobox\"\n  id=\"comboboxWithOwns\"\n  aria-expanded=\"true\"\n  aria-owns=\"ownsElement\" aria-controls=\"false\">",
+  "confidence": "medium"
+}

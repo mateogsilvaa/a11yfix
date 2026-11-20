@@ -1,0 +1,149 @@
+{
+  "file": "corpus\\handwritten\\05-settings-aria-values.html",
+  "findings": 7,
+  "statuses": {
+    "rejected_suspicious": 2,
+    "rejected_regression": 1,
+    "verified": 4
+  },
+  "included": [
+    "f_0001",
+    "f_0003",
+    "f_0004",
+    "f_0005",
+    "f_0006",
+    "f_0007"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 9,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2940,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "aria-valid-attr-value",
+      "line": 15,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "accessibility tree: <button> (line 15) lost its expanded state",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "aria-valid-attr-value",
+      "line": 20,
+      "tier": 1,
+      "status": "rejected_regression",
+      "included": false,
+      "reason": "introduced 1 new violation(s): aria-required-attr at line 20",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "aria-valid-attr-value",
+      "line": 23,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "accessibility tree: <button> (line 23) lost its pressed state",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "aria-valid-attr-value",
+      "line": 25,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "aria-allowed-attr",
+      "line": 30,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "aria-allowed-attr",
+      "line": 31,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "aria-allowed-attr",
+      "line": 32,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

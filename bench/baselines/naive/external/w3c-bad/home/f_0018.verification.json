@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0018",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"top logo next end\" only restates the file name \"top_logo_next_end.gif\"; accessibility tree: <img> (line 188) has a name that only restates its file name: \"top logo next end\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 188) has a name that only restates its file name: \"top logo next end\""
+    ],
+    "focus": {
+      "before": 56,
+      "after": 56,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1411,
+          1280,
+          1411
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

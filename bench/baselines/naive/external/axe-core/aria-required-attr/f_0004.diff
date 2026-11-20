@@ -1,0 +1,11 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -45,7 +45,6 @@
+   role="combobox"
+   id="pass5"
+   aria-expanded="true"
+-  aria-controls="controlsElement"
+ >
+   ok
+ </div>

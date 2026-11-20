@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -176,7 +176,7 @@
+   <div aria-dropeffect="popup" id="pass32">hi</div>
+   <div aria-dropeffect="none" id="pass33">hi</div>
+ 
+-  <div aria-expanded="true" id="pass34">hi</div>
++  <div id="pass34">hi</div>
+   <div aria-expanded="false" id="pass35">hi</div>
+   <div aria-expanded="undefined" id="pass36">hi</div>
+ 

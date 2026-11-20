@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0115",
+  "rationale": "remove aria-setsize",
+  "before": "<div aria-setsize=\"22\" id=\"pass104\">",
+  "after": "<div id=\"pass104\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0009",
+  "rationale": "alt text from the file name",
+  "before": "<img src=\"assets/email-address.png\">",
+  "after": "<img src=\"assets/email-address.png\" alt=\"email address\">",
+  "confidence": "medium"
+}

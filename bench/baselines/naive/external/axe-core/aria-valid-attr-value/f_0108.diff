@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -243,7 +243,7 @@
+   <div aria-pressed="undefined" id="pass90">hi</div>
+ 
+   <div aria-readonly="true" id="pass91">hi</div>
+-  <div aria-readonly="false" id="pass92">hi</div>
++  <div id="pass92">hi</div>
+ 
+   <div aria-relevant="additions" id="pass93">hi</div>
+   <div aria-relevant="removals" id="pass94">hi</div>

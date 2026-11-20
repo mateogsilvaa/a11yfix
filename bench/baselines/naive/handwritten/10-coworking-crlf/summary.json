@@ -1,0 +1,185 @@
+{
+  "file": "corpus\\handwritten\\10-coworking-crlf.html",
+  "findings": 9,
+  "statuses": {
+    "verified": 6,
+    "rejected_suspicious": 3
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0003",
+    "f_0004",
+    "f_0005",
+    "f_0006",
+    "f_0007",
+    "f_0008",
+    "f_0009"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 9,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 3059,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 17,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 18,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"desk\" only restates the file name \"desk.jpg\"; accessibility tree: <img> (line 18) has a name that only restates its file name: \"desk\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "color-contrast",
+      "line": 19,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "label",
+      "line": 20,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "image-alt",
+      "line": 24,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"desk\" only restates the file name \"desk.jpg\"; accessibility tree: <img> (line 24) has a name that only restates its file name: \"desk\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "color-contrast",
+      "line": 25,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "label",
+      "line": 26,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "image-alt",
+      "line": 30,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"meeting room\" only restates the file name \"meeting-room.jpg\"; accessibility tree: <img> (line 30) has a name that only restates its file name: \"meeting room\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "color-contrast",
+      "line": 31,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

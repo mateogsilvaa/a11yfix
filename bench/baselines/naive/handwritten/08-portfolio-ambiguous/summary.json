@@ -1,0 +1,202 @@
+{
+  "file": "corpus\\handwritten\\08-portfolio-ambiguous.html",
+  "findings": 10,
+  "statuses": {
+    "rejected_suspicious": 10
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0003",
+    "f_0004",
+    "f_0005",
+    "f_0006",
+    "f_0007",
+    "f_0008",
+    "f_0009",
+    "f_0010"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 12,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 3390,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 15,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"a\" only restates the file name \"a.png\"; accessibility tree: <img> (line 15) has a name that only restates its file name: \"a\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 17,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"ic share 24\" only restates the file name \"ic_share_24.svg\"; accessibility tree: <img> (line 17) has a name that only restates its file name: \"ic share 24\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "image-alt",
+      "line": 18,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"ic heart 24\" only restates the file name \"ic_heart_24.svg\"; accessibility tree: <img> (line 18) has a name that only restates its file name: \"ic heart 24\"; visual (desktop): 0.24% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "image-alt",
+      "line": 24,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "generic alt: \"img 2041\"; text alternative \"img 2041\" only restates the file name \"IMG_2041.jpg\"; accessibility tree: <img> (line 24) now has a generic name \"img 2041\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "image-alt",
+      "line": 25,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "generic alt: \"img 2057\"; text alternative \"img 2057\" only restates the file name \"IMG_2057.jpg\"; accessibility tree: <img> (line 25) now has a generic name \"img 2057\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "image-alt",
+      "line": 26,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"final v3 final\" only restates the file name \"final-v3-FINAL.png\"; accessibility tree: <img> (line 26) has a name that only restates its file name: \"final v3 final\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "image-alt",
+      "line": 30,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"logo1\" only restates the file name \"logo1.png\"; accessibility tree: <img> (line 30) has a name that only restates its file name: \"logo1\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0008",
+      "ruleId": "image-alt",
+      "line": 31,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"logo2\" only restates the file name \"logo2.png\"; accessibility tree: <img> (line 31) has a name that only restates its file name: \"logo2\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0009",
+      "ruleId": "image-alt",
+      "line": 34,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"email address\" only restates the file name \"email-address.png\"; accessibility tree: <img> (line 34) has a name that only restates its file name: \"email address\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0010",
+      "ruleId": "image-alt",
+      "line": 35,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "generic alt: \"spacer\"; text alternative \"spacer\" only restates the file name \"spacer.gif\"; accessibility tree: <img> (line 35) now has a generic name \"spacer\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

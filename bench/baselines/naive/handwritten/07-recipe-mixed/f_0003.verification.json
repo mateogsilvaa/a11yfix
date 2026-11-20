@@ -1,0 +1,43 @@
+{
+  "findingId": "f_0003",
+  "ruleGone": true,
+  "newViolations": [
+    {
+      "ruleId": "heading-order",
+      "impact": "moderate",
+      "selector": "h4",
+      "sourceLines": {
+        "start": 24,
+        "end": 24
+      }
+    }
+  ],
+  "suspicious": false,
+  "reason": "introduced 1 new violation(s): heading-order at line 24",
+  "status": "rejected_regression",
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 3,
+      "after": 3,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.035672694707854155,
+        "changedPixelsOutside": 40312,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 18
+      }
+    ]
+  },
+  "tier": 1
+}

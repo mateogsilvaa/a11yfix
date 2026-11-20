@@ -1,0 +1,40 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"lentil soup bowl\" only restates the file name \"lentil-soup-bowl.jpg\"; accessibility tree: <img> (line 17) has a name that only restates its file name: \"lentil soup bowl\"; visual (desktop): 1.25% of the page changed outside the patched elements (limit 0.10%)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree",
+    "visual"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 17) has a name that only restates its file name: \"lentil soup bowl\""
+    ],
+    "focus": {
+      "before": 3,
+      "after": 3,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.012479938448898312,
+        "changedPixelsOutside": 14339,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

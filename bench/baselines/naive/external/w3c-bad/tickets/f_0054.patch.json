@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0054",
+  "rationale": "inline text color #000000",
+  "before": "<a href=\"https://www.w3.org/WAI/sitemap.html\" shape=\"rect\">",
+  "after": "<a href=\"https://www.w3.org/WAI/sitemap.html\" shape=\"rect\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0033",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"blank 5x5\" only restates the file name \"blank_5x5.gif\"; accessibility tree: <img> (line 180) has a name that only restates its file name: \"blank 5x5\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 180) has a name that only restates its file name: \"blank 5x5\""
+    ],
+    "focus": {
+      "before": 49,
+      "after": 49,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1987,
+          1280,
+          1987
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

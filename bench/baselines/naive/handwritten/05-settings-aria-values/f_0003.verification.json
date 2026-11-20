@@ -1,0 +1,38 @@
+{
+  "findingId": "f_0003",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "accessibility tree: <button> (line 23) lost its pressed state",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<button> (line 23) lost its pressed state"
+    ],
+    "focus": {
+      "before": 7,
+      "after": 7,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

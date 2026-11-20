@@ -1,0 +1,40 @@
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"hours table\" only restates the file name \"hours-table.png\"; accessibility tree: <img> (line 36) has a name that only restates its file name: \"hours table\"; visual (desktop): 0.31% of the page changed outside the patched elements (limit 0.10%)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree",
+    "visual"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 36) has a name that only restates its file name: \"hours table\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0031311889907395087,
+        "changedPixelsOutside": 3600,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

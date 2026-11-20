@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -181,7 +181,7 @@
+               <td valign="top" align="center" width="300px"><DIV><b>concert dates</b>
+                 <table width="250px" border="1" bordercolor="#C0C0C0" rules="rows">
+                   <tr bgcolor="#A9B8BF">
+-                    <td><b><font color="41545D">Les Garçons</font></b></td>
++                    <td><b><font color="41545D" style="color: #000000">Les Garçons</font></b></td>
+                     <td><b><font color="41545D">The Obelisks</font></b></td>
+                   </tr>
+                   <tr>

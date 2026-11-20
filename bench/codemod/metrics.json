@@ -6,7 +6,7 @@
     "a11yfix-core": "0.3.0",
     "axe-core": "4.14.1",
     "playwright": "1.65.1",
-    "node": "24.15.0"
+    "node": "26.13.1"
   },
   "overall": {
     "detected": 662,
@@ -20,6 +20,8 @@
     "invalid": 0,
     "applyFailed": 0,
     "generationFailed": 0,
+    "axeAccepted": 136,
+    "sourceAccepted": 136,
     "usage": {
       "inputTokens": 0,
       "outputTokens": 0,
@@ -40,6 +42,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 136,
+      "sourceAccepted": 136,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -59,6 +63,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 0,
+      "sourceAccepted": 0,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -80,6 +86,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 0,
+      "sourceAccepted": 0,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -99,6 +107,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 5,
+      "sourceAccepted": 5,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -118,6 +128,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 4,
+      "sourceAccepted": 4,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -137,6 +149,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 122,
+      "sourceAccepted": 122,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -156,6 +170,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 0,
+      "sourceAccepted": 0,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -175,6 +191,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 3,
+      "sourceAccepted": 3,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -194,6 +212,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 2,
+      "sourceAccepted": 2,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -213,6 +233,8 @@
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
+      "axeAccepted": 0,
+      "sourceAccepted": 0,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,

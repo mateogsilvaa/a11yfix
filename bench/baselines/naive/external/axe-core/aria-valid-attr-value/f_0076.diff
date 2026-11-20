@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -122,8 +122,7 @@
+       type="text"
+       id="violation48"
+       aria-invalid="true"
+-      aria-errormessage="ref ref2"
+-    />
++      aria-errormessage="ref ref2" aria-label="violation48"/>
+   </div>
+ </div>
+ <h2>Possible False Positives</h2>

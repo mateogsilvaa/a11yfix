@@ -1,0 +1,208 @@
+diff --git a/corpus/external/w3c-bad/survey.html b/corpus/external/w3c-bad/survey.html
+--- a/corpus/external/w3c-bad/survey.html
++++ b/corpus/external/w3c-bad/survey.html
+@@ -53,23 +53,23 @@
+   </HEAD>
+   <BODY TEXT=#000000 BGCOLOR=#D7D7CD LEFTMARGIN=0px TOPMARGIN=0px MARGINWIDTH=0px MARGINHEIGHT=0px LINK=#226C8E VLINK=#226C8E ALINK=#226C8E>
+     <div id="meta-header">
+-      <p id="skipnav"><a href="#page">Skip to inaccessible demo page</a></p>
++      <p id="skipnav"><a href="#page" style="color: #000000">Skip to inaccessible demo page</a></p>
+       <p id="logos"><a href="https://www.w3.org/" title="W3C Home"><img alt="W3C logo" src="../img/w3c.png" height="48" width="72"></a><a href="https://www.w3.org/WAI/" title="WAI Home"><img alt="Web Accessibility Initiative (WAI) logo" src="../img/wai.png" height="48"></a></p>
+       <h1><span class="subhead">Inaccessible Survey Page</span><span class="hidden"> -</span> Before and After Demonstration</h1>
+       <p class="subline">Improving a Web site using Web Content Accessibility Guidelines (WCAG) 2.0</p>
+       <div id="mnav" class="inaccessible">
+         <ul>
+-          <li class="first"><a href="../Overview.html">Overview</a></li>
+-          <li class="first"><a href="home.html">Home</a></li>
+-          <li><a href="news.html">News</a></li>
+-          <li><a href="tickets.html">Tickets</a></li>
++          <li class="first"><a href="../Overview.html" style="color: #000000">Overview</a></li>
++          <li class="first"><a href="home.html" style="color: #000000">Home</a></li>
++          <li><a href="news.html" style="color: #000000">News</a></li>
++          <li><a href="tickets.html" style="color: #000000">Tickets</a></li>
+           <li class="current"><span class="hidden">Current location: </span>Survey
+             <div class="subnav"><ul>
+-              <li class="inaccessible"><strong>Inaccessible:</strong><a class="page current"><span class="hidden">Inaccessible </span>Survey Page</a><a href="./reports/survey.html" class="report"><span class="hidden">Inaccessible Survey Page </span> Report</a></li>
+-              <li class="accessible"><strong>Accessible:</strong><a href="../after/survey.html" class="page"><span class="hidden">Accessible </span>Survey Page</a><a href="../after/reports/survey.html" class="report"><span class="hidden">Accessible Survey Page </span> Report</a></li>
+-            </ul><a href="./annotated/survey.html" class="annotoggle">Show <br>Annotations</a></div>
++              <li class="inaccessible"><strong>Inaccessible:</strong><a class="page current"><span class="hidden">Inaccessible </span>Survey Page</a><a href="./reports/survey.html" class="report" style="color: #000000"><span class="hidden" style="color: #000000">Inaccessible Survey Page </span> Report</a></li>
++              <li class="accessible"><strong>Accessible:</strong><a href="../after/survey.html" class="page" style="color: #000000"><span class="hidden" style="color: #000000">Accessible </span>Survey Page</a><a href="../after/reports/survey.html" class="report" style="color: #000000"><span class="hidden" style="color: #000000">Accessible Survey Page </span> Report</a></li>
++            </ul><a href="./annotated/survey.html" class="annotoggle" style="color: #000000">Show <br>Annotations</a></div>
+           </li>
+-          <li><a href="template.html">Template</a></li>
++          <li><a href="template.html" style="color: #000000">Template</a></li>
+         </ul>
+       </div>
+     </div>
+@@ -78,19 +78,19 @@
+     <TABLE WIDTH=100% BORDER=0px CELLSPACING=0px CELLPADDING=0px BGCOLOR=#D7D7CD><TR VALIGN=MIDDLE><TD WIDTH=100% ALIGN=CENTER>
+     <TABLE WIDTH=800px BORDER=0px CELLSPACING=0px CELLPADDING=0px BGCOLOR=WHITE>
+       <TR HEIGHT=10px>
+-        <TD WIDTH=10px BACKGROUND=./img/border_left_top.gif><IMG SRC=./img/border_left_top.gif WIDTH=10px HEIGHT=10px></TD>
+-        <TD WIDTH=780px BACKGROUND=./img/border_top.gif><IMG SRC=./img/border_top.gif HEIGHT=10px></TD>
+-        <TD WIDTH=10px BACKGROUND=./img/border_right_top.gif><IMG SRC=./img/border_right_top.gif WIDTH=10px HEIGHT=10px></TD>
++        <TD WIDTH=10px BACKGROUND=./img/border_left_top.gif><IMG SRC=./img/border_left_top.gif WIDTH=10px HEIGHT=10px alt="border left top"></TD>
++        <TD WIDTH=780px BACKGROUND=./img/border_top.gif><IMG SRC=./img/border_top.gif HEIGHT=10px alt="border top"></TD>
++        <TD WIDTH=10px BACKGROUND=./img/border_right_top.gif><IMG SRC=./img/border_right_top.gif WIDTH=10px HEIGHT=10px alt="border right top"></TD>
+       </TR>
+       <TR>
+-        <TD WIDTH=10px BACKGROUND=./img/border_left.gif><IMG SRC=./img/border_left.gif WIDTH=10px></TD>
++        <TD WIDTH=10px BACKGROUND=./img/border_left.gif><IMG SRC=./img/border_left.gif WIDTH=10px alt="border left"></TD>
+         <TD WIDTH=780px ALIGN=CENTER>
+     <TABLE WIDTH=780px HEIGHT=144px BORDER=0px CELLSPACING=0px CELLPADDING=0px BGCOLOR=WHITE>
+       <TR HEIGHT=86px>
+         <TD WIDTH=443px BACKGROUND=./img/top_logo_next.gif VALIGN=MIDDLE><DIV><A HREF=home.html><IMG SRC=./img/top_logo.gif WIDTH=443px HEIGHT=86px ALT="Red dot with a white letter 'C' that symbolizes a moon crescent as well as the sun. This logo is followed by a black banner that says 'CITYLIGHTS' which is the name of this online portal. Finally, the slogan of the portal, 'your access to the city', follows in a turquoise green handwriting style and with a slight slant across the top banner."></A></DIV></TD>
+-        <TD WIDTH=24px VALIGN=MIDDLE><IMG SRC=./img/top_logo_next_end.gif WIDTH=24px HEIGHT=86px></TD>
+-        <TD WIDTH=128px VALIGN=MIDDLE><IMG SRC=./img/top_weather.gif WIDTH=128px HEIGHT=86px></TD>
+-        <TD WIDTH=22px VALIGN=MIDDLE><IMG SRC=./img/top_logo_next_start.gif WIDTH=22px HEIGHT=86px></TD>
++        <TD WIDTH=24px VALIGN=MIDDLE><IMG SRC=./img/top_logo_next_end.gif WIDTH=24px HEIGHT=86px alt="top logo next end"></TD>
++        <TD WIDTH=128px VALIGN=MIDDLE><IMG SRC=./img/top_weather.gif WIDTH=128px HEIGHT=86px alt="top weather"></TD>
++        <TD WIDTH=22px VALIGN=MIDDLE><IMG SRC=./img/top_logo_next_start.gif WIDTH=22px HEIGHT=86px alt="top logo next start"></TD>
+         <TD WIDTH=163px BACKGROUND=./img/top_logo_next.gif ALIGN=CENTER VALIGN=MIDDLE>
+           <SELECT ONCHANGE="location.href = this.value;">
+             <OPTION SELECTED>QUICKMENU ----&gt;
+@@ -113,7 +113,7 @@
+         </TD>
+       </TR>
+       <TR HEIGHT=7px>
+-        <TD WIDTH=780px BACKGROUND=./img/mark.gif COLSPAN=5><IMG SRC=./img/mark.gif WIDTH=158px HEIGHT=7px></TD>
++        <TD WIDTH=780px BACKGROUND=./img/mark.gif COLSPAN=5><IMG SRC=./img/mark.gif WIDTH=158px HEIGHT=7px alt="mark"></TD>
+       </TR>
+       <TR HEIGHT=25px>
+         <TD COLSPAN=5>
+@@ -138,7 +138,7 @@
+         </TD>
+       </TR>
+       <TR HEIGHT=1px>
+-        <TD WIDTH=780px BACKGROUND=./img/marker2_w.gif COLSPAN=5><IMG SRC=.img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++        <TD WIDTH=780px BACKGROUND=./img/marker2_w.gif COLSPAN=5><IMG SRC=.img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+       </TR>
+       <TR HEIGHT=25px>
+         <TD COLSPAN=5>&nbsp;</TD>
+@@ -149,36 +149,36 @@
+         <TD WIDTH=155px BGCOLOR=#E4E4E4 VALIGN=TOP>
+           <TABLE WIDTH=155px BORDER=0px CELLSPACING=0px CELLPADDING=0px>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=155px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
+-              <TD WIDTH=1px BACKGROUND=./img/marker2_t.gif ROWSPAN=9 VALIGN=TOP><IMG SRC=./img/marker2_t.gif WIDTH=1 HEIGHT=30px></TD>
++              <TD WIDTH=155px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
++              <TD WIDTH=1px BACKGROUND=./img/marker2_t.gif ROWSPAN=9 VALIGN=TOP><IMG SRC=./img/marker2_t.gif WIDTH=1 HEIGHT=30px alt="marker2 t"></TD>
+             </TR>
+             <TR HEIGHT=34px>
+-              <TD WIDTH=154px bgcolor="#EDEDED" id="home" onMouseOver="switchImage('nav_home', './img/nav_home2.gif'); ChangeColor('home','#FFF')" onMouseOut="switchImage('nav_home', './img/nav_home.gif'); ChangeColor('home','#EDEDED')"><A HREF="javascript:location.href='home.html';" onFocus="blur();"><img name="nav_home" src=./img/nav_home.gif width=88 height=27 hspace="15" border=0px></a></TD>
++              <TD WIDTH=154px bgcolor="#EDEDED" id="home" onMouseOver="switchImage('nav_home', './img/nav_home2.gif'); ChangeColor('home','#FFF')" onMouseOut="switchImage('nav_home', './img/nav_home.gif'); ChangeColor('home','#EDEDED')"><A HREF="javascript:location.href='home.html';" onFocus="blur();"><img name="nav_home" src=./img/nav_home.gif width=88 height=27 hspace="15" border=0px alt="nav home"></a></TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+             <TR HEIGHT=34px>
+-              <TD WIDTH=154px bgcolor="#EDEDED" id="news" onMouseOver="switchImage('nav_news', './img/nav_news2.gif'); ChangeColor('news','#FFF')" onMouseOut="switchImage('nav_news', './img/nav_news.gif'); ChangeColor('news','#EDEDED')"><A HREF="javascript:location.href='news.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_news.gif name="nav_news" WIDTH=90 HEIGHT=21 hspace="12" BORDER=0px></A></TD>
++              <TD WIDTH=154px bgcolor="#EDEDED" id="news" onMouseOver="switchImage('nav_news', './img/nav_news2.gif'); ChangeColor('news','#FFF')" onMouseOut="switchImage('nav_news', './img/nav_news.gif'); ChangeColor('news','#EDEDED')"><A HREF="javascript:location.href='news.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_news.gif name="nav_news" WIDTH=90 HEIGHT=21 hspace="12" BORDER=0px alt="nav news"></A></TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+             <TR HEIGHT=34px>
+-              <TD WIDTH=154px bgcolor="#EDEDED" id="tickets" onMouseOver="switchImage('nav_facts', './img/nav_facts2.gif'); ChangeColor('tickets','#FFF')" onMouseOut="switchImage('nav_facts', './img/nav_facts.gif'); ChangeColor('tickets','#EDEDED')"><A HREF="javascript:location.href='tickets.html';" ONFOCUS="blur();"><IMG name="nav_facts" SRC=./img/nav_facts.gif WIDTH=105 HEIGHT=23 hspace="9" BORDER=0px></A></TD>
++              <TD WIDTH=154px bgcolor="#EDEDED" id="tickets" onMouseOver="switchImage('nav_facts', './img/nav_facts2.gif'); ChangeColor('tickets','#FFF')" onMouseOut="switchImage('nav_facts', './img/nav_facts.gif'); ChangeColor('tickets','#EDEDED')"><A HREF="javascript:location.href='tickets.html';" ONFOCUS="blur();"><IMG name="nav_facts" SRC=./img/nav_facts.gif WIDTH=105 HEIGHT=23 hspace="9" BORDER=0px alt="nav facts"></A></TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+             <TR HEIGHT=34px>
+-              <TD WIDTH=154px bgcolor="#EDEDED" id="survey" onMouseOver="switchImage('nav_survey', './img/nav_survey2.gif'); ChangeColor('survey','#FFF')" onMouseOut="switchImage('nav_survey', './img/nav_survey.gif'); ChangeColor('survey','#EDEDED')"><A HREF="javascript:location.href='survey.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_survey.gif name="nav_survey" WIDTH=107 HEIGHT=32 hspace="8" BORDER=0px></A></TD>
++              <TD WIDTH=154px bgcolor="#EDEDED" id="survey" onMouseOver="switchImage('nav_survey', './img/nav_survey2.gif'); ChangeColor('survey','#FFF')" onMouseOut="switchImage('nav_survey', './img/nav_survey.gif'); ChangeColor('survey','#EDEDED')"><A HREF="javascript:location.href='survey.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_survey.gif name="nav_survey" WIDTH=107 HEIGHT=32 hspace="8" BORDER=0px alt="nav survey"></A></TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+           </TABLE>
+         </TD>
+-        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px></TD>
++        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px alt="blank 5x5"></TD>
+         <TD WIDTH=625px HEIGHT="600px" VALIGN=TOP id="main"><DIV>
+           <p class="headline">Citylights Survey</p>
+           <p class="headline"><font size="4">This Week's Survey: More city parks - a pain or a gain?</font></p>
+@@ -202,15 +202,15 @@
+                             <td valign="top" width="35" height="72">
+                               <table width="34" border="0" cellspacing="2" cellpadding="0">
+                                 <tr height="31%">
+-                                  <td width="24"><input class="align" type="radio" name="res" value="1"></td>
++                                  <td width="24"><input class="align" type="radio" name="res" value="1" aria-label="res"></td>
+                                   <td height="31%"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>
+-                                  <td width="24"><span><input class="align" type="radio" name="res" value="2"></span></td>
++                                  <td width="24"><span><input class="align" type="radio" name="res" value="2" aria-label="res"></span></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>
+-                                  <td width="24"><input class="align" type="radio" name="res" value="3"></td>
++                                  <td width="24"><input class="align" type="radio" name="res" value="3" aria-label="res"></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                               </table>
+@@ -234,15 +234,15 @@
+                             <td valign="top" width="35" height="72">
+                               <table width="34" border="0" cellspacing="2" cellpadding="0">
+                                 <tr height="31%">
+-                                  <td width="24"><input class="align" type="radio" name="res" value="4"></td>
++                                  <td width="24"><input class="align" type="radio" name="res" value="4" aria-label="res"></td>
+                                   <td height="31%"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>
+-                                  <td width="24"><input class="align" type="radio" name="res" value="5"></td>
++                                  <td width="24"><input class="align" type="radio" name="res" value="5" aria-label="res"></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>
+-                                  <td width="24"><input class="align" type="radio" name="res" value="6"></td>
++                                  <td width="24"><input class="align" type="radio" name="res" value="6" aria-label="res"></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                               </table>
+@@ -515,9 +515,9 @@
+                             <td>
+                               <table border="0" cellspacing="2" cellpadding="0">
+                                 <tr>
+-                                  <td valign="bottom"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"><nobr>Name: <input type="radio" name="t" value="mr"> Mr. <input type="radio" name="t" value="mrs"> Mrs.</nobr><br /><br /><input type="text" name="em" id="em" size="20" /></td>
++                                  <td valign="bottom"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"><nobr>Name: <input type="radio" name="t" value="mr" aria-label="t"> Mr. <input type="radio" name="t" value="mrs" aria-label="t"> Mrs.</nobr><br /><br /><input type="text" name="em" id="em" size="20" aria-label="em"/></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+-                                  <td valign="bottom"><input type="text" name="n" id="n" size="30" /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ev" id="ev" size="20" /></td>
++                                  <td valign="bottom"><input type="text" name="n" id="n" size="30" aria-label="n"/><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ev" id="ev" size="20" aria-label="ev"/></td>
+                                 </tr>
+                                 <tr>
+                                   <td valign="top">eMail Address</td>
+@@ -585,21 +585,21 @@
+         <TD ALIGN=RIGHT><FONT COLOR=BLACK FACE=Verdana SIZE=1><a rel="Copyright" href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2012 <a href="https://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>)</FONT></TD>
+       </TR>
+     </TABLE>
+-        <TD WIDTH=10px BACKGROUND=./img/border_right.gif><IMG SRC=./img/border_right.gif WIDTH=10px></TD>
++        <TD WIDTH=10px BACKGROUND=./img/border_right.gif><IMG SRC=./img/border_right.gif WIDTH=10px alt="border right"></TD>
+       </TR>
+       <TR HEIGHT=10px>
+-        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_left.gif><IMG SRC=./img/border_bottom_left.gif WIDTH=10px HEIGHT=10px></TD>
+-        <TD WIDTH=780px HEIGHT=10px BACKGROUND=./img/border_bottom.gif><IMG SRC=./img/border_bottom.gif HEIGHT=10px></TD>
+-        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_right.gif><IMG SRC=./img/border_bottom_right.gif WIDTH=10px HEIGHT=10px></TD>
++        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_left.gif><IMG SRC=./img/border_bottom_left.gif WIDTH=10px HEIGHT=10px alt="border bottom left"></TD>
++        <TD WIDTH=780px HEIGHT=10px BACKGROUND=./img/border_bottom.gif><IMG SRC=./img/border_bottom.gif HEIGHT=10px alt="border bottom"></TD>
++        <TD WIDTH=10px HEIGHT=10px BACKGROUND=./img/border_bottom_right.gif><IMG SRC=./img/border_bottom_right.gif WIDTH=10px HEIGHT=10px alt="border bottom right"></TD>
+       </TR>
+     </TABLE>
+     </TD></TR></TR></TABLE>
+     </div>
+     <div id="meta-footer" class="meta">
+       <hr>
+-      <p><strong>Status:</strong> 20 February 2012 (see <a href="../changelog.html">changelog</a>) <br>Editors: <a href="https://www.w3.org/People/shadi/">Shadi Abou-Zahra</a> and the <a href="https://www.w3.org/WAI/EO/">Education and Outreach Working Group (EOWG)</a>. <br>Developed with support from <a href="https://www.w3.org/WAI/TIES/"><acronym title="Web Accessibility Initiative: Training, Implementation, Education, Support">WAI-TIES</acronym></a> and <a href="https://www.w3.org/WAI/WAI-AGE/"><acronym title="Web Accessibility Initiative: Ageing Education and Harmonisation">WAI-AGE</acronym></a> projects, co-funded by the European Commission <acronym title="Information Society Technologies">IST</acronym> Programme. [see <a href="../acks.html">Acknowledgements</a>]</p>
+-      <p>[<a href="https://www.w3.org/WAI/sitemap.html" shape="rect">WAI Site Map</a>] [<a href="https://www.w3.org/WAI/sitehelp.html" shape="rect">Help with WAI Website</a>] [<a href="https://www.w3.org/WAI/search.php" shape="rect">Search</a>] [<a href="https://www.w3.org/WAI/contacts" shape="rect">Contacting WAI</a>] <br><strong>Feedback welcome to <a href="mailto:wai-eo-editors@w3.org" shape="rect">wai-eo-editors@w3.org</a></strong> (a publicly archived list) or <a href="mailto:wai@w3.org" shape="rect">wai@w3.org</a> (a WAI staff-only list).</p>
+-      <div class="copyright"><p><a rel="Copyright" href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> &copy; 2012 <a href="https://www.w3.org/"><acronym title="World Wide Web Consortium">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/">Keio</a>), All Rights Reserved. W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a>, <a rel="Copyright" href="https://www.w3.org/Consortium/Legal/copyright-documents">document use</a> and <a rel="Copyright" href="https://www.w3.org/Consortium/Legal/copyright-software">software licensing</a> rules apply. Your interactions with this site are in accordance with our <a href="https://www.w3.org/Consortium/Legal/privacy-statement#Public">public</a> and <a href="https://www.w3.org/Consortium/Legal/privacy-statement#Members">Member</a> privacy statements.</p></div>
++      <p><strong>Status:</strong> 20 February 2012 (see <a href="../changelog.html" style="color: #000000">changelog</a>) <br>Editors: <a href="https://www.w3.org/People/shadi/" style="color: #000000">Shadi Abou-Zahra</a> and the <a href="https://www.w3.org/WAI/EO/" style="color: #000000">Education and Outreach Working Group (EOWG)</a>. <br>Developed with support from <a href="https://www.w3.org/WAI/TIES/"><acronym title="Web Accessibility Initiative: Training, Implementation, Education, Support" style="color: #000000">WAI-TIES</acronym></a> and <a href="https://www.w3.org/WAI/WAI-AGE/"><acronym title="Web Accessibility Initiative: Ageing Education and Harmonisation" style="color: #000000">WAI-AGE</acronym></a> projects, co-funded by the European Commission <acronym title="Information Society Technologies">IST</acronym> Programme. [see <a href="../acks.html" style="color: #000000">Acknowledgements</a>]</p>
++      <p>[<a href="https://www.w3.org/WAI/sitemap.html" shape="rect" style="color: #000000">WAI Site Map</a>] [<a href="https://www.w3.org/WAI/sitehelp.html" shape="rect" style="color: #000000">Help with WAI Website</a>] [<a href="https://www.w3.org/WAI/search.php" shape="rect" style="color: #000000">Search</a>] [<a href="https://www.w3.org/WAI/contacts" shape="rect" style="color: #000000">Contacting WAI</a>] <br><strong>Feedback welcome to <a href="mailto:wai-eo-editors@w3.org" shape="rect" style="color: #000000">wai-eo-editors@w3.org</a></strong> (a publicly archived list) or <a href="mailto:wai@w3.org" shape="rect" style="color: #000000">wai@w3.org</a> (a WAI staff-only list).</p>
++      <div class="copyright"><p><a rel="Copyright" href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright" style="color: #000000">Copyright</a> &copy; 2012 <a href="https://www.w3.org/"><acronym title="World Wide Web Consortium" style="color: #000000">W3C</acronym></a><sup>&reg;</sup> (<a href="http://www.csail.mit.edu/"><acronym title="Massachusetts Institute of Technology" style="color: #000000">MIT</acronym></a>, <a href="http://www.ercim.org/"><acronym title="European Research Consortium for Informatics and Mathematics" style="color: #000000">ERCIM</acronym></a>, <a href="http://www.keio.ac.jp/" style="color: #000000">Keio</a>), All Rights Reserved. W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer" style="color: #000000">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks" style="color: #000000">trademark</a>, <a rel="Copyright" href="https://www.w3.org/Consortium/Legal/copyright-documents" style="color: #000000">document use</a> and <a rel="Copyright" href="https://www.w3.org/Consortium/Legal/copyright-software" style="color: #000000">software licensing</a> rules apply. Your interactions with this site are in accordance with our <a href="https://www.w3.org/Consortium/Legal/privacy-statement#Public" style="color: #000000">public</a> and <a href="https://www.w3.org/Consortium/Legal/privacy-statement#Members" style="color: #000000">Member</a> privacy statements.</p></div>
+     </div>
+   <!-- Piwik -->
+       <script type="text/javascript">

@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -258,7 +258,7 @@
+   <div aria-selected="undefined" id="pass101">hi</div>
+ 
+   <div aria-setsize="0" id="pass102">hi</div>
+-  <div aria-setsize="1" id="pass103">hi</div>
++  <div id="pass103">hi</div>
+   <div aria-setsize="22" id="pass104">hi</div>
+   <div aria-setsize="-1" id="pass105">hi</div>
+   <div aria-setsize="+1" id="pass106">hi</div>

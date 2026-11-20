@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0121",
+  "rationale": "remove aria-sort",
+  "before": "<div aria-sort=\"other\" id=\"pass111\">",
+  "after": "<div id=\"pass111\">",
+  "confidence": "medium"
+}

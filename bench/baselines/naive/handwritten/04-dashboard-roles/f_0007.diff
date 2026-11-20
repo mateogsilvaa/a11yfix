@@ -1,0 +1,12 @@
+===================================================================
+--- a/04-dashboard-roles.html
++++ b/04-dashboard-roles.html
+@@ -36,7 +36,7 @@
+         <li role="option">us-east-2</li>
+       </ul>
+     </div>
+-    <div class="card" role="widget">
++    <div class="card">
+       <h2>Status</h2>
+       <p>All systems operational.</p>
+     </div>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0013",
+  "rationale": "remove aria-dropeffect",
+  "before": "<div aria-dropeffect=\"stuff\" id=\"violation11\">",
+  "after": "<div id=\"violation11\">",
+  "confidence": "medium"
+}

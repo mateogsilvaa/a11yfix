@@ -87,6 +87,9 @@ export interface ViolationRef {
   sourceLines: SourceLocation | null;
 }
 
+/** static: source checks (hiding, generic text...); rule: the rule's own verify(); the rest: browser comparisons. */
+export type SuspicionLayer = "static" | "rule" | "accessibility-tree" | "focus-order" | "visual";
+
 export interface Verification {
   findingId: string;
   status: VerificationStatus;
@@ -98,6 +101,11 @@ export interface Verification {
   diff?: string;
   /** New violations below the regression threshold (--regression-impact): reported, not rejected. */
   toleratedViolations?: ViolationRef[];
+  /**
+   * Which verifier layers raised a suspicion reason (empty or absent when none did). Recorded even when the patch
+   * was rejected for another reason first, so the benchmark can measure what each layer adds over axe alone.
+   */
+  flaggedBy?: SuspicionLayer[];
   /** Accessibility-tree, focus-order and visual comparison, when they ran. */
   checks?: {
     ax?: string[];

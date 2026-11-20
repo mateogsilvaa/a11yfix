@@ -1,0 +1,41 @@
+diff --git a/corpus/handwritten/08-portfolio-ambiguous.html b/corpus/handwritten/08-portfolio-ambiguous.html
+--- a/corpus/handwritten/08-portfolio-ambiguous.html
++++ b/corpus/handwritten/08-portfolio-ambiguous.html
+@@ -12,27 +12,27 @@
+ </head>
+ <body>
+   <header>
+-    <img src="assets/a.png" width="48">
++    <img src="assets/a.png" width="48" alt="a">
+     <div class="toolbar">
+-      <button type="button"><img src="assets/ic_share_24.svg"></button>
+-      <button type="button"><img src="assets/ic_heart_24.svg"></button>
++      <button type="button"><img src="assets/ic_share_24.svg" alt="ic share 24"></button>
++      <button type="button"><img src="assets/ic_heart_24.svg" alt="ic heart 24"></button>
+     </div>
+   </header>
+   <main>
+     <h1>Selected work</h1>
+     <div class="grid">
+-      <img src="work/IMG_2041.jpg">
+-      <img src="work/IMG_2057.jpg">
+-      <img src="work/final-v3-FINAL.png">
++      <img src="work/IMG_2041.jpg" alt="img 2041">
++      <img src="work/IMG_2057.jpg" alt="img 2057">
++      <img src="work/final-v3-FINAL.png" alt="final v3 final">
+     </div>
+     <h2>Clients</h2>
+     <p>
+-      <img src="clients/logo1.png" height="32">
+-      <img src="clients/logo2.png" height="32">
++      <img src="clients/logo1.png" height="32" alt="logo1">
++      <img src="clients/logo2.png" height="32" alt="logo2">
+     </p>
+     <h2>Contact</h2>
+-    <p><img src="assets/email-address.png"></p>
+-    <img src="assets/spacer.gif" width="1" height="40">
++    <p><img src="assets/email-address.png" alt="email address"></p>
++    <img src="assets/spacer.gif" width="1" height="40" alt="spacer">
+   </main>
+ </body>
+ </html>

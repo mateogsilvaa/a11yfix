@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0009",
+  "rationale": "aria-label from the placeholder, name or id",
+  "before": "<input id=\"fail9\" value=\"val\" />",
+  "after": "<input id=\"fail9\" value=\"val\" aria-label=\"fail9\"/>",
+  "confidence": "medium"
+}

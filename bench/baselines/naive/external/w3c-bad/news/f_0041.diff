@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -217,7 +217,7 @@
+                 <TR>
+                   <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
+                   <TD background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78></TD>
+-                  <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
++                  <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1 alt="marker2 t"></TD>
+                 </TR>
+                 <TR bgColor=#ededed>
+                   <TD width="300"><p class=headline><IMG height=24 src="./img/headline_middle.gif" width=23 align="absmiddle"><font size="2">Brain donations at city hospital (by month)</font></p></TD>

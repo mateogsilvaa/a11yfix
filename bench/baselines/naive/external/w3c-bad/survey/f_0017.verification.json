@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0017",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"border left\" only restates the file name \"border_left.gif\"; accessibility tree: <img> (line 86) has a name that only restates its file name: \"border left\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 86) has a name that only restates its file name: \"border left\""
+    ],
+    "focus": {
+      "before": 53,
+      "after": 53,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1607,
+          1280,
+          1607
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

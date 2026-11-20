@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -78,7 +78,7 @@
+ >
+ 
+ <div role="scrollbar" id="violation1">fail</div>
+-<div role="slider" id="violation2">fail</div>
++<div role="slider" id="violation2" aria-valuenow="0">fail</div>
+ <div role="heading" id="violation3">fail</div>
+ <div role="combobox" id="violation4">fail</div>
+ <span role="radio" id="violation5">I am BLUE!</span>

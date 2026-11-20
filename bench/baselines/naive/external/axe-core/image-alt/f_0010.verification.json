@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0010",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic alt: \"img\"; text alternative \"img\" only restates the file name \"img.jpg\"; accessibility tree: <img> (line 34) now has a generic name \"img\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 34) now has a generic name \"img\""
+    ],
+    "focus": {
+      "before": 3,
+      "after": 3,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0019983144651902307,
+        "changedPixelsOutside": 2300,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 10
+      }
+    ]
+  },
+  "tier": 1
+}

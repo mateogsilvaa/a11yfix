@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-allowed-attr.html
++++ b/aria-allowed-attr.html
+@@ -14,7 +14,7 @@
+ <div role="alert" aria-selected="true" id="fail1"></div>
+ <div role="link" aria-selected="true" id="fail2"></div>
+ <div role="row" aria-colcount="value" id="fail3"></div>
+-<div role="row" aria-rowcount="value" id="fail4"></div>
++<div role="row" id="fail4"></div>
+ 
+ <audio
+   src="/test/assets/moon-speech.mp3"

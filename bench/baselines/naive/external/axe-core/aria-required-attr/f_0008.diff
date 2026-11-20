@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -61,7 +61,7 @@
+ <span role="radio" id="pass7" aria-checked="true">I am GREEN!</span>
+ <span role="radio" id="pass8" aria-checked="true">I am GREEN!</span>
+ <input type="number" role="spinbutton" id="pass9" value="10" />
+-<input type="number" role="spinbutton" id="pass10" />
++<input type="number" role="spinbutton" id="pass10" aria-label="pass10"/>
+ <div role="spinbutton" id="pass11">fail</div>
+ <div role="separator" id="pass12"></div>
+ <div role="separator" id="pass13" tabindex="0" aria-valuenow="foo"></div>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/label.html
++++ b/label.html
+@@ -29,7 +29,7 @@
+ 
+   <label><input type="text" id="fail3" /></label>
+   <label><textarea id="fail4"></textarea></label>
+-  <label for="fail5"></label><input type="text" id="fail5" />
++  <label for="fail5"></label><input type="text" id="fail5" aria-label="fail5"/>
+   <label for="fail6"></label><textarea id="fail6"></textarea>
+ 
+   <label for="fail7" style="display: none">Text</label

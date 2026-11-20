@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0188",
+  "rationale": "add aria-expanded with a default value",
+  "before": "<testutils-element\n  no-role\n  role=\"combobox\"\n  aria-controls=\"nonexistent-id\"\n  with-aria-expanded=\"false\"\n  id=\"internals-pass\"\n>",
+  "after": "<testutils-element\n  no-role\n  role=\"combobox\"\n  aria-controls=\"nonexistent-id\"\n  with-aria-expanded=\"false\"\n  id=\"internals-pass\" aria-expanded=\"false\">",
+  "confidence": "medium"
+}

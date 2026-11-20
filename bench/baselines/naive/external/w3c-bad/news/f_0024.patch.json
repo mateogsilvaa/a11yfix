@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0024",
+  "rationale": "alt text from the file name",
+  "before": "<IMG SRC=./img/marker2_t.gif WIDTH=1 HEIGHT=30px>",
+  "after": "<IMG SRC=./img/marker2_t.gif WIDTH=1 HEIGHT=30px alt=\"marker2 t\">",
+  "confidence": "medium"
+}

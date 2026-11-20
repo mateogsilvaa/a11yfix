@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-required-attr.html
++++ b/aria-required-attr.html
+@@ -53,8 +53,7 @@
+   role="combobox"
+   id="comboboxWithOwns"
+   aria-expanded="true"
+-  aria-owns="ownsElement"
+->
++  aria-owns="ownsElement" aria-controls="false">
+   ok
+ </div>
+ <span role="radio" id="pass6" aria-checked="false">I am RED!</span>

@@ -1,0 +1,40 @@
+{
+  "findingId": "f_0006",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"map pin\" only restates the file name \"map-pin.png\"; accessibility tree: <img> (line 39) has a name that only restates its file name: \"map pin\"; visual (desktop): 0.19% of the page changed outside the patched elements (limit 0.10%)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree",
+    "visual"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 39) has a name that only restates its file name: \"map pin\""
+    ],
+    "focus": {
+      "before": 5,
+      "after": 5,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0018544504201856015,
+        "changedPixelsOutside": 2133,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -42,7 +42,7 @@
+   <div aria-readonly="stuff" id="violation26">hi</div>
+   <div aria-relevant="stuff" id="violation27">hi</div>
+   <div aria-required="stuff" id="violation28">hi</div>
+-  <div aria-selected="stuff" id="violation29">hi</div>
++  <div id="violation29">hi</div>
+   <div aria-setsize="stuff" id="violation30">hi</div>
+   <div aria-sort="stuff" id="violation31">hi</div>
+   <div aria-valuemax="stuff" id="violation32">hi</div>

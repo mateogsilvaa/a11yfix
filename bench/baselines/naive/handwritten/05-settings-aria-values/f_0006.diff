@@ -1,0 +1,12 @@
+===================================================================
+--- a/05-settings-aria-values.html
++++ b/05-settings-aria-values.html
+@@ -28,7 +28,7 @@
+       <a href="/billing">Billing</a>
+     </nav>
+     <button type="button" aria-checked="false">Dark mode</button>
+-    <a href="/help" aria-selected="true">Help</a>
++    <a href="/help">Help</a>
+     <div aria-level="2">Advanced</div>
+   </main>
+ </body>

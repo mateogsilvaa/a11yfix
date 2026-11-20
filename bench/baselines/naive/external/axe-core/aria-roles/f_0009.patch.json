@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0009",
+  "rationale": "add aria-checked with a default value",
+  "before": "<div role=\"switch\" id=\"pass64\">",
+  "after": "<div role=\"switch\" id=\"pass64\" aria-checked=\"false\">",
+  "confidence": "medium"
+}

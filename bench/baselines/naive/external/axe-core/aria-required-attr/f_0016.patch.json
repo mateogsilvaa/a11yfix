@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0016",
+  "rationale": "add aria-valuenow with a default value",
+  "before": "<div role=\"separator\" id=\"violation6\" tabindex=\"0\">",
+  "after": "<div role=\"separator\" id=\"violation6\" tabindex=\"0\" aria-valuenow=\"0\">",
+  "confidence": "medium"
+}

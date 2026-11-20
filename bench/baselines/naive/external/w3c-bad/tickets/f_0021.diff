@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -107,7 +107,7 @@
+         </TD>
+       </TR>
+       <TR HEIGHT=7px>
+-        <TD WIDTH=780px BACKGROUND=./img/mark.gif COLSPAN=5><IMG SRC=./img/mark.gif WIDTH=158px HEIGHT=7px></TD>
++        <TD WIDTH=780px BACKGROUND=./img/mark.gif COLSPAN=5><IMG SRC=./img/mark.gif WIDTH=158px HEIGHT=7px alt="mark"></TD>
+       </TR>
+       <TR HEIGHT=25px>
+         <TD COLSPAN=5>

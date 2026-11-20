@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -225,7 +225,7 @@
+                 <TR>
+                   <TD><DIV><img src="./img/chart1.jpg" alt="" width="270" height="150" border="0"></DIV></TD>
+                 </TR>
+-                  <TD width=275 background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78></TD>
++                  <TD width=275 background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78 alt="marker2 w"></TD>
+                 </TR>
+               </TBODY>
+             </TABLE>

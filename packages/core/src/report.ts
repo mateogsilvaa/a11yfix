@@ -31,6 +31,10 @@ export interface Metrics {
   invalid: number;
   applyFailed: number;
   generationFailed: number;
+  /** Applied patches an axe-only verifier would have accepted (violation gone, nothing new): verified + suspicious. */
+  axeAccepted: number;
+  /** ...that axe plus the source-level suspicion checks (static and the rule's own) would have accepted. */
+  sourceAccepted: number;
   usage: Usage;
 }
 
@@ -50,8 +54,32 @@ export function metricsOf(outcomes: PatchOutcome[]): Metrics {
     invalid: outcomes.filter((o) => o.generation.patch !== null && o.verification.status === "rejected_invalid").length,
     applyFailed: st("rejected_apply_failed"),
     generationFailed: outcomes.filter((o) => o.generation.patch === null && o.verification.status === "rejected_invalid").length,
+    axeAccepted: st("verified") + st("rejected_suspicious"),
+    sourceAccepted:
+      st("verified") +
+      outcomes.filter((o) => o.verification.status === "rejected_suspicious" && !(o.verification.flaggedBy ?? []).some((l) => l === "static" || l === "rule"))
+        .length,
     usage: outcomes.reduce((u, o) => addUsage(u, o.generation.usage), ZERO_USAGE),
   };
+}
+
+/** Wilson score interval for k successes out of n, 95% by default. */
+export function wilson(k: number, n: number, z = 1.96): [number, number] {
+  if (n === 0) return [0, 1];
+  const p = k / n;
+  const den = 1 + (z * z) / n;
+  const mid = (p + (z * z) / (2 * n)) / den;
+  const half = (z * Math.sqrt((p * (1 - p)) / n + (z * z) / (4 * n * n))) / den;
+  // Exact at the edges: floating point would print 100% as 99.99...
+  return [k === 0 ? 0 : Math.max(0, mid - half), k === n ? 1 : Math.min(1, mid + half)];
+}
+
+/** "97.1% [92.4–99.0], n=136": a rate with its 95% Wilson interval and sample size. */
+export function rateCI(k: number, n: number): string {
+  if (n === 0) return "n/a";
+  const [lo, hi] = wilson(k, n);
+  const f = (x: number) => (100 * x).toFixed(1).replace(/\.0$/, "");
+  return `${((100 * k) / n).toFixed(1)}% [${f(lo)}–${f(hi)}], n=${n}`;
 }
 
 const pct = (n: number, d: number) => (d === 0 ? "n/a" : `${((100 * n) / d).toFixed(1)}%`);
@@ -159,11 +187,11 @@ export function renderReport(r: ReportInput): string {
   L.push("");
   L.push(`Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the model, used only where judgment is needed.`);
   L.push("");
-  L.push(`| Tier | Proposed | Verified | Precision | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |`);
+  L.push(`| Tier | Proposed | Verified | Precision [95% CI] | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |`);
   L.push(`|---|---|---|---|---|---|---|---|---|`);
   for (const [name, t] of [["0 (codemod)", t0], ["1 (model)", t1]] as const) {
     L.push(
-      `| ${name} | ${t.proposed} | ${t.verified} | **${pct(t.verified, t.proposed)}** | ${t.suspicious} | ${t.regression} | ${t.persists} | ${t.invalid + t.applyFailed} | ${
+      `| ${name} | ${t.proposed} | ${t.verified} | **${rateCI(t.verified, t.proposed)}** | ${t.suspicious} | ${t.regression} | ${t.persists} | ${t.invalid + t.applyFailed} | ${
         t.verified ? fmtInt(Math.round(tokens(t.usage) / t.verified)) : "n/a"
       } |`,
     );
@@ -183,6 +211,9 @@ export function renderReport(r: ReportInput): string {
     L.push("");
   }
 
+  L.push(renderAblation(all));
+  L.push("");
+
   L.push(`## Outcomes`);
   L.push("");
   L.push(`| Status | Count |`);
@@ -199,17 +230,14 @@ export function renderReport(r: ReportInput): string {
 
   L.push(`## By rule`);
   L.push("");
-  L.push(`| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision | False-fix | Regression |`);
+  L.push(`| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision [95% CI] | False-fix | Regression |`);
   L.push(`|---|---|---|---|---|---|---|---|---|---|---|`);
   for (const rule of r.rules) {
     const o = all.filter((x) => x.finding.ruleId === rule.axe);
     if (!o.length) continue;
     const rm = metricsOf(o);
     L.push(
-      `| ${rule.id} | ${rule.version} | ${rule.tier} | ${rm.detected} | ${rm.skipped} | ${rm.proposed} | ${rm.verified} | ${pct(rm.verified, rm.detected)} | ${pct(
-        rm.verified,
-        rm.proposed,
-      )} | ${pct(rm.suspicious, rm.verified + rm.suspicious)} | ${pct(rm.regression, rm.applied)} |`,
+      `| ${rule.id} | ${rule.version} | ${rule.tier} | ${rm.detected} | ${rm.skipped} | ${rm.proposed} | ${rm.verified} | ${pct(rm.verified, rm.detected)} | ${rateCI(rm.verified, rm.proposed)} | ${pct(rm.suspicious, rm.verified + rm.suspicious)} | ${pct(rm.regression, rm.applied)} |`,
     );
   }
   L.push("");
@@ -287,6 +315,7 @@ export function renderReport(r: ReportInput): string {
   );
   L.push(`- **False-fix rate**: of the patches that made axe happy, the share flagged as suspicious.`);
   L.push(`- **Regression rate**: of the applied patches, the share that introduced a new violation.`);
+  L.push(`- **[95% CI]**: Wilson score interval. With samples this small, intervals are wide; differences inside them are not evidence.`);
   L.push(`- Token costs count input, output, and prompt-cache reads and writes. Dollar figures are estimates from list prices.`);
   L.push("");
 
@@ -294,6 +323,35 @@ export function renderReport(r: ReportInput): string {
     L.push(r.notes.trim());
     L.push("");
   }
+  return L.join("\n");
+}
+
+/**
+ * What each verifier layer adds: how many patches each weaker verifier would have accepted, and how many of
+ * those the full verifier rejects. "Rejected" is relative to the full verifier, which is not ground truth either.
+ */
+function renderAblation(all: PatchOutcome[]): string {
+  const L: string[] = [];
+  L.push(`## What the verifier adds`);
+  L.push("");
+  L.push(
+    `Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejected by the full verifier" counts patches a pipeline with that verifier would have put in the output and called fixed. The full verifier is the reference here, not ground truth: a patch it accepts can still be wrong in ways no automatic check sees.`,
+  );
+  L.push("");
+  L.push(`| Tier | Verifier | Would ship | Shipped but rejected by the full verifier | Share of shipped |`);
+  L.push(`|---|---|---:|---:|---|`);
+  for (const [name, tier] of [["0 (codemod)", 0], ["1 (model)", 1]] as const) {
+    const t = metricsOf(all.filter((o) => tierOf(o) === tier));
+    if (!t.applied) continue;
+    const rows: Array<[string, number]> = [
+      ["none (shape validation only)", t.applied],
+      ["axe only", t.axeAccepted],
+      ["axe + source checks", t.sourceAccepted],
+      ["full (+ accessibility tree, focus order, pixels)", t.verified],
+    ];
+    for (const [label, n] of rows) L.push(`| ${name} | ${label} | ${n} | ${n - t.verified} | ${rateCI(n - t.verified, n)} |`);
+  }
+  if (!all.some((o) => APPLIED.includes(o.verification.status))) L.push(`| - | no patch applied in this run | 0 | 0 | n/a |`);
   return L.join("\n");
 }
 

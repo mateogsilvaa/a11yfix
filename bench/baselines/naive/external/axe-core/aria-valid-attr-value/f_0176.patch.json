@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0176",
+  "rationale": "remove aria-valuenow",
+  "before": "<div aria-valuenow=\"-412\" id=\"pass166\">",
+  "after": "<div id=\"pass166\">",
+  "confidence": "medium"
+}

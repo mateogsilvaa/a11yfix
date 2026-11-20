@@ -1,0 +1,12 @@
+===================================================================
+--- a/label.html
++++ b/label.html
+@@ -98,7 +98,7 @@
+       <option>Option 2</option>
+     </select>
+   </div>
+-  <input type="text" id="fail14" aria-labelledby="fail14-label" />
++  <input type="text" id="fail14" aria-labelledby="fail14-label" aria-label="fail14"/>
+ </form>
+ </div>
+ </body>

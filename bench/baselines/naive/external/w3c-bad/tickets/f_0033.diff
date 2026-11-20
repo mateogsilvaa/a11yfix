@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -172,7 +172,7 @@
+             </TR>
+           </TABLE>
+         </TD>
+-        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px></TD>
++        <TD WIDTH=20px><IMG SRC=./img/blank_5x5.gif WIDTH=20px HEIGHT=5px alt="blank 5x5"></TD>
+         <TD WIDTH=625px HEIGHT="600px" VALIGN=TOP id="main">
+           <p style="padding-top:5px;"><img src="./img/headline_ticket_offers.gif" border="0"></p>
+           <table style="border; border: 1px dashed Silver; margin:0px;" width="600px">

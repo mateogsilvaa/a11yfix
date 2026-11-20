@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0091",
+  "rationale": "remove aria-modal",
+  "before": "<div aria-modal=\"true\" id=\"pass69\">",
+  "after": "<div id=\"pass69\">",
+  "confidence": "medium"
+}

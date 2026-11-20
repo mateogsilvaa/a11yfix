@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0014",
+  "rationale": "remove aria-expanded",
+  "before": "<div aria-expanded=\"stuff\" id=\"violation12\">",
+  "after": "<div id=\"violation12\">",
+  "confidence": "medium"
+}

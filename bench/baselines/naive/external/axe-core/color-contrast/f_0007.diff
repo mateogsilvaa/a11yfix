@@ -1,0 +1,13 @@
+===================================================================
+--- a/color-contrast.html
++++ b/color-contrast.html
+@@ -102,8 +102,7 @@
+   id="ignore2"
+   style="background: #000; color: #000"
+   value="hello"
+-  type="checkbox"
+-/>
++  type="checkbox" aria-label="ignore2"/>
+ <input
+   id="ignore4"
+   style="background: #000; color: #000"

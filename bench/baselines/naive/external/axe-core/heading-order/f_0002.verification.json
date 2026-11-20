@@ -1,0 +1,43 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [
+    {
+      "ruleId": "aria-valid-attr-value",
+      "impact": "critical",
+      "selector": "#heading8",
+      "sourceLines": {
+        "start": 24,
+        "end": 25
+      }
+    }
+  ],
+  "suspicious": false,
+  "reason": "introduced 1 new violation(s): aria-valid-attr-value at line 24",
+  "status": "rejected_regression",
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 0,
+      "after": 0,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

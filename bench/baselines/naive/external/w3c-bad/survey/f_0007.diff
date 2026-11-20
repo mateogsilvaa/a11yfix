@@ -1,0 +1,12 @@
+===================================================================
+--- a/survey.html
++++ b/survey.html
+@@ -65,7 +65,7 @@
+           <li><a href="tickets.html">Tickets</a></li>
+           <li class="current"><span class="hidden">Current location: </span>Survey
+             <div class="subnav"><ul>
+-              <li class="inaccessible"><strong>Inaccessible:</strong><a class="page current"><span class="hidden">Inaccessible </span>Survey Page</a><a href="./reports/survey.html" class="report"><span class="hidden">Inaccessible Survey Page </span> Report</a></li>
++              <li class="inaccessible"><strong>Inaccessible:</strong><a class="page current"><span class="hidden">Inaccessible </span>Survey Page</a><a href="./reports/survey.html" class="report"><span class="hidden" style="color: #000000">Inaccessible Survey Page </span> Report</a></li>
+               <li class="accessible"><strong>Accessible:</strong><a href="../after/survey.html" class="page"><span class="hidden">Accessible </span>Survey Page</a><a href="../after/reports/survey.html" class="report"><span class="hidden">Accessible Survey Page </span> Report</a></li>
+             </ul><a href="./annotated/survey.html" class="annotoggle">Show <br>Annotations</a></div>
+           </li>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0006",
+  "rationale": "remove aria-owns",
+  "before": "<div\n  role=\"combobox\"\n  id=\"comboboxWithOwns\"\n  aria-expanded=\"true\"\n  aria-owns=\"ownsElement\"\n>",
+  "after": "<div\n  role=\"combobox\"\n  id=\"comboboxWithOwns\"\n  aria-expanded=\"true\"\n>",
+  "confidence": "medium"
+}

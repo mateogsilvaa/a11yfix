@@ -1,0 +1,12 @@
+===================================================================
+--- a/05-settings-aria-values.html
++++ b/05-settings-aria-values.html
+@@ -22,7 +22,7 @@
+     <h2>Danger zone</h2>
+     <button type="button" aria-describedby="delete-warning" aria-pressed="0">Delete account</button>
+     <p id="delete-warning">This cannot be undone.</p>
+-    <div aria-live="loud">Saved.</div>
++    <div>Saved.</div>
+     <nav>
+       <a href="/settings" aria-current="active">Settings</a>
+       <a href="/billing">Billing</a>

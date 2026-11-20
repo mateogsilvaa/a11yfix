@@ -1,0 +1,34 @@
+diff --git a/corpus/handwritten/10-coworking-crlf.html b/corpus/handwritten/10-coworking-crlf.html
+--- a/corpus/handwritten/10-coworking-crlf.html
++++ b/corpus/handwritten/10-coworking-crlf.html
+@@ -14,21 +14,21 @@
+   <main>
+     <h1>Harbor Coworking</h1>
+     <div class="card">
+-      <h3>Hot desk</h3>
+-      <img src="img/desk.jpg" width="280">
+-      <p class="muted">From 12 EUR per day</p>
+-      <input type="number" name="days" min="1" value="1">
++      <h2>Hot desk</h2>
++      <img src="img/desk.jpg" width="280" alt="desk">
++      <p class="muted" style="color: #000000">From 12 EUR per day</p>
++      <input type="number" name="days" min="1" value="1" aria-label="days">
+     </div>
+     <div class="card">
+       <h3>Fixed desk</h3>
+-      <img src="img/desk.jpg" width="280">
+-      <p class="muted">From 180 EUR per month</p>
+-      <input type="number" name="days" min="1" value="1">
++      <img src="img/desk.jpg" width="280" alt="desk">
++      <p class="muted" style="color: #000000">From 180 EUR per month</p>
++      <input type="number" name="days" min="1" value="1" aria-label="days">
+     </div>
+     <div class="card">
+       <h3>Meeting room</h3>
+-      <img src="img/meeting-room.jpg" width="280">
+-      <p class="muted">From 25 EUR per hour</p>
++      <img src="img/meeting-room.jpg" width="280" alt="meeting room">
++      <p class="muted" style="color: #000000">From 25 EUR per hour</p>
+     </div>
+   </main>
+ </body>

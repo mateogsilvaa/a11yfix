@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "add aria-level with a default value",
+  "before": "<testutils-element no-role role=\"heading\" with-aria-level=\"4\" id=\"heading9\"\n  >",
+  "after": "<testutils-element no-role role=\"heading\" with-aria-level=\"4\" id=\"heading9\" aria-level=\"false\">",
+  "confidence": "medium"
+}

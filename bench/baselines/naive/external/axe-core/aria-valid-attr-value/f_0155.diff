@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -302,7 +302,7 @@
+   <div aria-valuemin="+412" id="pass142">hi</div>
+   <div aria-valuemin="-0.1" id="pass143">hi</div>
+   <div aria-valuemin="-1.1" id="pass144">hi</div>
+-  <div aria-valuemin="-12.22" id="pass145">hi</div>
++  <div id="pass145">hi</div>
+   <div aria-valuemin="-1." id="pass146">hi</div>
+   <div aria-valuemin="-.1" id="pass147">hi</div>
+   <div aria-valuemin="-412" id="pass148">hi</div>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0028",
+  "rationale": "remove aria-owns",
+  "before": "<div aria-owns=\"stuff\" id=\"violation23\">",
+  "after": "<div id=\"violation23\">",
+  "confidence": "medium"
+}

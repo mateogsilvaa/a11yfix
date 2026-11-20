@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -14,7 +14,7 @@
+ <h2>Violations</h2>
+ <div>
+   <div aria-activedescendant="Idonotexist" id="violation1">hi</div>
+-  <div aria-activedescendant="ref noexist ref2" id="violation2">hi</div>
++  <div id="violation2">hi</div>
+ 
+   <div aria-atomic="blah" id="violation3">hi</div>
+ 

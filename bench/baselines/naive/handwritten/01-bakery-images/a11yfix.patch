@@ -1,0 +1,34 @@
+diff --git a/corpus/handwritten/01-bakery-images.html b/corpus/handwritten/01-bakery-images.html
+--- a/corpus/handwritten/01-bakery-images.html
++++ b/corpus/handwritten/01-bakery-images.html
+@@ -23,24 +23,24 @@
+     <p>Our sourdough is fermented for 36 hours.</p>
+     <section class="products">
+       <figure>
+-        <img src="img/sourdough.jpg" width="200">
++        <img src="img/sourdough.jpg" width="200" alt="sourdough">
+         <figcaption>Country sourdough, 800 g, 6.50 EUR</figcaption>
+       </figure>
+       <figure>
+-        <img src="img/croissant.jpg" width="200">
++        <img src="img/croissant.jpg" width="200" alt="croissant">
+         <figcaption>Butter croissant, 1.90 EUR</figcaption>
+       </figure>
+     </section>
+-    <img class="divider" src="img/wheat-divider.png" width="300">
++    <img class="divider" src="img/wheat-divider.png" width="300" alt="wheat divider">
+     <h2>Opening hours</h2>
+-    <img src="img/hours-table.png" width="400">
++    <img src="img/hours-table.png" width="400" alt="hours table">
+     <p>Call us at 555-0134 to place a large order.</p>
+     <p>
+-      <a href="https://maps.example.com/crumb"><img src="img/map-pin.png" width="16"> Find us on the map</a>
++      <a href="https://maps.example.com/crumb"><img src="img/map-pin.png" width="16" alt="map pin"> Find us on the map</a>
+     </p>
+   </main>
+   <footer>
+-    <a href="https://social.example.com/crumb"><img src="img/social-icon.png" width="24"></a>
++    <a href="https://social.example.com/crumb"><img src="img/social-icon.png" width="24" alt="social icon"></a>
+     <p>&copy; 2025 Crumb &amp; Co.</p>
+   </footer>
+ </body>

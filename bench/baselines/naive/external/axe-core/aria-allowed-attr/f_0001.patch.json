@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "remove aria-selected",
+  "before": "<div role=\"alert\" aria-selected=\"true\" id=\"fail1\">",
+  "after": "<div role=\"alert\" id=\"fail1\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,36 @@
+{
+  "findingId": "f_0041",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "generic aria-label: \"t\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static"
+  ],
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 53,
+      "after": 53,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1607,
+          1280,
+          1607
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

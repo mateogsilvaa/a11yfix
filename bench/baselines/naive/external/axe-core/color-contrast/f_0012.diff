@@ -1,0 +1,12 @@
+===================================================================
+--- a/color-contrast.html
++++ b/color-contrast.html
+@@ -362,7 +362,7 @@
+     margin-bottom: 60px;
+   "
+ >
+-  <span id="fail8" style="color: grey"
++  <span id="fail8" style="color: #ffffff; color: grey"
+     >this is a span with some text inside of it</span
+   >
+   <span id="fail9" style="color: grey"

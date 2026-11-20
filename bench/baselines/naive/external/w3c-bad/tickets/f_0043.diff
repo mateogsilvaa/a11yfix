@@ -1,0 +1,12 @@
+===================================================================
+--- a/tickets.html
++++ b/tickets.html
+@@ -247,7 +247,7 @@
+               <td><font color="41545D">$33.90</font></td>
+             </tr>
+             <tr bgcolor="#A9B8BF">
+-              <td colspan="5"><b><font color="41545D">Group (5 or more)</font></b></td>
++              <td colspan="5"><b><font color="41545D" style="color: #000000">Group (5 or more)</font></b></td>
+             </tr>
+             <tr>
+               <td><b><font color="41545D">Obelisks - Monkey, Monkey</font></b></td>

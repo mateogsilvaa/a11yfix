@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0002",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"ic share 24\" only restates the file name \"ic_share_24.svg\"; accessibility tree: <img> (line 17) has a name that only restates its file name: \"ic share 24\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 17) has a name that only restates its file name: \"ic share 24\""
+    ],
+    "focus": {
+      "before": 2,
+      "after": 2,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.0026290622663490463,
+        "changedPixelsOutside": 3024,
+        "size": [
+          1280,
+          900,
+          1280,
+          900
+        ],
+        "layoutShift": 2
+      }
+    ]
+  },
+  "tier": 1
+}

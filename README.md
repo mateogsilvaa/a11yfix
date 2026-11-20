@@ -20,35 +20,64 @@ focus order and the rendered pixels before and after each patch.
 > **No telemetry, no account, no server.** The only network traffic is the page under audit and, only if you
 > configure one, the model or agent that writes tier-1 patches.
 
-```
-$ a11yfix audit demo/before/index.html --out findings.json
-9 finding(s) in demo/before/index.html (0.3 s, axe 4.14.1)
+![Terminal recording: a11yfix audits a page and finds 9 violations, fixes 4 with codemods the verifier accepts, shows the patch, then rejects a hand-written patch whose alt text only restates the image file name.](docs/demo.svg)
 
-$ a11yfix fix findings.json --verify --strict --mode codemod --out patches
-demo/before/index.html: 9 finding(s), mode codemod, verifying
-  f_0001 image-alt: skipped (needs judgment (tier-1 rule without codemod); no model configured)
-  ...
-  f_0002 aria-roles [tier 0]: verified
-  f_0004 heading-order [tier 0]: verified
-  f_0006 aria-roles [tier 0]: verified
-  f_0008 aria-valid-attr-value [tier 0]: verified
-  {"skipped":5,"verified":4}; 5 subset violation(s) left after the patch
-wrote patches/a11yfix.patch: 4 change(s). Apply with: git apply patches/a11yfix.patch
+Recorded from real runs by [`scripts/record-demo.mjs`](scripts/record-demo.mjs) (`npm run demo:record`); only the
+pauses are shortened. The same session for asciinema: [`docs/demo.cast`](docs/demo.cast). The patch it writes:
+[`demo/after/a11yfix.patch`](demo/after/a11yfix.patch).
+
+## Results, including the uncomfortable ones
+
+22 pages, 662 violations, every patch through the full verifier. Precision is measured **against the verifier, not
+against a person**, with 95% Wilson intervals.
+
+| Who writes the patches | Proposed | Verified | Precision vs the verifier | Fix rate | Report |
+|---|---:|---:|---|---:|---|
+| Tier 0: codemods (offline, no model) | 136 | 136 | 100% [97.3–100] | 20.5% | [bench/codemod](bench/codemod/report.md) |
+| Naive baseline: unchecked quick fixes (a strawman, on purpose) | 653 | 459 | 70.3% [66.7–73.7] | 69.3% | [bench/baselines/naive](bench/baselines/naive/report.md) |
+| Tier 1: a real model | not measured yet | | | | [report.md](report.md) |
+
+Read the second row carefully. The [naive fixer](bench/baselines/naive-fixer.mjs) gets **more** patches verified than
+the codemods, and many of them are patches a reviewer would reject: `aria-checked="false"` invented for a checkbox
+whose state is unknown, `aria-label="first"` taken from the field's `name`, `style="color: #000000"` on 169
+elements. None of them makes the page worse for assistive technology, which is what the verifier can prove; several
+do not make it better. So:
+
+- **"Verified" is an upper bound, not a grade.** The verifier proves "nothing got worse", not "this is what the
+  author meant". Tier 0 is at 100% because its codemods decline those cases, not because the verifier would catch
+  them. Every patch still needs a human review before merge.
+- **The verifier still earns its place.** Of the naive fixer's 653 patches it rejected 194 (29.7%) that a pipeline
+  without it would have shipped as fixed; re-running axe alone would have let 167 of them through:
+
+  | Verifier | Naive patches it would ship | Of those, rejected by the full verifier |
+  |---|---:|---|
+  | none (shape validation only) | 653 | 194 (29.7% [26.3–33.3]) |
+  | axe only | 626 | 167 (26.7% [23.4–30.3]) |
+  | axe + source checks | 463 | 4 (0.9% [0.3–2.2]) |
+  | full (+ accessibility tree, focus order, pixels) | 459 | 0 |
+
+- **Small samples are small.** Tier 0's 100% rests on n=122 for `aria-allowed-attr`; for `label` it is 5 of 5,
+  an interval of 57–100%. Every report prints n and the interval per rule.
+
+The [analysis](bench/baselines/naive/report.md#analysis) goes rule by rule, including which gaps look closable.
+
+### A rejected patch
+
+What the verifier says about the alt text a hurried fixer writes (from the demo above, `a11yfix verify`):
+
+```json
+{
+  "findingId": "f_0005",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"plot map\" only restates the file name \"plot-map.png\"; accessibility tree: <img> (line 30) has a name that only restates its file name: \"plot map\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": ["static", "accessibility-tree"]
+}
 ```
 
-```diff
--    <nav role="navigaton">
-+    <nav role="navigation">
-...
--    <h3>Rent a plot</h3>
-+    <h2>Rent a plot</h2>
-...
--    <h3>Volunteer</h3>
-+    <h2>Volunteer</h2>
-```
-
-(Real output, [`demo/after/a11yfix.patch`](demo/after/a11yfix.patch). The sibling heading moves with the one axe
-flagged, so the page outline keeps saying the same thing.)
+axe is satisfied (`ruleGone: true`, nothing new); the patch is rejected anyway, and the reason says why.
 
 ## Why
 
@@ -302,26 +331,36 @@ the 4 inaccessible "before" pages of the W3C WAI [Before and After Demonstration
 and 8 axe-core rule fixtures. Every run below uses the full verifier (axe, static checks, accessibility tree, focus
 order, desktop pixels).
 
-| Run | Fix rate | Precision | Tier 0 precision | False-fix | Regression | Report |
-|---|---|---|---|---|---|---|
-| Tier 0 only (no model, offline) | 20.5% | 100.0% | **100.0% (136/136)** | 0.0% | 0.0% | [bench/codemod/report.md](bench/codemod/report.md) |
-| Tier 0 + tier 1 (`claude-opus-5-5`) | not run yet | | | | | [report.md](report.md) |
+| Run | Fix rate | Precision vs the verifier [95% CI] | False-fix | Regression | Report |
+|---|---|---|---|---|---|
+| Tier 0 only (no model, offline) | 20.5% | **100% [97.3–100]**, 136/136 | 0.0% | 0.0% | [bench/codemod/report.md](bench/codemod/report.md) |
+| Naive baseline (unchecked quick fixes) | 69.3% | 70.3% [66.7–73.7], 459/653 | 26.7% | 2.1% | [bench/baselines/naive/report.md](bench/baselines/naive/report.md) |
+| Tier 0 + tier 1 (a real model) | not run yet | | | | [report.md](report.md) |
 
-The offline run fixes a fifth of what it detects, and everything it fixes is right: the rest is tier 1 by design
+The offline run fixes a fifth of what it detects, and the verifier accepts all of it: the rest is tier 1 by design
 (images, contrast, widget state) or codemods declining what they cannot prove. The [analysis](bench/codemod/report.md#analysis)
 explains every category of skip and the two `heading-order` bugs the benchmark caught along the way.
 
-The Claude run needs an API key, which the environment this was built in did not have, and this repository only
-publishes measured numbers. `npm run bench` runs it and writes [report.md](report.md) with a comparison against the
-offline run. Bad numbers get published too.
+The naive baseline is there to measure the verifier: each report has a "What the verifier adds" table that judges the
+same patches with no verifier, axe alone, axe plus source checks, and the full verifier. It runs offline too.
+
+The tier-1 run needs a model, which the environment this was built in did not have, and this repository only
+publishes measured numbers. `npm run bench` runs it with the built-in client, or pass `--generator-cmd` for any
+other model. Bad numbers get published too. A tier-1 precision number also needs a human-reviewed sample next to it
+(see the naive baseline for why), which is not done yet.
+
+All 22 pages have been used while writing the codemods, so the tier-0 numbers are not from a held-out set. New pages
+should go to a held-out set first.
 
 Engines are pinned (axe-core 4.14.1, Playwright 1.65.1) and recorded in every report: a benchmark is only comparable
 with a run on the same engines.
 
 ```sh
 npm run bench:codemod   # offline, ~45 s
+npm run bench:naive     # offline naive baseline, ~5 min
 npm run bench           # tier 0 + tier 1 with the built-in client; needs ANTHROPIC_API_KEY
 npm run demo            # regenerate demo/after from demo/before
+npm run demo:record     # re-record docs/demo.svg from real runs
 ```
 
 ## Limitations

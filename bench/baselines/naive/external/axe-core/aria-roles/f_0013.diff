@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-roles.html
++++ b/aria-roles.html
+@@ -135,7 +135,7 @@
+   <div role="command" id="fail1">fail</div>
+   <div role="composite" id="fail2">fail</div>
+   <div role="input" id="fail3">fail</div>
+-  <div role="landmark" id="fail4">fail</div>
++  <div id="fail4">fail</div>
+   <div role="range" id="fail5">fail</div>
+   <div role="roletype" id="fail6">fail</div>
+   <div role="section" id="fail7">fail</div>

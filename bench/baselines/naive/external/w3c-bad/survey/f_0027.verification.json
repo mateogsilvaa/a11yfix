@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0027",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"nav news\" only restates the file name \"nav_news.gif\"; accessibility tree: <img> (line 162) has a name that only restates its file name: \"nav news\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 162) has a name that only restates its file name: \"nav news\""
+    ],
+    "focus": {
+      "before": 53,
+      "after": 53,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1607,
+          1280,
+          1607
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

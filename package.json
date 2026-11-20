@@ -23,7 +23,9 @@
     "a11yfix": "node packages/cli/dist/cli.js",
     "bench:codemod": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode codemod --report bench/codemod/report.md --out bench/codemod --notes bench/codemod/analysis.md",
     "bench": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode auto --report report.md --out bench/auto --compare bench/codemod/metrics.json",
+    "bench:naive": "npm run build && node packages/cli/dist/cli.js bench --corpus ./corpus --mode llm --generator-cmd \"node bench/baselines/naive-fixer.mjs\" --generator-input json --report bench/baselines/naive/report.md --out bench/baselines/naive --notes bench/baselines/naive/analysis.md --compare bench/codemod/metrics.json",
     "demo": "npm run build && tsx scripts/demo.ts",
+    "demo:record": "npm run build && node scripts/record-demo.mjs",
     "mcp": "node packages/mcp/dist/server.js"
   },
   "devDependencies": {

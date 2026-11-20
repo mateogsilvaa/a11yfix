@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "inline text color #000000",
+  "before": "<span class=\"badge\">",
+  "after": "<span class=\"badge\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

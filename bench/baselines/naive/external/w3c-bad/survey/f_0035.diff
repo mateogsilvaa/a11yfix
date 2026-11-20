@@ -1,0 +1,12 @@
+===================================================================
+--- a/survey.html
++++ b/survey.html
+@@ -206,7 +206,7 @@
+                                   <td height="31%"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>
+-                                  <td width="24"><span><input class="align" type="radio" name="res" value="2"></span></td>
++                                  <td width="24"><span><input class="align" type="radio" name="res" value="2" aria-label="res"></span></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+                                 </tr>
+                                 <tr>

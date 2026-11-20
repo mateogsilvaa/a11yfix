@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0007",
+  "rationale": "aria-label from the placeholder, name or id",
+  "before": "<input\n  id=\"ignore2\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"checkbox\"\n/>",
+  "after": "<input\n  id=\"ignore2\"\n  style=\"background: #000; color: #000\"\n  value=\"hello\"\n  type=\"checkbox\" aria-label=\"ignore2\"/>",
+  "confidence": "medium"
+}

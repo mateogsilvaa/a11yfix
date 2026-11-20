@@ -1,0 +1,9 @@
+{
+  "findingId": "f_0071",
+  "status": "rejected_invalid",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "generation failed: invalid output after 3 attempts: empty output; output began: \"\"",
+  "tier": null
+}

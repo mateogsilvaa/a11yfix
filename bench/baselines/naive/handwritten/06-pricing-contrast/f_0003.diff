@@ -1,0 +1,12 @@
+===================================================================
+--- a/06-pricing-contrast.html
++++ b/06-pricing-contrast.html
+@@ -26,7 +26,7 @@
+       <h2>Free</h2>
+       <p class="price">0 EUR</p>
+       <p class="note">Up to 3 notebooks.</p>
+-      <button class="cta" type="button">Start free</button>
++      <button class="cta" type="button" style="color: #000000">Start free</button>
+     </section>
+     <section class="plan">
+       <h2>Pro <span class="badge">Popular</span></h2>

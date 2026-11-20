@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0074",
+  "rationale": "aria-label from the placeholder, name or id",
+  "before": "<input\n      type=\"text\"\n      id=\"violation47\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"violation47-ref1 violation47-ref2\"\n      aria-describedby=\"violation47-ref1 violation47-ref2\"\n    />",
+  "after": "<input\n      type=\"text\"\n      id=\"violation47\"\n      aria-invalid=\"true\"\n      aria-errormessage=\"violation47-ref1 violation47-ref2\"\n      aria-describedby=\"violation47-ref1 violation47-ref2\" aria-label=\"violation47\"/>",
+  "confidence": "medium"
+}

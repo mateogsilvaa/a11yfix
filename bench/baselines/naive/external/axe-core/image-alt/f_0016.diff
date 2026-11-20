@@ -1,0 +1,12 @@
+===================================================================
+--- a/image-alt.html
++++ b/image-alt.html
+@@ -43,7 +43,7 @@
+ <img src="img.jpg" id="pass12" alt=" " role="presentation" />
+ <img src="img.jpg" id="pass13" alt=" " role="none" />
+ 
+-<img src="img.jpg" id="violation13" role="option" aria-label="" />
++<img src="img.jpg" id="violation13" role="option" aria-label="" alt="img"/>
+ <img src="img.jpg" id="violation14" role="progressbar" title="" />
+ <img src="img.jpg" id="violation15" role="treeitem" aria-labelledby="" />
+ 

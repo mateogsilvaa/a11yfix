@@ -2,8 +2,8 @@
 
 - Mode: `codemod` (codemods only)
 - Corpus: `./corpus` (22 pages)
-- Engines: a11yfix-core 0.3.0, axe-core 4.14.1, playwright 1.65.1, node 24.15.0
-- Run 2026-11-20, total wall time 49.1 s
+- Engines: a11yfix-core 0.3.0, axe-core 4.14.1, playwright 1.65.1, node 26.13.1
+- Run 2026-11-20, total wall time 45.7 s
 
 > a11yfix does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.
 
@@ -22,7 +22,7 @@
 | Regression rate (regressions / applied) | 0.0% |
 | Mean cost per verified fix | 0 tokens |
 | Total tokens | 0 |
-| Mean time per page | 2.5 s |
+| Mean time per page | 2.3 s |
 | Subset violations left after applying the output patch | 504 of 662 |
 | WCAG A/AA violations (all rules) before → after | 809 → 651 |
 
@@ -30,10 +30,21 @@
 
 Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the model, used only where judgment is needed.
 
-| Tier | Proposed | Verified | Precision | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |
+| Tier | Proposed | Verified | Precision [95% CI] | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |
 |---|---|---|---|---|---|---|---|---|
-| 0 (codemod) | 136 | 136 | **100.0%** | 0 | 0 | 0 | 0 | 0 |
+| 0 (codemod) | 136 | 136 | **100.0% [97.3–100], n=136** | 0 | 0 | 0 | 0 | 0 |
 | 1 (model) | 0 | 0 | **n/a** | 0 | 0 | 0 | 0 | n/a |
+
+## What the verifier adds
+
+Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejected by the full verifier" counts patches a pipeline with that verifier would have put in the output and called fixed. The full verifier is the reference here, not ground truth: a patch it accepts can still be wrong in ways no automatic check sees.
+
+| Tier | Verifier | Would ship | Shipped but rejected by the full verifier | Share of shipped |
+|---|---|---:|---:|---|
+| 0 (codemod) | none (shape validation only) | 136 | 0 | 0.0% [0–2.7], n=136 |
+| 0 (codemod) | axe only | 136 | 0 | 0.0% [0–2.7], n=136 |
+| 0 (codemod) | axe + source checks | 136 | 0 | 0.0% [0–2.7], n=136 |
+| 0 (codemod) | full (+ accessibility tree, focus order, pixels) | 136 | 0 | 0.0% [0–2.7], n=136 |
 
 ## Outcomes
 
@@ -50,43 +61,43 @@ Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the mo
 
 ## By rule
 
-| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision | False-fix | Regression |
+| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision [95% CI] | False-fix | Regression |
 |---|---|---|---|---|---|---|---|---|---|---|
 | image-alt | 1.0.0 | 1 | 159 | 159 | 0 | 0 | 0.0% | n/a | n/a | n/a |
-| label | 1.0.0 | 0 | 55 | 50 | 5 | 5 | 9.1% | 100.0% | 0.0% | 0.0% |
-| heading-order | 1.0.0 | 0 | 7 | 3 | 4 | 4 | 57.1% | 100.0% | 0.0% | 0.0% |
-| aria-allowed-attr | 1.0.0 | 0 | 151 | 29 | 122 | 122 | 80.8% | 100.0% | 0.0% | 0.0% |
+| label | 1.0.0 | 0 | 55 | 50 | 5 | 5 | 9.1% | 100.0% [56.6–100], n=5 | 0.0% | 0.0% |
+| heading-order | 1.0.0 | 0 | 7 | 3 | 4 | 4 | 57.1% | 100.0% [51–100], n=4 | 0.0% | 0.0% |
+| aria-allowed-attr | 1.0.0 | 0 | 151 | 29 | 122 | 122 | 80.8% | 100.0% [96.9–100], n=122 | 0.0% | 0.0% |
 | aria-required-attr | 1.0.0 | 1 | 34 | 34 | 0 | 0 | 0.0% | n/a | n/a | n/a |
-| aria-valid-attr-value | 1.0.0 | 0 | 58 | 55 | 3 | 3 | 5.2% | 100.0% | 0.0% | 0.0% |
-| aria-roles | 1.0.0 | 0 | 17 | 15 | 2 | 2 | 11.8% | 100.0% | 0.0% | 0.0% |
+| aria-valid-attr-value | 1.0.0 | 0 | 58 | 55 | 3 | 3 | 5.2% | 100.0% [43.8–100], n=3 | 0.0% | 0.0% |
+| aria-roles | 1.0.0 | 0 | 17 | 15 | 2 | 2 | 11.8% | 100.0% [34.2–100], n=2 | 0.0% | 0.0% |
 | color-contrast | 1.0.0 | 1 | 181 | 181 | 0 | 0 | 0.0% | n/a | n/a | n/a |
 
 ## By page
 
 | Page | Detected | Verified | Left after patch | WCAG A/AA before → after | Time |
 |---|---|---|---|---|---|
-| external/axe-core/aria-allowed-attr.html | 23 | 8 | 13 | 33 → 23 | 1.6 s |
+| external/axe-core/aria-allowed-attr.html | 23 | 8 | 13 | 33 → 23 | 1.5 s |
 | external/axe-core/aria-required-attr.html | 16 | 0 | 16 | 24 → 24 | 0.5 s |
-| external/axe-core/aria-roles.html | 22 | 0 | 22 | 60 → 60 | 0.6 s |
-| external/axe-core/aria-valid-attr-value.html | 189 | 113 | 55 | 198 → 64 | 36.0 s |
-| external/axe-core/color-contrast.html | 22 | 0 | 22 | 28 → 28 | 1.1 s |
+| external/axe-core/aria-roles.html | 22 | 0 | 22 | 60 → 60 | 0.7 s |
+| external/axe-core/aria-valid-attr-value.html | 189 | 113 | 55 | 198 → 64 | 31.9 s |
+| external/axe-core/color-contrast.html | 22 | 0 | 22 | 28 → 28 | 1.0 s |
 | external/axe-core/heading-order.html | 3 | 0 | 3 | 3 → 3 | 0.4 s |
-| external/axe-core/image-alt.html | 19 | 0 | 19 | 22 → 22 | 0.4 s |
-| external/axe-core/label.html | 14 | 0 | 14 | 28 → 28 | 0.7 s |
+| external/axe-core/image-alt.html | 19 | 0 | 19 | 22 → 22 | 0.5 s |
+| external/axe-core/label.html | 14 | 0 | 14 | 28 → 28 | 0.6 s |
 | external/w3c-bad/home.html | 71 | 0 | 71 | 84 → 84 | 1.0 s |
 | external/w3c-bad/news.html | 75 | 0 | 75 | 86 → 86 | 1.0 s |
 | external/w3c-bad/survey.html | 71 | 0 | 71 | 83 → 83 | 1.3 s |
 | external/w3c-bad/tickets.html | 70 | 0 | 70 | 81 → 81 | 1.2 s |
 | handwritten/01-bakery-images.html | 7 | 0 | 7 | 10 → 10 | 0.5 s |
-| handwritten/02-newsletter-labels.html | 4 | 3 | 1 | 5 → 2 | 1.4 s |
-| handwritten/03-docs-headings.html | 2 | 1 | 1 | 4 → 3 | 1.0 s |
-| handwritten/04-dashboard-roles.html | 7 | 2 | 5 | 7 → 5 | 1.5 s |
-| handwritten/05-settings-aria-values.html | 7 | 4 | 3 | 9 → 5 | 1.5 s |
-| handwritten/06-pricing-contrast.html | 7 | 0 | 7 | 7 → 7 | 0.6 s |
-| handwritten/07-recipe-mixed.html | 7 | 1 | 6 | 8 → 7 | 1.0 s |
+| handwritten/02-newsletter-labels.html | 4 | 3 | 1 | 5 → 2 | 1.3 s |
+| handwritten/03-docs-headings.html | 2 | 1 | 1 | 4 → 3 | 0.9 s |
+| handwritten/04-dashboard-roles.html | 7 | 2 | 5 | 7 → 5 | 1.3 s |
+| handwritten/05-settings-aria-values.html | 7 | 4 | 3 | 9 → 5 | 1.4 s |
+| handwritten/06-pricing-contrast.html | 7 | 0 | 7 | 7 → 7 | 0.5 s |
+| handwritten/07-recipe-mixed.html | 7 | 1 | 6 | 8 → 7 | 0.9 s |
 | handwritten/08-portfolio-ambiguous.html | 10 | 0 | 10 | 12 → 12 | 0.5 s |
 | handwritten/09-event-signup.html | 7 | 4 | 4 | 8 → 5 | 1.4 s |
-| handwritten/10-coworking-crlf.html | 9 | 0 | 9 | 9 → 9 | 0.6 s |
+| handwritten/10-coworking-crlf.html | 9 | 0 | 9 | 9 → 9 | 0.5 s |
 
 ## Skipped
 
@@ -129,6 +140,7 @@ Largest pixel change outside the patched elements on a page without layout shift
 - **Verified**: after applying the patch to a copy, the original violation is gone from the target node, no new WCAG 2.x A/AA violation appeared anywhere on the page, and no suspicion check fired (static checks, plus the accessibility-tree, focus-order and visual comparisons when they ran).
 - **False-fix rate**: of the patches that made axe happy, the share flagged as suspicious.
 - **Regression rate**: of the applied patches, the share that introduced a new violation.
+- **[95% CI]**: Wilson score interval. With samples this small, intervals are wide; differences inside them are not evidence.
 - Token costs count input, output, and prompt-cache reads and writes. Dollar figures are estimates from list prices.
 
 ## Analysis

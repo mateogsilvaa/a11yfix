@@ -1,0 +1,12 @@
+===================================================================
+--- a/label.html
++++ b/label.html
+@@ -74,7 +74,7 @@
+   <input type="text" id="pass16" aria-labelledby="hiddenlabel" />
+ 
+   <label> <input id="fail9" value="val" /></label>
+-  <label for="fail10"> <input id="fail10" value="val" /></label>
++  <label for="fail10"> <input id="fail10" value="val" aria-label="fail10"/></label>
+   <div id="lbl-f13">
+     <input id="fail11" value="val" aria-labelledby="lbl-f13" />
+   </div>

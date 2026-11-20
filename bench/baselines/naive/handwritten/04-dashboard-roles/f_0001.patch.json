@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "remove the invalid role",
+  "before": "<div class=\"bar\" role=\"navigaton\">",
+  "after": "<div class=\"bar\">",
+  "confidence": "medium"
+}

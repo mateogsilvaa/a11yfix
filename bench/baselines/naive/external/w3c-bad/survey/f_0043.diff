@@ -1,0 +1,12 @@
+===================================================================
+--- a/survey.html
++++ b/survey.html
+@@ -517,7 +517,7 @@
+                                 <tr>
+                                   <td valign="bottom"><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"><nobr>Name: <input type="radio" name="t" value="mr"> Mr. <input type="radio" name="t" value="mrs"> Mrs.</nobr><br /><br /><input type="text" name="em" id="em" size="20" /></td>
+                                   <td><IMG SRC="./img/gif.gif" alt="" height="25" width="5" border="0"></td>
+-                                  <td valign="bottom"><input type="text" name="n" id="n" size="30" /><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ev" id="ev" size="20" /></td>
++                                  <td valign="bottom"><input type="text" name="n" id="n" size="30" aria-label="n"/><br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type="text" name="ev" id="ev" size="20" /></td>
+                                 </tr>
+                                 <tr>
+                                   <td valign="top">eMail Address</td>

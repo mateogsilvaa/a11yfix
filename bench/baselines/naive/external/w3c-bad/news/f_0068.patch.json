@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0068",
+  "rationale": "inline text color #000000",
+  "before": "<acronym title=\"European Research Consortium for Informatics and Mathematics\">",
+  "after": "<acronym title=\"European Research Consortium for Informatics and Mathematics\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

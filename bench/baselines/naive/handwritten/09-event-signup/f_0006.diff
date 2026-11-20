@@ -1,0 +1,12 @@
+===================================================================
+--- a/09-event-signup.html
++++ b/09-event-signup.html
+@@ -40,7 +40,7 @@
+           </td>
+         </tr>
+       </table>
+-      <h5>Dietary needs</h5>
++      <h4>Dietary needs</h4>
+       <input type="text" name="diet" placeholder="e.g. vegetarian">
+       <p class="fine-print">We only use your email to send the event reminder.</p>
+       <button type="submit">Register</button>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0008",
+  "rationale": "add aria-valuenow with a default value",
+  "before": "<div role=\"slider\" id=\"pass50\">",
+  "after": "<div role=\"slider\" id=\"pass50\" aria-valuenow=\"0\">",
+  "confidence": "medium"
+}

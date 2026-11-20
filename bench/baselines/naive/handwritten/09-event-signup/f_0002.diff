@@ -1,0 +1,12 @@
+===================================================================
+--- a/09-event-signup.html
++++ b/09-event-signup.html
+@@ -20,7 +20,7 @@
+       <table>
+         <tr>
+           <td>Name <span class="required">*</span></td>
+-          <td><input type="text" name="first" size="12"> <input type="text" name="last" size="16"></td>
++          <td><input type="text" name="first" size="12" aria-label="first"> <input type="text" name="last" size="16"></td>
+         </tr>
+         <tr>
+           <td>Email <span class="required">*</span></td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/news.html
++++ b/news.html
+@@ -195,7 +195,7 @@
+                 <TBODY>
+                   <TR>
+                     <TD vAlign=top width=1 background=./img/marker2_t.gif rowSpan=9><IMG height=30 src="./img/marker2_t.gif" width=1></TD>
+-                    <TD background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78></TD>
++                    <TD background=./img/marker2_w.gif><IMG height=1 src="./img/marker2_w.gif" width=78 alt="marker2 w"></TD>
+                   </TR>
+                   <TR bgColor=#ededed>
+                     <TD><p class=headline><IMG height=24 src="./img/headline_middle.gif" width=23 align="absmiddle"><font size="3"> Your Shout</font></p></TD>

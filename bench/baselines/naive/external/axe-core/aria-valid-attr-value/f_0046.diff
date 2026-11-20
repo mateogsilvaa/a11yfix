@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -46,7 +46,7 @@
+   <div aria-setsize="stuff" id="violation30">hi</div>
+   <div aria-sort="stuff" id="violation31">hi</div>
+   <div aria-valuemax="stuff" id="violation32">hi</div>
+-  <div aria-valuemin="stuff" id="violation33">hi</div>
++  <div id="violation33">hi</div>
+   <div aria-valuenow="stuff" id="violation34">hi</div>
+   <div aria-errormessage="violation35-ref" aria-invalid="true" id="violation35">
+     hi

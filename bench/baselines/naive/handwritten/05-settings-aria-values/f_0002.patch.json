@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "remove aria-checked",
+  "before": "<div role=\"switch\" tabindex=\"0\" aria-checked=\"1\" aria-labelledby=\"notif-label\">",
+  "after": "<div role=\"switch\" tabindex=\"0\" aria-labelledby=\"notif-label\">",
+  "confidence": "medium"
+}

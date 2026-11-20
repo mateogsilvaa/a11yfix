@@ -1,0 +1,32 @@
+diff --git a/corpus/handwritten/02-newsletter-labels.html b/corpus/handwritten/02-newsletter-labels.html
+--- a/corpus/handwritten/02-newsletter-labels.html
++++ b/corpus/handwritten/02-newsletter-labels.html
+@@ -19,7 +19,7 @@
+       </div>
+       <div class="row">
+         Full name
+-        <input type="text" name="fullname">
++        <input type="text" name="fullname" aria-label="fullname">
+       </div>
+       <div class="row">
+         <span>Country</span>
+@@ -30,16 +30,16 @@
+         </select>
+       </div>
+       <div class="row">
+-        <input type="checkbox" name="weekly" value="yes"> Send me the weekly digest too
++        <input type="checkbox" name="weekly" value="yes" aria-label="weekly"> Send me the weekly digest too
+       </div>
+       <div class="row">
+         <p class="hint">Anything you would like us to write about?</p>
+-        <textarea name="topics" rows="3"></textarea>
++        <textarea name="topics" rows="3" aria-label="topics"></textarea>
+       </div>
+       <button type="submit">Subscribe</button>
+     </form>
+     <form action="/search" role="search">
+-      <input type="search" name="q">
++      <input type="search" name="q" aria-label="q">
+       <button type="submit">Search the archive</button>
+     </form>
+   </main>

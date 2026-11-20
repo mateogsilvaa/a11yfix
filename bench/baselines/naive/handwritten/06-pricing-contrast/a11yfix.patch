@@ -1,0 +1,34 @@
+diff --git a/corpus/handwritten/06-pricing-contrast.html b/corpus/handwritten/06-pricing-contrast.html
+--- a/corpus/handwritten/06-pricing-contrast.html
++++ b/corpus/handwritten/06-pricing-contrast.html
+@@ -19,24 +19,24 @@
+ <body>
+   <div class="hero">
+     <h1>Simple pricing</h1>
+-    <p class="subtitle">Start free. Upgrade when your notes outgrow it.</p>
++    <p class="subtitle" style="color: #000000">Start free. Upgrade when your notes outgrow it.</p>
+   </div>
+   <main class="plans">
+     <section class="plan">
+       <h2>Free</h2>
+       <p class="price">0 EUR</p>
+-      <p class="note">Up to 3 notebooks.</p>
+-      <button class="cta" type="button">Start free</button>
++      <p class="note" style="color: #000000">Up to 3 notebooks.</p>
++      <button class="cta" type="button" style="color: #000000">Start free</button>
+     </section>
+     <section class="plan">
+-      <h2>Pro <span class="badge">Popular</span></h2>
++      <h2>Pro <span class="badge" style="color: #000000">Popular</span></h2>
+       <p class="price">6 EUR</p>
+       <p style="color: #c4c4c4">Billed yearly. Cancel any time.</p>
+-      <button class="cta" type="button">Go Pro</button>
++      <button class="cta" type="button" style="color: #000000">Go Pro</button>
+     </section>
+   </main>
+   <footer>
+-    <p>Prices include VAT where applicable.</p>
++    <p style="color: #ffffff">Prices include VAT where applicable.</p>
+   </footer>
+ </body>
+ </html>

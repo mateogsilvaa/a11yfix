@@ -1,0 +1,39 @@
+{
+  "findingId": "f_0021",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "text alternative \"mark\" only restates the file name \"mark.gif\"; accessibility tree: <img> (line 213) has a name that only restates its file name: \"mark\"",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "static",
+    "accessibility-tree"
+  ],
+  "checks": {
+    "ax": [
+      "<img> (line 213) has a name that only restates its file name: \"mark\""
+    ],
+    "focus": {
+      "before": 56,
+      "after": 56,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0,
+        "changedPixelsOutside": 0,
+        "size": [
+          1280,
+          1411,
+          1280,
+          1411
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

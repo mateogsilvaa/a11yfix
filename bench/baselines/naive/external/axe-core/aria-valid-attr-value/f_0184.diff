@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -396,8 +396,7 @@
+       id="pass192"
+       aria-invalid="true"
+       aria-errormessage="pass192-ref1"
+-      aria-describedby="pass192-ref1 pass192-ref2"
+-    />
++      aria-describedby="pass192-ref1 pass192-ref2" aria-label="pass192"/>
+     <div id="pass192-ref1">Error message 1</div>
+     <div id="pass192-ref2">Error message 2</div>
+   </div>

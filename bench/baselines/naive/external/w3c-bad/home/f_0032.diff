@@ -1,0 +1,12 @@
+===================================================================
+--- a/home.html
++++ b/home.html
+@@ -271,7 +271,7 @@
+               <TD WIDTH=154px bgcolor="#EDEDED" id="survey" onMouseOver="switchImage('nav_survey', './img/nav_survey2.gif'); ChangeColor('survey','#FFF')" onMouseOut="switchImage('nav_survey', './img/nav_survey.gif'); ChangeColor('survey','#EDEDED')"><A HREF="javascript:location.href='survey.html';" ONFOCUS="blur();"><IMG SRC=./img/nav_survey.gif name="nav_survey" WIDTH=107 HEIGHT=32 hspace="8" BORDER=0px></A></TD>
+             </TR>
+             <TR HEIGHT=1px>
+-              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px></TD>
++              <TD WIDTH=154px BACKGROUND=./img/marker2_w.gif><IMG SRC=./img/marker2_w.gif WIDTH=78px HEIGHT=1px alt="marker2 w"></TD>
+             </TR>
+           </TABLE>
+         </TD>

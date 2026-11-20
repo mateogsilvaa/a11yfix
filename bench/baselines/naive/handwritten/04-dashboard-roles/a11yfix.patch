@@ -1,0 +1,42 @@
+diff --git a/corpus/handwritten/04-dashboard-roles.html b/corpus/handwritten/04-dashboard-roles.html
+--- a/corpus/handwritten/04-dashboard-roles.html
++++ b/corpus/handwritten/04-dashboard-roles.html
+@@ -12,7 +12,7 @@
+   </style>
+ </head>
+ <body>
+-  <div class="bar" role="navigaton">
++  <div class="bar">
+     <a href="/">Overview</a>
+     <a href="/alerts">Alerts</a>
+   </div>
+@@ -20,23 +20,23 @@
+     <h1>Overview</h1>
+     <div class="card">
+       <h2>Deploys</h2>
+-      <div class="btn" role="buton" tabindex="0">Deploy now</div>
+-      <div class="btn" role="checkbox" tabindex="0">Auto-deploy on merge</div>
++      <div class="btn" tabindex="0">Deploy now</div>
++      <div class="btn" role="checkbox" tabindex="0" aria-checked="false">Auto-deploy on merge</div>
+     </div>
+     <div class="card">
+       <h2>Capacity</h2>
+-      <div class="meter" role="slider" tabindex="0" aria-label="Worker pool size"></div>
+-      <div role="range">CPU 72%</div>
++      <div class="meter" role="slider" tabindex="0" aria-label="Worker pool size" aria-valuenow="0"></div>
++      <div>CPU 72%</div>
+     </div>
+     <div class="card">
+       <h2>Region</h2>
+-      <div role="combobox" tabindex="0" aria-label="Region">eu-west-1</div>
++      <div role="combobox" tabindex="0" aria-label="Region" aria-expanded="false" aria-controls="false">eu-west-1</div>
+       <ul role="listbox" aria-label="Recent regions">
+         <li role="option">eu-west-1</li>
+         <li role="option">us-east-2</li>
+       </ul>
+     </div>
+-    <div class="card" role="widget">
++    <div class="card">
+       <h2>Status</h2>
+       <p>All systems operational.</p>
+     </div>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "remove aria-live",
+  "before": "<div aria-live=\"loud\">",
+  "after": "<div>",
+  "confidence": "medium"
+}

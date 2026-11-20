@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "remove the invalid role",
+  "before": "<div class=\"btn\" role=\"buton\" tabindex=\"0\">",
+  "after": "<div class=\"btn\" tabindex=\"0\">",
+  "confidence": "medium"
+}

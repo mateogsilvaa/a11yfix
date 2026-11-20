@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -232,7 +232,7 @@
+   <div aria-owns="ref ref2 failedref" id="pass78">hi</div>
+   <div aria-owns=" ref ref2 " id="pass79">hi</div>
+ 
+-  <div aria-posinset="1" id="pass80">hi</div>
++  <div id="pass80">hi</div>
+   <div aria-posinset="22" id="pass81">hi</div>
+   <div aria-posinset="+1" id="pass82">hi</div>
+   <div aria-posinset="+22" id="pass83">hi</div>

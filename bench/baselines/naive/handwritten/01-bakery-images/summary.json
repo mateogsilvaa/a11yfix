@@ -1,0 +1,148 @@
+{
+  "file": "corpus\\handwritten\\01-bakery-images.html",
+  "findings": 7,
+  "statuses": {
+    "rejected_regression": 1,
+    "rejected_suspicious": 6
+  },
+  "included": [
+    "f_0002",
+    "f_0003",
+    "f_0004",
+    "f_0005",
+    "f_0006",
+    "f_0007"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 10,
+  "wcagViolationsAfter": 3,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2527,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "image-alt",
+      "line": 15,
+      "tier": 1,
+      "status": "rejected_regression",
+      "included": false,
+      "reason": "introduced 2 new violation(s): target-size at line 15, target-size at line 18",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "image-alt",
+      "line": 26,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"sourdough\" only restates the file name \"sourdough.jpg\"; accessibility tree: <img> (line 26) has a name that only restates its file name: \"sourdough\"; visual (desktop): 0.13% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "image-alt",
+      "line": 30,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"croissant\" only restates the file name \"croissant.jpg\"; accessibility tree: <img> (line 30) has a name that only restates its file name: \"croissant\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0004",
+      "ruleId": "image-alt",
+      "line": 34,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"wheat divider\" only restates the file name \"wheat-divider.png\"; accessibility tree: <img> (line 34) has a name that only restates its file name: \"wheat divider\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0005",
+      "ruleId": "image-alt",
+      "line": 36,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"hours table\" only restates the file name \"hours-table.png\"; accessibility tree: <img> (line 36) has a name that only restates its file name: \"hours table\"; visual (desktop): 0.31% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0006",
+      "ruleId": "image-alt",
+      "line": 39,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"map pin\" only restates the file name \"map-pin.png\"; accessibility tree: <img> (line 39) has a name that only restates its file name: \"map pin\"; visual (desktop): 0.19% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0007",
+      "ruleId": "image-alt",
+      "line": 43,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "text alternative \"social icon\" only restates the file name \"social-icon.png\"; accessibility tree: <img> (line 43) has a name that only restates its file name: \"social icon\"",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

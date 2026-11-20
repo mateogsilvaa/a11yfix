@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0014",
+  "rationale": "inline text color #ffffff",
+  "before": "<div style=\"margin: -40px 0 40px\" id=\"fail10\">",
+  "after": "<div style=\"color: #ffffff; margin: -40px 0 40px\" id=\"fail10\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-valid-attr-value.html
++++ b/aria-valid-attr-value.html
+@@ -339,7 +339,7 @@
+   </div>
+ 
+   <!-- Allowed empty -->
+-  <div aria-activedescendant="" id="pass171">hi</div>
++  <div id="pass171">hi</div>
+   <div aria-current="" id="pass172">hi</div>
+   <div aria-controls="" id="pass174">hi</div>
+   <div aria-describedby="" id="pass175">hi</div>
