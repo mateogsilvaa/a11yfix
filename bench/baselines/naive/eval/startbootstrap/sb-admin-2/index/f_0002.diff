@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -213,7 +213,7 @@
+                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 <i class="fas fa-bell fa-fw"></i>
+                                 <!-- Counter - Alerts -->
+-                                <span class="badge badge-danger badge-counter">3+</span>
++                                <span class="badge badge-danger badge-counter" style="color: #000000">3+</span>
+                             </a>
+                             <!-- Dropdown - Alerts -->
+                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"

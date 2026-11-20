@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -743,7 +743,7 @@
+                                             <td>$163,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Sakura Yamamoto</td>
++                                            <td style="color: #000000">Sakura Yamamoto</td>
+                                             <td>Support Engineer</td>
+                                             <td>Tokyo</td>
+                                             <td>37</td>

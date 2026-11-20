@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -531,7 +531,7 @@
+                                             <td>Chief Financial Officer (CFO)</td>
+                                             <td>New York</td>
+                                             <td>64</td>
+-                                            <td>2010/06/09</td>
++                                            <td style="color: #000000">2010/06/09</td>
+                                             <td>$725,000</td>
+                                         </tr>
+                                         <tr>

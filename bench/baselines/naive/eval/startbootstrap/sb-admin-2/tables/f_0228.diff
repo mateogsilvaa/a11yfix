@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -675,7 +675,7 @@
+                                             <td>Post-Sales support</td>
+                                             <td>Edinburgh</td>
+                                             <td>46</td>
+-                                            <td>2011/03/09</td>
++                                            <td style="color: #000000">2011/03/09</td>
+                                             <td>$324,050</td>
+                                         </tr>
+                                         <tr>

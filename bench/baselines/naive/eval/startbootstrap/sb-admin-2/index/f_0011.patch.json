@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0011",
+  "rationale": "re-level to h2, one below the previous heading",
+  "before": "<h6 class=\"m-0 font-weight-bold text-primary\">Earnings Overview</h6>",
+  "after": "<h2 class=\"m-0 font-weight-bold text-primary\">Earnings Overview</h2>",
+  "confidence": "medium"
+}

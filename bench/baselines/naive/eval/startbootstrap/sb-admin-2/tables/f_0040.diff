@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -425,7 +425,7 @@
+                                         <tr>
+                                             <td>Cedric Kelly</td>
+                                             <td>Senior Javascript Developer</td>
+-                                            <td>Edinburgh</td>
++                                            <td style="color: #000000">Edinburgh</td>
+                                             <td>22</td>
+                                             <td>2012/03/29</td>
+                                             <td>$433,060</td>

@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "inline text color #000000",
+  "before": "<a\n              class=\"nav-link fw-bold py-1 px-0 active\"\n              aria-current=\"page\"\n              href=\"#\"\n              >",
+  "after": "<a\n              class=\"nav-link fw-bold py-1 px-0 active\"\n              aria-current=\"page\"\n              href=\"#\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

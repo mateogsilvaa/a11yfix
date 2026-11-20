@@ -1,27 +1,27 @@
 {
   "generator": "codemods only",
   "date": "2026-11-20",
-  "pages": 22,
   "versions": {
     "a11yfix-core": "0.3.0",
     "axe-core": "4.14.1",
     "playwright": "1.65.1",
     "node": "26.13.1"
   },
+  "pages": 95,
   "overall": {
-    "detected": 662,
-    "skipped": 526,
-    "proposed": 136,
-    "applied": 136,
-    "verified": 136,
+    "detected": 1400,
+    "skipped": 1246,
+    "proposed": 154,
+    "applied": 154,
+    "verified": 154,
     "suspicious": 0,
     "regression": 0,
     "persists": 0,
     "invalid": 0,
     "applyFailed": 0,
     "generationFailed": 0,
-    "axeAccepted": 136,
-    "sourceAccepted": 136,
+    "axeAccepted": 154,
+    "sourceAccepted": 154,
     "usage": {
       "inputTokens": 0,
       "outputTokens": 0,
@@ -31,19 +31,19 @@
   },
   "byTier": {
     "0": {
-      "detected": 136,
+      "detected": 154,
       "skipped": 0,
-      "proposed": 136,
-      "applied": 136,
-      "verified": 136,
+      "proposed": 154,
+      "applied": 154,
+      "verified": 154,
       "suspicious": 0,
       "regression": 0,
       "persists": 0,
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
-      "axeAccepted": 136,
-      "sourceAccepted": 136,
+      "axeAccepted": 154,
+      "sourceAccepted": 154,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -75,8 +75,8 @@
   },
   "byRule": {
     "image-alt": {
-      "detected": 159,
-      "skipped": 159,
+      "detected": 165,
+      "skipped": 165,
       "proposed": 0,
       "applied": 0,
       "verified": 0,
@@ -96,19 +96,19 @@
       }
     },
     "label": {
-      "detected": 55,
+      "detected": 57,
       "skipped": 50,
-      "proposed": 5,
-      "applied": 5,
-      "verified": 5,
+      "proposed": 7,
+      "applied": 7,
+      "verified": 7,
       "suspicious": 0,
       "regression": 0,
       "persists": 0,
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
-      "axeAccepted": 5,
-      "sourceAccepted": 5,
+      "axeAccepted": 7,
+      "sourceAccepted": 7,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -117,19 +117,19 @@
       }
     },
     "heading-order": {
-      "detected": 7,
-      "skipped": 3,
-      "proposed": 4,
-      "applied": 4,
-      "verified": 4,
+      "detected": 35,
+      "skipped": 23,
+      "proposed": 12,
+      "applied": 12,
+      "verified": 12,
       "suspicious": 0,
       "regression": 0,
       "persists": 0,
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
-      "axeAccepted": 4,
-      "sourceAccepted": 4,
+      "axeAccepted": 12,
+      "sourceAccepted": 12,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -138,19 +138,19 @@
       }
     },
     "aria-allowed-attr": {
-      "detected": 151,
-      "skipped": 29,
-      "proposed": 122,
-      "applied": 122,
-      "verified": 122,
+      "detected": 168,
+      "skipped": 38,
+      "proposed": 130,
+      "applied": 130,
+      "verified": 130,
       "suspicious": 0,
       "regression": 0,
       "persists": 0,
       "invalid": 0,
       "applyFailed": 0,
       "generationFailed": 0,
-      "axeAccepted": 122,
-      "sourceAccepted": 122,
+      "axeAccepted": 130,
+      "sourceAccepted": 130,
       "usage": {
         "inputTokens": 0,
         "outputTokens": 0,
@@ -159,8 +159,8 @@
       }
     },
     "aria-required-attr": {
-      "detected": 34,
-      "skipped": 34,
+      "detected": 40,
+      "skipped": 40,
       "proposed": 0,
       "applied": 0,
       "verified": 0,
@@ -180,8 +180,8 @@
       }
     },
     "aria-valid-attr-value": {
-      "detected": 58,
-      "skipped": 55,
+      "detected": 60,
+      "skipped": 57,
       "proposed": 3,
       "applied": 3,
       "verified": 3,
@@ -222,8 +222,8 @@
       }
     },
     "color-contrast": {
-      "detected": 181,
-      "skipped": 181,
+      "detected": 858,
+      "skipped": 858,
       "proposed": 0,
       "applied": 0,
       "verified": 0,
@@ -240,6 +240,463 @@
         "outputTokens": 0,
         "cacheReadTokens": 0,
         "cacheWriteTokens": 0
+      }
+    }
+  },
+  "bySet": {
+    "dev": {
+      "pages": 22,
+      "overall": {
+        "detected": 662,
+        "skipped": 526,
+        "proposed": 136,
+        "applied": 136,
+        "verified": 136,
+        "suspicious": 0,
+        "regression": 0,
+        "persists": 0,
+        "invalid": 0,
+        "applyFailed": 0,
+        "generationFailed": 0,
+        "axeAccepted": 136,
+        "sourceAccepted": 136,
+        "usage": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        }
+      },
+      "byTier": {
+        "0": {
+          "detected": 136,
+          "skipped": 0,
+          "proposed": 136,
+          "applied": 136,
+          "verified": 136,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 136,
+          "sourceAccepted": 136,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "1": {
+          "detected": 0,
+          "skipped": 0,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        }
+      },
+      "byRule": {
+        "image-alt": {
+          "detected": 159,
+          "skipped": 159,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "label": {
+          "detected": 55,
+          "skipped": 50,
+          "proposed": 5,
+          "applied": 5,
+          "verified": 5,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 5,
+          "sourceAccepted": 5,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "heading-order": {
+          "detected": 7,
+          "skipped": 3,
+          "proposed": 4,
+          "applied": 4,
+          "verified": 4,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 4,
+          "sourceAccepted": 4,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-allowed-attr": {
+          "detected": 151,
+          "skipped": 29,
+          "proposed": 122,
+          "applied": 122,
+          "verified": 122,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 122,
+          "sourceAccepted": 122,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-required-attr": {
+          "detected": 34,
+          "skipped": 34,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-valid-attr-value": {
+          "detected": 58,
+          "skipped": 55,
+          "proposed": 3,
+          "applied": 3,
+          "verified": 3,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 3,
+          "sourceAccepted": 3,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-roles": {
+          "detected": 17,
+          "skipped": 15,
+          "proposed": 2,
+          "applied": 2,
+          "verified": 2,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 2,
+          "sourceAccepted": 2,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "color-contrast": {
+          "detected": 181,
+          "skipped": 181,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        }
+      }
+    },
+    "eval": {
+      "pages": 73,
+      "overall": {
+        "detected": 738,
+        "skipped": 720,
+        "proposed": 18,
+        "applied": 18,
+        "verified": 18,
+        "suspicious": 0,
+        "regression": 0,
+        "persists": 0,
+        "invalid": 0,
+        "applyFailed": 0,
+        "generationFailed": 0,
+        "axeAccepted": 18,
+        "sourceAccepted": 18,
+        "usage": {
+          "inputTokens": 0,
+          "outputTokens": 0,
+          "cacheReadTokens": 0,
+          "cacheWriteTokens": 0
+        }
+      },
+      "byTier": {
+        "0": {
+          "detected": 18,
+          "skipped": 0,
+          "proposed": 18,
+          "applied": 18,
+          "verified": 18,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 18,
+          "sourceAccepted": 18,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "1": {
+          "detected": 0,
+          "skipped": 0,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        }
+      },
+      "byRule": {
+        "image-alt": {
+          "detected": 6,
+          "skipped": 6,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "label": {
+          "detected": 2,
+          "skipped": 0,
+          "proposed": 2,
+          "applied": 2,
+          "verified": 2,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 2,
+          "sourceAccepted": 2,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "heading-order": {
+          "detected": 28,
+          "skipped": 20,
+          "proposed": 8,
+          "applied": 8,
+          "verified": 8,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 8,
+          "sourceAccepted": 8,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-allowed-attr": {
+          "detected": 17,
+          "skipped": 9,
+          "proposed": 8,
+          "applied": 8,
+          "verified": 8,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 8,
+          "sourceAccepted": 8,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-required-attr": {
+          "detected": 6,
+          "skipped": 6,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "aria-valid-attr-value": {
+          "detected": 2,
+          "skipped": 2,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        },
+        "color-contrast": {
+          "detected": 677,
+          "skipped": 677,
+          "proposed": 0,
+          "applied": 0,
+          "verified": 0,
+          "suspicious": 0,
+          "regression": 0,
+          "persists": 0,
+          "invalid": 0,
+          "applyFailed": 0,
+          "generationFailed": 0,
+          "axeAccepted": 0,
+          "sourceAccepted": 0,
+          "usage": {
+            "inputTokens": 0,
+            "outputTokens": 0,
+            "cacheReadTokens": 0,
+            "cacheWriteTokens": 0
+          }
+        }
       }
     }
   }

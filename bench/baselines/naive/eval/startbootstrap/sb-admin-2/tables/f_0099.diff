@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -504,7 +504,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Haley Kennedy</td>
+-                                            <td>Senior Marketing Designer</td>
++                                            <td style="color: #000000">Senior Marketing Designer</td>
+                                             <td>London</td>
+                                             <td>43</td>
+                                             <td>2012/12/18</td>

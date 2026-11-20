@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -464,7 +464,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Colleen Hurst</td>
+-                                            <td>Javascript Developer</td>
++                                            <td style="color: #000000">Javascript Developer</td>
+                                             <td>San Francisco</td>
+                                             <td>39</td>
+                                             <td>2009/09/15</td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -831,7 +831,7 @@
+                                             <td>$86,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Shad Decker</td>
++                                            <td style="color: #000000">Shad Decker</td>
+                                             <td>Regional Director</td>
+                                             <td>Edinburgh</td>
+                                             <td>51</td>

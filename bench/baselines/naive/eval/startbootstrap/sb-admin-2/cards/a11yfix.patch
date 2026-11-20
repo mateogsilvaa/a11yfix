@@ -1,0 +1,85 @@
+diff --git a/corpus/eval/startbootstrap/sb-admin-2/cards.html b/corpus/eval/startbootstrap/sb-admin-2/cards.html
+--- a/corpus/eval/startbootstrap/sb-admin-2/cards.html
++++ b/corpus/eval/startbootstrap/sb-admin-2/cards.html
+@@ -66,9 +66,9 @@
+                 <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo"
+                     data-parent="#accordionSidebar">
+                     <div class="bg-white py-2 collapse-inner rounded">
+-                        <h6 class="collapse-header">Custom Components:</h6>
++                        <h6 class="collapse-header" style="color: #000000">Custom Components:</h6>
+                         <a class="collapse-item" href="buttons.html">Buttons</a>
+-                        <a class="collapse-item active" href="cards.html">Cards</a>
++                        <a class="collapse-item active" href="cards.html" style="color: #000000">Cards</a>
+                     </div>
+                 </div>
+             </li>
+@@ -207,7 +207,7 @@
+                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 <i class="fas fa-bell fa-fw"></i>
+                                 <!-- Counter - Alerts -->
+-                                <span class="badge badge-danger badge-counter">3+</span>
++                                <span class="badge badge-danger badge-counter" style="color: #000000">3+</span>
+                             </a>
+                             <!-- Dropdown - Alerts -->
+                             <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+@@ -326,7 +326,7 @@
+                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                                 <img class="img-profile rounded-circle"
+-                                    src="img/undraw_profile.svg">
++                                    src="img/undraw_profile.svg" alt="undraw profile">
+                             </a>
+                             <!-- Dropdown - User Information -->
+                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+@@ -456,10 +456,10 @@
+ 
+                             <!-- Default Card Example -->
+                             <div class="card mb-4">
+-                                <div class="card-header">
++                                <div class="card-header" style="color: #000000">
+                                     Default Card Example
+                                 </div>
+-                                <div class="card-body">
++                                <div class="card-body" style="color: #000000">
+                                     This card uses Bootstrap's default styling with no utility classes added. Global
+                                     styles are the only things modifying the look and feel of this default card example.
+                                 </div>
+@@ -470,7 +470,7 @@
+                                 <div class="card-header py-3">
+                                     <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+                                 </div>
+-                                <div class="card-body">
++                                <div class="card-body" style="color: #000000">
+                                     The styling for this basic card example is created by using default Bootstrap
+                                     utility classes. By using utility classes, the style of the card component can be
+                                     easily modified with no need for any custom CSS!
+@@ -503,7 +503,7 @@
+                                     </div>
+                                 </div>
+                                 <!-- Card Body -->
+-                                <div class="card-body">
++                                <div class="card-body" style="color: #000000">
+                                     Dropdown menus can be placed in the card header in order to extend the functionality
+                                     of a basic card. In this dropdown card example, the Font Awesome vertical ellipsis
+                                     icon in the card header can be clicked on in order to toggle a dropdown menu.
+@@ -519,9 +519,9 @@
+                                 </a>
+                                 <!-- Card Content - Collapse -->
+                                 <div class="collapse show" id="collapseCardExample">
+-                                    <div class="card-body">
++                                    <div class="card-body" style="color: #000000">
+                                         This is a collapsable card example using Bootstrap's built in collapse
+-                                        functionality. <strong>Click on the card header</strong> to see the card body
++                                        functionality. <strong style="color: #000000">Click on the card header</strong> to see the card body
+                                         collapse and expand!
+                                     </div>
+                                 </div>
+@@ -541,7 +541,7 @@
+             <footer class="sticky-footer bg-white">
+                 <div class="container my-auto">
+                     <div class="copyright text-center my-auto">
+-                        <span>Copyright &copy; Your Website 2020</span>
++                        <span style="color: #000000">Copyright &copy; Your Website 2020</span>
+                     </div>
+                 </div>
+             </footer>

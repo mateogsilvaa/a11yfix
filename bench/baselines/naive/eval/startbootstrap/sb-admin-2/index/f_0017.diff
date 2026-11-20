@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -549,7 +549,7 @@
+                                     <h6 class="m-0 font-weight-bold text-primary">Projects</h6>
+                                 </div>
+                                 <div class="card-body">
+-                                    <h4 class="small font-weight-bold">Server Migration <span
++                                    <h4 class="small font-weight-bold" style="color: #000000">Server Migration <span
+                                             class="float-right">20%</span></h4>
+                                     <div class="progress mb-4">
+                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 20%"

@@ -1,0 +1,13 @@
+===================================================================
+--- a/aria-allowed-attr-incomplete.html
++++ b/aria-allowed-attr-incomplete.html
+@@ -23,8 +23,7 @@
+   role="checkbox"
+   id="incomplete7"
+   aria-required="TRUE"
+-  aria-readonly="TRUE"
+-></div>
++  aria-readonly="TRUE" aria-checked="false"></div>
+ </div>
+ </body>
+ </html>

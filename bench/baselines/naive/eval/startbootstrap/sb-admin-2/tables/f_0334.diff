@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -817,7 +817,7 @@
+                                         <tr>
+                                             <td>Lael Greer</td>
+                                             <td>Systems Administrator</td>
+-                                            <td>London</td>
++                                            <td style="color: #000000">London</td>
+                                             <td>21</td>
+                                             <td>2009/02/27</td>
+                                             <td>$103,500</td>

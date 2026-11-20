@@ -1,0 +1,12 @@
+===================================================================
+--- a/contrast-blending.html
++++ b/contrast-blending.html
+@@ -113,7 +113,7 @@
+           <div style="background-color: red">
+             <div
+               id="test5-target"
+-              style="background-color: rgba(0, 128, 0, 0.3)"
++              style="color: #ffffff; background-color: rgba(0, 128, 0, 0.3)"
+             >
+               Test5
+             </div>

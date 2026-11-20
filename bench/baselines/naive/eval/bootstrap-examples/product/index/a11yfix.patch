@@ -1,0 +1,15 @@
+diff --git a/corpus/eval/bootstrap-examples/product/index.html b/corpus/eval/bootstrap-examples/product/index.html
+--- a/corpus/eval/bootstrap-examples/product/index.html
++++ b/corpus/eval/bootstrap-examples/product/index.html
+@@ -289,9 +289,9 @@
+       >
+         <div class="col-md-6 p-lg-5 mx-auto my-5">
+           <h1 class="display-3 fw-bold">Designed for engineers</h1>
+-          <h3 class="fw-normal text-body-secondary mb-3">
++          <h2 class="fw-normal text-body-secondary mb-3">
+             Build anything you want with Aperture
+-          </h3>
++          </h2>
+           <div class="d-flex gap-3 justify-content-center lead fw-normal">
+             <a class="icon-link" href="#">
+               Learn more

@@ -1,0 +1,40 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\features\\index.html",
+  "findings": 1,
+  "statuses": {
+    "rejected_suspicious": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 3,
+  "wcagViolationsAfter": 2,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2143,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 749,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "visual (desktop): 0.21% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

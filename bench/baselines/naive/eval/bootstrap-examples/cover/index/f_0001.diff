@@ -1,0 +1,13 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -197,8 +197,7 @@
+             <a
+               class="nav-link fw-bold py-1 px-0 active"
+               aria-current="page"
+-              href="#"
+-              >Home</a
++              href="#" style="color: #000000">Home</a
+             >
+             <a class="nav-link fw-bold py-1 px-0" href="#">Features</a>
+             <a class="nav-link fw-bold py-1 px-0" href="#">Contact</a>

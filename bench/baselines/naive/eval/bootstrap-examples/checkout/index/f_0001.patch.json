@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "re-level to h2, one below the previous heading",
+  "before": "<h4 class=\"d-flex justify-content-between align-items-center mb-3\">\n              <span class=\"text-primary\">Your cart</span>\n              <span class=\"badge bg-primary rounded-pill\">3</span>\n            </h4>",
+  "after": "<h2 class=\"d-flex justify-content-between align-items-center mb-3\">\n              <span class=\"text-primary\">Your cart</span>\n              <span class=\"badge bg-primary rounded-pill\">3</span>\n            </h2>",
+  "confidence": "medium"
+}

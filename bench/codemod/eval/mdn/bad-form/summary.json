@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\mdn\\bad-form.html",
+  "findings": 2,
+  "statuses": {
+    "verified": 2
+  },
+  "included": [
+    "f_0001",
+    "f_0002"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 2,
+  "wcagViolationsAfter": 0,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 2039,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "label",
+      "line": 13,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "label",
+      "line": 17,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

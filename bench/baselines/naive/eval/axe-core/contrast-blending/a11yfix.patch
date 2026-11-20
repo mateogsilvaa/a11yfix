@@ -1,0 +1,30 @@
+diff --git a/corpus/eval/axe-core/contrast-blending.html b/corpus/eval/axe-core/contrast-blending.html
+--- a/corpus/eval/axe-core/contrast-blending.html
++++ b/corpus/eval/axe-core/contrast-blending.html
+@@ -100,7 +100,7 @@
+             <div style="background-color: rgba(0, 0, 255, 0.3)">
+               <div
+                 id="test4-target"
+-                style="background-color: rgba(0, 128, 0, 0.3)"
++                style="color: #ffffff; background-color: rgba(0, 128, 0, 0.3)"
+               >
+                 Test4
+               </div>
+@@ -113,7 +113,7 @@
+           <div style="background-color: red">
+             <div
+               id="test5-target"
+-              style="background-color: rgba(0, 128, 0, 0.3)"
++              style="color: #ffffff; background-color: rgba(0, 128, 0, 0.3)"
+             >
+               Test5
+             </div>
+@@ -125,7 +125,7 @@
+           <div style="background-color: red">
+             <div
+               id="test6-target"
+-              style="background-color: rgba(0, 0, 255, 0.3)"
++              style="color: #ffffff; background-color: rgba(0, 0, 255, 0.3)"
+             >
+               Test6
+             </div>

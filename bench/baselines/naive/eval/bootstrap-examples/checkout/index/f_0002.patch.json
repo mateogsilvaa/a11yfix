@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "re-level to h5, one below the previous heading",
+  "before": "<h6 class=\"my-0\">Product name</h6>",
+  "after": "<h5 class=\"my-0\">Product name</h5>",
+  "confidence": "medium"
+}

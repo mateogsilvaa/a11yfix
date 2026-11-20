@@ -1,0 +1,12 @@
+===================================================================
+--- a/blog-post.html
++++ b/blog-post.html
+@@ -68,7 +68,7 @@
+                                     <!-- Post meta content-->
+                                     <div class="text-muted fst-italic mb-2">January 1, 2023</div>
+                                     <!-- Post categories-->
+-                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!">Web Design</a>
++                                    <a class="badge bg-secondary text-decoration-none link-light" href="#!" style="color: #000000">Web Design</a>
+                                     <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
+                                 </header>
+                                 <!-- Preview image figure-->

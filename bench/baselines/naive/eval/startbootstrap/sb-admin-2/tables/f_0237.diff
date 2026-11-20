@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -688,7 +688,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Howard Hatfield</td>
+-                                            <td>Office Manager</td>
++                                            <td style="color: #000000">Office Manager</td>
+                                             <td>San Francisco</td>
+                                             <td>51</td>
+                                             <td>2008/12/16</td>

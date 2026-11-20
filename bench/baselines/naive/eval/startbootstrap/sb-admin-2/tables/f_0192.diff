@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -627,7 +627,7 @@
+                                             <td>Chief Operating Officer (COO)</td>
+                                             <td>San Francisco</td>
+                                             <td>48</td>
+-                                            <td>2010/03/11</td>
++                                            <td style="color: #000000">2010/03/11</td>
+                                             <td>$850,000</td>
+                                         </tr>
+                                         <tr>

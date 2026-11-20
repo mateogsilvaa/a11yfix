@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h5 class=\"mb-0\">Grid view</h5>",
+  "after": "<h3 class=\"mb-0\">Grid view</h3>",
+  "confidence": "medium"
+}

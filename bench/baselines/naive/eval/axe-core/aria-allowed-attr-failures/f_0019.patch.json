@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0019",
+  "rationale": "remove aria-pressed",
+  "before": "<button id=\"fail15\" aria-pressed=\"FALSE\">",
+  "after": "<button id=\"fail15\">",
+  "confidence": "medium"
+}

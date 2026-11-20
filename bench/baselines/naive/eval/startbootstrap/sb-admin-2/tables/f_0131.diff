@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -546,7 +546,7 @@
+                                             <td>Bradley Greer</td>
+                                             <td>Software Engineer</td>
+                                             <td>London</td>
+-                                            <td>41</td>
++                                            <td style="color: #000000">41</td>
+                                             <td>2012/10/13</td>
+                                             <td>$132,000</td>
+                                         </tr>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -561,7 +561,7 @@
+                                         <tr>
+                                             <td>Jenette Caldwell</td>
+                                             <td>Development Lead</td>
+-                                            <td>New York</td>
++                                            <td style="color: #000000">New York</td>
+                                             <td>30</td>
+                                             <td>2011/09/03</td>
+                                             <td>$345,000</td>

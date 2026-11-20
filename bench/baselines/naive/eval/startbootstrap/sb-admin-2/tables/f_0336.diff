@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -819,7 +819,7 @@
+                                             <td>Systems Administrator</td>
+                                             <td>London</td>
+                                             <td>21</td>
+-                                            <td>2009/02/27</td>
++                                            <td style="color: #000000">2009/02/27</td>
+                                             <td>$103,500</td>
+                                         </tr>
+                                         <tr>

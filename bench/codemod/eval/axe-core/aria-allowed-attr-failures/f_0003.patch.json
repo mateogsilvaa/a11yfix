@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "removed aria-colcount: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div role=\"row\" aria-colcount=\"value\" id=\"fail3\">",
+  "after": "<div role=\"row\" id=\"fail3\">",
+  "confidence": "high"
+}

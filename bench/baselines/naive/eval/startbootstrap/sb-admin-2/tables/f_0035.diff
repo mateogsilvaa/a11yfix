@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -418,7 +418,7 @@
+                                             <td>Ashton Cox</td>
+                                             <td>Junior Technical Author</td>
+                                             <td>San Francisco</td>
+-                                            <td>66</td>
++                                            <td style="color: #000000">66</td>
+                                             <td>2009/01/12</td>
+                                             <td>$86,000</td>
+                                         </tr>

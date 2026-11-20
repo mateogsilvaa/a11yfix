@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -727,7 +727,7 @@
+                                             <td>$645,750</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Olivia Liang</td>
++                                            <td style="color: #000000">Olivia Liang</td>
+                                             <td>Support Engineer</td>
+                                             <td>Singapore</td>
+                                             <td>64</td>

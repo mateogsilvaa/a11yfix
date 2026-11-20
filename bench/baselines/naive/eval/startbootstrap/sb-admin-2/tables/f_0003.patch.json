@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "alt text from the file name",
+  "before": "<img class=\"img-profile rounded-circle\"\n                                    src=\"img/undraw_profile.svg\">",
+  "after": "<img class=\"img-profile rounded-circle\"\n                                    src=\"img/undraw_profile.svg\" alt=\"undraw profile\">",
+  "confidence": "medium"
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -463,7 +463,7 @@
+                                             <td>$327,900</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Colleen Hurst</td>
++                                            <td style="color: #000000">Colleen Hurst</td>
+                                             <td>Javascript Developer</td>
+                                             <td>San Francisco</td>
+                                             <td>39</td>

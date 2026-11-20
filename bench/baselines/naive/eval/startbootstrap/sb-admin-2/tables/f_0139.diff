@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -556,7 +556,7 @@
+                                             <td>Edinburgh</td>
+                                             <td>35</td>
+                                             <td>2012/09/26</td>
+-                                            <td>$217,500</td>
++                                            <td style="color: #000000">$217,500</td>
+                                         </tr>
+                                         <tr>
+                                             <td>Jenette Caldwell</td>

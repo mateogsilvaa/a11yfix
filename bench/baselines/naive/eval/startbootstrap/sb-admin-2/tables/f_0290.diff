@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -759,7 +759,7 @@
+                                             <td>$98,540</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Finn Camacho</td>
++                                            <td style="color: #000000">Finn Camacho</td>
+                                             <td>Support Engineer</td>
+                                             <td>San Francisco</td>
+                                             <td>47</td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -700,7 +700,7 @@
+             <footer class="sticky-footer bg-white">
+                 <div class="container my-auto">
+                     <div class="copyright text-center my-auto">
+-                        <span>Copyright &copy; Your Website 2021</span>
++                        <span style="color: #000000">Copyright &copy; Your Website 2021</span>
+                     </div>
+                 </div>
+             </footer>

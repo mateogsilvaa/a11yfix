@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -647,7 +647,7 @@
+                                             <td>$95,400</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Suki Burks</td>
++                                            <td style="color: #000000">Suki Burks</td>
+                                             <td>Developer</td>
+                                             <td>London</td>
+                                             <td>53</td>

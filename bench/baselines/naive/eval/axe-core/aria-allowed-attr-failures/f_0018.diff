@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-allowed-attr-failures.html
++++ b/aria-allowed-attr-failures.html
+@@ -36,7 +36,7 @@
+ <div role="button" id="fail12" aria-grabbed="true" aria-level="2"></div>
+ 
+ <div role="checkbox" id="fail13" aria-checked="TRUE">Checkbox</div>
+-<div role="checkbox" id="fail14" aria-checked="FALSE">Checkbox</div>
++<div role="checkbox" id="fail14">Checkbox</div>
+ <button id="fail15" aria-pressed="FALSE">Toggle</button>
+ <a href="#" id="fail16" aria-current="FALSE">Current page</a>
+ <div role="checkbox" id="fail17" aria-checked="TRUE" aria-busy="FALSE">

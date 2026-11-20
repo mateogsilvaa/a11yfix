@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -825,7 +825,7 @@
+                                         <tr>
+                                             <td>Jonas Alexander</td>
+                                             <td>Developer</td>
+-                                            <td>San Francisco</td>
++                                            <td style="color: #000000">San Francisco</td>
+                                             <td>30</td>
+                                             <td>2010/07/14</td>
+                                             <td>$86,500</td>

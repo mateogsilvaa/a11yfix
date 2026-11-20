@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0045",
+  "rationale": "inline text color #000000",
+  "before": "<a\n                                            target=\"_blank\" rel=\"nofollow\" href=\"https://undraw.co/\">",
+  "after": "<a\n                                            target=\"_blank\" rel=\"nofollow\" href=\"https://undraw.co/\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

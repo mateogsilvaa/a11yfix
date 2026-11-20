@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\axe-core\\aria-allowed-attr-incomplete.html",
+  "findings": 2,
+  "statuses": {
+    "verified": 2
+  },
+  "included": [
+    "f_0001",
+    "f_0002"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 3,
+  "wcagViolationsAfter": 1,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 3089,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "aria-required-attr",
+      "line": 20,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "aria-required-attr",
+      "line": 22,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

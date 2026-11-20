@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "inline text color #000000",
+  "before": "<h1 class=\"masthead-heading text-uppercase mb-0\">",
+  "after": "<h1 class=\"masthead-heading text-uppercase mb-0\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

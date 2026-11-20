@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -720,7 +720,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Jackson Bradshaw</td>
+-                                            <td>Director</td>
++                                            <td style="color: #000000">Director</td>
+                                             <td>New York</td>
+                                             <td>65</td>
+                                             <td>2008/09/26</td>

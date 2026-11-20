@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "aria-labelledby points to the visible text \"Enter your name:\"",
+  "before": "<p>Enter your name:</p>\n        <input type=\"text\" name=\"name\">",
+  "after": "<p id=\"name-label\">Enter your name:</p>\n        <input type=\"text\" name=\"name\" aria-labelledby=\"name-label\">",
+  "confidence": "high"
+}

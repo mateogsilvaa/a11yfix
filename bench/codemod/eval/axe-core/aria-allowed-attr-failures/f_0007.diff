@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-allowed-attr-failures.html
++++ b/aria-allowed-attr-failures.html
+@@ -19,7 +19,7 @@
+ <audio
+   src="/test/assets/moon-speech.mp3"
+   controls
+-  aria-orientation="horizontal"
++ 
+   id="fail5"
+ ></audio>
+ 

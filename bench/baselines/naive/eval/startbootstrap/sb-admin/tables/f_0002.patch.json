@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0002",
+  "rationale": "inline text color #ffffff",
+  "before": "<div class=\"sb-sidenav-menu-heading\">",
+  "after": "<div class=\"sb-sidenav-menu-heading\" style=\"color: #ffffff\">",
+  "confidence": "medium"
+}

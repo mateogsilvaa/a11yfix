@@ -108,156 +108,139 @@ export interface ReportInput {
   regressionImpact?: Impact;
 }
 
-/** Machine-readable metrics written next to every report (used for comparisons). */
-export interface MetricsFile {
-  generator: string;
-  date: string;
+/**
+ * Pages under a directory named `eval` are the held-out set: never used to write or tune codemods, rules, prompts or
+ * the verifier. Everything else is dev. See corpus/README.md and ADR 0017.
+ */
+export type CorpusSet = "dev" | "eval";
+export const EVAL_DIR = "eval";
+
+/** "eval" when a directory named `eval` sits between the corpus root (inclusive) and the page, else "dev". */
+export function corpusSetOf(corpus: string, file: string): CorpusSet {
+  const dirs = path.relative(corpus, file).split(path.sep).slice(0, -1);
+  return [path.basename(path.resolve(corpus)), ...dirs].includes(EVAL_DIR) ? "eval" : "dev";
+}
+
+/** Dev and eval pages, or null when the run lacks one of the two and there is nothing to split. */
+export function splitPages(corpus: string, pages: PageOutcome[]): Record<CorpusSet, PageOutcome[]> | null {
+  const out: Record<CorpusSet, PageOutcome[]> = { dev: [], eval: [] };
+  for (const p of pages) out[corpusSetOf(corpus, p.file)].push(p);
+  return out.dev.length && out.eval.length ? out : null;
+}
+
+export interface SetMetrics {
   pages: number;
-  versions: Record<string, string>;
   overall: Metrics;
   byTier: { "0": Metrics; "1": Metrics };
   byRule: Record<string, Metrics>;
 }
 
-export function metricsFile(r: ReportInput): MetricsFile {
-  const all = r.pages.flatMap((p) => p.outcomes);
+/** Machine-readable metrics written next to every report (used for comparisons). */
+export interface MetricsFile extends SetMetrics {
+  generator: string;
+  date: string;
+  versions: Record<string, string>;
+  /** Dev and eval separately, when the run has both. `overall`, `byTier` and `byRule` mix them. */
+  bySet?: Record<CorpusSet, SetMetrics>;
+}
+
+function setMetrics(rules: Rule[], pages: PageOutcome[]): SetMetrics {
+  const all = pages.flatMap((p) => p.outcomes);
   const byRule: Record<string, Metrics> = {};
-  for (const rule of r.rules) {
+  for (const rule of rules) {
     const o = all.filter((x) => x.finding.ruleId === rule.axe);
     if (o.length) byRule[rule.id] = metricsOf(o);
   }
   return {
-    generator: r.generator,
-    date: r.date,
-    pages: r.pages.length,
-    versions: r.versions,
+    pages: pages.length,
     overall: metricsOf(all),
     byTier: { "0": metricsOf(all.filter((o) => tierOf(o) === 0)), "1": metricsOf(all.filter((o) => tierOf(o) === 1)) },
     byRule,
   };
 }
 
+export function metricsFile(r: ReportInput): MetricsFile {
+  const split = splitPages(r.corpus, r.pages);
+  return {
+    generator: r.generator,
+    date: r.date,
+    versions: r.versions,
+    ...setMetrics(r.rules, r.pages),
+    ...(split ? { bySet: { dev: setMetrics(r.rules, split.dev), eval: setMetrics(r.rules, split.eval) } } : {}),
+  };
+}
+
+const SET_TITLE: Record<CorpusSet, string> = { eval: "Eval (held out)", dev: "Dev (used for tuning)" };
+const relPath = (corpus: string, file: string) => path.relative(corpus, file).split(path.sep).join("/");
+
 export function renderReport(r: ReportInput): string {
   const all = r.pages.flatMap((p) => p.outcomes);
   const m = metricsOf(all);
-  const t0 = metricsOf(all.filter((o) => tierOf(o) === 0));
-  const t1 = metricsOf(all.filter((o) => tierOf(o) === 1));
-  const totalTokens = tokens(m.usage);
-  const usd = r.model ? estimateUsd(r.model, m.usage) : null;
-  const avgPageMs = r.pages.reduce((s, p) => s + p.ms, 0) / Math.max(1, r.pages.length);
-  const remaining = r.pages.reduce((s, p) => s + (p.remaining?.length ?? 0), 0);
-  const allBefore = r.pages.reduce((s, p) => s + p.allBefore, 0);
-  const allAfter = r.pages.reduce((s, p) => s + (p.allAfter ?? 0), 0);
+  const split = splitPages(r.corpus, r.pages);
 
   const L: string[] = [];
   L.push(`# a11yfix benchmark report`);
   L.push("");
   L.push(`- Mode: \`${r.mode}\` (${r.generator})${r.strict ? ", strict" : ""}`);
-  L.push(`- Corpus: \`${r.corpus}\` (${r.pages.length} pages)`);
+  L.push(
+    `- Corpus: \`${r.corpus}\` (${r.pages.length} pages${split ? `: ${split.eval.length} eval, held out; ${split.dev.length} dev, used for tuning` : ""})`,
+  );
   L.push(`- Engines: ${Object.entries(r.versions).map(([k, v]) => `${k} ${v}`).join(", ")}`);
   L.push(`- Run ${r.date}, total wall time ${(r.wallMs / 1000).toFixed(1)} s`);
   L.push("");
   L.push(`> a11yfix does not guarantee WCAG conformance. "Verified" means axe-core no longer reports the violation and nothing else broke; it is not a human review.`);
   L.push("");
-  L.push(`## Summary`);
-  L.push("");
-  L.push(`| Metric | Value |`);
-  L.push(`|---|---|`);
-  L.push(`| Pages | ${r.pages.length} |`);
-  L.push(`| Violations detected | ${m.detected} |`);
-  L.push(`| Skipped (needs judgment, no model in this run) | ${m.skipped} |`);
-  L.push(`| Patches proposed | ${m.proposed} |`);
-  L.push(`| Patches verified | ${m.verified} |`);
-  L.push(`| **Fix rate** (verified / detected) | **${pct(m.verified, m.detected)}** |`);
-  L.push(`| **Precision** (verified / proposed) | **${pct(m.verified, m.proposed)}** |`);
-  L.push(`| False-fix rate (suspicious / (verified + suspicious)) | ${pct(m.suspicious, m.verified + m.suspicious)} |`);
-  L.push(`| Regression rate (regressions / applied) | ${pct(m.regression, m.applied)} |`);
-  L.push(
-    `| Mean cost per verified fix | ${m.verified ? `${fmtInt(Math.round(totalTokens / m.verified))} tokens` : "n/a"}${
-      usd !== null && m.verified ? ` (~$${(usd / m.verified).toFixed(4)})` : ""
-    } |`,
-  );
-  L.push(`| Total tokens | ${fmtInt(totalTokens)}${usd !== null ? ` (~$${usd.toFixed(2)})` : ""} |`);
-  L.push(`| Mean time per page | ${(avgPageMs / 1000).toFixed(1)} s |`);
-  L.push(`| Subset violations left after applying the output patch | ${remaining} of ${m.detected} |`);
-  L.push(`| WCAG A/AA violations (all rules) before → after | ${allBefore} → ${allAfter} |`);
-  L.push("");
 
-  L.push(`## By tier`);
-  L.push("");
-  L.push(`Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the model, used only where judgment is needed.`);
-  L.push("");
-  L.push(`| Tier | Proposed | Verified | Precision [95% CI] | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |`);
-  L.push(`|---|---|---|---|---|---|---|---|---|`);
-  for (const [name, t] of [["0 (codemod)", t0], ["1 (model)", t1]] as const) {
-    L.push(
-      `| ${name} | ${t.proposed} | ${t.verified} | **${rateCI(t.verified, t.proposed)}** | ${t.suspicious} | ${t.regression} | ${t.persists} | ${t.invalid + t.applyFailed} | ${
-        t.verified ? fmtInt(Math.round(tokens(t.usage) / t.verified)) : "n/a"
-      } |`,
-    );
-  }
-  L.push("");
-
-  if (r.compare) {
-    const b = r.compare.overall;
-    L.push(`## Compared with \`${r.compare.generator}\` (${r.compare.date})`);
+  if (split) {
+    const e = setMetrics(r.rules, split.eval);
+    const d = setMetrics(r.rules, split.dev);
+    L.push(`## Dev and eval`);
     L.push("");
-    L.push(`| Metric | This run | ${r.compare.generator} |`);
+    L.push(
+      `Dev pages were read and debugged while the codemods and prompts were written, so their numbers are optimistic. Eval pages (under \`${EVAL_DIR}/\`) were never used for tuning: quote those. Each set is reported in full below.`,
+    );
+    L.push("");
+    const rows: Array<[string, (s: SetMetrics) => string]> = [
+      ["Pages", (s) => String(s.pages)],
+      ["Violations detected", (s) => String(s.overall.detected)],
+      ["Patches verified", (s) => String(s.overall.verified)],
+      ["**Fix rate** (verified / detected)", (s) => rateCI(s.overall.verified, s.overall.detected)],
+      ["**Precision** (verified / proposed)", (s) => rateCI(s.overall.verified, s.overall.proposed)],
+      ["Tier 0 precision", (s) => rateCI(s.byTier["0"].verified, s.byTier["0"].proposed)],
+      ["Tier 1 precision", (s) => rateCI(s.byTier["1"].verified, s.byTier["1"].proposed)],
+      ["False-fix rate", (s) => rateCI(s.overall.suspicious, s.overall.verified + s.overall.suspicious)],
+      ["Regression rate", (s) => rateCI(s.overall.regression, s.overall.applied)],
+    ];
+    L.push(`| Metric | ${SET_TITLE.eval} | ${SET_TITLE.dev} |`);
     L.push(`|---|---|---|`);
-    L.push(`| Fix rate | ${pct(m.verified, m.detected)} | ${pct(b.verified, b.detected)} |`);
-    L.push(`| Precision | ${pct(m.verified, m.proposed)} | ${pct(b.verified, b.proposed)} |`);
-    L.push(`| False-fix rate | ${pct(m.suspicious, m.verified + m.suspicious)} | ${pct(b.suspicious, b.verified + b.suspicious)} |`);
-    L.push(`| Regression rate | ${pct(m.regression, m.applied)} | ${pct(b.regression, b.applied)} |`);
+    for (const [label, f] of rows) L.push(`| ${label} | ${f(e)} | ${f(d)} |`);
     L.push("");
+    for (const set of ["eval", "dev"] as const) {
+      L.push(`## ${SET_TITLE[set]}`);
+      L.push("");
+      L.push(...renderSet(r, split[set], set, "###"));
+    }
+  } else {
+    L.push(...renderSet(r, r.pages, null, "##"));
   }
-
-  L.push(renderAblation(all));
-  L.push("");
-
-  L.push(`## Outcomes`);
-  L.push("");
-  L.push(`| Status | Count |`);
-  L.push(`|---|---|`);
-  L.push(`| verified | ${m.verified} |`);
-  L.push(`| rejected_suspicious (see below; in the output patch unless --strict) | ${m.suspicious} |`);
-  L.push(`| rejected_persists | ${m.persists} |`);
-  L.push(`| rejected_regression | ${m.regression} |`);
-  L.push(`| rejected_invalid (bad patch shape) | ${m.invalid} |`);
-  L.push(`| rejected_invalid (no usable model output) | ${m.generationFailed} |`);
-  L.push(`| rejected_apply_failed | ${m.applyFailed} |`);
-  L.push(`| skipped | ${m.skipped} |`);
-  L.push("");
-
-  L.push(`## By rule`);
-  L.push("");
-  L.push(`| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision [95% CI] | False-fix | Regression |`);
-  L.push(`|---|---|---|---|---|---|---|---|---|---|---|`);
-  for (const rule of r.rules) {
-    const o = all.filter((x) => x.finding.ruleId === rule.axe);
-    if (!o.length) continue;
-    const rm = metricsOf(o);
-    L.push(
-      `| ${rule.id} | ${rule.version} | ${rule.tier} | ${rm.detected} | ${rm.skipped} | ${rm.proposed} | ${rm.verified} | ${pct(rm.verified, rm.detected)} | ${rateCI(rm.verified, rm.proposed)} | ${pct(rm.suspicious, rm.verified + rm.suspicious)} | ${pct(rm.regression, rm.applied)} |`,
-    );
-  }
-  L.push("");
 
   L.push(`## By page`);
   L.push("");
-  L.push(`| Page | Detected | Verified | Left after patch | WCAG A/AA before → after | Time |`);
-  L.push(`|---|---|---|---|---|---|`);
+  L.push(`| Page | ${split ? "Set | " : ""}Detected | Verified | Left after patch | WCAG A/AA before → after | Time |`);
+  L.push(`|---|${split ? "---|" : ""}---|---|---|---|---|`);
   for (const p of r.pages) {
     const pm = metricsOf(p.outcomes);
     L.push(
-      `| ${path.relative(r.corpus, p.file).split(path.sep).join("/")} | ${pm.detected} | ${pm.verified} | ${p.remaining?.length ?? "n/a"} | ${
+      `| ${relPath(r.corpus, p.file)} | ${split ? `${corpusSetOf(r.corpus, p.file)} | ` : ""}${pm.detected} | ${pm.verified} | ${p.remaining?.length ?? "n/a"} | ${
         p.allBefore
       } → ${p.allAfter ?? "n/a"} | ${(p.ms / 1000).toFixed(1)} s |`,
     );
   }
   L.push("");
 
+  // The relative path, not the basename: several eval pages are called index.html.
   const row = (p: PageOutcome, o: PatchOutcome) =>
-    `| ${path.basename(p.file)} | ${o.finding.id} (line ${o.finding.sourceLines?.start ?? "?"}) | ${o.finding.ruleId} | ${tierOf(o) ?? "-"} | ${
+    `| ${relPath(r.corpus, p.file)} | ${o.finding.id} (line ${o.finding.sourceLines?.start ?? "?"}) | ${o.finding.ruleId} | ${tierOf(o) ?? "-"} | ${
       o.verification.status
     } | ${cell(o.verification.reason)} |`;
 
@@ -306,6 +289,11 @@ export function renderReport(r: ReportInput): string {
 
   L.push(`## Definitions`);
   L.push("");
+  if (split) {
+    L.push(
+      `- **Eval / dev**: pages under a directory named \`${EVAL_DIR}\` are held out: never used to write or tune codemods, rules, prompts or the verifier. All other pages are dev. A page used for tuning moves to dev.`,
+    );
+  }
   L.push(`- **Detected**: violations of the patched rule subset reported by axe-core, one per node.`);
   L.push(`- **Skipped**: no patch attempted: the rule's deterministic codemod declined (the fix needs judgment) and no model was configured.`);
   L.push(`- **Proposed**: a well-formed patch was produced, by a tier-0 codemod or by the tier-1 model (valid JSON matching the schema, within 3 attempts).`);
@@ -326,13 +314,117 @@ export function renderReport(r: ReportInput): string {
   return L.join("\n");
 }
 
+/** Summary, tiers, comparison, verifier ablation, outcomes and rules for one set of pages (`set` null: the whole run). */
+function renderSet(r: ReportInput, pages: PageOutcome[], set: CorpusSet | null, h: "##" | "###"): string[] {
+  const all = pages.flatMap((p) => p.outcomes);
+  const m = metricsOf(all);
+  const t0 = metricsOf(all.filter((o) => tierOf(o) === 0));
+  const t1 = metricsOf(all.filter((o) => tierOf(o) === 1));
+  const totalTokens = tokens(m.usage);
+  const usd = r.model ? estimateUsd(r.model, m.usage) : null;
+  const avgPageMs = pages.reduce((s, p) => s + p.ms, 0) / Math.max(1, pages.length);
+  const remaining = pages.reduce((s, p) => s + (p.remaining?.length ?? 0), 0);
+  const allBefore = pages.reduce((s, p) => s + p.allBefore, 0);
+  const allAfter = pages.reduce((s, p) => s + (p.allAfter ?? 0), 0);
+
+  const L: string[] = [];
+  L.push(`${h} Summary`);
+  L.push("");
+  L.push(`| Metric | Value |`);
+  L.push(`|---|---|`);
+  L.push(`| Pages | ${pages.length} |`);
+  L.push(`| Violations detected | ${m.detected} |`);
+  L.push(`| Skipped (needs judgment, no model in this run) | ${m.skipped} |`);
+  L.push(`| Patches proposed | ${m.proposed} |`);
+  L.push(`| Patches verified | ${m.verified} |`);
+  L.push(`| **Fix rate** (verified / detected) | **${rateCI(m.verified, m.detected)}** |`);
+  L.push(`| **Precision** (verified / proposed) | **${rateCI(m.verified, m.proposed)}** |`);
+  L.push(`| False-fix rate (suspicious / (verified + suspicious)) | ${pct(m.suspicious, m.verified + m.suspicious)} |`);
+  L.push(`| Regression rate (regressions / applied) | ${pct(m.regression, m.applied)} |`);
+  L.push(
+    `| Mean cost per verified fix | ${m.verified ? `${fmtInt(Math.round(totalTokens / m.verified))} tokens` : "n/a"}${
+      usd !== null && m.verified ? ` (~$${(usd / m.verified).toFixed(4)})` : ""
+    } |`,
+  );
+  L.push(`| Total tokens | ${fmtInt(totalTokens)}${usd !== null ? ` (~$${usd.toFixed(2)})` : ""} |`);
+  L.push(`| Mean time per page | ${(avgPageMs / 1000).toFixed(1)} s |`);
+  L.push(`| Subset violations left after applying the output patch | ${remaining} of ${m.detected} |`);
+  L.push(`| WCAG A/AA violations (all rules) before → after | ${allBefore} → ${allAfter} |`);
+  L.push("");
+
+  L.push(`${h} By tier`);
+  L.push("");
+  L.push(`Tier 0 is deterministic codemods and is held to 100% precision. Tier 1 is the model, used only where judgment is needed.`);
+  L.push("");
+  L.push(`| Tier | Proposed | Verified | Precision [95% CI] | Suspicious | Regressions | Persists | Invalid shape | Tokens / fix |`);
+  L.push(`|---|---|---|---|---|---|---|---|---|`);
+  for (const [name, t] of [["0 (codemod)", t0], ["1 (model)", t1]] as const) {
+    L.push(
+      `| ${name} | ${t.proposed} | ${t.verified} | **${rateCI(t.verified, t.proposed)}** | ${t.suspicious} | ${t.regression} | ${t.persists} | ${t.invalid + t.applyFailed} | ${
+        t.verified ? fmtInt(Math.round(tokens(t.usage) / t.verified)) : "n/a"
+      } |`,
+    );
+  }
+  L.push("");
+
+  // Compare like with like: this run's eval pages with the other run's eval pages.
+  if (r.compare) {
+    const b = set ? r.compare.bySet?.[set]?.overall : r.compare.overall;
+    L.push(`${h} Compared with \`${r.compare.generator}\` (${r.compare.date}${set ? `, ${set} pages` : ""})`);
+    L.push("");
+    if (b) {
+      L.push(`| Metric | This run | ${r.compare.generator} |`);
+      L.push(`|---|---|---|`);
+      L.push(`| Fix rate | ${pct(m.verified, m.detected)} | ${pct(b.verified, b.detected)} |`);
+      L.push(`| Precision | ${pct(m.verified, m.proposed)} | ${pct(b.verified, b.proposed)} |`);
+      L.push(`| False-fix rate | ${pct(m.suspicious, m.verified + m.suspicious)} | ${pct(b.suspicious, b.verified + b.suspicious)} |`);
+      L.push(`| Regression rate | ${pct(m.regression, m.applied)} | ${pct(b.regression, b.applied)} |`);
+    } else {
+      L.push(`Not compared: that run has no ${set} split.`);
+    }
+    L.push("");
+  }
+
+  L.push(...renderAblation(all, h));
+  L.push("");
+
+  L.push(`${h} Outcomes`);
+  L.push("");
+  L.push(`| Status | Count |`);
+  L.push(`|---|---|`);
+  L.push(`| verified | ${m.verified} |`);
+  L.push(`| rejected_suspicious (see below; in the output patch unless --strict) | ${m.suspicious} |`);
+  L.push(`| rejected_persists | ${m.persists} |`);
+  L.push(`| rejected_regression | ${m.regression} |`);
+  L.push(`| rejected_invalid (bad patch shape) | ${m.invalid} |`);
+  L.push(`| rejected_invalid (no usable model output) | ${m.generationFailed} |`);
+  L.push(`| rejected_apply_failed | ${m.applyFailed} |`);
+  L.push(`| skipped | ${m.skipped} |`);
+  L.push("");
+
+  L.push(`${h} By rule`);
+  L.push("");
+  L.push(`| Rule | Version | Tier | Detected | Skipped | Proposed | Verified | Fix rate | Precision [95% CI] | False-fix | Regression |`);
+  L.push(`|---|---|---|---|---|---|---|---|---|---|---|`);
+  for (const rule of r.rules) {
+    const o = all.filter((x) => x.finding.ruleId === rule.axe);
+    if (!o.length) continue;
+    const rm = metricsOf(o);
+    L.push(
+      `| ${rule.id} | ${rule.version} | ${rule.tier} | ${rm.detected} | ${rm.skipped} | ${rm.proposed} | ${rm.verified} | ${pct(rm.verified, rm.detected)} | ${rateCI(rm.verified, rm.proposed)} | ${pct(rm.suspicious, rm.verified + rm.suspicious)} | ${pct(rm.regression, rm.applied)} |`,
+    );
+  }
+  L.push("");
+  return L;
+}
+
 /**
  * What each verifier layer adds: how many patches each weaker verifier would have accepted, and how many of
  * those the full verifier rejects. "Rejected" is relative to the full verifier, which is not ground truth either.
  */
-function renderAblation(all: PatchOutcome[]): string {
+function renderAblation(all: PatchOutcome[], h: "##" | "###"): string[] {
   const L: string[] = [];
-  L.push(`## What the verifier adds`);
+  L.push(`${h} What the verifier adds`);
   L.push("");
   L.push(
     `Every patch that applied cleanly, judged by weaker verifiers. "Shipped but rejected by the full verifier" counts patches a pipeline with that verifier would have put in the output and called fixed. The full verifier is the reference here, not ground truth: a patch it accepts can still be wrong in ways no automatic check sees.`,
@@ -352,7 +444,7 @@ function renderAblation(all: PatchOutcome[]): string {
     for (const [label, n] of rows) L.push(`| ${name} | ${label} | ${n} | ${n - t.verified} | ${rateCI(n - t.verified, n)} |`);
   }
   if (!all.some((o) => APPLIED.includes(o.verification.status))) L.push(`| - | no patch applied in this run | 0 | 0 | n/a |`);
-  return L.join("\n");
+  return L;
 }
 
 function renderChecks(r: ReportInput, all: PatchOutcome[]): string {

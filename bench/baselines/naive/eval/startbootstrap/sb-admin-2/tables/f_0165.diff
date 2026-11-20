@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -592,7 +592,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Angelica Ramos</td>
+-                                            <td>Chief Executive Officer (CEO)</td>
++                                            <td style="color: #000000">Chief Executive Officer (CEO)</td>
+                                             <td>London</td>
+                                             <td>47</td>
+                                             <td>2009/10/09</td>

@@ -1,0 +1,25 @@
+diff --git a/corpus/eval/startbootstrap/sb-admin-2/register.html b/corpus/eval/startbootstrap/sb-admin-2/register.html
+--- a/corpus/eval/startbootstrap/sb-admin-2/register.html
++++ b/corpus/eval/startbootstrap/sb-admin-2/register.html
+@@ -61,7 +61,7 @@
+                                             id="exampleRepeatPassword" placeholder="Repeat Password">
+                                     </div>
+                                 </div>
+-                                <a href="login.html" class="btn btn-primary btn-user btn-block">
++                                <a href="login.html" class="btn btn-primary btn-user btn-block" style="color: #000000">
+                                     Register Account
+                                 </a>
+                                 <hr>
+@@ -74,10 +74,10 @@
+                             </form>
+                             <hr>
+                             <div class="text-center">
+-                                <a class="small" href="forgot-password.html">Forgot Password?</a>
++                                <a class="small" href="forgot-password.html" style="color: #000000">Forgot Password?</a>
+                             </div>
+                             <div class="text-center">
+-                                <a class="small" href="login.html">Already have an account? Login!</a>
++                                <a class="small" href="login.html" style="color: #000000">Already have an account? Login!</a>
+                             </div>
+                         </div>
+                     </div>

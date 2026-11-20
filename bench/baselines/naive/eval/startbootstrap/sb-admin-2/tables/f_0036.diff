@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -419,7 +419,7 @@
+                                             <td>Junior Technical Author</td>
+                                             <td>San Francisco</td>
+                                             <td>66</td>
+-                                            <td>2009/01/12</td>
++                                            <td style="color: #000000">2009/01/12</td>
+                                             <td>$86,000</td>
+                                         </tr>
+                                         <tr>

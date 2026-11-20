@@ -1,0 +1,77 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\blog\\index.html",
+  "findings": 3,
+  "statuses": {
+    "verified": 2,
+    "rejected_suspicious": 1
+  },
+  "included": [
+    "f_0001",
+    "f_0002",
+    "f_0003"
+  ],
+  "remainingSubsetViolations": 0,
+  "wcagViolationsBefore": 24,
+  "wcagViolationsAfter": 21,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 4421,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 308,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "heading-order",
+      "line": 634,
+      "tier": 1,
+      "status": "rejected_suspicious",
+      "included": true,
+      "reason": "visual (desktop): 0.33% of the page changed outside the patched elements (limit 0.10%)",
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0003",
+      "ruleId": "heading-order",
+      "line": 660,
+      "tier": 1,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "medium",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

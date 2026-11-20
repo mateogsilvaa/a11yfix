@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -559,7 +559,7 @@
+                                             <td>$217,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Jenette Caldwell</td>
++                                            <td style="color: #000000">Jenette Caldwell</td>
+                                             <td>Development Lead</td>
+                                             <td>New York</td>
+                                             <td>30</td>

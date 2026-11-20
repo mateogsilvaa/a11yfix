@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -215,7 +215,7 @@
+             <ul class="list-group mb-3">
+               <li class="list-group-item d-flex justify-content-between lh-sm">
+                 <div>
+-                  <h6 class="my-0">Product name</h6>
++                  <h5 class="my-0">Product name</h5>
+                   <small class="text-body-secondary">Brief description</small>
+                 </div>
+                 <span class="text-body-secondary">$12</span>

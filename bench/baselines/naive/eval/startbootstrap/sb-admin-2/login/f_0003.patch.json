@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "inline text color #ffffff",
+  "before": "<a href=\"index.html\" class=\"btn btn-google btn-user btn-block\">",
+  "after": "<a href=\"index.html\" class=\"btn btn-google btn-user btn-block\" style=\"color: #ffffff\">",
+  "confidence": "medium"
+}

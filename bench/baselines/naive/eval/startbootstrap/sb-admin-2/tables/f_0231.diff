@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -680,7 +680,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Unity Butler</td>
+-                                            <td>Marketing Designer</td>
++                                            <td style="color: #000000">Marketing Designer</td>
+                                             <td>San Francisco</td>
+                                             <td>47</td>
+                                             <td>2009/12/09</td>

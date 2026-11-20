@@ -1,0 +1,36 @@
+{
+  "findingId": "f_0001",
+  "ruleGone": true,
+  "newViolations": [],
+  "suspicious": true,
+  "reason": "visual (desktop): 0.21% of the page changed outside the patched elements (limit 0.10%)",
+  "status": "rejected_suspicious",
+  "flaggedBy": [
+    "visual"
+  ],
+  "checks": {
+    "ax": [],
+    "focus": {
+      "before": 11,
+      "after": 11,
+      "lost": [],
+      "added": [],
+      "reordered": false
+    },
+    "visual": [
+      {
+        "viewport": "desktop",
+        "changeOutside": 0.002063042892092851,
+        "changedPixelsOutside": 11691,
+        "size": [
+          1280,
+          4453,
+          1280,
+          4452
+        ],
+        "layoutShift": 0
+      }
+    ]
+  },
+  "tier": 1
+}

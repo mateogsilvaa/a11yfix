@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0007",
+  "rationale": "inline text color #000000",
+  "before": "<div class=\"card-footer small text-muted\">",
+  "after": "<div class=\"card-footer small text-muted\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

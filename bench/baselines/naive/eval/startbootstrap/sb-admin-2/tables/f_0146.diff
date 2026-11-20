@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -567,7 +567,7 @@
+                                             <td>$345,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Yuri Berry</td>
++                                            <td style="color: #000000">Yuri Berry</td>
+                                             <td>Chief Marketing Officer (CMO)</td>
+                                             <td>New York</td>
+                                             <td>40</td>

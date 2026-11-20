@@ -1,0 +1,30 @@
+diff --git a/corpus/eval/startbootstrap/sb-admin-2/login.html b/corpus/eval/startbootstrap/sb-admin-2/login.html
+--- a/corpus/eval/startbootstrap/sb-admin-2/login.html
++++ b/corpus/eval/startbootstrap/sb-admin-2/login.html
+@@ -54,11 +54,11 @@
+                                         <div class="form-group">
+                                             <div class="custom-control custom-checkbox small">
+                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
+-                                                <label class="custom-control-label" for="customCheck">Remember
++                                                <label class="custom-control-label" for="customCheck" style="color: #000000">Remember
+                                                     Me</label>
+                                             </div>
+                                         </div>
+-                                        <a href="index.html" class="btn btn-primary btn-user btn-block">
++                                        <a href="index.html" class="btn btn-primary btn-user btn-block" style="color: #000000">
+                                             Login
+                                         </a>
+                                         <hr>
+@@ -71,10 +71,10 @@
+                                     </form>
+                                     <hr>
+                                     <div class="text-center">
+-                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
++                                        <a class="small" href="forgot-password.html" style="color: #000000">Forgot Password?</a>
+                                     </div>
+                                     <div class="text-center">
+-                                        <a class="small" href="register.html">Create an Account!</a>
++                                        <a class="small" href="register.html" style="color: #000000">Create an Account!</a>
+                                     </div>
+                                 </div>
+                             </div>

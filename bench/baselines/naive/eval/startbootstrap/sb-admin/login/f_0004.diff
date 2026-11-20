@@ -1,0 +1,12 @@
+===================================================================
+--- a/login.html
++++ b/login.html
+@@ -56,7 +56,7 @@
+                             <div>
+                                 <a href="#">Privacy Policy</a>
+                                 &middot;
+-                                <a href="#">Terms &amp; Conditions</a>
++                                <a href="#" style="color: #000000">Terms &amp; Conditions</a>
+                             </div>
+                         </div>
+                     </div>

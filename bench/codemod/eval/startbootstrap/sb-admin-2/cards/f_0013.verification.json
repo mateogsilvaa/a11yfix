@@ -1,0 +1,9 @@
+{
+  "findingId": "f_0013",
+  "status": "skipped",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "codemod declined: its edit fails shape validation (diff has 4 hunks (max 2)); no model configured",
+  "tier": null
+}

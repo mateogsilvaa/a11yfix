@@ -1,0 +1,58 @@
+{
+  "file": "corpus\\eval\\bootstrap-examples\\modals\\index.html",
+  "findings": 2,
+  "statuses": {
+    "verified": 1,
+    "skipped": 1
+  },
+  "included": [
+    "f_0001"
+  ],
+  "remainingSubsetViolations": 1,
+  "wcagViolationsBefore": 7,
+  "wcagViolationsAfter": 6,
+  "combinedSkipped": [],
+  "usage": {
+    "inputTokens": 0,
+    "outputTokens": 0,
+    "cacheReadTokens": 0,
+    "cacheWriteTokens": 0
+  },
+  "ms": 1867,
+  "results": [
+    {
+      "findingId": "f_0001",
+      "ruleId": "heading-order",
+      "line": 277,
+      "tier": 0,
+      "status": "verified",
+      "included": true,
+      "reason": null,
+      "confidence": "high",
+      "attempts": 1,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    },
+    {
+      "findingId": "f_0002",
+      "ruleId": "heading-order",
+      "line": 322,
+      "tier": null,
+      "status": "skipped",
+      "included": false,
+      "reason": "codemod declined: its edit fails shape validation (diff has 3 hunks (max 2)); no model configured",
+      "confidence": null,
+      "attempts": 0,
+      "usage": {
+        "inputTokens": 0,
+        "outputTokens": 0,
+        "cacheReadTokens": 0,
+        "cacheWriteTokens": 0
+      }
+    }
+  ]
+}

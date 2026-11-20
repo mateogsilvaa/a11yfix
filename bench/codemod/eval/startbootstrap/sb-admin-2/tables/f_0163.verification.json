@@ -1,0 +1,9 @@
+{
+  "findingId": "f_0163",
+  "status": "skipped",
+  "ruleGone": false,
+  "newViolations": [],
+  "suspicious": false,
+  "reason": "needs judgment (tier-1 rule without codemod); no model configured",
+  "tier": null
+}

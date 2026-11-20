@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -416,7 +416,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Ashton Cox</td>
+-                                            <td>Junior Technical Author</td>
++                                            <td style="color: #000000">Junior Technical Author</td>
+                                             <td>San Francisco</td>
+                                             <td>66</td>
+                                             <td>2009/01/12</td>

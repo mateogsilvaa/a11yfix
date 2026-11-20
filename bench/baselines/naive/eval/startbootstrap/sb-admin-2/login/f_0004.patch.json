@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0004",
+  "rationale": "inline text color #000000",
+  "before": "<a class=\"small\" href=\"forgot-password.html\">",
+  "after": "<a class=\"small\" href=\"forgot-password.html\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

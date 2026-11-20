@@ -1,0 +1,12 @@
+===================================================================
+--- a/aria-allowed-attr-incomplete.html
++++ b/aria-allowed-attr-incomplete.html
+@@ -17,7 +17,7 @@
+ <div role="button" id="incomplete4" aria-grabbed="true" aria-dropeffect="copy">
+   Foo
+ </div>
+-<div role="checkbox" id="incomplete5" aria-busy="FALSE">Checkbox</div>
++<div role="checkbox" id="incomplete5" aria-busy="FALSE" aria-checked="false">Checkbox</div>
+ <a href="#" id="incomplete6" aria-current="TRUE">Current page</a>
+ <div
+   role="checkbox"

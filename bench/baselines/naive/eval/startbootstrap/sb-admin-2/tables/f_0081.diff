@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -480,7 +480,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Jena Gaines</td>
+-                                            <td>Office Manager</td>
++                                            <td style="color: #000000">Office Manager</td>
+                                             <td>London</td>
+                                             <td>30</td>
+                                             <td>2008/12/19</td>

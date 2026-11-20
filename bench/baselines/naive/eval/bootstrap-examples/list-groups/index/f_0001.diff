@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -395,7 +395,7 @@
+             style="font-size: 1.375em"
+           />
+           <span class="pt-1 form-checked-content">
+-            <strong>Finish sales report</strong>
++            <strong style="color: #000000">Finish sales report</strong>
+             <small class="d-block text-body-secondary">
+               <svg
+                 class="bi me-1"

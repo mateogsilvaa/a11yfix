@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -443,7 +443,7 @@
+                                             <td>Integration Specialist</td>
+                                             <td>New York</td>
+                                             <td>61</td>
+-                                            <td>2012/12/02</td>
++                                            <td style="color: #000000">2012/12/02</td>
+                                             <td>$372,000</td>
+                                         </tr>
+                                         <tr>

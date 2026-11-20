@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -527,7 +527,7 @@
+                                             <td>$198,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Paul Byrd</td>
++                                            <td style="color: #000000">Paul Byrd</td>
+                                             <td>Chief Financial Officer (CFO)</td>
+                                             <td>New York</td>
+                                             <td>64</td>

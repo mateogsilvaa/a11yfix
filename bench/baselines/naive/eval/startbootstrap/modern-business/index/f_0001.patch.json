@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0001",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h5 class=\"card-title mb-3\">Blog post title</h5>",
+  "after": "<h3 class=\"card-title mb-3\">Blog post title</h3>",
+  "confidence": "medium"
+}

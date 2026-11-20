@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -611,7 +611,7 @@
+                                             <td>Regional Director</td>
+                                             <td>Singapore</td>
+                                             <td>28</td>
+-                                            <td>2010/11/14</td>
++                                            <td style="color: #000000">2010/11/14</td>
+                                             <td>$357,650</td>
+                                         </tr>
+                                         <tr>

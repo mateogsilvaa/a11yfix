@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -399,7 +399,7 @@
+                                     </tfoot>
+                                     <tbody>
+                                         <tr>
+-                                            <td>Tiger Nixon</td>
++                                            <td style="color: #000000">Tiger Nixon</td>
+                                             <td>System Architect</td>
+                                             <td>Edinburgh</td>
+                                             <td>61</td>

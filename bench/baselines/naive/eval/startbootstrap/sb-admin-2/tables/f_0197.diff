@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -634,7 +634,7 @@
+                                             <td>Shou Itou</td>
+                                             <td>Regional Marketing</td>
+                                             <td>Tokyo</td>
+-                                            <td>20</td>
++                                            <td style="color: #000000">20</td>
+                                             <td>2011/08/14</td>
+                                             <td>$163,000</td>
+                                         </tr>

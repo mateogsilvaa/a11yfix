@@ -1,0 +1,21 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -372,7 +372,7 @@
+                     <!-- DataTales Example -->
+                     <div class="card shadow mb-4">
+                         <div class="card-header py-3">
+-                            <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
++                            <h2 class="m-0 font-weight-bold text-primary">DataTables Example</h2>
+                         </div>
+                         <div class="card-body">
+                             <div class="table-responsive">
+@@ -893,7 +893,7 @@
+         <div class="modal-dialog" role="document">
+             <div class="modal-content">
+                 <div class="modal-header">
+-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
++                    <h2 class="modal-title" id="exampleModalLabel">Ready to Leave?</h2>
+                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                         <span aria-hidden="true">×</span>
+                     </button>

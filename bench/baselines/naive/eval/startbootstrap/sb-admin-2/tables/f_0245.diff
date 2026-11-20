@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -698,7 +698,7 @@
+                                             <td>Hope Fuentes</td>
+                                             <td>Secretary</td>
+                                             <td>San Francisco</td>
+-                                            <td>41</td>
++                                            <td style="color: #000000">41</td>
+                                             <td>2010/02/12</td>
+                                             <td>$109,850</td>
+                                         </tr>

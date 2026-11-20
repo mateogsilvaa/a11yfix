@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -420,7 +420,7 @@
+                                             <td>San Francisco</td>
+                                             <td>66</td>
+                                             <td>2009/01/12</td>
+-                                            <td>$86,000</td>
++                                            <td style="color: #000000">$86,000</td>
+                                         </tr>
+                                         <tr>
+                                             <td>Cedric Kelly</td>

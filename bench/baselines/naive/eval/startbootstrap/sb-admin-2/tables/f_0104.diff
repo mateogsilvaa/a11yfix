@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -511,7 +511,7 @@
+                                             <td>$313,500</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Tatyana Fitzpatrick</td>
++                                            <td style="color: #000000">Tatyana Fitzpatrick</td>
+                                             <td>Regional Director</td>
+                                             <td>London</td>
+                                             <td>19</td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -568,7 +568,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Yuri Berry</td>
+-                                            <td>Chief Marketing Officer (CMO)</td>
++                                            <td style="color: #000000">Chief Marketing Officer (CMO)</td>
+                                             <td>New York</td>
+                                             <td>40</td>
+                                             <td>2009/06/25</td>

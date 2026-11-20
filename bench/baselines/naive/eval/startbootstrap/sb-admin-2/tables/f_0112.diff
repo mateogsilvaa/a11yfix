@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -521,7 +521,7 @@
+                                         <tr>
+                                             <td>Michael Silva</td>
+                                             <td>Marketing Designer</td>
+-                                            <td>London</td>
++                                            <td style="color: #000000">London</td>
+                                             <td>66</td>
+                                             <td>2012/11/27</td>
+                                             <td>$198,500</td>

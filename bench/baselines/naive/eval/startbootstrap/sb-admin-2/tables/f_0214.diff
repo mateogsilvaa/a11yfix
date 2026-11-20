@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -657,7 +657,7 @@
+                                         <tr>
+                                             <td>Prescott Bartlett</td>
+                                             <td>Technical Author</td>
+-                                            <td>London</td>
++                                            <td style="color: #000000">London</td>
+                                             <td>27</td>
+                                             <td>2011/05/07</td>
+                                             <td>$145,000</td>

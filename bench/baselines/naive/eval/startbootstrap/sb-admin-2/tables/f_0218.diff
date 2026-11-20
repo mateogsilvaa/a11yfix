@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -663,7 +663,7 @@
+                                             <td>$145,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Gavin Cortez</td>
++                                            <td style="color: #000000">Gavin Cortez</td>
+                                             <td>Team Leader</td>
+                                             <td>San Francisco</td>
+                                             <td>22</td>

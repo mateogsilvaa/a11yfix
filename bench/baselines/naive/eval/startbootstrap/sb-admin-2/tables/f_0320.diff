@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -799,7 +799,7 @@
+                                             <td>$75,650</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Cara Stevens</td>
++                                            <td style="color: #000000">Cara Stevens</td>
+                                             <td>Sales Assistant</td>
+                                             <td>New York</td>
+                                             <td>46</td>

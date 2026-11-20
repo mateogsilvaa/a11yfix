@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0005",
+  "rationale": "inline text color #000000",
+  "before": "<a target=\"_blank\"\n                            href=\"https://datatables.net\">",
+  "after": "<a target=\"_blank\"\n                            href=\"https://datatables.net\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

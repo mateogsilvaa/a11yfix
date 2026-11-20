@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -703,7 +703,7 @@
+                                             <td>$109,850</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Vivian Harrell</td>
++                                            <td style="color: #000000">Vivian Harrell</td>
+                                             <td>Financial Controller</td>
+                                             <td>San Francisco</td>
+                                             <td>62</td>

@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -791,7 +791,7 @@
+                                             <td>$115,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Jennifer Acosta</td>
++                                            <td style="color: #000000">Jennifer Acosta</td>
+                                             <td>Junior Javascript Developer</td>
+                                             <td>Edinburgh</td>
+                                             <td>43</td>

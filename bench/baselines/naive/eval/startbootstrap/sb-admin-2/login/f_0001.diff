@@ -1,0 +1,12 @@
+===================================================================
+--- a/login.html
++++ b/login.html
+@@ -54,7 +54,7 @@
+                                         <div class="form-group">
+                                             <div class="custom-control custom-checkbox small">
+                                                 <input type="checkbox" class="custom-control-input" id="customCheck">
+-                                                <label class="custom-control-label" for="customCheck">Remember
++                                                <label class="custom-control-label" for="customCheck" style="color: #000000">Remember
+                                                     Me</label>
+                                             </div>
+                                         </div>

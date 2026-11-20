@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -687,7 +687,7 @@
+                                             <td>$85,675</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Howard Hatfield</td>
++                                            <td style="color: #000000">Howard Hatfield</td>
+                                             <td>Office Manager</td>
+                                             <td>San Francisco</td>
+                                             <td>51</td>

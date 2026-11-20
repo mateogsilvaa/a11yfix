@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0010",
+  "rationale": "removed aria-multiline: not allowed on this element's role, so assistive technology ignores it",
+  "before": "<div id=\"fail7\" role=\"combobox\" aria-multiline=\"true\" contenteditable>",
+  "after": "<div id=\"fail7\" role=\"combobox\" contenteditable>",
+  "confidence": "high"
+}

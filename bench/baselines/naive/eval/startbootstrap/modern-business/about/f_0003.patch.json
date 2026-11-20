@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "re-level to h3, one below the previous heading",
+  "before": "<h5 class=\"fw-bolder\">Ibbie Eckart</h5>",
+  "after": "<h3 class=\"fw-bolder\">Ibbie Eckart</h3>",
+  "confidence": "medium"
+}

@@ -1,0 +1,12 @@
+===================================================================
+--- a/index.html
++++ b/index.html
+@@ -288,7 +288,7 @@
+         </div>
+       </div>
+       <div class="my-3 p-3 bg-body rounded shadow-sm">
+-        <h6 class="border-bottom pb-2 mb-0">Recent updates</h6>
++        <h2 class="border-bottom pb-2 mb-0">Recent updates</h2>
+         <div class="d-flex text-body-secondary pt-3">
+           <svg
+             aria-label="Placeholder: 32x32"

@@ -1,0 +1,14 @@
+===================================================================
+--- a/bad-form.html
++++ b/bad-form.html
+@@ -13,8 +13,8 @@
+         <input type="text" name="name">
+       </div>
+       <div>
+-        <p>Enter your age:</p>
+-        <input type="text" name="age">
++        <p id="age-label">Enter your age:</p>
++        <input type="text" name="age" aria-labelledby="age-label">
+       </div>
+     </form>
+   </body>

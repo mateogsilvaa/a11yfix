@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0003",
+  "rationale": "inline text color #ffffff",
+  "before": "<div\n              id=\"test6-target\"\n              style=\"background-color: rgba(0, 0, 255, 0.3)\"\n            >",
+  "after": "<div\n              id=\"test6-target\"\n              style=\"color: #ffffff; background-color: rgba(0, 0, 255, 0.3)\"\n            >",
+  "confidence": "medium"
+}

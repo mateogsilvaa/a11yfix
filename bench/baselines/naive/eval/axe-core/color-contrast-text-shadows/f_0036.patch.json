@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0036",
+  "rationale": "inline text color #000000",
+  "before": "<i id=\"b4-r2-i4\">",
+  "after": "<i id=\"b4-r2-i4\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

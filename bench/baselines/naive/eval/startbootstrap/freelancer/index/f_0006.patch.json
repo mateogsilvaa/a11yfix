@@ -1,0 +1,7 @@
+{
+  "findingId": "f_0006",
+  "rationale": "inline text color #000000",
+  "before": "<a class=\"btn btn-xl btn-outline-light\" href=\"https://startbootstrap.com/theme/freelancer/\">",
+  "after": "<a class=\"btn btn-xl btn-outline-light\" href=\"https://startbootstrap.com/theme/freelancer/\" style=\"color: #000000\">",
+  "confidence": "medium"
+}

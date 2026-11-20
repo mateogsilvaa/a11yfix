@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -458,7 +458,7 @@
+                                             <td>Rhona Davidson</td>
+                                             <td>Integration Specialist</td>
+                                             <td>Tokyo</td>
+-                                            <td>55</td>
++                                            <td style="color: #000000">55</td>
+                                             <td>2010/10/14</td>
+                                             <td>$327,900</td>
+                                         </tr>

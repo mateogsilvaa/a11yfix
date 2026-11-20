@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -599,7 +599,7 @@
+                                             <td>$1,200,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Gavin Joyce</td>
++                                            <td style="color: #000000">Gavin Joyce</td>
+                                             <td>Developer</td>
+                                             <td>Edinburgh</td>
+                                             <td>42</td>

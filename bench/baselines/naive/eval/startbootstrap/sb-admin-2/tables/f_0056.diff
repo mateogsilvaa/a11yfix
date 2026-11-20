@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -447,7 +447,7 @@
+                                             <td>$372,000</td>
+                                         </tr>
+                                         <tr>
+-                                            <td>Herrod Chandler</td>
++                                            <td style="color: #000000">Herrod Chandler</td>
+                                             <td>Sales Assistant</td>
+                                             <td>San Francisco</td>
+                                             <td>59</td>

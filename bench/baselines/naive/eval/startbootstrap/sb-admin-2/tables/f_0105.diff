@@ -1,0 +1,12 @@
+===================================================================
+--- a/tables.html
++++ b/tables.html
+@@ -512,7 +512,7 @@
+                                         </tr>
+                                         <tr>
+                                             <td>Tatyana Fitzpatrick</td>
+-                                            <td>Regional Director</td>
++                                            <td style="color: #000000">Regional Director</td>
+                                             <td>London</td>
+                                             <td>19</td>
+                                             <td>2010/03/17</td>
