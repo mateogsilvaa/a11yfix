@@ -1,0 +1,22 @@
+{
+  "name": "a11yfix-action",
+  "version": "0.3.0",
+  "private": true,
+  "description": "The a11yfix GitHub Action: audits the HTML a pull request changes and posts verified fixes as suggestions. Not a conformance audit.",
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "exports": {
+    ".": "./dist/index.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "a11yfix-core": "0.3.0"
+  }
+}

@@ -15,6 +15,16 @@ API (ADR 0006).
 - `flaggedBy` in `verification.json`: which verifier layers raised a suspicion reason.
 - README demo recorded from real runs (`docs/demo.svg`, `docs/demo.cast`, `npm run demo:record`), a results
   section with the naive baseline next to tier 0, and a real rejected patch.
+- **GitHub Action** (`action.yml`, `packages/action`, ADR 0016). On `pull_request`, audits the changed HTML files, runs
+  `fix --verify` (codemods by default; tier 1 only with an explicit `generator-cmd`) and posts one review whose
+  inline comments are suggestions for verified patches only, on the exact lines they change. Suspicious, rejected
+  and skipped findings are listed in the body, never suggested. Job summary for fork pull requests. Inputs `paths`,
+  `mode`, `strict`, `fail-on`, `generator-cmd`, `max-files`, `working-directory`, `github-token`. Example workflow in
+  `docs/examples/`. Not tagged or published to the Marketplace yet.
+
+### Changed
+- The conformance warning and caveats (`CONFORMANCE`, `CAVEATS`, `WARNING`) live in `a11yfix-core`; `a11yfix-mcp`
+  re-exports them unchanged.
 
 ## 0.3.0
 

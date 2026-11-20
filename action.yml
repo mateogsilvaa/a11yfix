@@ -1,0 +1,132 @@
+name: a11yfix
+description: >-
+  Audit the HTML a pull request changes and suggest only the accessibility fixes a verifier accepted.
+  Axe-clean on the checked rules, not WCAG conformance.
+author: a11yfix contributors
+branding:
+  icon: check-circle
+  color: blue
+
+# Runs the a11yfix CLI from this repository (the npm name `a11yfix` is an unrelated project).
+# Docs: docs/github-action.md. Decision record: docs/adr/0016-github-action.md.
+
+inputs:
+  paths:
+    description: >-
+      Which changed files to audit: globs on repository-relative paths, one per line or comma-separated;
+      a leading ! excludes.
+    required: false
+    default: |
+      **/*.html
+      **/*.htm
+  mode:
+    description: >-
+      codemod (default): deterministic tier-0 fixes only, no model. auto or llm also use tier 1, and then
+      generator-cmd is required: the action never calls a model the workflow did not name.
+    required: false
+    default: codemod
+  strict:
+    description: Leave suspicious patches out of the downloadable patch. Suspicious patches are never suggested either way.
+    required: false
+    default: "true"
+  fail-on:
+    description: >-
+      none (default): never fail the job on results. findings: fail when any finding remains in the audited files.
+      unfixed: fail when a finding has no verified fix, or a file could not be audited.
+    required: false
+    default: none
+  generator-cmd:
+    description: Tier-1 generator command (any agent or model CLI, see docs/agents.md). Only used when mode is auto or llm.
+    required: false
+    default: ""
+  max-files:
+    description: Audit at most this many changed HTML files; the rest are listed as not audited.
+    required: false
+    default: "50"
+  working-directory:
+    description: Where the pull request is checked out, relative to the workspace (the `path` given to actions/checkout).
+    required: false
+    default: .
+  github-token:
+    description: >-
+      Token to read the pull request and post the review. Needs pull-requests write to post; with a read-only token
+      (fork pull requests) the report goes to the job summary.
+    required: false
+    default: ${{ github.token }}
+
+outputs:
+  findings:
+    description: Findings in the audited files.
+    value: ${{ steps.run.outputs.findings }}
+  verified:
+    description: Findings with a verified fix.
+    value: ${{ steps.run.outputs.verified }}
+  suggested:
+    description: Verified fixes posted as suggestions (the rest are only in the patch).
+    value: ${{ steps.run.outputs.suggested }}
+  suspicious:
+    description: Patches that silenced a violation in a suspicious way. Need a human; never suggested.
+    value: ${{ steps.run.outputs.suspicious }}
+  skipped:
+    description: Findings nothing was attempted for. Need a human.
+    value: ${{ steps.run.outputs.skipped }}
+  unfixed:
+    description: Findings without a verified fix, plus files that could not be audited.
+    value: ${{ steps.run.outputs.unfixed }}
+  patch:
+    description: Path of the combined `git apply` patch of the verified fixes.
+    value: ${{ steps.run.outputs.patch }}
+  results:
+    description: Path of results.json (every finding, status, reason and patch, with the conformance caveats).
+    value: ${{ steps.run.outputs.results }}
+  review-url:
+    description: URL of the review, when one was posted.
+    value: ${{ steps.run.outputs.review-url }}
+
+runs:
+  using: composite
+  steps:
+    - name: Check Node.js
+      shell: bash
+      run: |
+        node -e 'if (Number(process.versions.node.split(".")[0]) < 20) { console.log("::error::a11yfix needs Node.js 20 or later: add actions/setup-node before this action"); process.exit(1); }'
+
+    - name: Browser cache key
+      id: key
+      shell: bash
+      run: |
+        hash=$(node -e 'const c=require("crypto"),f=require("fs");process.stdout.write(c.createHash("sha256").update(f.readFileSync(process.argv[1])).digest("hex").slice(0,16))' "$GITHUB_ACTION_PATH/package-lock.json")
+        echo "key=a11yfix-browsers-${RUNNER_OS}-${RUNNER_ARCH}-${hash}" >> "$GITHUB_OUTPUT"
+
+    - name: Restore browser
+      uses: actions/cache@v4
+      with:
+        path: ${{ runner.temp }}/a11yfix-browsers
+        key: ${{ steps.key.outputs.key }}
+
+    - name: Install a11yfix
+      shell: bash
+      working-directory: ${{ github.action_path }}
+      env:
+        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/a11yfix-browsers
+      # Lockfile only, no install scripts; then the one browser a11yfix renders with.
+      run: |
+        npm ci --ignore-scripts --no-audit --no-fund
+        npx --no-install playwright install --with-deps chromium-headless-shell
+        npm run build --silent
+
+    - name: Audit, fix, verify, review
+      id: run
+      shell: bash
+      working-directory: ${{ inputs.working-directory }}
+      env:
+        PLAYWRIGHT_BROWSERS_PATH: ${{ runner.temp }}/a11yfix-browsers
+        A11YFIX_ACTION_PATHS: ${{ inputs.paths }}
+        A11YFIX_ACTION_MODE: ${{ inputs.mode }}
+        A11YFIX_ACTION_STRICT: ${{ inputs.strict }}
+        A11YFIX_ACTION_FAIL_ON: ${{ inputs.fail-on }}
+        A11YFIX_ACTION_GENERATOR_CMD: ${{ inputs.generator-cmd }}
+        A11YFIX_ACTION_MAX_FILES: ${{ inputs.max-files }}
+        A11YFIX_ACTION_TOKEN: ${{ inputs.github-token }}
+        A11YFIX_ACTION_OUT: ${{ runner.temp }}/a11yfix
+      run: node "$GITHUB_ACTION_PATH/packages/action/dist/main.js"

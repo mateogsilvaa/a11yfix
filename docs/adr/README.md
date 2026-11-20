@@ -19,3 +19,4 @@ A decision is changed by a new ADR that supersedes the old one, never by editing
 | [0012](0012-verification-beyond-axe.md) | Verification beyond axe: accessibility tree, focus order, pixels | Accepted |
 | [0013](0013-mcp-server.md) | An MCP server: a thin, honest wrapper over the core | Accepted |
 | [0014](0014-naive-baseline-and-verifier-ablation.md) | A naive baseline and a per-layer view of the verifier | Accepted |
+| [0016](0016-github-action.md) | A GitHub Action that suggests only verified fixes, on the lines they change | Accepted |
