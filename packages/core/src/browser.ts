@@ -96,8 +96,6 @@ export async function withPage<R>(
   try {
     const page = await context.newPage();
     await page.goto(pageUrl, { waitUntil: "load", timeout: 30_000 });
-    // tsx/esbuild wraps named functions in __name(); functions serialized
-    // into the page need that helper to exist there too.
     await page.evaluate("globalThis.__name = globalThis.__name || ((f) => f)");
     return await fn(page);
   } finally {

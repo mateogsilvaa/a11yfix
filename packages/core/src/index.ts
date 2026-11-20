@@ -35,6 +35,26 @@ export {
   type PatchOutcome,
   type ProcessOptions,
 } from "./pipeline.js";
+export { CommandGenerator, extractPatch, type CommandInput, type CommandOptions } from "./command.js";
 export { gitPatch, toPatchPath, type FileChange } from "./patchfile.js";
 export { metricsFile, metricsOf, renderReport, type Metrics, type MetricsFile, type ReportInput } from "./report.js";
 export { engineVersions } from "./versions.js";
+export { runAxe, normalize, type AxeRun, type NormalizeOptions } from "./audit.js";
+export {
+  VIEWPORTS,
+  canonicalUrl,
+  crawlSite,
+  fingerprintOf,
+  siteStats,
+  type CrawlOptions,
+  type PageStatus,
+  type SiteAuth,
+  type SiteFinding,
+  type SitePage,
+  type SiteResult,
+  type Viewport,
+} from "./site/crawl.js";
+export { parseRobots, type Robots } from "./site/robots.js";
+export { parseSitemap, type SitemapDoc } from "./site/sitemap.js";
+export { Store, SCHEMA_VERSION, type PreviousPage } from "./site/store.js";
+export { renderSiteReport, sharedGroups, type SiteGroup } from "./site/report.js";

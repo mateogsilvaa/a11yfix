@@ -6,7 +6,13 @@ import { createRequire } from "node:module";
 import path from "node:path";
 import { Command, InvalidArgumentError, Option } from "commander";
 import {
+  CommandGenerator,
   DEFAULT_MODEL,
+  Store,
+  VIEWPORTS,
+  crawlSite,
+  renderSiteReport,
+  siteStats,
   LlmGenerator,
   auditFile,
   auditSource,
@@ -22,6 +28,7 @@ import {
   verifyPatch,
   writeJson,
   writePageArtifacts,
+  type CommandInput,
   type Effort,
   type Finding,
   type Generator,
@@ -29,6 +36,8 @@ import {
   type Mode,
   type PageOutcome,
   type RuleRegistry,
+  type SiteAuth,
+  type Viewport,
 } from "a11yfix-core";
 import { createCoreRegistry } from "a11yfix-rules-core";
 
@@ -43,14 +52,29 @@ const int = (v: string) => {
 
 const hasCredentials = () => Boolean(process.env.ANTHROPIC_API_KEY || process.env.ANTHROPIC_AUTH_TOKEN || process.env.ANTHROPIC_PROFILE);
 
-/** The tier-1 generator for a mode, or null. `auto` uses a model only when credentials are configured. */
-function makeLlm(mode: Mode, model: string, effort: Effort): Generator | null {
-  if (mode === "codemod") return null;
-  if (mode === "auto" && !hasCredentials()) {
-    console.error("a11yfix: no model configured (ANTHROPIC_API_KEY unset): findings that need judgment will be skipped.");
+interface GenOpts {
+  mode: Mode;
+  model: string;
+  effort: Effort;
+  generatorCmd?: string;
+  generatorInput: CommandInput;
+}
+
+/**
+ * The tier-1 generator for a mode, or null. A generator command (any agent
+ * or model CLI) wins over the built-in Anthropic client; `auto` uses the
+ * built-in client only when credentials are configured.
+ */
+function makeLlm(o: GenOpts): Generator | null {
+  if (o.mode === "codemod") return null;
+  if (o.generatorCmd) return new CommandGenerator({ command: o.generatorCmd, input: o.generatorInput });
+  if (o.mode === "auto" && !hasCredentials()) {
+    console.error(
+      "a11yfix: no model configured (no --generator-cmd, ANTHROPIC_API_KEY unset): findings that need judgment will be skipped.",
+    );
     return null;
   }
-  return new LlmGenerator({ model, effort });
+  return new LlmGenerator({ model: o.model, effort: o.effort });
 }
 
 async function readFindings(file: string): Promise<Finding[]> {
@@ -81,7 +105,7 @@ const program = new Command()
   .name("a11yfix")
   .description(
     "Audit HTML for accessibility violations, patch them, and keep only the patches a re-audit proves correct.\n" +
-      "No telemetry. No network access other than the page under audit and, only for tier-1 fixes, the model API.",
+      "No telemetry. No network access other than the page under audit and, only for tier-1 fixes, the model you configure.",
   )
   .version(pkg.version);
 
@@ -93,7 +117,15 @@ const fixOpts = (cmd: Command) =>
         .default("auto"),
     )
     .option("--strict", "leave suspicious patches out of the output patch", false)
-    .option("--model <id>", "Claude model id for tier 1", DEFAULT_MODEL)
+    .option(
+      "--generator-cmd <command>",
+      "tier 1 through any agent or model CLI: gets the request on stdin, prints the patch JSON on stdout (e.g. \"claude -p\", \"ollama run qwen3\")",
+      process.env.A11YFIX_GENERATOR_CMD,
+    )
+    .addOption(
+      new Option("--generator-input <format>", "what the generator command receives on stdin").choices(["text", "json"]).default("text"),
+    )
+    .option("--model <id>", "Claude model id for the built-in tier-1 client", DEFAULT_MODEL)
     .addOption(new Option("--effort <level>", "model effort").choices(["low", "medium", "high", "xhigh", "max"]).default("medium"))
     .option("--concurrency <n>", "parallel model calls", int, 4);
 
@@ -125,13 +157,16 @@ fixOpts(
     .argument("<findings>", "findings.json from `audit`")
     .option("--out <dir>", "output directory", "patches")
     .option("--verify", "re-audit every patch (off by default only to iterate quickly while developing)", false)
-    .option("--limit <n>", "only the first N findings per file", int),
+    .option("--limit <n>", "only the first N findings per file", int)
+    .option("--db <file>", "also record findings, patches and verifications in this SQLite database (Node >= 22.13)"),
 ).action(
   async (
     findingsFile: string,
-    o: { out: string; verify: boolean; strict: boolean; limit?: number; mode: Mode; model: string; effort: Effort; concurrency: number },
+    o: GenOpts & { out: string; verify: boolean; strict: boolean; limit?: number; concurrency: number; db?: string },
   ) => {
-    const llm = makeLlm(o.mode, o.model, o.effort);
+    const llm = makeLlm(o);
+    const store = o.db ? await Store.open(o.db) : undefined;
+    const runId = store?.beginRun("fix", null, engineVersions(), { mode: o.mode, generator: llm?.name ?? null, strict: o.strict, verify: o.verify });
     const groups = groupByFile(await readFindings(findingsFile));
     const genLimit = limiter(o.concurrency);
     const auditLimit = limiter(Math.max(2, Math.min(o.concurrency, 6)));
@@ -150,6 +185,7 @@ fixOpts(
         log: console.log,
       });
       pages.push(page);
+      store?.savePageOutcome(runId!, page);
       const dir = groups.size > 1 ? path.join(o.out, path.basename(file, path.extname(file))) : o.out;
       await writePageArtifacts(dir, page);
       const st = countBy(page.outcomes.map((x) => x.verification.status));
@@ -167,8 +203,134 @@ fixOpts(
         `wrote ${path.join(o.out, "a11yfix.patch")}: ${included.length} change(s)${sus ? `, ${sus} marked suspicious (use --strict to leave them out)` : ""}. Apply with: git apply ${path.join(o.out, "a11yfix.patch")}`,
       );
     }
+    if (store) {
+      store.finishRun(runId!, { pages: pages.length, statuses: countBy(pages.flatMap((p) => p.outcomes.map((x) => x.verification.status))) });
+      store.close();
+    }
   },
 );
+
+const collect = (v: string, prev: string[] = []) => [...prev, v];
+
+function parseHeader(h: string): [string, string] {
+  const i = h.indexOf(":");
+  if (i < 1) throw new InvalidArgumentError(`expected "Name: value", got ${JSON.stringify(h)}`);
+  return [h.slice(0, i).trim().toLowerCase(), h.slice(i + 1).trim()];
+}
+
+function parseCookie(c: string): { name: string; value: string } {
+  const i = c.indexOf("=");
+  if (i < 1) throw new InvalidArgumentError(`expected "name=value", got ${JSON.stringify(c)}`);
+  return { name: c.slice(0, i).trim(), value: c.slice(i + 1).trim() };
+}
+
+function parseViewports(v: string): Viewport[] {
+  return v.split(",").map((raw) => {
+    const name = raw.trim();
+    const vp = VIEWPORTS[name];
+    if (vp) return vp;
+    const m = /^(\d+)x(\d+)$/.exec(name);
+    if (m) return { name, width: Number(m[1]), height: Number(m[2]) };
+    throw new InvalidArgumentError(`unknown viewport ${JSON.stringify(name)} (desktop, tablet, mobile or WIDTHxHEIGHT)`);
+  });
+}
+
+program
+  .command("site")
+  .description("crawl a live site (same origin) and audit every page it reaches; reports only, no patches")
+  .argument("<url>", "start URL")
+  .option("--out <dir>", "report, site.json and element captures", "site-audit")
+  .option("--depth <n>", "link depth from the start page", (v) => Number(v), 2)
+  .option("--max-pages <n>", "stop after this many pages", int, 50)
+  .option("--viewports <list>", "desktop, tablet, mobile or WIDTHxHEIGHT, comma-separated", parseViewports, [VIEWPORTS.desktop!])
+  .addOption(new Option("--level <n>", "1 = structural rules, 2 = also color-contrast").choices(["1", "2"]).default("2"))
+  .option("--header <header>", 'extra request header for the target origin, "Name: value" (repeatable)', collect, [])
+  .option("--cookie <cookie>", 'cookie for the target origin, "name=value" (repeatable)', collect, [])
+  .option("--basic-auth <user:pass>", "HTTP basic auth for the target origin (or set A11YFIX_BASIC_AUTH)", process.env.A11YFIX_BASIC_AUTH)
+  .option("--allow-origin <origin>", "let the browser load resources from this origin too (CDN); never crawled (repeatable)", collect, [])
+  .option("--include <regex>", "only crawl URLs matching this")
+  .option("--exclude <regex>", "never crawl URLs matching this")
+  .option("--ignore-robots", "do not honour robots.txt (only for sites you own)", false)
+  .option("--no-sitemap", "do not seed the crawl from sitemap.xml")
+  .option("--concurrency <n>", "pages rendered in parallel", int, 2)
+  .option("--delay <ms>", "minimum delay between requests to the site (default: robots.txt Crawl-delay, else 0)", (v) => Number(v))
+  .option("--timeout <ms>", "per page navigation timeout", int, 30_000)
+  .option("--no-screenshots", "do not capture the elements of each finding")
+  .option("--db <file>", "SQLite database for runs, pages and findings (Node >= 22.13)")
+  .option("--incremental", "with --db: reuse the stored audit of pages whose HTML did not change", false)
+  .action(
+    async (
+      url: string,
+      o: {
+        out: string;
+        depth: number;
+        maxPages: number;
+        viewports: Viewport[];
+        level: "1" | "2";
+        header: string[];
+        cookie: string[];
+        basicAuth?: string;
+        allowOrigin: string[];
+        include?: string;
+        exclude?: string;
+        ignoreRobots: boolean;
+        sitemap: boolean;
+        concurrency: number;
+        delay?: number;
+        timeout: number;
+        screenshots: boolean;
+        db?: string;
+        incremental: boolean;
+      },
+    ) => {
+      if (o.incremental && !o.db) throw new Error("--incremental needs --db <file> to remember the previous run");
+      if (!Number.isInteger(o.depth) || o.depth < 0) throw new Error("--depth must be a non-negative integer");
+      const auth: SiteAuth = {
+        headers: Object.fromEntries(o.header.map(parseHeader)),
+        cookies: o.cookie.map(parseCookie),
+      };
+      if (o.basicAuth) {
+        const i = o.basicAuth.indexOf(":");
+        if (i < 0) throw new Error("--basic-auth expects user:pass");
+        auth.basic = { username: o.basicAuth.slice(0, i), password: o.basicAuth.slice(i + 1) };
+      }
+      const store = o.db ? await Store.open(o.db) : undefined;
+      try {
+        console.log(`site: ${url}, depth ${o.depth}, up to ${o.maxPages} page(s), viewports ${o.viewports.map((v) => v.name).join(", ")}`);
+        const result = await crawlSite({
+          start: url,
+          maxDepth: o.depth,
+          maxPages: o.maxPages,
+          rules: registry.axeIds(Number(o.level) as 1 | 2),
+          filter: ruleFilter,
+          viewports: o.viewports,
+          auth,
+          allowOrigins: o.allowOrigin,
+          respectRobots: !o.ignoreRobots,
+          useSitemap: o.sitemap,
+          concurrency: o.concurrency,
+          delayMs: o.delay,
+          timeoutMs: o.timeout,
+          include: o.include ? new RegExp(o.include) : undefined,
+          exclude: o.exclude ? new RegExp(o.exclude) : undefined,
+          screenshotsDir: o.screenshots ? path.join(o.out, "screenshots") : null,
+          store,
+          incremental: o.incremental,
+          log: console.log,
+        });
+        await mkdir(o.out, { recursive: true });
+        await writeFile(path.join(o.out, "site-report.md"), renderSiteReport(result, registry), "utf8");
+        await writeJson(path.join(o.out, "site.json"), result);
+        const st = siteStats(result);
+        console.log(
+          `${st.pages} page(s): ${st.audited} audited, ${st.reused} reused, ${st.duplicate} duplicate, ${st.skipped} skipped, ${st.error} error(s); ${st.findings} finding(s) in ${(result.ms / 1000).toFixed(1)} s`,
+        );
+        console.log(`wrote ${path.join(o.out, "site-report.md")} and site.json${o.db ? `; stored run ${result.runId} in ${o.db}` : ""}`);
+      } finally {
+        store?.close();
+      }
+    },
+  );
 
 program
   .command("verify")
@@ -204,7 +366,7 @@ fixOpts(
     .option("--notes <file>", "markdown appended to the report (analysis)")
     .option("--compare <file>", "metrics.json of another run to compare against"),
 ).action(
-  async (o: {
+  async (o: GenOpts & {
     corpus: string;
     report: string;
     out: string;
@@ -213,12 +375,9 @@ fixOpts(
     notes?: string;
     compare?: string;
     strict: boolean;
-    mode: Mode;
-    model: string;
-    effort: Effort;
     concurrency: number;
   }) => {
-    const llm = makeLlm(o.mode, o.model, o.effort);
+    const llm = makeLlm(o);
     const compare = o.compare ? (JSON.parse(await readFile(o.compare, "utf8")) as MetricsFile) : undefined;
     if (!(await stat(o.corpus)).isDirectory()) throw new Error(`${o.corpus} is not a directory`);
     let files = await listHtml(o.corpus);

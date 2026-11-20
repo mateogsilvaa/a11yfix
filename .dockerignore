@@ -1,0 +1,12 @@
+node_modules
+**/node_modules
+**/dist
+**/*.tsbuildinfo
+.git
+bench
+corpus
+demo
+docs
+site-audit
+patches
+*.sqlite

@@ -8,6 +8,7 @@
 import { readFile } from "node:fs/promises";
 import { createRequire } from "node:module";
 import path from "node:path";
+import type { Page } from "playwright";
 import { withPage } from "./browser.js";
 import { extractNodeContext } from "./context.js";
 import { REGRESSION_TAGS, wcagFromTags } from "./wcag.js";
@@ -29,7 +30,7 @@ async function getAxeSource(): Promise<string> {
 }
 
 /** One violating node as reported by the browser, before source mapping. */
-interface RawNode {
+export interface RawNode {
   selector: string;
   /** Child-element indexes from <html>; null when the node could not be resolved. */
   path: number[] | null;
@@ -40,7 +41,7 @@ interface RawNode {
   context: NodeContext | null;
 }
 
-interface RawViolation {
+export interface RawViolation {
   ruleId: string;
   tags: string[];
   impact: Impact | null;
@@ -95,25 +96,58 @@ export async function auditSource(
 ): Promise<AuditResult> {
   const started = Date.now();
   const subset = opts.rules ?? [];
-  const axe = await getAxeSource();
-
-  const { version, violations } = await withPage(file, src, async (page) => {
-    await page.evaluate(axe);
-    // Installed via CDP evaluate (not new Function in the page), so the
-    // page's script-src 'none' CSP does not block it.
-    await page.evaluate(`globalThis.__a11yfixContext = (${extractNodeContext.toString()})`);
-    return page.evaluate(runAxeInPage, { subset, tags: REGRESSION_TAGS });
-  });
-
-  const parsed = parseSource(src);
+  const { version, violations } = await withPage(file, src, (page) => runAxe(page, subset));
   const sourceFile = toPosix(path.relative(process.cwd(), path.resolve(file)));
+  const { findings, all } = normalize(violations, subset, { src, sourceFile, filter: opts.filter });
+  return { sourceFile, rules: subset, findings, all, axeVersion: version, ms: Date.now() - started };
+}
+
+/** Raw axe output for a page that is already loaded (file mode or URL mode). */
+export interface AxeRun {
+  version: string;
+  violations: RawViolation[];
+}
+
+/**
+ * Inject axe-core and the context extractor into a loaded page and run the
+ * subset plus the WCAG A/AA regression set. Works on any Playwright page:
+ * the file mode's CSP-locked page or a live URL.
+ */
+export async function runAxe(page: Page, subset: string[]): Promise<AxeRun> {
+  const axe = await getAxeSource();
+  // tsx/esbuild wraps named functions in __name(); functions serialized
+  // into the page need that helper to exist there too.
+  await page.evaluate("globalThis.__name = globalThis.__name || ((f) => f)");
+  await page.evaluate(axe);
+  // Installed via CDP evaluate (not new Function in the page), so a page CSP
+  // of script-src 'none' does not block it.
+  await page.evaluate(`globalThis.__a11yfixContext = (${extractNodeContext.toString()})`);
+  return page.evaluate(runAxeInPage, { subset, tags: REGRESSION_TAGS });
+}
+
+export interface NormalizeOptions {
+  /** Source text to map nodes to. Null for live URLs, which have no source file. */
+  src: string | null;
+  /** File path (posix, relative) or URL recorded on every finding. */
+  sourceFile: string;
+  filter?: (f: Finding) => boolean;
+}
+
+/** Turn raw axe output into findings (subset) and the full violation list. */
+export function normalize(
+  violations: RawViolation[],
+  subset: string[],
+  opts: NormalizeOptions,
+): { findings: Finding[]; all: PageViolation[] } {
+  const { src, sourceFile } = opts;
+  const parsed = src === null ? null : parseSource(src);
   const findings: Finding[] = [];
   const all: PageViolation[] = [];
 
   for (const v of violations) {
     const inSubset = subset.includes(v.ruleId);
     v.nodes.forEach((n, nodeIndex) => {
-      const located = locate(parsed, n.path);
+      const located = parsed ? locate(parsed, n.path) : { sourceRange: null, sourceLines: null };
       all.push({ ruleId: v.ruleId, selector: n.selector, ...located });
       if (!inSubset) return;
       findings.push({
@@ -124,7 +158,7 @@ export async function auditSource(
         selector: n.selector,
         nodeIndex,
         outerHTML: truncate(n.html, 2000),
-        sourceSnippet: located.sourceRange
+        sourceSnippet: located.sourceRange && src !== null
           ? src.slice(located.sourceRange.start, located.sourceRange.end)
           : null,
         ancestorChain: n.ancestorChain,
@@ -141,24 +175,19 @@ export async function auditSource(
     });
   }
 
-  if (opts.filter) {
-    const keep = findings.filter(opts.filter);
-    findings.length = 0;
-    findings.push(...keep);
-  }
+  const kept = opts.filter ? findings.filter(opts.filter) : findings;
 
   // Stable ids: order by position in the file, then rule, so ids do not depend
   // on axe's rule iteration order.
-  findings.sort(
+  kept.sort(
     (a, b) =>
       (a.sourceRange?.start ?? Number.MAX_SAFE_INTEGER) -
         (b.sourceRange?.start ?? Number.MAX_SAFE_INTEGER) ||
       a.ruleId.localeCompare(b.ruleId) ||
       a.nodeIndex - b.nodeIndex,
   );
-  findings.forEach((f, i) => (f.id = `f_${String(i + 1).padStart(4, "0")}`));
-
-  return { sourceFile, rules: subset, findings, all, axeVersion: version, ms: Date.now() - started };
+  kept.forEach((f, i) => (f.id = `f_${String(i + 1).padStart(4, "0")}`));
+  return { findings: kept, all };
 }
 
 function locate(
